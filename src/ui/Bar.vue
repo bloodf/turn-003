@@ -1,0 +1,5 @@
+<script setup lang="ts">
+defineProps<{ title: string; sub?: string }>(); defineEmits<{ back: [] }>()
+</script>
+<template><header class="barr"><button class="bk" aria-label="Back" @click="$emit('back')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4 5 12l8 8M5 12h15" fill="none" stroke="currentColor" stroke-width="2.6" /></svg></button><h2 class="cut">{{ title }}<small v-if="sub">{{ sub }}</small></h2><span class="grow" /><slot /></header></template>
+<style scoped>.barr{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;padding:calc(12px + var(--safe-t)) clamp(14px,3.2vw,48px) 10px;border-bottom:5px solid var(--ink);background:var(--paper);color:var(--ink);flex:none}.bk{width:44px;height:44px;display:grid;place-items:center;margin-left:-12px}.bk svg{width:27px;height:27px}.bk:hover{background:var(--spot);color:var(--on-spot)}h2{font:800 clamp(29px,3.2vw,44px)/.95 var(--serif);padding-bottom:2px}h2 small{font:400 18px var(--ui);color:var(--ink2);margin-left:14px}</style>

@@ -1,0 +1,456 @@
+id: muster
+title: The Winter Muster
+code: R5
+levels: 3-9
+tags: war, snow, a fortress to hold
+tone: heroic
+ink: #1c2f4a #9fc4d8
+pitch: The giants are coming down with the snow. There is one fort in the way, and it has been sent forty men, half of them cooks.
+about: Wolfguard Hold was built for a thousand. Its captain has forty, a broken gate, a winter's beans and orders not to lose. You have been sent up as reinforcements. You are all of them.
+about: The Winter Muster is a war campaign in which every sitting decides who will be standing on the wall in the last one. Save the village, find the allies, mend the gate, and then hold.
+villain: Hrunga Ice-Mother | frost_giant | wants somewhere to put her people now that the glacier is dying | keeps her word to the letter
+patron: Captain Ysolde Harrow | commander of Wolfguard, who has already written her report of its fall
+secret: The giants are not invading. They are refugees: a white dragon has taken their glacier. A fort that let them through, and then stood beside them, would win the war that nobody has noticed yet.
+place fort = Wolfguard Hold | castle size=1 seed=wolfguard-3 biome=snow theme=frost roofs=battlement style=stone_wall moat=no time=9 weather=snow open=yes fams=frost pop=.08 folk=yes | A great ugly fort across a pass, with its gate off its hinges, and smoke coming from one chimney out of sixty.
+place kell = Kellbrook | village size=2 seed=kell-11 biome=snow time=15 weather=snow | Thirty roofs under snow, and a long line of handcarts that has stopped in the middle of the street, because its front end has just met the wolves.
+place pass = The Hanged Pass | wilds size=3 seed=hangpass-4b biome=snow theme=frost time=11 weather=snow fams=frost+beast+giant pop=.45 | Old gallows at every turn of the road, with icicles for customers.
+place mine = Deepdelve | dungeon size=3 seed=deepdelve-9 theme=dwarven caves=.3 fams=dwarf+mine+kobold pop=.5 | There's still a light in the gatehouse, and somebody behind it with a crossbow and a great many questions.
+place barrow = The Frozen Legion | dungeon size=2 seed=legion-12 theme=frost levels=2 caves=.2 fams=undead+frost pop=.5 | A hall cut in ice, and in the ice, in ranks, with their shields locked, the last army that came to hold this pass.
+place camp = The Giants' Camp | wilds size=2 seed=jotun-6 biome=snow theme=frost time=18 fams=giant+frost+beast pop=.35 | Fires the size of houses. Something is singing, so low that you hear it with your knees.
+place ice = The Glacier Halls | dungeon size=3 seed=glacier-2 theme=frost levels=2 caves=.35 fams=frost+elemental+giant pop=.5 | Blue light and blue walls, stairs for legs four times as long as yours; and over all of it a smell like a blown-out lamp.
+
+== Reinforcements | 3 | fort
+read: Captain Ysolde Harrow counts you. She looks behind you to see if there are any more. “Right,” she says. “Well. You'll want some beans.”
+
+From the wall she shows you the pass. There's a grey smudge along the top of it as if someone had dragged a thumb. “That's them. Three weeks. If the frost holds, two. I've written to the Duke. I've written to everyone. You're who came.”
+goal: Make Wolfguard Hold fit to be attacked.
+dm: Set up the roster. Flags that matter at the end: gate, cooks_armed, kell_saved, dwarves, legion, giants, engine.
+-- npc harrow @fort:hall stays | Captain Ysolde Harrow | commander | knight/h:fighter:human:f
+look: has a report on her desk headed THE LOSS OF WOLFGUARD, complete but for the date
+hi: Sit. Eat. Then tell me what you're good at, and then I'll tell you what you're doing.
+? The fort (wall, gate): Gate's off. Wall's sound to the north, rotten to the south. Well's good. The great engine on the roof hasn't worked since my grandmother, but it frightens the crows.
+? The men (soldiers, cooks, forty): Forty-one. Eighteen soldiers, nine cooks, six drovers, a priest, a poet under arrest, and six I'd sooner not describe. They'd all like to go home. I'd like them to.
+? The report (loss, written): I like to be beforehand. It's a good report. You come out of it well.
+? The giants (smudge, enemy): Two hundred, with their children. Nobody brings their children to a raid. I said so to the Duke. He said, all the more plunder. {+children_noted, xp 20}
+! You could leave (insight 13): “I was at Saltmarsh,” says the captain. “We left. It was quite correct. I've got the medal.” She squares the edges of the report. “I thought I'd see what the other thing is like.” {+harrow_why, xp 40} // “So could you,” says the captain.
+-- npc dunk @fort:kitchen stays | Sergeant Dunk | head cook | veteran/h:barbarian:half_orc:m
+look: has a cleaver through his belt and flour to the shoulder
+hi: Beans. Then beans. There's a sort of pudding on Sundays; it's beans.
+? The cooks (nine, men): Good lads. Knives, fire, early mornings and being shouted at. What's the difference? Ask 'em. Nobody's ever asked 'em. {job cooks}
+? The cellar (stores, below): There's a bit I've locked. There's noises in it. I thought that it was rats and then I thought, rats don't hum.
+? The poet (arrest): Told the captain the poem. It was about the captain. It wasn't *rude*. It was only accurate.
+-- npc fenn @fort:prison | Corin Fenn | poet, under arrest | commoner/h:bard:half_elf:m
+look: is writing on the wall with a spoon
+hi: Rhyme for “hopeless”. Don't say *popeless*.
+? Your crime (poem, captain): I said that she had the eyes of a woman counting. It's a *compliment*. She said it was seventy-two hours.
+? The engine (roof, stair): Oh, I've read about that! They called it the Widow. It throws a stone the size of a cow. They took the pin out and hid it, in case it was ever used on anybody. There's a verse. {+pinverse, note pin}
+? Let you out (free, release): Would you? I can play the horn. I can only play it *well*; I don't know if that's any use.
+-- scene muster1 @fort:start many | Morning Parade
+say: Forty-one men in three rows in the snow. The third row's mostly aprons. They're looking at you as people look at a very small umbrella.
+> Inspect them as if they were a thousand | persuasion 12 | You take two hours over it. You find something to say to each. By the end the third row is standing like the first. {+morale1, inspire all, xp 40} // You tread on a cook.
+> Ask who wants to go | insight 11 | Nobody moves. Then a drover does. “Off you go,” you say, and give him a loaf. He gets as far as the gate. He comes back. “I'd only worry,” he says. {+morale1, xp 40} // Nineteen hands.
+> Show them how to fall | athletics 11 | You throw one another in the snow all morning. There's laughing. It's the first that wall's heard in a year. {+drill, inspire, xp 40} // You put your back out.
+-- trial gate @fort:guard | Hanging the Gate | 4 before 3
+say: Two leaves of oak and iron, a ton apiece, flat in the snow. There is a crane, a rope, eleven willing idiots, and a slight wind.
+try: athletics 12 Heave
+try: investigation 11 Find the balance
+try: survival 11 Thaw the pins
+try: persuasion 12 Call the time
+try: sleight 12 Drop the pin as it passes
+win: It swings. It *shuts*. Everyone goes in and out of it for half an hour. {+gate, xp 60}
+lose: It comes down again, on a Tuesday, on you. {hurt 2d6 bludgeoning all dex 12}
+-- fight hum @fort:storage- | What Hums in the Cellar | ochre_jelly, rat* | medium
+say: It isn't rats. It's a good forty gallons of something the colour of tea, and it's got into the pudding.
+win: Behind it, dry as a bone: six hundredweight of flour, and a barrel with a wax seal. Dunk reads the label and has to sit down. “*Onions*,” he whispers. {+stores, xp 30}
+-- scene cooks @fort:dining | The Third Row
+say: Nine cooks, at attention, each holding what he's best with: two cleavers, a spit, a rolling-pin, a cauldron lid.
+> Teach them the shield-wall with lids | athletics 12 | They take to it at once. It's just like a busy Friday. {+cooks_armed, jobdone cooks, xp 50} // Somebody loses a finger. “Had worse,” he says, and goes on peeling.  {+cooks_armed, jobdone cooks}
+> Ask them how they'd do it | persuasion 11 | There's a silence; and then everyone talks. Boiling fat. Pepper. Pans hung on strings, for a noise in the dark. You take notes. {+cooks_armed, +fat, jobdone cooks, xp 60} // “*Beans*,” says one, and they all fall about.  {+cooks_armed, jobdone cooks}
+-- puzzle pin @fort:library [pinverse] | The Widow's Pin
+say: Fenn's verse leads to a shelf, and the shelf to a box with a five-letter lock. “I hold the door that I am not. I'm drawn to fight and dropped to not. Pull me and the whole thing's loose; I'm in a grenade, or a goose.”
+answer: bolts|pinch|latch|pins|a pin|pin
+hint investigation 11: The dust is gone from P, I, N, and the last two wheels are set to blanks.
+hint performance 11: Say it aloud. He couldn't get *goose* to fit. It's a very bad verse.
+wrong: The box is unmoved. Fenn is wounded. {hurt 1d4 psychic one}
+win: An iron pin as long as your arm, greased, wrapped in a lady's petticoat. {+pin, xp 60}
+lose: The box breaks. The pin's only bent. {+pin}
+-- fight scouts @fort:tower2 | The North Tower | wolf*, scout | medium
+say: Somebody has been up here before you, and lit no fire. There are three of them, and their dogs, and a map.
+> Ask who they scout for | persuasion 13 | “The Mother,” says the eldest, shivering. “She wants to know if you've children here. She said don't hurt nobody if they've children.” You let them go. You keep the map. {skip, +mercy, +map1, xp 60} // They have been told not to be taken.
+win: A hide map, scratched with a thumb the size of a plate. Every steading that has children in it is marked with a ring and the giant-rune for *not*. {+map1, xp 30}
+-- boss engine @fort:throne [pin or gate or cooks_armed] | The Inspector-General | Sir Aubrey Vayle = bandit_captain!, thug*, bandit | hard
+say: “I'm relieving you,” says a man in a clean cloak, in the captain's chair. He has a paper from the Duke. Behind him ten men are already loading the onions. “Strategic withdrawal. With the stores. You lot can hold as long as you like.”
+> Read the paper carefully | investigation 13 | It is a very good seal. But the Duke can spell. You say so, aloud, in front of the third row. {+forged, inspire all, xp 50} // “It's quite in order,” he says, and takes it back.
+> Let the cooks see the onions going [cooks_armed] | | There's a sound like nine cleavers leaving nine belts. Sir Aubrey's men look at the onions. They put down the onions. {skip, inspire all, xp 60}
+win: He goes down the road with no horse, no boots, and a bean. In his saddlebag: letters, for six forts, all as forged as this. And one real one, that he'd kept back. It's from Kellbrook. It says HELP. {+vayle_out, note kellplea, gold 50, magic, done}
+end: You write it in the day-book: *Gate hung. Cooks armed. Onions secure.* Captain Harrow reads it, and takes a knife, and very neatly cuts the last page from her report. “I can always put it back,” she says. {+ch1, gold 40, xp 70}
+job cooks = The Third Row | See whether cooks can be soldiers. | flag cooks_armed | gold=0 xp=60
+note pin = Corin Fenn's Verse: “They drew her tooth and hid it well / where no one ever goes for pleasure: / between the Lives of Saints, and Hell, / on the shelf marked Weights & Measure.”
+note kellplea = From Kellbrook: “To any at Wolfguard. There's wolves in the lane and something behind the wolves. We are ninety with the old ones. We will come up to you if we can. Please could somebody come down.”
+
+== Somebody Come Down | 3 | kell
+read: Ninety people and thirty handcarts, and a lane a mile long between drifts. At the one end's the village; at the other the fort road. In the middle there's a grandmother on a cart with a poker, and six wolves sitting in a row, waiting for her arm to get tired.
+goal: Get the people of Kellbrook up to the fort.
+dm: Every rescue adds 'saved'. The thing behind the wolves is a giant child, lost and starving.
+-- npc hesk @kell:tavern | Goodman Hesk | reeve of Kellbrook | commoner/innkeeper
+look: is locking up, carefully, a house that he'll not see again
+hi: Thank God. How many are you? (He looks behind you.) Ah.
+? The people (ninety, carts): Eighty-eight. The Marls won't leave their cow, and the Ottaways won't leave their mother, and their mother won't leave. {job ottaway}
+? The wolves (behind, something): They're being *driven*. There's something in the alders that they're more frightened of than us. It cries. At night. It's a horrible noise. It's like a barn.
+? The bridge (road, way): Planks are up. We took 'em up to keep things out. That was clever of us.
+-- npc ottaway @kell:cottage | Mother Ottaway | aged ninety-four | commoner/townswoman
+look: has her hat on, and has had it on for three days
+hi: I'm not going.
+? Why (stay, leave): I was carried in at that door. I'll be carried out at it. It's a *nice* door.
+? The door (nice, carry): My Harald made it. There's eleven coats of paint on it. You can see all the colours where the cat's been.
+! Bring it with you (persuasion 11): There's a pause. “*Can* you?” says Mother Ottaway. Four grandsons have it off its hinges before she can think of a reason. She rides up to Wolfguard lying on it, like a queen. {+ottaway, add saved 1, jobdone ottaway, xp 60, inspire} // “I'm not going,” says Mother Ottaway.
+-- npc marl @kell:stable | Young Marl | dairyman | commoner/villager
+look: has both arms round a cow
+hi: She's not *stopping* here.
+? The cow (leave, slow): She's in calf. She can't do that road. I'm not stupid, I know it's a cow.
+! Put her on the sledge (animal 11): It takes nine people, and a song. She's perfectly calm. She's the only one who is. {+cow, add saved 1, xp 50} // The cow has a view about the sledge.
+-- fight lane @kell:start at_once | The Lane | wolf*, dire_wolf | medium
+say: The grandmother's arm has got tired.
+win: “*Took* your time,” says the grandmother. {add saved 1}
+-- scene cry @kell:out:.4 | The Noise in the Alders
+say: In the alder swamp, sitting down, with its knees up round its ears, is a child eleven feet tall. It's blue with cold, or it's blue. It has one boot. When it sees you it puts both hands over its face so that you can't see it.
+> Give it something to eat | animal 10 | It eats six loaves and the basket. It looks at you, at the carts and at the wolves; and then it takes hold of the nearest handcart by the shafts, and waits to be told which way. {+snor, add saved 1, inspire all, xp 80} // It eats the bread, and is sick, and cries. But it's stopped being afraid. {+snor, xp 40}
+> Find the other boot | survival 12 | It's a hundred yards back, in a bog, full of ice. You bring it. The child holds out its foot without thinking, as you do when you're six. {+snor, +boot, add saved 1, inspire all, xp 100} // You find the bog. {+snor, hurt 1d6 cold one}
+> Drive it off | intimidation 11 | It goes, falling over things, and wailing. The wolves go after it. {+snor_driven} // It wails; and from up the hill something answers.
+-- trial carts @kell:out:.6 | Thirty Handcarts | 5 before 3
+say: Uphill, in snow, with the light going.
+try: athletics 12 Push
+try: persuasion 12 Make them leave the dresser
+try: survival 12 Break trail
+try: perception 12 Watch the drifts
+try: animal 11 Double the teams
+try: performance 11 Sing them up
+win: The last cart comes over the lip by lantern-light. It's got a dresser on it. {+carts, add saved 2, xp 80}
+lose: You lose six carts over the edge, and very nearly somebody's uncle. {add saved 1, hurt 2d6 bludgeoning one}
+-- scene bridge2 @kell:out:.8 many | The Bridge They Took Up
+say: Twelve feet of nothing, with a river in it. The planks are on the wrong side.
+> Swim for it | athletics 13 | You're blue, but you're there. You throw the planks back one at a time. {+bridge2, add saved 1, xp 50} // The river has its own plans. {hurt 1d8 cold one con 12, +bridge2}
+> Ask the giant child [snor] | | It thinks. Then it lies down across the gap, on its front, with its chin on the far bank. Ninety people and a cow walk over it. It giggles; it's ticklish. {+bridge2, add saved 2, inspire all, xp 100}
+> Fell a tree | survival 12 | It falls exactly where you wanted. You'd never have told anyone that it might not. {+bridge2, add saved 1, xp 50} // It falls the other way. {time 60, +bridge2}
+-- fight raiders @kell:chapel | The Looters | thug*, scout | medium
+say: Sir Aubrey's men got here first. They've a sledge, and the chapel plate.
+win: You bring the plate. Nobody could have said why it helped. {add saved 1, gold 30}
+-- boss mothers @kell:out:.9 | On the Fort Road | Grimr the Seeker = ogre!, worg*, hobgoblin = dire_wolf | hard
+say: A giant stands across the fort road with an axe like a door. He is calling a name, over and over, with a break in it. He looks down; he sees the carts; he sees the small boot-prints, eleven sizes too big, among all of yours.
+> Call Snor out to him [snor] | | The child goes past you like a landslide. Grimr drops the axe. You've never seen a thing that size go down on its knees. He looks at you over the top of its head. He puts his palm flat to the ground: and takes his axe, and goes. {+grimr_friend, skip, inspire all, xp 120, done}
+> Show him your hands | persuasion 14 | He can't understand you. But he understands ninety people with nothing in theirs but bedding. He stands aside, weeping, and goes on calling. {skip, xp 80, done} // He's been calling for three days, and he's past understanding anything.
+win: He lies in the road. From his fist you take a very small carved wolf, with one ear sucked smooth. {+grimr_dead, done}
+end [saved>=5]: You bring in the whole of Kellbrook. There's ninety more mouths, and sixty more pairs of hands; and a door. Mother Ottaway has it hung in the great hall, leading nowhere. Everybody uses it. {+ch2, +kell_saved, xp 90}
+end: You bring in most of them. Captain Harrow meets them at the gate with blankets, one by one, by name, and you see her lips move. She's counting. {+ch2, xp 90}
+job ottaway = Mother Ottaway's Door | Persuade Mother Ottaway to leave. | flag ottaway | gold=0 xp=60
+
+== The Hanged Pass | 4 | pass
+read: “I want the pass looked at,” says the captain. “I want to know how they'll come, and what'll fall on them if I cough.” She gives you the poet. “Take Fenn. He can draw. If he starts to tell you what the mountains are like, hit him.”
+goal: Scout the Hanged Pass, and find a way to shut it.
+dm: Avalanche positions; gallows-ghosts of deserters; a hermit knows the ice-road. First proof of the dragon: frozen giants.
+-- npc hermit @pass:ruin | Brother Anselm | hermit | priest/h:cleric:human:m
+look: lives in a gibbet, very comfortably, with a goat
+hi: Come up! Mind the tibia.
+? The gallows (hanged, pass): Deserters. The old Duke's. Ninety-one of them, for not wanting to. I keep them company. We're all quite agreed about it.
+? The giants (coming, road): They aren't marching. They're *limping*. I counted eleven with burns; cold-burns, the sort you get from a pipe. Who burns a frost giant with cold?
+? The snow (avalanche, shut): I could tell you the three places. I'd need to know that you would shout first.
+! We'll shout (persuasion 12): “Then the Nose, the Washboard and the Duke's Chair. Salt, not powder. And ask *them*,” he nods at the gibbets, “they've hung over it for sixty years, they know to an inch.” {+three_places, xp 80} // “Mm,” says Anselm, and milks the goat.
+-- scene gibbets @pass:out:.2 many | Ninety-One
+say: They turn in the wind, all together, to look at you.
+> Cut one down and bury him | athletics 11 | It takes an hour, in that ground. When you've done it all of the rest have turned to face the grave. {add hanged 1, xp 40} // The ground's like iron. You build a cairn. {add hanged 1}
+> Tell them they were right | persuasion 12 | “I'd not have wanted to either,” you say. Ninety-one jaws fall open. {add hanged 1, inspire, xp 40} // The wind takes it.
+> Ask about the snow | religion 13 | An arm comes up, creaking, and points. {+three_places, xp 60} // They're not on terms with you yet.
+> Let Fenn read to them | performance 12 | He reads them the one about the captain. They like it. One comes off his hook in order to hear better. {add hanged 1, inspire, xp 50} // He starts to tell them what the mountains are like.
+-- fight cats @pass:out:.35 | The Washboard | griffon, dire_wolf* | medium
+say: Something has been nesting on the corrugated ice, and its eggs are the exact size of the boulders that you meant to use.
+> Take the boulders, leave the eggs | sleight 13 | You're extremely polite about it. She watches every one. {skip, xp 50} // That was an egg.
+win: You rig the boulders with salt and rope. {+washboard, xp 40}
+-- trial nose @pass:out:.55 | The Nose | 4 before 3
+say: A lip of snow as big as a cathedral, hanging over the road, and held up by the habit of being there.
+try: survival 13 Find the line
+try: athletics 13 Dig the salt in
+try: acrobatics 13 Out along it, softly
+try: perception 12 Listen
+try: stealth 13 Don't even breathe
+win: It's rigged. You come away on tiptoe, and nobody speaks till supper. {+nose, xp 80}
+lose: A piece about the size of a chapel goes, with you on it. {hurt 3d6 cold all dex 13}
+-- scene frozen @pass:out:.7 | What Burned Them
+say: In the lee of the Duke's Chair, nine giants are sitting round a fire. The fire's frozen: you could snap off a flame. So are they. One's got her arms round two small ones, inside her coat.
+> Look at the marks | investigation 12 | They come from above. It came down the valley breathing, once, from left to right. There's a scale, the size of a plate, as white as milk. {+dragon_known, item gem_small, xp 80} // You can't look for very long.
+> Shut their eyes | | You need to stand on one another's shoulders. It's important. {inspire, +shut_eyes, xp 40}
+> Take the small ones' token | | A carved wolf each. You'll know whom to give them to. {+wolves}
+win: Fenn draws it. He doesn't say anything. He draws every face. {+drawing5}
+-- fight trolls @pass:.3 | Under the Chair | troll, wolf* | hard
+say: There is a cave beneath the Duke's Chair; there's a toll.
+> Pay in goat | animal 12 | You have been lent the goat. It butts him in the kneecap. He's *enchanted*. {skip, xp 60} // He doesn't like goat.
+win: From the cave you can get at the wedge of rock that holds up the Duke's Chair. You see to it. {+chair, xp 40}
+-- puzzle deserters @pass:.55 | The Deserters' Vault
+say: The old Duke's provost walled up the deserters' arms down here, and carved a joke over the door: “What is it that every soldier must hold, and no soldier can hold, and these would not hold?”
+answer: the line|line|ground|the ground|his ground|their ground|the pass
+hint history 11: “Hold the line” was what they were hanged for not doing.
+hint insight 12: It's a provost's idea of funny. Think of something that one *orders*.
+wrong: A bolt, from the wall. The joke's on you. {hurt 1d8 piercing one dex 12}
+win: Ninety-one stands of arms, greased and wrapped. Dunk's lads won't have to use lids. {+arms, xp 100}
+lose: The wall comes down; most of the arms are good. {+arms}
+-- boss yeti @pass:last | The Thing That Follows | The White Hunter = manticore!, dire_wolf*, winter = polar_bear | hard
+say: It's been behind you since the gallows. It's no giant's beast. It has a collar of white scale, and a brand on its flank: a claw, with a coin in it. It hunts *giants*. You're just on the way.
+win: On the collar is a tag, in a hand so clear and educated that it takes you a moment to notice it's scratched with a talon. “PROPERTY OF VHASSA. IF FOUND, FLEE.” {+vhassa, magic, gold 60, done}
+end [hanged>=3]: As you come down past the gallows the hooks are empty. All ninety-one. There are prints in the snow, bare, and thin; they go uphill, and get into step. {+ch3, +deserters, open mine, xp 100}
+end: You come down with the pass in your pocket: three places, and a word to set them off. And the name of something that the giants are running from. {+ch3, open mine, xp 100}
+
+== Deepdelve | 5 | mine
+read: There are dwarves under the pass. They've a treaty with the fort, sixty years old, never used. It says that in the hour of need they'll send two hundred axes. The captain's written to them nine times. “They don't answer,” she says. “Take the original. Take the *onions*.”
+goal: Bring the axes of Deepdelve to the wall.
+dm: Deepdelve is under siege itself by duergar; the king is bedridden; a clause in the treaty requires the fort to come to *them* first.
+-- npc dorrin @mine:start | Warden Dorrin | gate-warden | veteran/h:fighter:hill_dwarf:f
+look: has been awake for nine days, and salutes the wrong one of you
+hi: Password. There's no password. There hasn't been for a week. Say something *nice*.
+? The siege (fighting, who): Grey ones, from underneath. Eleven days. We'd have written, only they've got the post-room.
+? The treaty (axes, help): We know about the treaty! Read the back! “*Provided always that the Fort shall first have come to us.*” My own grandad put that in. Well: have you come? Is this *coming?* How many are you?
+? The king (thane): In bed. He's not ill. He's decided. He said he'd get up when there was anything to get up for.
+-- npc king @mine:throne~.4 | King Orrin | King Under Deepdelve | commoner/h:cleric:hill_dwarf:m
+look: has the blankets over his crown
+hi: Go away.
+? The war (grey, fight): I've counted it. Six days. Then the cisterns. I'm a good counter. I'd rather be counted lying down.
+? The onions (onion, soup): (The blankets come down an inch.) *What* onions?
+! Captain Harrow did the same (persuasion 13) [harrow_why]: You tell him about the report, and the page cut out. “With a *knife?*” says the King. “Neatly?” There's a long pause. “I've a report,” he says. “It's under the pillow.” He gets up. {+king_up, xp 120, inspire all} // “Then she's a fool,” says the blankets.
+! Soup (persuasion 12): Dunk sent a recipe. The smell goes through Deepdelve like a trumpet. By the time you've got it to the King he's got one sock on. {+king_up, xp 80} // “Too much salt,” he says; but he has the bowl.
+-- fight post @mine:library~.2 | The Post-Room | duergar*, duergar | medium
+say: Nine letters from Captain Harrow, and a grey sergeant doing the voices.
+win: You deliver the post. It takes an hour. There are people who've been waiting for eleven days.  {+post, xp 40}
+-- trial cisterns @mine:.35 | The Cisterns | 4 before 3
+say: They've fired the lower cistern. If the upper goes as well there's nothing to drink but argument.
+try: athletics 13 Close the sluice
+try: survival 13 Strain it
+try: investigation 13 Find the poison's way in
+try: medicine 13 See to those who drank
+try: acrobatics 13 Along the pipe
+win: It runs clear. The King, in one sock, drinks the first of it. {+water, xp 90}
+lose: It's half and half. They'll drink it. They're dwarves. {hurt 2d8 poison one con 13}
+-- fight sappers @mine:.5 | The Sappers | duergar*, kobold | hard
+say: They're under the wall, with picks; and with them a long line of kobolds, on chains.
+> Break the chain | sleight 13 | It's one chain. When it parts there are suddenly forty kobolds *behind* the duergar, and each of them has been thinking about this. {skip, +kobolds5, xp 90} // You break a link. There's a lot of links.
+win: The kobolds look at you, at their picks, at the wall. “*Other way?*” says one. {+kobolds5}
+-- scene chart @mine:library~.62 | The Ice-Road
+say: In the King's map-room: a road cut inside the glacier, in better days, by dwarves and giants together. It comes out behind the giants' camp. It also comes out *under* something marked, in red, in a shaking hand: SHE IS IN THE HALLS.
+> Copy it | investigation 12 | All of it, with the distances. {+iceroad, xp 60} // You get the turnings; the distances are in some unit to do with beer. {+iceroad}
+> Ask who drew the red | history 13 | The last survey party. One came back. He's in the infirmary, packed in warm bricks, and he'll tell you: “*She asked me what I thought I was worth.*” {+vhassa2, xp 80} // It isn't signed.
+-- fight cave5 @mine:cave~.75 | The Breach | rust_monster, duergar* | hard
+say: Where they broke through, something came after them that likes armour as you like toast.
+win: You come out of it in rather less than you went in.
+-- boss general5 @mine:last | The Grey General | Skarn Under-Thane = gladiator!, duergar*, animated_armor | deadly
+say: “I've no quarrel with *you*,” says a grey dwarf in silver, at a camp table, moving a small ivory fort. “I've been paid to see that nobody comes out of this hole till spring. It's a white lady. She pays in advance.”
+> Double it | gold 200 | He's a professional. He looks at the bag, he looks at the ivory fort; and knocks it over with one finger. “I was never *here*,” says Skarn. {skip, xp 80, done}
+> Tell him what she does with those she's paid | insight 14 [vhassa2 or dragon_known] | “*Asked me what I was worth*,” you quote. He has gone even greyer. It seems that she asked him as well. {inspire all, +skarn_shaken} // “Everyone's a *moralist*,” says Skarn.
+win: Her gold is in the tent: very old, very cold. Half of it has Wolfguard's own mint-mark. {+skarn_down, gold 120, magic, done}
+end [king_up]: They come up the road at dawn, two hundred, singing something with no tune. King Orrin's at the front with a blanket round his shoulders and both socks. “*You came*,” he says to Captain Harrow. “It's the clause.” She's in the gateway. She's counting. You see her get as far as two hundred, and lose her place. {+ch4, +dwarves, xp 120}
+end: Sixty come; it's what can be spared. They bring the axes of all the rest. {+ch4, +dwarves_some, xp 120}
+
+== The Frozen Legion | 6 | barrow
+read: There was an army here before. The Ninth, eleven hundred strong, marched up to hold the Hanged Pass four centuries ago and were never relieved. King Orrin has the deed: they were buried standing. “They swore to hold until *relieved*,” he says. “Has anyone ever actually gone and *done* it?”
+goal: Relieve the Ninth Legion.
+dm: The Legion's undead will serve if formally relieved, or can be asked to stand one more watch. The proper ceremony needs orders, password, salute.
+-- npc optio @barrow:start | The Optio of the Watch | frozen | skeleton/skeleton
+look: presents a spear, in eleven movements
+hi: HALT. WHO COMES THERE? SAY YOU'RE RELIEF. PLEASE SAY YOU ARE.
+? The Ninth (legion, orders): HOLD UNTIL RELIEVED, SIR. FOUR HUNDRED AND TWELVE YEARS, SIR. NO COMPLAINTS. WE HAVE A COMPLAINTS BOX, SIR. NOBODY'S USED IT.
+? The relief (ceremony, how): ORDERS UNDER SEAL. THE DAY'S WORD. AND THE SALUTE. THE LEGATE KNOWS THEM. THE LEGATE'S NOT... THE LEGATE'S TAKEN IT HARD, SIR.
+? The day's word (password): CHANGES AT SUNSET, SIR. ONLY NOBODY'S SEEN A SUNSET. SO I EXPECT IT'S STILL THE SAME ONE.
+-- scene box @barrow:.15 | The Complaints Box
+say: There's one slip of paper in it after all.
+> Read it | | “*I should like to know if my wife had the baby. M. Corvus, fourth rank, ninth file.*” {+corvus, note corvus}
+> Leave it | | It's private.
+-- fight drill @barrow:.25 | The Eternal Drill | skeleton*, skeleton_archer | medium
+say: A century at sword-drill. They are extremely good by now. You have walked on to the parade-ground.
+> Give the order to stand easy | intimidation 13 | From the diaphragm. A hundred heels come together like a door. “*SIR*,” they say. {skip, xp 60} // You've given it in the wrong voice. You sound like a civilian.
+win: They pick themselves up, number off and begin again, from the top.
+-- trial march @barrow:.38 | The March | 4 before 3
+say: The only way over the ice-field is in step. The ice is used to it.
+try: performance 12 Call it
+try: acrobatics 13 Keep it
+try: perception 13 Feel the crack coming
+try: athletics 13 Full kit
+win: Left, right, left; the whole frozen hall comes down on the beat with you. You could get to like it. {xp 100, inspire all}
+lose: You break step. So does the ice. {hurt 3d6 cold all con 13}
+-- puzzle word @barrow:library~.5 | The Day's Word
+say: A wax tablet, and on it in a clerk's hand: “Word for the Kalends. For security, in riddle. *I am given by the general and kept by the dog. I'm broken by lovers and never by stone. The Ninth has kept me, and I have kept the Ninth.*”
+answer: faith|word|oath|trust|a promise|promise|fidelity
+hint history 12: The legion's motto is over the door. *Fida*. It's a bit worn.
+hint insight 12: A dog keeps it. Lovers break it.
+wrong: Eleven hundred voices, politely: WRONG, SIR. {hurt 2d6 thunder one con 12}
+win: “FAITH,” says the tablet; the whole wall whispers it. {+word5, xp 120}
+lose: You'll have to guess at it when the time comes.
+-- fight traitors @barrow:.62 | The Tenth File | wight*, skeleton | hard
+say: Some of the Ninth came to terms. There's a new banner: a claw, with a coin. “*She's* relieved us,” says the file-leader. “She pays.”
+win: You burn the banner. A hundred men who'd been pretending not to see it come to attention. {+banner, xp 60}
+-- scene corvus5 @barrow:crypt~.72 [corvus] | Fourth Rank, Ninth File
+say: He is about nineteen. He looks straight ahead.
+> Tell him that she had it | persuasion 12 | You don't know. But there's a Corvin in every village from here to the sea; you've been arrested by one. “They got everywhere,” you say. You describe a few. His eyes don't move. But water's running down the ice. {inspire all, +corvus_told, xp 100} // He's heard a good many stories. He looks straight ahead.
+> Ask Fenn, if he's with you | | “Corvus,” says Fenn. “*Corvus?* That's my mother's name.” He stands in front of him. They've got the same nose. {inspire all, +corvus_told, xp 100}
+-- fight mage5 @barrow:.82 | The Claw's Surgeon | mage, zombie*, specter | hard
+say: A woman in white furs is going along the ranks with a needle, putting a thread of frost into every heart. “They're perfectly *sound*,” she says. “It's such a waste.”
+win: The threads melt.
+-- boss legate @barrow:throne~last | The Legate | Legate Quintus Varro = wight!, skeleton*, wraith | deadly
+say: He's sitting in his chair on the dais with his sword across his knees and his back to the door. “I have *refused* relief,” he says, “nine times. They were all of them false. I shall know it when it comes. It'll have *walked*.”
+> Give the word, the order, the salute [word5] | | Faith. Hold. And your hand to your heart, the old way, as it's cut over the door. He turns round. It takes him some time to get his helmet off. “You're *late*,” says the Legate, and can't go on. {+relieved, skip, inspire all, xp 200, done}
+> Show him the captain's report | persuasion 14 [harrow_why] | He reads it standing. He reads the place where the last page was. “This officer is *alone?*” says the Legate. {+relieved, skip, xp 150, done} // “Paper,” says the Legate.
+win: He yields it, hilt first, like a man putting down something hot. “Good,” he says. “Good. I'd begun to think that I'd have to be *right* for ever.” {+relieved, magic, done}
+end: “Ninth,” says Captain Harrow's voice, out of your mouth, since it's what she'd say, “you stand relieved.” Nobody moves. Then the Optio, staring straight ahead: “REQUEST TO STAND ONE MORE, SIR. WE'VE GOT SO THAT WE'RE GOOD AT IT.” {+ch5, +legion, xp 140}
+note corvus = A Complaint: “I should like to know if my wife had the baby. No hurry. M. Corvus, fourth rank, ninth file.”
+
+== The Giants' Camp | 7 | camp
+read: They have stopped a day short. Two hundred, and their children. From the wall you can see them sitting in the snow, not putting up tents, as you sit when you've come to the end of what you had planned. “Somebody could go and *ask*,” says Captain Harrow. She's not looking at anyone. “It isn't in the regulations. I looked.”
+goal: Go down to the giants and find out whether this war has to happen.
+dm: Hrunga will treat if shown respect. She'll demand three feats and a hostage exchange. If Snor/Grimr were saved everything is easier. Her war-chief Thrymm wants battle.
+-- npc hrunga @camp:out:.3 | Hrunga Ice-Mother | mother of the people | frost_giant/frost_giant
+look: is darning something the size of a sail
+hi: SIT. NOT THERE. THAT IS MY HUSBAND.
+? The war (attack, fort): WE GO THROUGH. OR WE STAY, AND SHE COMES, AND WE ARE ICE. I HAVE SAID TO MY PEOPLE, THROUGH. IF THE SMALL ONES ARE IN THE WAY I'LL BE SORRY.
+? The dragon (vhassa, she): SHE CAME IN THE SPRING. SHE WANTED TO BUY THE GLACIER. I SAID IT IS NOT A THING ONE OWNS. SHE LAUGHED. SHE ASKED WHAT I THOUGHT THAT MY CHILDREN WERE WORTH.
+? Terms (treaty, peace): THREE THINGS. EAT WITH US. WRESTLE THRYMM. AND TELL ME A TRUE THING I DON'T WANT TO HEAR. THEN I'LL KNOW WHAT YOU ARE. {+terms}
+! The wolves (persuasion 11) [wolves]: You give her the two small wolves. She holds them in the hollow of her hand for so long that the fire's been fed twice. “THEY HAD BEEN SLOW,” she says. “I TOLD THEM TO HURRY.” And then, “WHO SHUT HER EYES?” {+hrunga_knows, xp 120, inspire all} // She takes them. She doesn't speak.
+-- npc snor @camp:out:.15 [snor] | Snor | aged six, eleven feet | ogre/ogre
+look: has both boots
+hi: FRIEND! FRIEND! FRIEND! FRIEND!
+? Your mother (hrunga, who): THAT'S MY *GRAN*.
+? Thrymm (chief, wrestle): HE CHEATS. HE'S TICKLISH *HERE*. {+ticklish, inspire}
+? The fort (ninety, cow): IS THE COW THERE?
+-- scene arrive6 @camp:start | A White Flag
+say: It's one of Dunk's aprons. The first sentry is thirty feet away, and his spear's already touching you.
+> Walk | | You walk. It's a long way, in that silence. You can hear the apron flap. {+walked6, xp 30}
+> Use the giant's greeting | history 13 | Palm flat to the ground; Grimr's did it. There's a rumble. Two hundred palms go down. {+greeting, inspire all, xp 60} // You've told them that you're about to be sick.
+> Hold up the scale [dragon_known] | | They know it. A sort of groan goes through the camp, from one end to the other, like a tree. {+scale_shown, xp 50}
+-- scene feast6 @camp:out:.45 [terms] | Eat With Us
+say: It's the last of what they've got. It is a boiled harness, and one onion. The children are all watching the onion.
+> Eat, and praise it | persuasion 11 | You ask for the recipe. The cook has to go and stand behind a rock. {add feats 1, xp 60} // It's a buckle. You eat the buckle. {add feats 1, hurt 1d6 piercing one}
+> Cut the onion in two hundred | sleight 13 | You've got a very sharp knife, and you've been three weeks with Sergeant Dunk. There's a piece each. Hrunga looks at hers, on the end of her finger, as if it were a jewel. {add feats 1, inspire all, xp 120} // You get to a hundred and sixty. {add feats 1}
+> Send to the fort for more | | It's against every order that you have. Four hours later Dunk himself comes down the road, with a wagon and no flag whatever. “*Beans*,” says Dunk. {add feats 1, +beans, inspire all, xp 120}
+-- trial wrestle @camp:out:.6 [terms] | Thrymm | 4 before 3
+say: He's sixteen feet tall, and he's taken off his shirt. All of you against one of him, says Hrunga: that seems fair.
+try: athletics 14 The leg
+try: acrobatics 13 Up the back
+try: deception 13 “Your lace is undone”
+try: intimidation 14 Bite
+try: animal 13 Tickle him THERE
+win: It's like felling a tree that's laughing. He lies flat on his back in the snow with all of you on top of him, and hiccups. “AGAIN,” says Thrymm. {add feats 1, +thrymm_friend, xp 150}
+lose: He puts you all in a drift, in order of size, heads out. “GOOD,” says Thrymm. “GOOD.” It seems that it counts. {add feats 1, hurt 2d8 bludgeoning all}
+-- scene truth6 @camp:out:.75 [terms] | A True Thing
+say: “NOW,” says Hrunga. “SOMETHING THAT I DON'T WANT TO HEAR.” The darning's still in her hand.
+> You can't outrun her | insight 13 | “There's nothing on the other side of us,” you say. “It's fields. She'll come over the wall in an afternoon. You'll be ice in a *nicer place*.” The needle has stopped. {add feats 1, xp 120} // “You're tired,” you say. “I KNOW THAT,” says Hrunga.
+> Grimr's dead, and we did it [grimr_dead] | | You put the carved wolf in her hand, and you don't say that you're sorry until after. She breathes. It makes frost all down your front. “THAT WAS TRUE,” she says. {add feats 1, +confessed, xp 100}
+> The fort would have let you through | persuasion 13 | “You could have asked,” you say. “There was a woman up there who'd counted your children.” Hrunga looks up at the wall. There's one small figure on it. It's still counting. {add feats 1, inspire all, xp 120} // “WOULD IT?” says Hrunga.
+-- fight claws @camp:out:.5 [terms] ambush | The Claw in the Camp | spy*, assassin = bandit_captain, polar_bear | hard
+say: Not all of the camp-followers are giants. Someone's bought the cooks: three men in white, at the back of the tents, with a bottle, and a child's cup.
+win: The bottle's frost-blue. It was for Hrunga's own grandchildren. She watches you pour it in the snow. {+poison_stopped, add feats 1, xp 80}
+-- boss thrym6 @camp:out:.85 [feats>=3] | The Tribute-Collector | Ser Vane of the Claw = mage!, polar_bear*, white_wyrmling | deadly
+say: Out of the blizzard comes a sledge drawn by bears. On it there's a man in white fur, with a ledger. “My lady's patience,” he says pleasantly, “is a depreciating asset. One child per hundred head. That's two. I'll take those.” And the thing that's riding behind him unfolds its wings.
+win: The wyrmling's hers: her youngest. The whole camp looks up at the sky. “NOW SHE WILL COME HERSELF,” says Hrunga Ice-Mother; and puts away her darning. “GOOD.” {+collector_down, magic, gold 100, done}
+end: The treaty's made on the road between the camp and the gate. It's one line. Captain Harrow wrote it. *Come in out of the cold.* Two hundred giants go through the gate of Wolfguard, ducking, and Mother Ottaway makes every one of them wipe their feet. {+ch6, +giants, xp 170}
+
+== The Glacier Halls | 8 | ice
+read: She'll come in three days. Or you go to her in one. Hrunga says that the dragon sleeps for a night and a day after she's eaten, and that she ate on Tuesday. The ice-road goes in underneath. “You won't kill her,” says the captain. “Break her *teeth*. Whatever she's got that can take down a wall: I don't want it here on Friday.”
+goal: Go into the Glacier Halls and cripple the dragon before she wakes.
+dm: Four chances to weaken Vhassa: her hoard-ward, her brood, her breath (the heart-ice), her general. Each flag changes the last fight.
+-- npc sculptor @ice:.12 | Ulf Half-Hand | captive carver | commoner/h:monk:hill_dwarf:m
+look: is polishing an ice statue of himself, under orders
+hi: She likes us to do our own. It saves her asking twice.
+? Vhassa (dragon, she): She's *charming*. She asks you what you think you're worth. You tell her; and she pays it. Exactly. Then she owns you. I said forty gold. I was a *master*.
+? The halls (way, where): The brood-room, left. The counting-house, straight. Below that's the heart-ice, that she breathes off. Don't lick it.
+? How to hurt her (weak): She can't abide being *given* things. She doesn't know what to put in the book.  {+gift, xp 60}
+-- fight outer @ice:.2 | The Outer Ward | water = water_elemental, white_wyrmling*, winter = polar_bear | hard
+say: The stairs are for legs four times as long as yours. On the landing something gets up that's made of weather.
+win: It goes down the stair in pieces, one step at a time.
+-- trial shaft @ice:.3 | The Blue Shaft | 5 before 3
+say: Ninety feet down, with your own reflection climbing beside you and getting it right.
+try: athletics 14 Cut steps
+try: acrobatics 14 Swing for the ledge
+try: survival 13 Know good ice
+try: insight 13 Don't look at yourself
+try: perception 13 Hear the melt
+win: You're down. Your reflection's still up there. It waves. {xp 150}
+lose: You're down. {hurt 4d6 bludgeoning all dex 13}
+-- fight brood @ice:nest~.45 | The Brood-Room | white_wyrmling*, white_wyrmling | hard
+say: Four of them, in a heap, the size of ponies. They wake up all at once and are delighted.
+> Feed them and shut the door | animal 14 | Onions. Dunk gave you a sack. They've never had onions. You can hear the sneezing through a foot of ice. {skip, +brood_shut, xp 150} // They would rather have the hand.
+win: It's no pleasure. {+brood_dead, xp 60}
+-- scene counting8 @ice:library~.55 many | The Counting-House
+say: Ledgers, to the roof. In each of them a name, and a price, and PAID. You find Wolfguard, under W.
+> Look up Captain Harrow | investigation 12 | She's been sent an offer, every year for nine years. Against each one, in the margin, with a talon: *declined. Why??* {+why, inspire all, xp 80} // They're filed by weight.
+> Write “gift” against every entry | sleight 14 [gift] | You do a whole wall. The ink won't dry. Somewhere above you a very large thing stirs in its sleep, like somebody who's dreamed that they have left the door unlocked. {+unbalanced, xp 120} // You're still on the A's when the ledger bites.
+> Burn them | | They're ice. They melt, though. {+melted}
+> Release Ulf and the rest | persuasion 13 | “You're worth more than that,” you say. It's only what anyone would have told him. He picks up the chisel by the other end. {+captives, xp 80} // “I *signed*,” says Ulf.
+-- fight gelugon @ice:.65 | The General of the Claw | knight*, gladiator, polar_bear | deadly
+say: Vhassa's general is a handsome man with a price-tag on a ribbon. It's a very high one. He turns it round so that you can see.
+win: He'd plans for Wolfguard. They are good plans. They're yours now.  {+plans, xp 100}
+-- puzzle heart8 @ice:shrine~.75 | The Heart-Ice
+say: A pillar of blue, beating slowly. Every breath that she breathes, she breathes off this. It's cut round with her own question, in every tongue there is. “What are you worth?” It'll open to the one answer that she's never been given.
+answer: nothing|no price|not for sale|i am not for sale|priceless|more than that|i won't say|you can't buy me
+hint insight 13: Harrow declined nine times. *Why??*
+hint persuasion 13: Hrunga told her: it isn't a thing one owns.
+wrong: She's *paid* you. You feel it go in your pocket; it's very cold; and you feel what it's bought. {hurt 3d8 cold one con 14}
+win: It doesn't break. It just stops being hers. Something up there coughs, and there's no frost in it. {+breathless, inspire all, xp 250}
+lose: You hack a piece from it the size of a man. It will slow her. {+slowed}
+-- boss vhassa8 @ice:last | She Wakes | Vhassa's Champion = white_young!, white_wyrmling*, winter = polar_bear | deadly
+say: It isn't her. She's gone. The hoard's still warm in the shape of her, and lying in the middle of it, smiling, is her eldest son. “Mother went on *ahead*,” he says. “She so hates to be expected.”
+win: She's already in the air. You come out on the ice, and, a long way off, over the pass, there's a star that's moving. {+son_down, gold 200, magic, done}
+end: King Orrin's road is two days on foot. There's a giant at the mouth of it, on his knees, with his hands made into a step. “THRYMM RUNS,” says Thrymm. “YOU HOLD ON.” {+ch7, xp 200}
+
+== The Loss of Wolfguard | 8 | fort
+read: You can see it from the pass: sixty chimneys out of sixty, smoking. There are giants on the north wall and dwarves on the south. There's a sort of pudding. In her office Captain Harrow's got the report out. She has written a new last page. She holds it so you can't see.
+
+“It's Friday,” says the captain. “She'll come out of the sun. They do.”
+goal: Hold.
+dm: Waves then Vhassa. Count what they earned: gate, cooks_armed, kell_saved, three_places/nose/washboard/chair, arms, deserters, dwarves, legion, giants, pin (engine).
+-- npc ottaway8 @fort:hall [ottaway] | Mother Ottaway | aged ninety-four | commoner/townswoman
+look: has her hat on
+hi: I'm not going.
+? The door (nice): We've all come in at it. Four hundred and something. It's *quite* a nice door.
+? Are you frightened (dragon): At my age? I've eaten Dunk's pudding.
+-- npc fenn8 @fort:chapel | Corin Fenn | poet and horn | commoner/h:bard:half_elf:m
+look: is rubbing something out
+hi: I've got it. “Hopeless”: *and we hope less*. No. No, it's gone.
+? The horn (signal, call): One for the Nose, two for the Chair, three for the Washboard. And four for everyone to come in for their dinner. I'd like to get to four.
+? The poem (captain): I've cut it. It's only one line now. “*She counted us and came out right.*”
+-- scene wall8 @fort:start many | Dispositions
+say: Four hundred faces, of all sizes. They'd like to be told where to stand.
+> Put the cooks in the gate [cooks_armed] | | “Friday,” says Dunk. “Told you. It's just a busy Friday.” {+d_cooks, add wall 1, xp 50}
+> Load the Widow [pin] | athletics 13 | The pin goes in with a noise like a kiss. The stone's the size of a cow. Marl won't look. {+d_widow, add wall 2, xp 80} // It takes twelve of you, and a giant to sneeze on it. {+d_widow, add wall 1}
+> Give the Ninth the north wall [legion] | | Eleven hundred. They take post without a sound. The Optio asks what the day's word is. You tell him. “SAME AS EVER, SIR,” he says. {+d_legion, add wall 2, xp 80}
+> Dwarves below, giants above [giants] | persuasion 13 | It needs tact. In the end King Orrin stands on Thrymm. {+d_both, add wall 2, xp 80} // They'll fight. It's a question of whom.  {add wall 1}
+> Kellbrook to the buckets [kell_saved] | | Ninety, and a cow; in a line, from the well. {+d_buckets, add wall 1, xp 50}
+win: That's everyone. You look round for what you've forgotten. It's beans. Somebody hands you a bowl.
+-- fight wave8a @fort:out:.3 at_once [d_cooks or d_widow or d_legion or d_both or d_buckets] | The Claw at the Gate | knight*, veteran, polar_bear | hard
+say: They come up the road in ranks with their price-tags showing.
+> Sound the Nose [nose or three_places] | | Fenn blows one. There's a pause. Then the mountain clears its throat. {skip, add wall 1, inspire all, xp 120}
+win: The road's shut. There's a hand sticking out of it, with a tag. {+wavea}
+-- fight wave8b @fort:out:.45 at_once [wavea] | The Bought | wight*, zombie, winter = polar_bear | hard
+say: These ones she paid for dead. It's cheaper.
+> Sound the Chair [chair] | | Two. It takes them sideways. {skip, add wall 1, xp 120}
+> Let the deserters have them [deserters] | | Ninety-one, barefoot, out of the snow behind. They didn't want to, the last time. They've thought about it. {skip, add wall 1, inspire all, xp 150}
+win: The pass is full to the second bar of the gate. {+waveb}
+-- trial roof8 @fort:tower3 [waveb] | The First Pass of the Dragon | 5 before 3
+say: Out of the sun. They do. She's as long as the wall. She goes over once, quite slowly, *looking*; then she turns.
+try: athletics 14 The Widow: heave!
+try: perception 14 The Widow: now!
+try: persuasion 13 Keep them standing
+try: survival 13 Wet hides, and down!
+try: religion 13 Something to say, together
+try: performance 13 Fenn: three
+win: A stone the size of a cow meets her in the breastbone. It isn't done to cheer. Four hundred people cheer. {+hit_her, add wall 2, inspire all, xp 200}
+lose: The south tower's gone. It's simply not there; and there's a great cold where it was. {hurt 4d8 cold all con 14}
+-- scene offer8 @fort:out:.2 [waveb] | What Are You Worth?
+say: She lands on the road before the gate, folding her wings like a lady with an umbrella. “Captain Harrow,” says Vhassa. “I've *so* wanted to meet you. Nine times! I thought that I'd make it ten.” She names a sum. It's the exact cost of every soul on the wall. “Open it,” says the dragon, “and walk away. It would be quite correct.”
+> Let the captain answer | | Captain Ysolde Harrow comes out of the wicket with her sleeves rolled. She looks along the wall. You watch her count it, every face, right to the end. “No,” she says. “I make it a good deal more than that.” {+declined, inspire all, xp 200}
+> Give the dragon an onion [gift] | | You hold it out. “It's not for anything,” you say. “You looked cold.” The dragon looks at it. You've never seen such horror. She can't put it *down*. {+onion, inspire all, xp 200}
+> Answer for everybody | persuasion 14 | “*Not for sale!*” It isn't you. It's Mother Ottaway, with her hat on. And then it's all of them. {+declined, inspire all, xp 150} // “I'd take it,” says somebody at the back. It's the poet. He's let it be known that he was only trying the rhyme.
+win: “Then it's a *loss*,” says Vhassa, and opens her mouth.
+-- boss vhassa @fort:out:.3 [declined or onion] later | Vhassa | Vhassa the White = white_adult!, white_wyrmling* | deadly
+say: There's nothing now between you and it but the gate.
+win: She comes down across the wall that she couldn't buy, and slides, and all of her weight goes out of her like a debt forgiven. The gate's still shut. {+vhassa_dead, done}
+-- scene gate8 @fort:out:.15 [declined or onion] | The Gate
+say: “*Stand*,” says the captain, quite quietly. Everybody hears.
+> Stand | | You stand. {fight vhassa}
+end: Nobody says anything for a bit. Then up on the tower somebody blows a horn, four times, not at all well: *everyone, come in for your dinner.* {xp 300}
+ending [giants & vhassa_dead]: Come In Out of the Cold | There's a town in the Hanged Pass now. Half of the doors are twenty feet high. The Duke has written; he'd like his fort back. Captain Harrow's declined, nine times. Her report's in a frame in the great hall, beside a door that leads nowhere: one page, with one line on it. *All present.*
+ending [legion & vhassa_dead]: Relieved | They formed up on the road that evening, eleven hundred and a few, and gave eyes-right to a woman in rolled sleeves; and went over the hill in step, and their feet left no mark. On the slip in the complaints box somebody's written, in a new hand: *It was a girl.*
+ending: The Report | She never did show you that last page. You found it, years later, folded in a book of bad verse. It's got everyone on it, everyone who was on the wall that day, with what they were good at. You're third. It says: *Came.*

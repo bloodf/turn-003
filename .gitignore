@@ -1,0 +1,23 @@
+node_modules
+dist
+backups/*.zip
+*.log
+test-results
+forge/.work
+__pycache__
+.cap
+shots-*.png
+
+# Local files and deployment credentials
+.DS_Store
+.vercel
+.codegraph
+.env
+.env.*
+*.pem
+*.key
+node_modules/
+dist/
+coverage/
+test-results/
+playwright-report/

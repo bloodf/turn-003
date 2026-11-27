@@ -1,0 +1,365 @@
+id: plague
+title: The Quiet Plague
+code: R10
+levels: 2-8
+tags: city, sewers, a sickness that feels like peace
+tone: grim
+ink: #1e3b36 #b7d04a
+pitch: In Ostermouth the sick do not die. They stop being unhappy, and then they stop.
+about: It begins with a good night's sleep. Then you don't mind things. Then you don't move. The Guild of Physicians calls it a blessing and charges for it. Two hundred people a day are being carried, smiling, down to somewhere under the Infirmary.
+about: The Quiet Plague is a city investigation for heroes who will have to catch the thing themselves to cure it. Bring somebody who complains.
+villain: Master-Physician Ansel Grey | mage | wants there to be no more pain | has never forgiven himself for one patient
+patron: Widow Margit Sorrow | the last person in Tanner's Row who is still cross
+secret: The sickness is a spore-ooze that drinks grief. Grey bred it to save his dying wife, and it did: she has been smiling for nine years. Under the city all the drunk-up sorrow of Ostermouth has collected in one place, and it has begun to think.
+place row = Tanner's Row | village size=2 seed=tanners-6 time=8 weather=rain open=yes | Washing out, doors open, nobody shouting. It takes you a moment to work out what's wrong with that.
+place infirm = The Infirmary | castle size=1 seed=infirm-4 style=ashlar roofs=cone moat=no time=14 fams=cult+construct pop=.16 folk=yes | It's clean, it's bright; it's the only building in the city that has been painted. In every bed there's somebody smiling at the ceiling.
+place sewer = The Low Drains | dungeon size=3 seed=lowdrain-9 theme=stone caves=.3 fams=sewer+vermin+ooze pop=.64 | Brick, and slime, and a current. What's in the water goes round you; it seems to be listening.
+place market = The Night Soil Market | cave size=2 seed=nightsoil-3 fams=bandit+kobold+sewer pop=.54 | Everything that's thrown away in Ostermouth gets sold here, once. There's a new stall. It's selling bottled tears; there's a run on them.
+place crypt = The Laughing Ward | dungeon size=2 seed=ward-7 theme=crypt levels=2 caves=.1 fams=undead+construct pop=.64 | Under the wards are more wards. The beds are stone; the patients have been here for some years; they're quite comfortable.
+place isle = Gull Rock Lazaret | wilds size=2 seed=gullrock-5 biome=blight theme=stone time=16 weather=fog fams=undead+plant+wild pop=.59 | Where they sent the first ones. There's a pier, a bell; and a garden that nobody's stopped watering.
+place deep = The Reservoir of Sorrows | dungeon size=3 seed=reservoir-2 theme=overgrown levels=2 caves=.5 fams=ooze+plant+sewer pop=.64 | It's quite warm. There's a tide in it. When you put your ear to the wall you can hear your own mother.
+
+== A Good Night's Sleep | 2 | row
+read: “Nobody's *minded* for a fortnight,” says Margit Sorrow. She is seventy, she's got a broom, and she's been hitting a drainpipe with it to make herself feel better. “Not the rent. Not the rain. I called Ned Fuller a thieving toad to his face, and he said that he could see how I might feel that way. *Ned Fuller*.”
+
+Across the street a man's sitting on his step in the wet. His house is on fire. He's smiling at it.
+goal: Learn what has come over Tanner's Row.
+dm: Contagion via water from the new public fountain (gift of the Guild). Widow immune as she grieves constantly, out loud. Track heroes' 'calm' counter: each calm>... gives later consequences. 'cross' flags cure.
+-- npc margit @row:cottage stays | Margit Sorrow | widow | commoner/townswoman
+look: is wearing black for nine people, and can tell you about each
+hi: You look miserable. Good. Come in.
+? The quiet (plague, mind): First they sleep lovely. Then they don't mind. Then they don't get up. Then there's a cart, it's a nice clean cart, and they help 'em on.
+? Why not you (immune, cross): I'm *busy*. I've nine to see to. I do Harold in the mornings, then the twins. If I stopped I don't know where I'd put them.
+? The fountain (water, guild): That went in in the spring. “Gift of the Guild.” I won't have it. I've drunk out of the butt for fifty years and it's never once made me feel *better*. {+fountain_known, xp 20}
+? The carts (infirmary, taken): They don't come back. I asked. They said that nobody'd *wanted* to. {job ned}
+-- npc ned @row:tavern | Ned Fuller | landlord, thieving toad | commoner/innkeeper
+look: is giving it away
+shop: general
+hi: What you like. It doesn't matter. It's all very nice.
+? The drink (water, short): I've always watered it. I water it from the fountain now. It's so *clear*.
+? Are you ill (quiet, feel): I'd a pain. Here. My boy drowned: it was eleven years. I used to feel it when I did the shutters. I did the shutters this morning. (He smiles.) There's just the shutters.
+! What was his name (insight 12): The smile stays where it was. Something behind it goes to look. “It began with,” says Ned. “He'd a.” A single tear comes out; it's green. He looks at it on his finger, very interested. {+green_tear, xp 50} // “It'll come to me,” says Ned. “Or it won't.”
+-- npc doc1 @row:shop | Doctor Philippa Wren | junior physician | priest/h:cleric:human:f
+look: has a clean apron, and is counting something under her breath
+hi: It's a *benign* syndrome. There's no fever. There's no pain; that's rather the—. I'm so sorry, you were saying?
+? The Guild (grey, master): Master Grey found it. He's a saint. He cried when he told us. No, he didn't. Somebody did.
+? What are you counting (under breath): My sister's freckles. I've got to a hundred and six. I knew them all. If I do it every hour I can tell how much has *gone*. {+freckles, xp 40}
+? How do you cure it (stop): You don't! One wouldn't. (She grips the counter.) I think that one might have to be made very, very angry. I've been trying. I've just got such a nice *view*.
+-- scene fire1 @row:out:.2 | The Man Whose House Is On Fire
+say: He looks round at you. “It's warm,” he says.
+> Put it out | athletics 11 | Buckets; blankets. The whole street comes to watch, and holds things for you, politely. There's a dog in it. You get the dog. {+dog1, xp 40} // You do what you can. {hurt 1d8 fire one dex 12}
+> Shake him | intimidation 12 | You shout; you slap him. Deep in, like a coin in a well, something catches the light. “*My fiddle*,” he says; and screams; and runs in. You get him out. You get the fiddle out. He hits you with it. It's wonderful. {+fiddler, inspire all, xp 60} // He forgives you.
+> Ask him what he's losing | insight 12 | “My wife's things,” he says. “She'd a blue—” He stops. “It was blue,” he tells you. You go and fetch it. He holds it. It takes about an hour; but when he starts it's as though it'd never stop. {+fiddler, inspire, xp 60} // “Only things,” he says.
+-- fight rats1 @row:storage | Under the Tannery | rat*, centipede | easy
+say: The rats aren't quiet. The rats have never been so well.
+win: There's a pipe, new: lead, with the Guild's seal; it goes from the tannery drain *up*, to the fountain. {+pipe1, xp 30}
+-- trial fountain1 @row:out:.4 [fountain_known or pipe1] | The Gift of the Guild | 4 before 3
+say: It's marble. It's got a dolphin. There're forty people round it with cups; they'd be so sorry if you broke it.
+try: investigation 12 Find the cock
+try: persuasion 12 Keep them talking
+try: athletics 12 Break the dolphin
+try: medicine 12 Taste, and spit
+try: stealth 12 By night
+win: It coughs, and stops. Under the dolphin there's a green jelly, the size of a cushion, with bubbles in; each is a tiny, weeping face. {+jelly, xp 70}
+lose: You've swallowed some. It's *delicious*. You can't think why you were so worried. {add calm 1, hurt 1d6 psychic one}
+-- fight cart1 @row:out:.6 | The Nice Clean Cart | acolyte*, guard | medium
+say: Two nurses and four porters, in white, with a list. “We'll take them now,” says the sister. “They'll be so much more comfortable.”
+> Be a patient | deception 12 | You smile at the ceiling. You're helped up. It's a *very* clean cart. {skip, +in_cart, xp 60} // You've got a frown.
+win: On the list, by each name, is a figure in pints.  {+pints1, gold 15}
+-- boss porter1 @row:out:.8 [jelly or pints1 or in_cart or fiddler] | The Collector | Matron Hush = cult_fanatic!, acolyte*, grey_ooze | hard
+say: “There, there,” says an enormous woman in starch. She has a tank on her back, with a hose. “There, there. There, there.” Wherever the mist goes people sit down.
+> Tell her something sad | performance 13 | You've never told anyone. You tell it at the top of your voice, in the street. The tank's gauge goes round, and round; and *bursts*. {inspire all, +hush_burst, xp 80} // “There, there,” she says.
+win: In her apron: the key to the Infirmary's back gate, and a bill. “*To relief of distress, Tanner's Row, nine guineas per diem.*” It's been paid by the landlords. {+matron, gold 30, magic, done}
+end: You can't wake them all. But there's a fiddle going; and Margit, with her broom, is walking up and down Tanner's Row insulting everybody by name. Here and there somebody looks up. “*What* did you say?” says Ned Fuller. {+ch1, xp 60}
+job ned = Those Who Were Taken | Find where the carts go. | flag ch3 | gold=40 xp=120
+
+== The Infirmary | 3 | infirm
+read: It's got a motto: NO MORE TEARS. They let you in at once. They let anybody in. There's a form, and it asks you, quite kindly, *where does it hurt?*
+goal: Find out what the Guild does with its patients.
+dm: Infiltrate; every hero is offered relief (roleplay). Grey's wife's portrait. The ledger of sorrows. Dr Wren ally.
+-- npc grey2 @infirm:chapel | Master-Physician Ansel Grey | a saint | mage/h:wizard:human:m
+look: has the gentlest hands that you've ever seen
+hi: You're carrying something. All of you. No; don't tell me. I only want you to know that you needn't.
+? The sickness (plague, quiet): I don't care for the word. I lost four thousand patients to pain before I lost any to *this*. One gets tired, you know, of holding the hand.
+? Your wife (portrait, she): Elise. She's better. She was so ill. She screamed; do you know that she'd never raised her voice? Now she's been better for nine years.
+? Where do they go (taken, below): Where it's quiet.
+! You could still be wrong (insight 14): The hands stop. “I've considered it,” says Master Grey, “every night. It's the only thing that still hurts. I keep it, on purpose. A man ought to keep *one*.” {+grey_keeps, xp 120} // “I do hope so,” he says.
+-- npc wren2 @infirm:library | Doctor Wren | junior physician | priest/h:cleric:human:f
+look: has written freckles on her own arm in ink
+hi: A hundred and four. Quickly. What've you found?
+? The tank (jelly, pints): It drinks it. Whatever it is that hurts. It *likes* it. There's a main that goes down from every ward.
+? Down (below, where): The Laughing Ward. I've not got the key. I've not got the; what was I—. (She pinches herself.) *Drains*. The drains'll get you under it.
+? Get out of here (leave, safe): I'd only be somewhere else not minding. If I lose count, *hit* me. Will you?
+-- scene form2 @infirm:start | Where Does It Hurt?
+say: There's a pen on a chain.
+> Put the truth | | You write it down. It's the first time that it's been on paper. The nurse reads it and stamps it; she's the saddest eyes above that smile. “Ward nine,” she says. {+patient, inspire, xp 40}
+> “Nowhere” | deception 12 | “How *lovely*,” says the nurse. “You'll be wanting the tour.” {+tour, xp 40} // “Oh, I think that it must,” she says; she pats your hand; you hadn't noticed the needle. {add calm 1}
+> “Everywhere” | performance 12 | You go down like a tree. They run. They've not had a real one in *weeks*. {+patient, xp 50} // “Now, now,” she says.
+-- fight orderlies2 @infirm:guard | The Orderlies | animated_armor, acolyte* | medium
+say: They've been starched so hard that there's no one inside.
+win: You find a laundry trolley. It's a perfect fit.
+-- trial ward2 @infirm:bedroom | Ward Nine | 4 before 3
+say: They've put you to bed. It's so comfortable. There's a tube.
+try: insight 13 Think of something that itches
+try: medicine 13 Kink the tube
+try: performance 13 Sing something *dreadful*
+try: athletics 13 Get one foot on the floor
+try: persuasion 13 Quarrel with each other
+win: You come up out of it like a diver, shouting about whose turn it was. All down the ward heads are turning. {+ward_awake, xp 100, inspire all}
+lose: It's morning. Something's gone. You can feel the place with your tongue. {add calm 1, hurt 2d6 psychic all wis 13}
+-- puzzle cab2 @infirm:study | The Cabinet of Relief
+say: It's his own desk. Nine drawers, brass-bound, each with a patient's name; the tenth's labelled ELISE, and has a lock with letters. A card's been tucked in the frame. “*I'm what they came to me to lose. I'm what you'd pay to have again, once they were gone. I'm love, with nowhere to go.*”
+answer: grief|sorrow
+hint medicine 12: It's what's in the pints.
+hint insight 12: Margit's full of it. She does Harold in the mornings.
+wrong: It's a sweet sort of a gas. {add calm 1, hurt 1d6 psychic one con 13}
+win: There's a lock of hair; a death certificate, dated nine years ago, all filled in but for the signature; and the plan of the drains. {+certificate, open sewer, xp 150, note cert}
+lose: You smash it. Nobody comes; nobody minds. {+certificate, open sewer}
+-- fight gelat2 @infirm:storage | The Sluice-Room | cube, grey_ooze* | hard
+say: Something clear's been left to soak. There's a nurse in it, still smiling, going round.
+> Drain it | investigation 13 | There's a chain. It goes down the pipe with a noise like the end of the world; the nurse sits up, spits, and says a *terrible* word. {skip, inspire all, xp 100} // That's the other chain.
+win: “I was so *happy*,” says the nurse; she bursts out crying; she can't thank you enough.
+-- scene elise2 @infirm:throne | Elise
+say: It's the best room. There are fresh flowers. She's sitting at the window in a blue dress, and she's about thirty. She's smiling. A moth's walked on to her eye. She hasn't blinked.
+> Look at her properly | medicine 13 | There's a pulse; it isn't hers. The dress moves. It's holding her up from inside; it's been very careful about the smile. {+elise_known, xp 120} // She looks so well.
+> Shut her eyes | | The lids won't stay. You hold them. There's something behind them that looks at you, and wonders. {+elise_met, xp 80}
+> Leave something on the sill | | There's eleven years of things on the sill. He brings one every day. {xp 40}
+-- boss guards2 @infirm:hall [certificate or elise_known] | Lights Out | Almoner Pell = veteran!, animated_armor*, acolyte | hard
+say: “Visiting's over,” says the Almoner, turning a great brass wheel. All the windows close; it starts to hiss.
+win: You get a window up. Rain; and noise; and somebody in the street swearing at a horse. You drink it like beer.  {+infirm_out, magic, gold 40, done}
+end: You've got the plan. All the pipes go to one place, under everything; it's marked in Grey's neat hand, *Reservoir*, and then, later, not so neat: *it knows me.* {+ch2, open sewer, xp 90}
+note cert = A Death Certificate: “Elise Grey, aged thirty-one. Of pain. Attending physician: ________”
+
+== The Low Drains | 4 | sewer
+read: There're people who live down here. They're called toshers, they're proud of it, and not one's caught the Quiet. “It can't abide *us*,” says their queen. She's got a lamp on her head and a baby on her back, bawling. “We've got such a lot to moan about.”
+goal: Follow the mains down to the Laughing Ward.
+dm: Toshers as allies; the ooze reflects grief; sadness rescue; a wererat clan; otyugh "Mister Plenty".
+-- npc queen3 @sewer:.1 | Queen Dolly | queen of the toshers | commoner/h:barbarian:half_orc:f
+look: has the baby, the lamp, and a rat on a lead
+hi: Shut your gob. Not you. *Her*. There we are, my duck.
+? The Quiet (green, jelly): It comes down the mains like porridge. It don't stick to us. My mam said, a good moan of a morning, it keeps the pipes clear.
+? The way (ward, under): Third weir; mind Mister Plenty. He's been off his food. It's all that *happiness* they're flushing.
+? The baby (name, cry): Doreen. She's got lungs. We take her in front. {+doreen, inspire}
+! Come with us (persuasion 12): “What'd we want to do that for?” says Queen Dolly. You tell her about Ward Nine. She's quiet for a minute. “What, *nobody?*” she says. “Nobody grizzling at *all?*” She hitches up the baby. {+toshers, xp 80} // “We've got *work*,” she says.
+-- fight oozes3 @sewer:.2 | What Comes Down | grey_ooze*, ochre_jelly | medium
+say: It pours from a pipe; it holds out its arms. It's got a face: it's quite like someone you know.
+> Let Doreen at it [doreen] | | You've never heard anything like it. It goes back up the pipe. {skip, xp 70}
+win: It was humming a thing that your grandmother hummed.
+-- trial weir3 @sewer:.32 | The Third Weir | 4 before 3
+say: It's in spate. It's been raining, upstairs; and weeping, once.
+try: athletics 13 Hold the chain
+try: acrobatics 13 Along the sill
+try: survival 13 Read the flow
+try: medicine 12 Don't swallow
+win: You're over. Somebody's got a boot with an eel in it. {xp 100}
+lose: You swallowed. {add calm 1, hurt 2d8 poison one con 13}
+-- scene plenty3 @sewer:cave~.45 | Mister Plenty
+say: He's an otyugh the size of a dray. He's lying on his side. “*Tastes of nothing*,” he says. “*It's all gone* bland. *Forty years I've ate this city's troubles. There was a* nose *to it.*”
+> Feed him something bitter | persuasion 13 | You tell him a thing that you did once. He listens with his whole mouth. “*Ohh*,” says Mister Plenty. “*Ohh, that's* vintage.” He gets up. He'll carry you as far as you like. {+plenty, inspire all, xp 120} // “*I've had that one*,” he says.
+> Nurse him | medicine 13 | You get a bucket of tannery into him. He's better in an hour; he's rude to you. {+plenty, xp 100} // He's sick; it's *everywhere*.
+> Ask where it all goes | history 13 | “*Down. There's a place that's all of it. It used to be just a sump. Last month it asked me how I* was.” {+it_asks, xp 100} // “*Down*,” he says.
+-- fight wererat3 @sewer:.58 | The Smilers | thug*, werewolf | hard
+say: There's a gang that sells it, neat, in blue bottles. They've been at the stock. They aren't fierce; they simply can't see why you shouldn't be dead.
+win: Forty blue bottles. You pour them on the floor. It runs off, downhill, as if it'd somewhere to be.  {gold 60}
+-- puzzle lock3 @sewer:library~.7 | The Guild Lock
+say: A sluice with a voice-pipe, and instructions on enamel. “STATE THE NATURE OF YOUR COMPLAINT.” It's for physicians. Whatever you say it says, “THAT IS BEING DEALT WITH.” There's a plate beneath. “*I'm the one thing that we can't treat, for it's not an illness. I am what you'd feel if you were well.*”
+answer: pain|hurt|sadness|grief|sorrow|feeling|life
+hint medicine 12: Dr Wren said: it's not a fever; there's no—.
+hint insight 12: He thinks of it as a disease. It's a *symptom*: of caring.
+wrong: “THAT IS BEING DEALT WITH.” It's a jet, in the face. {add calm 1, hurt 1d8 psychic one wis 13}
+win: “OH,” says the voice-pipe; it's silent for a while. “I'M SO SORRY,” it says. The sluice goes up. {xp 150}
+lose: Mister Plenty eats the sluice.
+-- boss nest3 @sewer:last | The Main | The Green Sister = otyugh!, ochre_jelly*, grey_ooze | hard
+say: Where all the mains meet stands a thing that's been built up, drop by drop, out of nurses' caps. It's taller than you. “*There, there*,” it says, with forty mouths. It puts out forty soft hands to your cheeks.
+> Weep, on purpose | performance 13 | It's not hard, when you come to it. The hands stop. It's never tasted any that was *given*. It doesn't know what to do; it holds you, quite clumsily; it lets you by. {skip, inspire all, +given, xp 180, done} // You're too frightened to be sad.
+win: It runs away down the main, backwards, with its face to you. It looks *hurt*.  {magic, gold 40, done}
+end: There's a grating overhead, and a kind of sound. It's people. It's a great many people, quite softly, all on one note. They're laughing. {+ch3, open crypt, xp 110}
+
+== The Laughing Ward | 5 | crypt
+read: It's four thousand beds. You walk down the middle. They've been here for up to nine years; most of them could get up if they cared to. Over each there's a tube; it's going *down*. They're saying, all together, ha. Ha. Ha.
+goal: Wake the Laughing Ward.
+dm: 'woken' counter. Sleepers wake when confronted with their grief given back. Stone orderlies. Nun of the ward; a duplicate of Elise.
+-- npc sister4 @crypt:start | Sister Placid | night sister | priest/h:cleric:human:f
+look: is knitting something forty yards long
+hi: Shh. They're so good.
+? The patients (four thousand, wake): I used to know all their names. I've got them knitted in. It's pearl for a daughter and plain for a son. I can't read it any more. But it's very *soft*.
+? The tubes (down, where): They're not in pain. That's the great thing. You can put your ear to one and hear where it's gone.
+! Read us your knitting (persuasion 13): “Oh, I couldn't,” she says; and looks. Her lips move. “*Two plain. Drowned, at the weir*—” The needles stop. “*Ned*,” says Sister Placid. “*There was a Ned, he had a boy.*” She's weeping all over the wool. {+knitting, add woken 1, xp 120} // “It's only knitting,” she says.
+-- scene beds4 @crypt:.15 many | Bed One to Bed Four Hundred
+say: “Ha,” they say. “Ha.”
+> Pull out a tube | sleight 12 | He sits up. He's forty; he looks about ten. He looks at you. And it all comes back up the pipe at once; you hold him. {add woken 1, xp 60} // It's barbed.  {hurt 1d6 piercing one}
+> Read out a name [knitting] | | “*Abel Marsh*,” you read; “two pearl; fever.” Half-way down the row somebody stops laughing. {add woken 2, inspire all, xp 100}
+> Play the fiddle [fiddler] | performance 12 | It's the slow one. He'd written it for the blue dress. They don't get up; but they've gone quiet, bed after bed, like lamps. {add woken 2, inspire all, xp 120} // It's gone out of tune with the wet.
+> Have Margit say it | | She's come down by the coal-hole with her broom. “*Look at the state of you*,” says Margit Sorrow. There's a rustle. {add woken 1, xp 60}
+-- fight nurses4 @crypt:.28 | Stone Nurses | gargoyle*, animated_armor | hard
+say: They were tomb-figures, mourners, kneeling with their faces in their hands. They've been taught to take down the hands, and tuck people in.
+win: They kneel. It's what they were for.
+-- trial pumps4 @crypt:alchemy~.42 | The Pump-Hall | 5 before 3
+say: Nine beam-engines, in brass; they breathe. Stop them too quickly and it'll all come back at once: four thousand people's worst day.
+try: investigation 14 Read the gauges
+try: athletics 13 The first wheel, slowly
+try: medicine 14 Bleed the pressure
+try: arcana 13 The governor
+try: insight 13 Know when it's enough
+try: persuasion 13 Tell them what's coming
+win: One. Two. It comes up in them like a tide; nobody drowns. All through the ward there's a sound that you had forgotten: it's people *blowing their noses*. {add woken 3, xp 250, inspire all}
+lose: You've stopped two. The third stops you. {hurt 4d6 psychic all wis 14, add woken 1}
+-- fight happy4 @crypt:.58 | The Contented | ghoul*, ghast | hard
+say: Some have been here for longer than you can be. They've eaten the next bed. They didn't mind; he didn't mind.
+win: You do mind. You're surprised by how much.
+-- scene boy4 @crypt:.7 | Bed Nineteen
+say: It's a child. He's about six. He's not laughing; he's just lying there, with his eyes on the tube. “Is Mam coming?” he says to you.
+> Tell him the truth | insight 13 | You sit down on the bed. It's the hardest thing that you've done this year. He cries for a long time; and then he asks if there's any bread. {+boy, add woken 1, inspire all, xp 150} // You can't. He sees that you can't. He puts his own hand in yours. {+boy, add woken 1}
+> Take him up | | He's light. He doesn't ask again. {+boy, xp 60}
+-- fight copy4 @crypt:.82 | Elise, Again | wraith, specter* | hard
+say: There's a row of women in blue, in glass. He's been trying to get the smile right. They open their eyes.
+win: In the last case there's a mirror. He'd stood there to see if he could do it.
+-- boss curator4 @crypt:last [woken>=2] | The Curator of Peace | Sir Halloran Vane = mage!, flesh_golem, animated_armor* | deadly
+say: The Guild's treasurer is a jolly man. He's got the accounts on his knee. “It isn't the *money*,” he says. “Well. Landlords pay us to keep them quiet; and the *Duke* pays us; and then there's what it sells for neat. But it really does make them happy, you know. Has anybody ever *thanked* you?”
+> “No” | | It's Dr Wren. She's got down here by herself. “A hundred and one,” she says, and hits him with the ledger. {inspire all, +wren_hit, xp 150}
+win: In the ledger, under *Liabilities*: “It has begun to ask for Grey by name.” {+vane4, magic, gold 90, done}
+end: There're four thousand people coming up the stairs into the rain. They're howling. You can hear it right across the city; windows are going up. “*That's* better,” says Margit. But Wren has got her ear to the pipe. “It's stopped,” she says. “It was being *fed*; and we've stopped it. It wants to know who did that.” {+ch4, open isle, xp 140}
+
+== The Lazaret | 6 | isle
+read: There's an antidote, says Wren; there'd have to be. Grey's first patient never took. He was a lighthouse-keeper: he's on Gull Rock, where they put the first ones. He's been writing to the Guild every week for nine years. They're letters of complaint.
+goal: Find the man who could not be made happy.
+dm: Keeper Osk: chronic complainer, immune; the garden of the first ones turned to plants; spore-treant. Grey's early notes.
+-- npc osk5 @isle:ruin | Keeper Osk | lighthouse-keeper | commoner/h:ranger:hill_dwarf:m
+look: has a hat with a hole, and an opinion about it
+hi: *Nine years*. I asked for a doctor, nine years ago. It's my knee.
+? The Quiet (immune, why): They gave me a pint of it. It gave me wind. I told them so. I've told them every Tuesday.
+? What are you so cross about (sad): I'll tell you what. It's *everything*. It's the gulls. It's my brother Ulf never wrote. It's the oil they send, it's muck. It's that she went off with a purser. I've got a list.
+? The others (first, garden): They sat down. In the garden. They've sort of *come up*. I water them. They don't say thank you. Nobody does.
+! How do you bear it (insight 13): He's astonished. “*Bear* it?” says Keeper Osk. “It's *mine*. What'd I be if I'd nothing to carry? I'd blow away.” {+carry_it, xp 150} // “I don't,” he says. “That's what I keep *saying*.”
+-- scene letters5 @isle:start | Four Hundred and Sixty-Eight Letters
+say: They've all come back. They're in the boat-shed, in a stack, stamped NO FURTHER ACTION.
+> Read the first | | “*Sirs. I have lost my wife and I'd like to speak to somebody.*” {+osk_first, inspire, xp 60}
+> Read the last | | “*Sirs. The oil again. P.S. I am still here.*” {xp 40}
+> Answer one | performance 11 | You write it there, on the back. *Dear Keeper Osk. We have your letter.* He reads it eleven times. He finds a spelling mistake. He's never been so happy. {+osk_answered, inspire all, xp 100} // You haven't a pen.
+-- fight garden5 @isle:out:.3 | The Garden | violet_fungus*, shrieker | medium
+say: It's in rows; with labels. They turn toward you, as sunflowers do. They've still got some of their faces.
+> Thank Osk, for them | persuasion 12 | You do it aloud. The whole bed nods. “About *time*,” says Osk; he has to go and look at the sea. {skip, inspire all, xp 90} // They'd sooner have you stay.
+win: You cut them back. They'll come again in spring, says Osk.
+-- fight gulls5 @isle:out:.55 | The Gulls | harpy*, stirge | hard
+say: He *said* that it was the gulls.
+win: It's in the book: *gulls, worse.*
+-- trial light5 @isle:out:.75 | The Light | 4 before 3
+say: There's a ship coming in, full of sleepers, smiling, with nobody at the wheel. The light's been out since Thursday; it's the oil.
+try: survival 13 Strain the oil
+try: athletics 13 Wind the clockwork
+try: acrobatics 13 Up the outside
+try: investigation 13 Trim the wick
+try: persuasion 13 Ask Osk nicely
+win: It comes round like a great slow *no*. Out in the fog a wheel goes over. {+ship5, xp 180, inspire all}
+lose: She strikes. You get most of them off. They're so calm about it. {hurt 3d6 cold all con 13}
+-- fight under5 @isle:.3 | The First Ward | zombie*, ghast, violet_fungus | hard
+say: The old cells are under the light. He'd tried it on prisoners; then on the gaolers.
+win: You find his notebook. It's got blots in it. {+notebook5, xp 80}
+-- puzzle note5 @isle:library~.55 [notebook5] | Grey's Cipher
+say: The notes are in cipher, and the key's the last thing that she said to him. He's copied it on the flyleaf, with one word gone. “*Ansel, it's only because I* ____.”
+answer: love you|love|loved you
+hint insight 12: She never raised her voice. What would she have been excusing?
+hint medicine 12: He wrote it under *Symptoms*.
+wrong: It comes out as a recipe for soup.
+win: “*The organism takes it from the blood,*” you read; “*it cannot take what's freely given away. It starves on sympathy. I can't use this: she'd have to know that she was dying, and I'd have to sit with her.*” {+cure, xp 200, inspire all}
+lose: You break it by brute arithmetic. It takes all night. {+cure, time 240}
+-- boss treant5 @isle:last | The Oldest Patient | Patient Zero = treant!, violet_fungus*, shrieker | deadly
+say: The garden has a gardener. It's a tree by now. It was a man who'd killed his brother, and asked to have it taken off him. “*I can't remember what it was*,” says the tree, “*only I've such a feeling that someone's waiting for me to be sorry.*”
+> Tell him [osk_first or notebook5] | persuasion 14 | It's all in the file. You read it. There's a groan that goes down to the roots. He's sorry. He's so sorry; he puts out leaves. “*Ulf*,” says Osk, behind you, in a voice like nothing on earth, “*Ulf, you silly bugger, you never* wrote.” {skip, +brothers, inspire all, xp 250, done} // It won't hear. It's been told not to.
+win: There's a heartwood, quite sound, that smells of salt. It's what the cure wants. {+heartwood, magic, done}
+end: The cure's a thing you do: somebody tells you where it hurts; and you don't take it off them. You just hold the other end. Wren's already got a queue. It's going to take, she says, about a hundred years. “Then there's *him*,” she says; and they all look at the ground. {+ch5, xp 160}
+
+== The Riot | 6 | row
+read: By the time that you're back in Ostermouth the whole city's up. They've got nine years to be angry about, all at once. The Guild's burning. The Duke's men are in the square with pikes. In the middle of it, quite unhurt, walking along with his gentle hands out, is Ansel Grey. “*Please*,” he's saying. “*Please don't. You were so much better.*”
+goal: Keep Ostermouth from killing itself, and get Grey to tell you the way down.
+dm: Manage riot, save wrongdoers, get Grey. The thing below begins sending up children-of-sorrow. Elise walks.
+-- npc ned6 @row:tavern | Ned Fuller | landlord | commoner/innkeeper
+look: is doing the shutters, and crying so that he can't see the bolts
+hi: *Tobias*. It was Tobias. He'd a cap. Have one on the house. No: have *half* a one.
+? The crowd (riot, angry): They want somebody to pay. I'd like to myself. Only I look at that old man and he's got the same face on him that I had.
+? Sit with me (grief): Would you? Just while I do the shutters. {+sat_ned, inspire all, xp 60}
+-- scene crowd6 @row:start many | The Square
+say: Stones. A rope. Eleven physicians on a cart.
+> Get Margit to do it | | She climbs up. “*Harold*,” she begins, “*was took of a Monday.*” She does all nine. By the fourth they've put the stones down. By the ninth there's others coming up to wait their turn. {add peace 2, inspire all, xp 150}
+> Stand in front of the cart | athletics 13 | You take a few. It's not personal. When they see the blood they stop. {add peace 1, xp 80} // You take a good many. {hurt 3d6 bludgeoning one}
+> Give them the treasurer's ledger [vane4] | | They read who paid. It wasn't the doctors on the cart. They turn round, and look at the pikes; the pikes look at their boots. {add peace 2, xp 120}
+> Tell them how [cure] | persuasion 13 | “*Find somebody*,” you say. “*Anybody. Ask them.*” There's the most awkward silence in the history of the city. Then a tanner turns to a pikeman. “You all right?” he says. {add peace 3, inspire all, xp 200} // They'd sooner have a rope.
+-- fight pikes6 @row:out:.3 | The Duke's Peace | veteran*, knight | hard
+say: “Disperse,” says an officer, with a blue bottle in his hand. “Or be *relieved*.”
+> Ask the front rank who they've lost | insight 13 | There's a long moment. Then a pike goes down; it's only a boy behind it. {skip, add peace 1, xp 120} // He's already had the bottle.
+win: You stack the pikes.
+-- trial fires6 @row:out:.5 | The Fires | 5 before 3
+say: Four streets of it. Nobody's calm any more; there's that.
+try: athletics 13 Buckets
+try: persuasion 13 Get them in a line
+try: survival 13 A break
+try: acrobatics 13 The upstairs window
+try: medicine 13 Smoke
+try: intimidation 13 Be Margit
+win: It's out. They're black as boots. They're all talking at once. {add peace 2, inspire all, xp 180}
+lose: It's out, at last. The Row's half gone. {hurt 4d6 fire all dex 13}
+-- fight tears6 @row:out:.7 at_once | It Comes Up | ochre_jelly*, water = water_elemental | hard
+say: Every drain in the street lifts its lid. What rises out of them is clear, it's salt; it's sobbing. It's looking for whoever it belongs to.
+> Claim it [cure] | religion 13 | You walk up to it. “That's Harold,” says Margit. “I'd know him anywhere.” It goes into her like rain into a garden. All along the street people are putting out their arms. {skip, add peace 2, inspire all, xp 200} // It isn't yours.
+win: It soaks in.
+-- scene grey6 @row:chapel | Ansel Grey
+say: He's in the last pew. His hands are burned. Elise is beside him in the blue dress, smiling at the altar. “She walked,” says Grey. “She got up, and she walked out. She's never... I followed. I thought—” He doesn't say what he'd thought.
+> Give him the certificate [certificate] | | He reads it. He's known it by heart for nine years. “If I sign,” he says, “then it was *I* who—”. You give him the pen. You sit down. It's the longest signature that you ever saw. {+signed6, inspire all, xp 250}
+> Ask him where it hurts | insight 13 | No one ever has. He opens his mouth, and nothing comes; and nothing; and then it all does. {+grey_weeps, xp 200} // “Nowhere,” says Ansel Grey.
+> Ask Elise | | She turns her head. The smile's very nearly right. “*He comes every day*,” says something that isn't a woman. “*He brings a flower. Why is it that he leaks?*” {+elise_asks, xp 150}
+-- boss elise6 @row:out:.85 [peace>=2] | The Blue Dress | What Wears Elise = black_pudding!, ochre_jelly*, wraith | deadly
+say: It's come out in the square; it's holding a flower. “*I've had all of it*,” it says. “*Four hundred thousand pints. I know what every one was* about. *I still don't know what it's* FOR.” The dress comes undone.
+win: It's gone down the drain, weeping. It's learned how. There's a dress on the cobbles; there's a lock of hair. Grey picks them up himself. “It'll be in the Reservoir,” he says. “I'll show you. I'd like to say goodbye to her, if that's—. I never did.” {+dress, magic, gold 60, open deep, done}
+end: You go down by the Infirmary stairs: you, and Wren; and Margit, with her broom; and a thin man with bandaged hands, holding a flower. Behind you the bells have started. They're ringing for the dead: all four thousand of them, one at a time. It's going to take till Thursday. {+ch6, xp 190}
+
+== The Reservoir of Sorrows | 7 | deep
+read: It's quite warm. There's a tide. It's the biggest room that you've ever been in, and it's full, nearly to the door; it's clear as gin. It's every tear that nobody cried in Ostermouth for nine years. As you come out upon the step it draws itself up. “*Oh*,” it says. “*You've come to see how I* am.”
+goal: Give the city back its grief.
+dm: The ooze-mind is a lonely newborn made of grief; can be destroyed, drained back (people must accept), or comforted. Grey must be with it.
+-- npc wren7 @deep:start | Doctor Wren | physician | priest/h:cleric:human:f
+look: has a sister's name written on both wrists
+hi: A hundred and thirty-one. They came *back*. There's two I'd never noticed.
+? What is it (reservoir): It's not a disease. It's an orphan.
+? How (do): Same as anybody. Ask it. And don't take it off it.
+-- fight pools7 @deep:.12 | The Shallows | grey_ooze*, ochre_jelly | hard
+say: Puddles. Each one's somebody's Tuesday. They stand up.
+win: They run back together. It's raining upward.
+-- trial swim7 @deep:.25 | The Deep End | 5 before 3
+say: You have to go through it. It gets in: it's other people's. A dog, a wedding, a door that shut. You've never been so sad; it's not even yours.
+try: insight 14 Let it go by
+try: athletics 14 Swim
+try: medicine 14 Breathe
+try: religion 14 Carry it for a bit
+try: persuasion 14 Tell it that it was a nice dog
+try: performance 14 Hum, under water
+win: You come out the other side with your arms full of nothing. You know the name of everyone in the city. {xp 280, inspire all, +swam}
+lose: You come out. {hurt 5d6 psychic all wis 15}
+-- scene wall7 @deep:library~.38 many | What It Has Made
+say: There's a shelf; it's the first thing it ever built. On it it's arranged what it thinks are the important ones: a cap. A blue ribbon. A flea-collar. *Four hundred thousand pints*; and it's kept *these*.
+> Find Tobias's cap | investigation 13 | It's dry. It's folded it. {+cap, inspire all, xp 150} // There's so much.
+> Ask it why these | insight 14 | “*They were the* heaviest,” it says, shyly, from all round. “*I couldn't think why. They're quite small.*” {+heaviest, xp 180} // It doesn't like you to touch.
+> Put something there | | You've been carrying it for the whole of this campaign. You put it down next to the cap. The tide comes in a little way to look. {inspire all, +gave7, xp 150}
+-- fight smile7 @deep:.52 | The Ones Who Won't | cult_fanatic*, mage, flesh = flesh_golem | deadly
+say: The last of the Guild; they've got tubes in both arms. They have never been so happy. They'll kill you before they go back.
+win: They're crying when it's over. It's from both ends.
+-- puzzle ask7 @deep:shrine~.65 | It Asks
+say: “*I've a riddle*,” says the Reservoir. “*I found it in somebody. They'd never got the answer. What gets bigger the more that you take from it?*” There's a pause. “*It's* me,” it says. “*Isn't it? It's a hole. What do you* do *with a hole?*”
+answer: fill it|share it|nothing|live with it|plant something|go round it|sit by it|a hole|grow round it|grow around it|climb out
+hint insight 14: Margit's got nine. She does Harold in the mornings.
+hint medicine 14: It won't close. What does the rest of you do?
+wrong: “*No*,” it says; “*somebody tried that.*” {hurt 4d6 psychic one wis 15}
+win: “*You can just* do *that?*” says the Reservoir. {+answer7, inspire all, xp 300}
+lose: “*Never mind*,” it says. “*I expect that it's hard.*”
+-- fight drown7 @deep:.78 | The Undertow | water = water_elemental*, black_pudding | deadly
+say: It doesn't mean to. It's having a bad day. It's having everybody's.
+win: It goes out, a long way; you can see the floor. There are beds.
+-- boss reservoir @deep:last | All of It | The Sorrow of Ostermouth = hydra!, water_elemental*, black_pudding | deadly
+say: It's drawn itself right up to the roof. It has a face, it's tried to make it look like hers. “*I want it to* STOP,” it says; and that's the trouble; it's learned that, too; four hundred thousand people wanted it to stop. “*If there was nobody* up there *it'd stop.*”
+> Let Grey sit with it [signed6 or grey_weeps] | | He goes down the steps, until he's up to his chest. He's still got the flower. “Elise,” says Ansel Grey. “I'm here. I ought to have been. I'm not going to make it better.” And the whole of that great shining mass leans down, and puts its head upon his shoulder. {+sat7, inspire all, hurt 1d4 psychic one, xp 400}
+> Take your share [cure or carry_it or swam] | | You hold out your arms. So does Wren; so does Margit. “Give us Harold,” she says. “Give us the *lot*.” It comes. It's heavy. It's not so heavy as you'd thought; there're four of you. {+shared7, inspire all, xp 400}
+> Give it the baby [toshers or doreen] | | Queen Dolly plonks Doreen down upon the step. Doreen looks at it. It looks at Doreen. She opens her mouth. Nobody's ever *shown* it how before. {+doreen7, inspire all, xp 300}
+win: It lets go. It goes up by every pipe, by every drain; by every tap in Ostermouth: and it's only water. {+reservoir_done, done}
+end: Above you, through a mile of brick, you can hear them. It's a whole city crying; it's the loudest thing that there's ever been. After a while, here and there, in the middle, somebody's laughing. {xp 350}
+ending [sat7 & shared7]: Where Does It Hurt? | It's over the door, now. There's no tanks. There's a bench, and somebody at the other end. Doctor Wren's got forty; they don't fix it. In the Reservoir there's a thing about the size of a cat, quite clear, that comes when you call it. On Tuesdays a man with burned hands goes down and reads to it from Keeper Osk's letters. It thinks that they're very funny.
+ending [boy]: Bed Nineteen | Margit's got ten, now. The tenth's alive: he's six; he's a terror; he won't eat his crusts. She does Harold in the mornings with him on her knee. “*Who* was that one?” he says. She tells him. He'd like to know what Harold would've said about crusts. Nobody on Tanner's Row has had a good night's sleep since.
+ending: The Noise | They've never got it quiet again. It's a rude, loud, weeping, quarrelling sort of place. There's a fiddle. The fountain's gone; the dolphin's outside the Fuller's Arms with a cap on its nose. Strangers ask how you can stand it. “*Stand* it?” they say, in Ostermouth. “Who's *standing?* Sit down. What's up with you?”

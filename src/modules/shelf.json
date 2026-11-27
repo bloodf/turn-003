@@ -1,0 +1,1682 @@
+[
+ {
+  "id": "saltledger",
+  "code": "R1",
+  "title": "The Salt Ledger",
+  "lo": 1,
+  "hi": 7,
+  "tags": [
+   "coast",
+   "smugglers",
+   "debts of the dead"
+  ],
+  "tone": "mystery",
+  "inks": [
+   "#123f4f",
+   "#e2643c"
+  ],
+  "pitch": "A customs house burns, and by morning half the town owes money to a man who drowned eighty years ago.",
+  "about": [
+   "Harrow Quay lives on salt. Every barrel is weighed, taxed and written down, and the book it is written in has just gone up in smoke along with the house that held it. Three tide-clerks are missing. Nobody saw anything. Everybody is suddenly very interested in buying you a drink.",
+   "The Salt Ledger is an introduction for new heroes: a town to learn, a coast to explore, and a question that gets heavier each time you answer it. Who is owed, and for what?"
+  ],
+  "patron": [
+   "Odo Marsh",
+   "reeve of Harrow Quay, who keeps the Gannet inn"
+  ],
+  "places": [
+   {
+    "key": "town",
+    "name": "Harrow Quay",
+    "kind": "village"
+   },
+   {
+    "key": "under",
+    "name": "The Customs Undercroft",
+    "kind": "dungeon"
+   },
+   {
+    "key": "caves",
+    "name": "The Drowned Stair",
+    "kind": "cave"
+   },
+   {
+    "key": "tallow",
+    "name": "Tallow House",
+    "kind": "castle"
+   },
+   {
+    "key": "pans",
+    "name": "The Brinefields",
+    "kind": "wilds"
+   },
+   {
+    "key": "cove",
+    "name": "Corpse-Candle Cove",
+    "kind": "dungeon"
+   },
+   {
+    "key": "court",
+    "name": "The Drowned Court",
+    "kind": "dungeon"
+   },
+   {
+    "key": "keep",
+    "name": "Under the Spring Tide",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "Ashes on the Quay",
+    "lvl": 1,
+    "at": "Harrow Quay"
+   },
+   {
+    "title": "The Drowned Stair",
+    "lvl": 2,
+    "at": "The Drowned Stair"
+   },
+   {
+    "title": "The Widow Tallow",
+    "lvl": 3,
+    "at": "Tallow House"
+   },
+   {
+    "title": "The Brinefields",
+    "lvl": 4,
+    "at": "The Brinefields"
+   },
+   {
+    "title": "Corpse-Candle Cove",
+    "lvl": 5,
+    "at": "Corpse-Candle Cove"
+   },
+   {
+    "title": "The Drowned Court",
+    "lvl": 6,
+    "at": "The Drowned Court"
+   },
+   {
+    "title": "Spring Tide",
+    "lvl": 6,
+    "at": "Harrow Quay"
+   },
+   {
+    "title": "The King Under the Tide",
+    "lvl": 7,
+    "at": "Under the Spring Tide"
+   }
+  ],
+  "hours": 30,
+  "words": 12043,
+  "people": 14,
+  "fights": 25,
+  "scenes": 28,
+  "endings": 3
+ },
+ {
+  "id": "bells",
+  "code": "R2",
+  "title": "Bells Under Wend",
+  "lo": 1,
+  "hi": 7,
+  "tags": [
+   "village",
+   "the restless dead",
+   "a hard kindness"
+  ],
+  "tone": "grim",
+  "inks": [
+   "#2b2f4e",
+   "#c9a227"
+  ],
+  "pitch": "The dead of Wend have come back to finish their chores, and nobody in the village wants you to stop them.",
+  "about": [
+   "Forty years ago they dammed the river and drowned the old village, church and all. Now the bell is ringing down there. The first dead man came home on a Tuesday, mended a fence he had promised to mend, and sat down by the fire. His widow gave him soup. He cannot eat it. She gives it to him every night.",
+   "Bells Under Wend is a ghost story about people who are not afraid of the ghosts. The heroes must find who is ringing the bell, what he wants with so many willing hands, and whether it is a mercy to stop him."
+  ],
+  "patron": [
+   "Hanne Rook",
+   "constable of Wend, who buried her brother twice"
+  ],
+  "places": [
+   {
+    "key": "wend",
+    "name": "Wend",
+    "kind": "village"
+   },
+   {
+    "key": "vault",
+    "name": "The Chapel Vault",
+    "kind": "dungeon"
+   },
+   {
+    "key": "mill",
+    "name": "Harrowmill and the Weir",
+    "kind": "wilds"
+   },
+   {
+    "key": "old",
+    "name": "Old Wend",
+    "kind": "dungeon"
+   },
+   {
+    "key": "forge",
+    "name": "The Bellfoundry at Kettlecombe",
+    "kind": "dungeon"
+   },
+   {
+    "key": "abbey",
+    "name": "The Abbey of Saint Amity",
+    "kind": "castle"
+   },
+   {
+    "key": "road",
+    "name": "The Ossuary Road",
+    "kind": "dungeon"
+   },
+   {
+    "key": "tower",
+    "name": "The Tower of Hours",
+    "kind": "tower"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Mended Fence",
+    "lvl": 1,
+    "at": "Wend"
+   },
+   {
+    "title": "Harrowmill",
+    "lvl": 2,
+    "at": "Harrowmill and the Weir"
+   },
+   {
+    "title": "Old Wend",
+    "lvl": 3,
+    "at": "Old Wend"
+   },
+   {
+    "title": "The Bellfounders",
+    "lvl": 4,
+    "at": "The Bellfoundry at Kettlecombe"
+   },
+   {
+    "title": "A Rule of Silence",
+    "lvl": 5,
+    "at": "The Abbey of Saint Amity"
+   },
+   {
+    "title": "The Ossuary Road",
+    "lvl": 6,
+    "at": "The Ossuary Road"
+   },
+   {
+    "title": "The Long Night",
+    "lvl": 6,
+    "at": "Wend"
+   },
+   {
+    "title": "The Great Hour",
+    "lvl": 7,
+    "at": "The Tower of Hours"
+   }
+  ],
+  "hours": 28,
+  "words": 12358,
+  "people": 17,
+  "fights": 26,
+  "scenes": 30,
+  "endings": 3
+ },
+ {
+  "id": "barredhold",
+  "code": "R3",
+  "title": "The Barred Hold",
+  "lo": 2,
+  "hi": 8,
+  "tags": [
+   "dwarven hold",
+   "stolen names",
+   "children in charge"
+  ],
+  "tone": "heroic",
+  "inks": [
+   "#3a2418",
+   "#d98a2b"
+  ],
+  "pitch": "A dwarf-hold barred its doors three winters ago. Every evening a small voice answers the knock, and will not let anyone in.",
+  "about": [
+   "Karag Dun has not paid toll, sold iron or opened its gate in three years. Smoke still rises. Somebody still answers the door. The grown-ups, says the voice, are busy.",
+   "The Barred Hold is an adventure about getting in, and then about what has been holding the place together. There are machines to reason with, a parliament with a height limit, and, a long way down, a market where the only coin is your own name."
+  ],
+  "patron": [
+   "Factor Brannoch Pell",
+   "who holds the hold's debts and has a daughter inside"
+  ],
+  "places": [
+   {
+    "key": "gate",
+    "name": "The Gate of Karag Dun",
+    "kind": "wilds"
+   },
+   {
+    "key": "hold",
+    "name": "The Upper Hold",
+    "kind": "dungeon"
+   },
+   {
+    "key": "market",
+    "name": "The Under-Market",
+    "kind": "cave"
+   },
+   {
+    "key": "forge",
+    "name": "The Walking Forge",
+    "kind": "dungeon"
+   },
+   {
+    "key": "grey",
+    "name": "The Grey Road",
+    "kind": "dungeon"
+   },
+   {
+    "key": "tombs",
+    "name": "The Hall of Ancestors",
+    "kind": "dungeon"
+   },
+   {
+    "key": "court",
+    "name": "The Court of Half-Names",
+    "kind": "castle"
+   },
+   {
+    "key": "furnace",
+    "name": "The Name-Furnace",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Door That Answers",
+    "lvl": 2,
+    "at": "The Gate of Karag Dun"
+   },
+   {
+    "title": "The Parliament",
+    "lvl": 2,
+    "at": "The Upper Hold"
+   },
+   {
+    "title": "The Under-Market",
+    "lvl": 3,
+    "at": "The Under-Market"
+   },
+   {
+    "title": "The Forge That Walks",
+    "lvl": 4,
+    "at": "The Walking Forge"
+   },
+   {
+    "title": "The Grey Road",
+    "lvl": 5,
+    "at": "The Grey Road"
+   },
+   {
+    "title": "The Hall of Ancestors",
+    "lvl": 6,
+    "at": "The Hall of Ancestors"
+   },
+   {
+    "title": "The Court of Half-Names",
+    "lvl": 6,
+    "at": "The Court of Half-Names"
+   },
+   {
+    "title": "The Name-Furnace",
+    "lvl": 7,
+    "at": "The Name-Furnace"
+   }
+  ],
+  "hours": 29,
+  "words": 11789,
+  "people": 16,
+  "fights": 26,
+  "scenes": 29,
+  "endings": 3
+ },
+ {
+  "id": "antlers",
+  "code": "R4",
+  "title": "A Crown of Antlers",
+  "lo": 1,
+  "hi": 8,
+  "tags": [
+   "forest",
+   "the old bargain",
+   "hunters hunted"
+  ],
+  "tone": "grim",
+  "inks": [
+   "#24381f",
+   "#ee6a35"
+  ],
+  "pitch": "Every harvest the village crowns a King for a day. This year he went up into the wood, and the wood has sent him back with horns.",
+  "about": [
+   "Hazelmere has kept the bargain for three hundred years: one day in the year a man wears the straw crown, is feasted, is chased laughing to the edge of the trees, and comes home to bed. Nobody remembers what it was for. The wood does.",
+   "A Crown of Antlers is a campaign of forests, laws and consequences. The heroes will be hunted, and will learn the rules; and at the end of it someone has to wear the crown."
+  ],
+  "patron": [
+   "Goodwife Annis Hale",
+   "who keeps the harvest, and was this year's Queen"
+  ],
+  "places": [
+   {
+    "key": "hazel",
+    "name": "Hazelmere",
+    "kind": "village"
+   },
+   {
+    "key": "wood",
+    "name": "The Hither Wood",
+    "kind": "wilds"
+   },
+   {
+    "key": "law",
+    "name": "The Law Stones",
+    "kind": "wilds"
+   },
+   {
+    "key": "camp",
+    "name": "The Charcoal Camp",
+    "kind": "dungeon"
+   },
+   {
+    "key": "hall",
+    "name": "Thornwick Hall",
+    "kind": "castle"
+   },
+   {
+    "key": "barrow",
+    "name": "The First King's Barrow",
+    "kind": "dungeon"
+   },
+   {
+    "key": "grove",
+    "name": "The Drowned Grove",
+    "kind": "dungeon"
+   },
+   {
+    "key": "heart",
+    "name": "The Heart-Oak",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "Harvest Home",
+    "lvl": 1,
+    "at": "Hazelmere"
+   },
+   {
+    "title": "The Law of the Wood",
+    "lvl": 2,
+    "at": "The Law Stones"
+   },
+   {
+    "title": "The Charcoal Camp",
+    "lvl": 3,
+    "at": "The Charcoal Camp"
+   },
+   {
+    "title": "Thornwick Hall",
+    "lvl": 4,
+    "at": "Thornwick Hall"
+   },
+   {
+    "title": "The First King",
+    "lvl": 5,
+    "at": "The First King's Barrow"
+   },
+   {
+    "title": "The Drowned Grove",
+    "lvl": 6,
+    "at": "The Drowned Grove"
+   },
+   {
+    "title": "The Wild Hunt",
+    "lvl": 7,
+    "at": "Hazelmere"
+   },
+   {
+    "title": "The Heart-Oak",
+    "lvl": 7,
+    "at": "The Heart-Oak"
+   }
+  ],
+  "hours": 29,
+  "words": 11567,
+  "people": 14,
+  "fights": 27,
+  "scenes": 33,
+  "endings": 4
+ },
+ {
+  "id": "muster",
+  "code": "R5",
+  "title": "The Winter Muster",
+  "lo": 3,
+  "hi": 9,
+  "tags": [
+   "war",
+   "snow",
+   "a fortress to hold"
+  ],
+  "tone": "heroic",
+  "inks": [
+   "#1c2f4a",
+   "#9fc4d8"
+  ],
+  "pitch": "The giants are coming down with the snow. There is one fort in the way, and it has been sent forty men, half of them cooks.",
+  "about": [
+   "Wolfguard Hold was built for a thousand. Its captain has forty, a broken gate, a winter's beans and orders not to lose. You have been sent up as reinforcements. You are all of them.",
+   "The Winter Muster is a war campaign in which every sitting decides who will be standing on the wall in the last one. Save the village, find the allies, mend the gate, and then hold."
+  ],
+  "patron": [
+   "Captain Ysolde Harrow",
+   "commander of Wolfguard, who has already written her report of its fall"
+  ],
+  "places": [
+   {
+    "key": "fort",
+    "name": "Wolfguard Hold",
+    "kind": "castle"
+   },
+   {
+    "key": "kell",
+    "name": "Kellbrook",
+    "kind": "village"
+   },
+   {
+    "key": "pass",
+    "name": "The Hanged Pass",
+    "kind": "wilds"
+   },
+   {
+    "key": "mine",
+    "name": "Deepdelve",
+    "kind": "dungeon"
+   },
+   {
+    "key": "barrow",
+    "name": "The Frozen Legion",
+    "kind": "dungeon"
+   },
+   {
+    "key": "camp",
+    "name": "The Giants' Camp",
+    "kind": "wilds"
+   },
+   {
+    "key": "ice",
+    "name": "The Glacier Halls",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "Reinforcements",
+    "lvl": 3,
+    "at": "Wolfguard Hold"
+   },
+   {
+    "title": "Somebody Come Down",
+    "lvl": 3,
+    "at": "Kellbrook"
+   },
+   {
+    "title": "The Hanged Pass",
+    "lvl": 4,
+    "at": "The Hanged Pass"
+   },
+   {
+    "title": "Deepdelve",
+    "lvl": 5,
+    "at": "Deepdelve"
+   },
+   {
+    "title": "The Frozen Legion",
+    "lvl": 6,
+    "at": "The Frozen Legion"
+   },
+   {
+    "title": "The Giants' Camp",
+    "lvl": 7,
+    "at": "The Giants' Camp"
+   },
+   {
+    "title": "The Glacier Halls",
+    "lvl": 8,
+    "at": "The Glacier Halls"
+   },
+   {
+    "title": "The Loss of Wolfguard",
+    "lvl": 8,
+    "at": "Wolfguard Hold"
+   }
+  ],
+  "hours": 27,
+  "words": 9924,
+  "people": 15,
+  "fights": 26,
+  "scenes": 28,
+  "endings": 3
+ },
+ {
+  "id": "sarrakesh",
+  "code": "R6",
+  "title": "Sand Over Sarrakesh",
+  "lo": 4,
+  "hi": 10,
+  "tags": [
+   "desert",
+   "water",
+   "patient kings"
+  ],
+  "tone": "mystery",
+  "inks": [
+   "#5a2a12",
+   "#e8a33d"
+  ],
+  "pitch": "The wells are failing one by one, in an order. Somebody buried is counting down.",
+  "about": [
+   "Nine wells keep the city of Sarrakesh alive, and nine kings lie under the sand, each of whom dug one. This year the first well went dry. Then the second. The water-priests have worked out what happens after the ninth, and have started to pack.",
+   "Sand Over Sarrakesh is a desert campaign of tombs, water and bargains. The dead here are reasonable. They only want what they are owed, and they have had a long time to work out the sum."
+  ],
+  "patron": [
+   "Ziza Om-Harran",
+   "Mistress of Wells, who has eleven days of water"
+  ],
+  "places": [
+   {
+    "key": "city",
+    "name": "Sarrakesh",
+    "kind": "village"
+   },
+   {
+    "key": "well",
+    "name": "The Third Well",
+    "kind": "dungeon"
+   },
+   {
+    "key": "waste",
+    "name": "The Salt Waste",
+    "kind": "wilds"
+   },
+   {
+    "key": "tomb1",
+    "name": "The Tomb of the Measurer",
+    "kind": "dungeon"
+   },
+   {
+    "key": "camp",
+    "name": "The Caravanserai of Bitter Water",
+    "kind": "castle"
+   },
+   {
+    "key": "quarry",
+    "name": "The Namecutters' Quarry",
+    "kind": "dungeon"
+   },
+   {
+    "key": "court",
+    "name": "The Court of the Eight",
+    "kind": "dungeon"
+   },
+   {
+    "key": "ninth",
+    "name": "The Ninth King's House",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "Eleven Days",
+    "lvl": 4,
+    "at": "Sarrakesh"
+   },
+   {
+    "title": "The Measurer",
+    "lvl": 5,
+    "at": "The Tomb of the Measurer"
+   },
+   {
+    "title": "Bitter Water",
+    "lvl": 6,
+    "at": "The Caravanserai of Bitter Water"
+   },
+   {
+    "title": "The Namecutters' Quarry",
+    "lvl": 7,
+    "at": "The Namecutters' Quarry"
+   },
+   {
+    "title": "The Long Queue",
+    "lvl": 7,
+    "at": "Sarrakesh"
+   },
+   {
+    "title": "The Court of the Eight",
+    "lvl": 8,
+    "at": "The Court of the Eight"
+   },
+   {
+    "title": "The Man Who Asked",
+    "lvl": 9,
+    "at": "The Ninth King's House"
+   }
+  ],
+  "hours": 32,
+  "words": 8850,
+  "people": 11,
+  "fights": 23,
+  "scenes": 24,
+  "endings": 3
+ },
+ {
+  "id": "ninthfloor",
+  "code": "R7",
+  "title": "The Ninth Floor",
+  "lo": 3,
+  "hi": 9,
+  "tags": [
+   "wizard's tower",
+   "comedy",
+   "impossible rooms"
+  ],
+  "tone": "light",
+  "inks": [
+   "#2d1b46",
+   "#e0459b"
+  ],
+  "pitch": "The archmage is dead, his will is alive and walking about, and the floors of the tower have got into the wrong order.",
+  "about": [
+   "Ptolemy Quill left everything to whoever reaches the ninth floor. There's a queue. There are also a will with legs, a lodger who has not paid rent in two hundred years, a floor made entirely of weather, and one room which is always, whichever door you take, next.",
+   "The Ninth Floor is a comic adventure with teeth. The tower is grieving, and when a tower grieves it moves the furniture."
+  ],
+  "patron": [
+   "Mistress Adelina Crump",
+   "executor, and the only person who ever got a bill out of him"
+  ],
+  "places": [
+   {
+    "key": "lawn",
+    "name": "Quill's Lawn",
+    "kind": "tower"
+   },
+   {
+    "key": "garden",
+    "name": "The Third Floor",
+    "kind": "dungeon"
+   },
+   {
+    "key": "weather",
+    "name": "The Seventh Floor",
+    "kind": "dungeon"
+   },
+   {
+    "key": "lost",
+    "name": "The Second Floor",
+    "kind": "dungeon"
+   },
+   {
+    "key": "exam",
+    "name": "The Fifth Floor",
+    "kind": "dungeon"
+   },
+   {
+    "key": "lease",
+    "name": "The Eighth Floor",
+    "kind": "dungeon"
+   },
+   {
+    "key": "ninth",
+    "name": "The Ninth Floor",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Reading of the Will",
+    "lvl": 3,
+    "at": "Quill's Lawn"
+   },
+   {
+    "title": "Third Floor: Tuesday",
+    "lvl": 4,
+    "at": "The Third Floor"
+   },
+   {
+    "title": "Seventh Floor: Keep Shut",
+    "lvl": 5,
+    "at": "The Seventh Floor"
+   },
+   {
+    "title": "Second Floor: Lost Property",
+    "lvl": 6,
+    "at": "The Second Floor"
+   },
+   {
+    "title": "Fifth Floor: Silence",
+    "lvl": 7,
+    "at": "The Fifth Floor"
+   },
+   {
+    "title": "Eighth Floor: No Hawkers",
+    "lvl": 8,
+    "at": "The Eighth Floor"
+   },
+   {
+    "title": "The Ninth Floor",
+    "lvl": 8,
+    "at": "The Ninth Floor"
+   }
+  ],
+  "hours": 33,
+  "words": 8139,
+  "people": 11,
+  "fights": 22,
+  "scenes": 24,
+  "endings": 3
+ },
+ {
+  "id": "candlemarch",
+  "code": "R8",
+  "title": "Murder at Candlemarch",
+  "lo": 2,
+  "hi": 8,
+  "tags": [
+   "murder mystery",
+   "snowed in",
+   "everyone lies"
+  ],
+  "tone": "mystery",
+  "inks": [
+   "#1f1f28",
+   "#e5434c"
+  ],
+  "pitch": "The Duke is dead at his own table, the bridge is down, and there are nine people in the house who are glad.",
+  "about": [
+   "You came to Candlemarch to deliver a letter. By the fish course your host was face down in it. Now the snow has shut the valley, the Duke's heirs are dying in order of precedence, and the only people in the house without a motive are you.",
+   "Murder at Candlemarch is played for clues. Every servant knows something. Every guest is hiding something, and only one of the things is murder. On the last night you will have to stand up in the hall and say a name."
+  ],
+  "patron": [
+   "Mrs. Threnn",
+   "housekeeper, who has buried two dukes and is not sure about the third"
+  ],
+  "places": [
+   {
+    "key": "house",
+    "name": "Candlemarch",
+    "kind": "castle"
+   },
+   {
+    "key": "vault",
+    "name": "The Ducal Vault",
+    "kind": "dungeon"
+   },
+   {
+    "key": "village",
+    "name": "Marchfoot",
+    "kind": "village"
+   },
+   {
+    "key": "ice",
+    "name": "The Ice-House and the Frozen Mere",
+    "kind": "wilds"
+   },
+   {
+    "key": "walls",
+    "name": "Between the Walls",
+    "kind": "dungeon"
+   },
+   {
+    "key": "abbey",
+    "name": "Saint Ember's",
+    "kind": "dungeon"
+   },
+   {
+    "key": "under",
+    "name": "The Ninth Night",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Fish Course",
+    "lvl": 2,
+    "at": "Candlemarch"
+   },
+   {
+    "title": "Sixteen Dukes",
+    "lvl": 3,
+    "at": "The Ducal Vault"
+   },
+   {
+    "title": "The Village Below",
+    "lvl": 4,
+    "at": "Marchfoot"
+   },
+   {
+    "title": "Between the Walls",
+    "lvl": 5,
+    "at": "Between the Walls"
+   },
+   {
+    "title": "The Lady Under the Ice",
+    "lvl": 6,
+    "at": "The Ice-House and the Frozen Mere"
+   },
+   {
+    "title": "The Accusation",
+    "lvl": 7,
+    "at": "Candlemarch"
+   },
+   {
+    "title": "The Ninth Night",
+    "lvl": 8,
+    "at": "The Ninth Night"
+   }
+  ],
+  "hours": 26,
+  "words": 8598,
+  "people": 11,
+  "fights": 21,
+  "scenes": 22,
+  "endings": 3
+ },
+ {
+  "id": "gnollroad",
+  "code": "R9",
+  "title": "The Gnoll Road",
+  "lo": 1,
+  "hi": 7,
+  "tags": [
+   "caravan",
+   "open steppe",
+   "everyone counts"
+  ],
+  "tone": "heroic",
+  "inks": [
+   "#3d2b14",
+   "#d9b13b"
+  ],
+  "pitch": "Forty wagons, nine hundred miles of grass, and the gnolls have asked for the toll in children.",
+  "about": [
+   "The salt caravan goes out once a year, and this year the guards have quit. You have been hired on as outriders at a silver a day. Some of the wagons belong to liars. One has a passenger who must not arrive.",
+   "The Gnoll Road is a journey. The caravan is your village, and it moves. Who you save in the first week will be pulling beside you in the eighth, and there are forty wagons; you'll get to know them."
+  ],
+  "patron": [
+   "Caravan-Mistress Obo Tamar",
+   "nineteen crossings, one eye, no nonsense"
+  ],
+  "places": [
+   {
+    "key": "camp",
+    "name": "The Caravan",
+    "kind": "village"
+   },
+   {
+    "key": "ford",
+    "name": "Crow Ford",
+    "kind": "wilds"
+   },
+   {
+    "key": "fort",
+    "name": "Fort Quittance",
+    "kind": "castle"
+   },
+   {
+    "key": "barrows",
+    "name": "The Howe Country",
+    "kind": "wilds"
+   },
+   {
+    "key": "salt",
+    "name": "The Salt Mine at Whitethroat",
+    "kind": "dungeon"
+   },
+   {
+    "key": "town",
+    "name": "Nowhere Wells",
+    "kind": "village"
+   },
+   {
+    "key": "canyon",
+    "name": "The Laughing Gut",
+    "kind": "dungeon"
+   },
+   {
+    "key": "den",
+    "name": "The Mother Den",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "A Silver a Day",
+    "lvl": 1,
+    "at": "The Caravan"
+   },
+   {
+    "title": "Crow Ford",
+    "lvl": 2,
+    "at": "Crow Ford"
+   },
+   {
+    "title": "Stocktaking",
+    "lvl": 3,
+    "at": "Fort Quittance"
+   },
+   {
+    "title": "The Howe Country",
+    "lvl": 4,
+    "at": "The Howe Country"
+   },
+   {
+    "title": "Whitethroat",
+    "lvl": 5,
+    "at": "The Salt Mine at Whitethroat"
+   },
+   {
+    "title": "Nowhere Wells",
+    "lvl": 5,
+    "at": "Nowhere Wells"
+   },
+   {
+    "title": "The Laughing Gut",
+    "lvl": 6,
+    "at": "The Laughing Gut"
+   },
+   {
+    "title": "She Who Laughs Last",
+    "lvl": 7,
+    "at": "The Mother Den"
+   }
+  ],
+  "hours": 30,
+  "words": 8415,
+  "people": 12,
+  "fights": 25,
+  "scenes": 24,
+  "endings": 3
+ },
+ {
+  "id": "plague",
+  "code": "R10",
+  "title": "The Quiet Plague",
+  "lo": 2,
+  "hi": 8,
+  "tags": [
+   "city",
+   "sewers",
+   "a sickness that feels like peace"
+  ],
+  "tone": "grim",
+  "inks": [
+   "#1e3b36",
+   "#b7d04a"
+  ],
+  "pitch": "In Ostermouth the sick do not die. They stop being unhappy, and then they stop.",
+  "about": [
+   "It begins with a good night's sleep. Then you don't mind things. Then you don't move. The Guild of Physicians calls it a blessing and charges for it. Two hundred people a day are being carried, smiling, down to somewhere under the Infirmary.",
+   "The Quiet Plague is a city investigation for heroes who will have to catch the thing themselves to cure it. Bring somebody who complains."
+  ],
+  "patron": [
+   "Widow Margit Sorrow",
+   "the last person in Tanner's Row who is still cross"
+  ],
+  "places": [
+   {
+    "key": "row",
+    "name": "Tanner's Row",
+    "kind": "village"
+   },
+   {
+    "key": "infirm",
+    "name": "The Infirmary",
+    "kind": "castle"
+   },
+   {
+    "key": "sewer",
+    "name": "The Low Drains",
+    "kind": "dungeon"
+   },
+   {
+    "key": "market",
+    "name": "The Night Soil Market",
+    "kind": "cave"
+   },
+   {
+    "key": "crypt",
+    "name": "The Laughing Ward",
+    "kind": "dungeon"
+   },
+   {
+    "key": "isle",
+    "name": "Gull Rock Lazaret",
+    "kind": "wilds"
+   },
+   {
+    "key": "deep",
+    "name": "The Reservoir of Sorrows",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "A Good Night's Sleep",
+    "lvl": 2,
+    "at": "Tanner's Row"
+   },
+   {
+    "title": "The Infirmary",
+    "lvl": 3,
+    "at": "The Infirmary"
+   },
+   {
+    "title": "The Low Drains",
+    "lvl": 4,
+    "at": "The Low Drains"
+   },
+   {
+    "title": "The Laughing Ward",
+    "lvl": 5,
+    "at": "The Laughing Ward"
+   },
+   {
+    "title": "The Lazaret",
+    "lvl": 6,
+    "at": "Gull Rock Lazaret"
+   },
+   {
+    "title": "The Riot",
+    "lvl": 6,
+    "at": "Tanner's Row"
+   },
+   {
+    "title": "The Reservoir of Sorrows",
+    "lvl": 7,
+    "at": "The Reservoir of Sorrows"
+   }
+  ],
+  "hours": 24,
+  "words": 7738,
+  "people": 10,
+  "fights": 24,
+  "scenes": 21,
+  "endings": 3
+ },
+ {
+  "id": "ninecoins",
+  "code": "R11",
+  "title": "Nine Coins for the Devil",
+  "lo": 6,
+  "hi": 12,
+  "tags": [
+   "infernal law",
+   "a city in debt",
+   "heists on hell"
+  ],
+  "tone": "heroic",
+  "inks": [
+   "#4a0f16",
+   "#f0a030"
+  ],
+  "pitch": "You have been named in a will. What you have inherited is nine souls, one of them yours, and the instalments are overdue.",
+  "about": [
+   "A dead swindler has left the heroes his estate: a house in Vesper, a library card, and a contract with the Ninth Street Savings and Infernal. Nine coins, each worth one soul, are spent about the city. Collect them by the quarter-day or be collected.",
+   "Nine Coins for the Devil is a campaign of loopholes. Devils keep their word to the letter, so bring somebody who can read."
+  ],
+  "patron": [
+   "Septimus Fallow, deceased",
+   "who cheated a devil and now rather regrets whom he left it to"
+  ],
+  "places": [
+   {
+    "key": "vesper",
+    "name": "Vesper",
+    "kind": "village"
+   },
+   {
+    "key": "bank",
+    "name": "The Ninth Street Savings and Infernal",
+    "kind": "dungeon"
+   },
+   {
+    "key": "opera",
+    "name": "The Old Opera",
+    "kind": "castle"
+   },
+   {
+    "key": "cells",
+    "name": "The Debtors' Tower",
+    "kind": "tower"
+   },
+   {
+    "key": "mine",
+    "name": "The Brimstone Concern",
+    "kind": "dungeon"
+   },
+   {
+    "key": "farm",
+    "name": "Quarter-Day Farm",
+    "kind": "wilds"
+   },
+   {
+    "key": "court",
+    "name": "The Court of Equity",
+    "kind": "dungeon"
+   },
+   {
+    "key": "vault",
+    "name": "The Vault of Consideration",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Reading",
+    "lvl": 6,
+    "at": "Vesper"
+   },
+   {
+    "title": "The Old Opera",
+    "lvl": 7,
+    "at": "The Old Opera"
+   },
+   {
+    "title": "The Debtors' Tower",
+    "lvl": 8,
+    "at": "The Debtors' Tower"
+   },
+   {
+    "title": "The Brimstone Concern",
+    "lvl": 9,
+    "at": "The Brimstone Concern"
+   },
+   {
+    "title": "Quarter-Day Farm",
+    "lvl": 10,
+    "at": "Quarter-Day Farm"
+   },
+   {
+    "title": "The Court of Equity",
+    "lvl": 11,
+    "at": "The Court of Equity"
+   },
+   {
+    "title": "Quarter-Day",
+    "lvl": 11,
+    "at": "The Vault of Consideration"
+   }
+  ],
+  "hours": 28,
+  "words": 6388,
+  "people": 10,
+  "fights": 22,
+  "scenes": 19,
+  "endings": 2
+ },
+ {
+  "id": "eye",
+  "code": "R12",
+  "title": "The House of the Eye",
+  "lo": 7,
+  "hi": 13,
+  "tags": [
+   "heist",
+   "a crew",
+   "one impossible vault"
+  ],
+  "tone": "heroic",
+  "inks": [
+   "#16324f",
+   "#e8d44d"
+  ],
+  "pitch": "There is one vault in the world that cannot be robbed, because what guards it can see everything at once. You have nine days and a crew of liars.",
+  "about": [
+   "The Eye Tyrant Ozymora has kept the House on Seven Hills for three centuries. It has eleven eyes, never sleeps, and is the only honest banker on the continent, since nobody could possibly cheat it. It has something that you need. So does everybody else on your crew.",
+   "The House of the Eye is a heist in seven sittings: gather the crew, learn the house, steal the pieces, and then spend one long night putting the plan into effect and watching it go wrong."
+  ],
+  "patron": [
+   "Lady Corvina Ash",
+   "who plans things, and has planned this one for thirty years"
+  ],
+  "places": [
+   {
+    "key": "port",
+    "name": "Port Marrow",
+    "kind": "village"
+   },
+   {
+    "key": "hulk",
+    "name": "The Hulk",
+    "kind": "dungeon"
+   },
+   {
+    "key": "circus",
+    "name": "Vantongeren's Wonders",
+    "kind": "castle"
+   },
+   {
+    "key": "arch",
+    "name": "The Architect's Tomb",
+    "kind": "dungeon"
+   },
+   {
+    "key": "mirror",
+    "name": "The Mirror-Maker's Isle",
+    "kind": "wilds"
+   },
+   {
+    "key": "auction",
+    "name": "The Blind Auction",
+    "kind": "dungeon"
+   },
+   {
+    "key": "house",
+    "name": "The House on the Seventh Hill",
+    "kind": "castle"
+   },
+   {
+    "key": "vault",
+    "name": "The Vault",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Plan",
+    "lvl": 7,
+    "at": "Port Marrow"
+   },
+   {
+    "title": "The Hand",
+    "lvl": 8,
+    "at": "The Hulk"
+   },
+   {
+    "title": "The Mouth",
+    "lvl": 8,
+    "at": "Vantongeren's Wonders"
+   },
+   {
+    "title": "The Map",
+    "lvl": 9,
+    "at": "The Architect's Tomb"
+   },
+   {
+    "title": "The Mirror",
+    "lvl": 10,
+    "at": "The Mirror-Maker's Isle"
+   },
+   {
+    "title": "The Mask",
+    "lvl": 11,
+    "at": "The Blind Auction"
+   },
+   {
+    "title": "The House on the Seventh Hill",
+    "lvl": 11,
+    "at": "The House on the Seventh Hill"
+   },
+   {
+    "title": "Something It Did Not Expect",
+    "lvl": 12,
+    "at": "The Vault"
+   }
+  ],
+  "hours": 34,
+  "words": 7267,
+  "people": 10,
+  "fights": 24,
+  "scenes": 24,
+  "endings": 3
+ },
+ {
+  "id": "steward",
+  "code": "R13",
+  "title": "The Dragon's Steward",
+  "lo": 5,
+  "hi": 11,
+  "tags": [
+   "dragon",
+   "estate management",
+   "civil war"
+  ],
+  "tone": "light",
+  "inks": [
+   "#5c1a10",
+   "#f5c542"
+  ],
+  "pitch": "A red dragon has hired you to find out who is robbing it. It's in rather a bad temper. You have references to think of.",
+  "about": [
+   "Kharzul the Red has ruled the Smoking Vale for six hundred years. Taxes are low, bandits are unheard of, and every tenth year somebody is eaten by lot. Now a coin a night has been going missing from the hoard, and it can count.",
+   "The Dragon's Steward puts the heroes in a gold chain of office and gives them a valley to run. Rents, marriages, a rebellion, an audit; and, at the end of it, a decision about the landlord."
+  ],
+  "patron": [
+   "Kharzul",
+   "landlord of the Smoking Vale"
+  ],
+  "places": [
+   {
+    "key": "vale",
+    "name": "Ashmarket",
+    "kind": "village"
+   },
+   {
+    "key": "hall",
+    "name": "Coinhall",
+    "kind": "castle"
+   },
+   {
+    "key": "hoard",
+    "name": "The Hoard",
+    "kind": "dungeon"
+   },
+   {
+    "key": "hills",
+    "name": "The Sheepwalks",
+    "kind": "wilds"
+   },
+   {
+    "key": "mill",
+    "name": "The Rebels' Mill",
+    "kind": "dungeon"
+   },
+   {
+    "key": "keep",
+    "name": "Castle Damask",
+    "kind": "castle"
+   },
+   {
+    "key": "egg",
+    "name": "The Cold Nest",
+    "kind": "dungeon"
+   },
+   {
+    "key": "fire",
+    "name": "The Throat",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Situation Vacant",
+    "lvl": 5,
+    "at": "Coinhall"
+   },
+   {
+    "title": "The Sheepwalks",
+    "lvl": 6,
+    "at": "The Sheepwalks"
+   },
+   {
+    "title": "The Audit",
+    "lvl": 7,
+    "at": "The Hoard"
+   },
+   {
+    "title": "Tuesday at the Mill",
+    "lvl": 7,
+    "at": "The Rebels' Mill"
+   },
+   {
+    "title": "Castle Damask",
+    "lvl": 8,
+    "at": "Castle Damask"
+   },
+   {
+    "title": "The Cold Nest",
+    "lvl": 9,
+    "at": "The Cold Nest"
+   },
+   {
+    "title": "The Day of the Lot",
+    "lvl": 10,
+    "at": "Ashmarket"
+   },
+   {
+    "title": "The Landlord",
+    "lvl": 11,
+    "at": "The Throat"
+   }
+  ],
+  "hours": 32,
+  "words": 7255,
+  "people": 10,
+  "fights": 25,
+  "scenes": 21,
+  "endings": 3
+ },
+ {
+  "id": "lastlamp",
+  "code": "R14",
+  "title": "The Last Lamp",
+  "lo": 8,
+  "hi": 14,
+  "tags": [
+   "underdark",
+   "expedition",
+   "running out of light"
+  ],
+  "tone": "grim",
+  "inks": [
+   "#14141c",
+   "#8fd3c7"
+  ],
+  "pitch": "The sun did not come up. Somebody has to go down and find out where it went.",
+  "about": [
+   "For nine days there has been no dawn. The scholars say that the sun sets into the earth each night and is rowed back under it, and that the boat has not come in. You are going down to look, with forty porters, eleven hundred candles and a cook.",
+   "The Last Lamp is an expedition. Light is counted. So are friends. The deeper you go the more the dark has to say for itself, and some of it is true."
+  ],
+  "patron": [
+   "Professor Hesper Lyle",
+   "Royal Society of Lamps, who was laughed at"
+  ],
+  "places": [
+   {
+    "key": "city",
+    "name": "Lamplight",
+    "kind": "village"
+   },
+   {
+    "key": "shaft",
+    "name": "The Setting",
+    "kind": "dungeon"
+   },
+   {
+    "key": "river",
+    "name": "The Under-River",
+    "kind": "cave"
+   },
+   {
+    "key": "town",
+    "name": "Blindfair",
+    "kind": "castle"
+   },
+   {
+    "key": "fungus",
+    "name": "The Pale Forest",
+    "kind": "wilds"
+   },
+   {
+    "key": "roper",
+    "name": "The Teeth",
+    "kind": "dungeon"
+   },
+   {
+    "key": "necro",
+    "name": "The City of the Put-Out",
+    "kind": "dungeon"
+   },
+   {
+    "key": "house",
+    "name": "Mother Umbra's House",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Ninth Night",
+    "lvl": 8,
+    "at": "Lamplight"
+   },
+   {
+    "title": "The Setting",
+    "lvl": 9,
+    "at": "The Setting"
+   },
+   {
+    "title": "The Under-River",
+    "lvl": 10,
+    "at": "The Under-River"
+   },
+   {
+    "title": "Blindfair",
+    "lvl": 11,
+    "at": "Blindfair"
+   },
+   {
+    "title": "The Pale Forest",
+    "lvl": 12,
+    "at": "The Pale Forest"
+   },
+   {
+    "title": "The Teeth, and the City",
+    "lvl": 13,
+    "at": "The City of the Put-Out"
+   },
+   {
+    "title": "The House in the Dark",
+    "lvl": 14,
+    "at": "Mother Umbra's House"
+   }
+  ],
+  "hours": 30,
+  "words": 6871,
+  "people": 11,
+  "fights": 22,
+  "scenes": 21,
+  "endings": 3
+ },
+ {
+  "id": "lich",
+  "code": "R15",
+  "title": "When the Lich Forgot",
+  "lo": 11,
+  "hi": 17,
+  "tags": [
+   "high magic",
+   "memory",
+   "the end of the world"
+  ],
+  "tone": "mystery",
+  "inks": [
+   "#25143a",
+   "#6fd6a0"
+  ],
+  "pitch": "The greatest necromancer who ever lived has begun to lose his memory. He cannot recall what he was holding shut.",
+  "about": [
+   "For nine centuries Azhrak the Deathless has sat on his throne in the Black Spire with both arms stretched out, and the world has taken it for a threat. Last month he put one arm down to look for his spectacles. Something on the far side of the sky noticed.",
+   "When the Lich Forgot is for high-level heroes. The monster is old, frightened and courteous. You have been hired by his valet to find out who he was, before he puts down the other arm."
+  ],
+  "patron": [
+   "Mr. Knuckle",
+   "valet to Azhrak the Deathless"
+  ],
+  "places": [
+   {
+    "key": "spire",
+    "name": "The Black Spire",
+    "kind": "tower"
+   },
+   {
+    "key": "dread",
+    "name": "Dreadham",
+    "kind": "village"
+   },
+   {
+    "key": "school",
+    "name": "The Drowned School",
+    "kind": "dungeon"
+   },
+   {
+    "key": "tomb",
+    "name": "The Garden Tomb",
+    "kind": "dungeon"
+   },
+   {
+    "key": "siege",
+    "name": "The Conclave's Camp",
+    "kind": "castle"
+   },
+   {
+    "key": "sky",
+    "name": "The Underside of the Sky",
+    "kind": "dungeon"
+   },
+   {
+    "key": "mind",
+    "name": "The House of Azhrak",
+    "kind": "dungeon"
+   }
+  ],
+  "chapters": [
+   {
+    "title": "The Situation",
+    "lvl": 11,
+    "at": "The Black Spire"
+   },
+   {
+    "title": "Dreadham",
+    "lvl": 12,
+    "at": "Dreadham"
+   },
+   {
+    "title": "The Drowned School",
+    "lvl": 13,
+    "at": "The Drowned School"
+   },
+   {
+    "title": "The Garden Tomb",
+    "lvl": 14,
+    "at": "The Garden Tomb"
+   },
+   {
+    "title": "The Conclave",
+    "lvl": 15,
+    "at": "The Conclave's Camp"
+   },
+   {
+    "title": "The Underside of the Sky",
+    "lvl": 16,
+    "at": "The Underside of the Sky"
+   },
+   {
+    "title": "The House of Azhrak",
+    "lvl": 17,
+    "at": "The House of Azhrak"
+   }
+  ],
+  "hours": 29,
+  "words": 7277,
+  "people": 10,
+  "fights": 22,
+  "scenes": 20,
+  "endings": 3
+ }
+]

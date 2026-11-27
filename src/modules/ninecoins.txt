@@ -1,0 +1,344 @@
+id: ninecoins
+title: Nine Coins for the Devil
+code: R11
+levels: 6-12
+tags: infernal law, a city in debt, heists on hell
+tone: heroic
+ink: #4a0f16 #f0a030
+pitch: You have been named in a will. What you have inherited is nine souls, one of them yours, and the instalments are overdue.
+about: A dead swindler has left the heroes his estate: a house in Vesper, a library card, and a contract with the Ninth Street Savings and Infernal. Nine coins, each worth one soul, are spent about the city. Collect them by the quarter-day or be collected.
+about: Nine Coins for the Devil is a campaign of loopholes. Devils keep their word to the letter, so bring somebody who can read.
+villain: Mr. Barnaby Quillon | chain_devil | wants the heroes to default | has never in eleven hundred years been given anything
+patron: Septimus Fallow, deceased | who cheated a devil and now rather regrets whom he left it to
+secret: The contract can be cancelled by a gift: if the devil ever accepts something freely given, he is in debt himself. Fallow knew. He couldn't do it, because he never liked anybody enough to practise.
+place vesper = Vesper | village size=3 seed=vesper-4 time=18 weather=rain open=yes | A city of stairs and pawnshops. It's the sort of rain that has a receipt.
+place bank = The Ninth Street Savings and Infernal | dungeon size=3 seed=ninthstreet-8 theme=infernal caves=.05 fams=fiend+infernal pop=.54 | Marble, brass and hush. There's a doorman. He's got a tail, and he has tucked it in.
+place opera = The Old Opera | castle size=1 seed=opera-6 style=ashlar roofs=cone moat=no time=20 fams=undead+bandit pop=.18 folk=yes | Gilt, plush and moth. It's been running the same show for sixty years, as nobody can afford to let it close.
+place cells = The Debtors' Tower | tower seed=debtors-3 theme=crypt biome=blight time=21 fams=undead+construct+fiend pop=.59 | Every floor's a decade. They let you down a floor when you've paid.
+place mine = The Brimstone Concern | dungeon size=3 seed=brimcon-2 theme=infernal caves=.4 fams=fiend+mine+elemental pop=.64 | It was a coal-mine. They went on past the coal.
+place farm = Quarter-Day Farm | wilds size=2 seed=quarterfarm-7b biome=blight theme=infernal time=13 fams=fiend+undead+wild pop=.54 | A nice stone farmhouse in a field of something black. There's washing out. It's all the one size.
+place court = The Court of Equity | dungeon size=2 seed=equity-9 theme=infernal levels=2 caves=.05 fams=fiend+construct+infernal pop=.64 | The waiting-room's got magazines. They're all about you.
+place vault = The Vault of Consideration | dungeon size=3 seed=consider-5 theme=infernal levels=2 caves=.15 fams=fiend+infernal+elemental pop=.64 | The bank's own bank. It's cold in here. It's where they keep what they have never been able to spend.
+
+== The Reading | 6 | vesper
+read: “*To the bearers of this card,*” reads the notary, “*being the only persons who ever returned an umbrella to me*—” She looks up. “Did you?” You did; it was raining; you'd no idea who he was. “Well,” she says, and turns over the page, and goes a very bad colour. “He's left you his *debts*.”
+
+There's a knock. There's a gentleman in the doorway with a ledger. He hasn't got wet.
+goal: Understand what you have inherited, and find the first coin.
+dm: Coins: 1 umbrella stand (Fallow's house), 2 the opera diva, 3 pawnbroker, 4 debtor king, 5 a child's birthday, 6 mine, 7 farm, 8 court, 9 the devil's own pocket. Track 'coins'.
+-- npc notary @vesper:shop stays | Mistress Parchment Lowe | notary | commoner/h:wizard:human:f
+look: is reading the small print through a water-drop
+hi: It's valid. I'm so sorry. It's the most valid thing that I've ever seen.
+? The contract (terms, nine): Nine souls, pledged as nine coins. Bring in all nine by quarter-day; that's seven weeks; and it's discharged. Miss one and it's nine of *you*. You, your heirs, assigns and, it says here, pets.
+? The coins (find, where): He spent them. Each one's a soul that somebody put up for something. They'll be about the place. They're warm. You could ask at the bank. I wouldn't.
+? Loophole (break, way): There's always one; they're obliged. It's clause forty. “*Save by consideration freely given.*” It's the only clause that's not been initialled. {+clause40, xp 40}
+-- npc quillon @vesper:tavern | Mr. Barnaby Quillon | Ninth Street Savings | commoner/h:warlock:tiefling:m
+look: has a dry umbrella, a dry hat and an extremely warm handshake
+hi: *Delighted*. I do like to put a face to an asset.
+? The debt (coins, quarter): I hope you won't think of me as the enemy. I'm a *calendar*.
+? Septimus Fallow (dead, cheated): I liked Septimus. He'd never give one a straight sovereign. He'd have been mine on the Tuesday; so he died on the Monday. I admired that.
+? Help (hint, please): I'm bound to answer any question truthfully. But I charge. (He waits, with his pen up.)
+! Have a biscuit (persuasion 12): He looks at the plate. He puts his hands behind his back. “I never,” says Mr. Quillon; and for an instant there's something in his face like a dog outside a butcher's. “I'm afraid that I couldn't *possibly*.” {+biscuit, xp 80} // “What are the terms?” he says.
+-- npc widow1 @vesper:cottage | Mrs. Fallow | widow | commoner/townswoman
+look: is playing patience, and cheating
+hi: He left me the cat. He said I'd be safer.
+? Septimus (husband): Couldn't give a thing away. He'd say, what's the catch? I gave him a muffler once. He had it *valued*.
+? The house (umbrella, yours): It's yours now. Don't sit in the green chair. The hall-stand's where he kept anything that he was ashamed of.
+-- scene house1 @vesper:study many | Fallow's House
+say: Nine clocks, all fast. A green chair. A hall-stand with an umbrella in it: it's yours; you'd lent him it.
+> Turn out the hall-stand | investigation 13 | Bills; a muffler, with a price-tag; and right at the bottom, in a twist of paper, something like a sovereign that's as warm as a mouse. *FOR THE CAT, M.F.* {+coin1, add coins 1, xp 80} // There's a mantrap. It's the sort of house that has one.  {hurt 2d6 piercing one}
+> Sit in the green chair | | It closes. It's his strong-box; he'd thought that it would be funny. When you've been got out you've got a map, up your sleeve, of who owed what. {hurt 1d8 piercing one, +debtmap, xp 60}
+> Ask the cat | animal 13 | It looks at the hall-stand. It looks at you as though you were *new*. {+catsays, xp 40} // It's a cat.
+-- fight collectors1 @vesper:out:.3 | A Second Opinion | bearded_devil, thug* | medium
+say: The Eighth Street Mutual have heard. They're a *hostile* concern.
+win: One has a card: LOANS. WE REMEMBER YOUR MOTHER.
+-- trial pawn1 @vesper:out:.5 | Three Balls | 4 before 3
+say: Uncle Moth's pawnshop. Everything in Vesper's been through it; there's a coin in here somewhere, in nine floors of other people's wedding rings.
+try: investigation 13 Read the tickets
+try: sleight 13 The back room
+try: persuasion 13 Haggle
+try: deception 13 “It's my aunt's”
+try: perception 13 Feel for warm
+win: It's the bob of a stopped clock. You pay for it. He's astonished. {+coin2, add coins 1, gold -30, xp 120}
+lose: You leave with a stuffed bear. It's got a coin in it; he'd have told you. You've paid for the *bear*. {+coin2, add coins 1, gold -120}
+-- fight bear1 @vesper:out:.65 | The Bear | flesh_golem, animated_armor* | hard
+say: That's the other thing: it wasn't stuffed very tightly.
+win: There's a nice tear, that'll want sewing.
+-- boss bailiff1 @vesper:out:.85 [coins>=1] | Formal Notice | Bailiff Thrum = gladiator!, hell_hound, bearded_devil | hard
+say: “I've got to serve it,” says an enormous thing in a bowler, “*personal*. It's nothing *personal*. You've got to be touched with it.” It's red hot.
+win: You take it by the corner, with tongs. SEVEN WEEKS. It's signed, with a flourish; and under that, so small that you'd need a drop of water, “*I should so much have liked the biscuit.*” {+notice1, +biscuit, magic, gold 80, done}
+end: Two. There're seven more. The notary's made a list; it's in the order of unpleasantness. At the top there's a soprano. {+ch1, open opera, xp 160}
+
+== The Old Opera | 7 | opera
+read: It's *Orpheus*. It's been *Orpheus* for sixty years. La Vespertina sang it first when she was nineteen, she's still nineteen, and the audience has got extremely old. “*She put up hers for the top C*,” says the stage-door man, “*and she's had to hold it.*”
+goal: Get La Vespertina's coin.
+dm: She can never stop singing; the audience is cursed too. Finish the opera's last act (which they never reach).
+-- npc stage @opera:guard | Old Gus | stage-door | commoner/villager
+look: has wool in both ears
+hi: WHAT?
+? The diva (vespertina, her): NINETEEN! LOVELY GIRL! I WAS TWENTY! WE WERE GOING TO GET A *FISH* SHOP!
+? The last act (end, why): THEY NEVER DO IT! HE LOOKS ROUND! THEY ALWAYS STOP WHERE HE LOOKS ROUND! IF YOU WAS TO DO THE *NEXT* BIT SHE'D HAVE TO STOP, IT'S *WRITTEN!*
+? The coin (warm): IN HER *MOUTH!* IT'S UNDER THE *TONGUE!*
+-- npc prompt @opera:library | The Prompter | since deceased | skeleton/skeleton
+look: has his finger on the line
+hi: *“Che farò—”* Oh. You know your lines? Nobody does.
+? The score (music, act): It's under the stage; the rats have got Act Four. I've been humming it, in case.
+? Orpheus (part, sing): The tenor died in the interval; of the original run. We've used an *understudy*. He's a coat on a stick.
+-- scene box2 @opera:dining many | The Boxes
+say: Eight hundred people in evening dress, dead or next to it, with their opera-glasses up. She's on the top C.
+> Clap | | It's unheard of. One after another they put down their glasses, to see who's done that. Eight hundred gloved hands remember what they're for. {+clapped, inspire all, xp 80}
+> Whisper to the Duchess in Box Nine | persuasion 13 | “Is it *over?*” she says. “Has he *looked?*” She gives you her late husband's lorgnette; with it you can see the strings. {+lorgnette, xp 80} // “*Shhh!*” says everybody.
+> Cough | performance 12 | It goes round the house. She *blinks*. It's the first time in sixty years. {+blinked, xp 60} // It's only a cough.
+-- fight ballet2 @opera:hall | The Corps de Ballet | specter*, ghast | hard
+say: Furies, on points. They've been waiting to come on.
+win: They take their curtain. There's a wreath.
+-- trial rats2 @opera:storage- | Act Four | 4 before 3
+say: The score's under the stage, with eleven hundred rats, and they can read.
+try: animal 14 Charm them
+try: performance 14 Trade them Act Two
+try: sleight 13 A page at a time
+try: athletics 13 The trap-winch
+try: history 13 Fill in the gaps
+win: You've got it all, bar nine bars. You'll have to hum. {+act4, xp 200}
+lose: You've got most of it; in bits. {+act4, hurt 3d6 piercing one}
+-- fight phantom2 @opera:tower2 | The Management | wraith, bearded_devil* | hard
+say: There's a gentleman in the flies with half a mask. He's from the bank. He's paid to see that it runs.
+win: He falls a long way. He falls in tune.
+-- puzzle aria2 @opera:study | What He Should Have Sung
+say: You've nine bars missing; it's the answer to the whole thing. The Furies ask Orpheus: “*What is it that you must carry out of Hell, and mayn't look at, and can't put down?*”
+answer: faith|hope|trust|love|grief|belief
+hint performance 13: He's only got to go on *not* looking.
+hint insight 13: He looked because he hadn't any.
+wrong: A sandbag. {hurt 2d8 bludgeoning one dex 14}
+win: That's it. It scans. {+nine_bars, inspire all, xp 200}
+lose: You'll *la*.
+-- boss diva2 @opera:throne [act4] | The Last Act | The Conductor = vrock!, specter*, ghast | deadly
+say: You go on. You're in a laurel wreath. The conductor looks up, and he's got a beak. Up there on the rock, nineteen, with the tears running down, La Vespertina holds her note; she sees you, turning over to Act Four. And she *nods*.
+> Sing it [nine_bars] | performance 13 | You're not good. It doesn't signify. You walk off up the ramp, singing, and you *don't look round*. Behind you there's one step. Another. Then the top C comes gently down, by way of the scale, and stops. {inspire all, +sang, xp 250} // You crack. She comes in over the top of you.
+> Have Gus sing it | persuasion 13 | He takes the wool out. He's eighty. He's got a voice like a gate; he knows every word. He doesn't look round; he's never needed to. {inspire all, +gus_sang, xp 250} // “WHAT?” says Gus.
+win: Silence. You can hear eight hundred people breathe out, and not in. She takes the coin from under her tongue. She's got some grey in her hair already. {+coin3, add coins 1, magic, gold 100, done}
+end [gus_sang]: It's called Vespertina's. It's cod, mainly. “I've gone *off* music,” she says, wrapping yours. {+ch2, open cells, xp 200}
+end: They bring the house down. It's condemned; they were going to in any case. She's sitting on a trunk, hoarse as a crow, eating chips with Gus. Three. {+ch2, open cells, xp 200}
+
+== The Debtors' Tower | 8 | cells
+read: There's a king in the Debtors' Tower, on the lowest floor but one; he's been paying off a war. He pledged for victory. He won; everybody died. “*He's the fourth coin in his crown*,” says the notary, “*and he won't give it up till he has paid. He's got eleven hundred years to go.*”
+goal: Get the King of Nowhere out from under his debt.
+dm: Floors of decades of debt; gaolers; compassion; a bookkeeping error.
+-- npc turnkey @cells:start | Turnkey Oss | gaoler | commoner/h:fighter:half_orc:m
+look: is in for a cartwheel himself
+hi: I'll be out Friday. I've been out Friday for nineteen years. It's the interest.
+? The king (nowhere, war): Down at the bottom. He's no trouble. He makes little soldiers out of bread; he says sorry to 'em.
+? The books (sums, error): There's a room. It adds up all by itself, nobody's checked it since they put it in. Why'd you *check* it? It's a *machine*.
+-- fight clerks3 @cells:.2 | Compound Interest | animated_armor*, bearded_devil | hard
+say: Whenever you knock one down there's one and a bit.
+win: It rounds off.
+-- scene floors3 @cells:.35 many | The Decades
+say: Cells, with a window each. There's somebody at every one.
+> Pay a small one | gold 40 | It's for a cartwheel. Oss reads the chit. He takes off his keys; he's not sure what to do with his hands. He goes out, in the rain, and you can hear him laughing. {+oss_free, inspire all, xp 120}
+> Ask what they bought | insight 13 | A pony. A better nose. Another week with her. There's not one that you wouldn't have. {+small3, xp 80} // They're ashamed.
+> Let them out of the window | athletics 13 | Nine. It's a long drop; but there's a dung-cart. {+nine_out, xp 120} // The bars are hot. {hurt 2d6 fire one}
+-- trial engine3 @cells:library~.5 | The Reckoning Engine | 5 before 3
+say: It's brass, it's nine floors high. It's working out what everyone owes. Somewhere in it there's a mistake.
+try: investigation 15 Follow one sum through
+try: arcana 14 Read its thinking
+try: sleight 14 A finger in the gears
+try: history 14 The old coinage
+try: perception 14 Hear the tooth that slips
+win: There. It's a nought. Somebody'd put a nought where there ought to have been an *oh*: it's in the line that says “O King”. It has been multiplying by it. {+nought, inspire all, xp 280}
+lose: You've had your sleeve in it. {hurt 5d6 bludgeoning one dex 14}
+-- fight war3 @cells:.65 | The War | skeleton*, wight, skeleton_archer | deadly
+say: It's his; it's in his cell with him: both sides. They're about so high; and then you've stepped in, and so are you.
+> Order the retreat | intimidation 14 | Both armies look up. Nobody ever had. They go off, in opposite directions, quite quickly, as though you might change your mind. {skip, inspire all, xp 220} // They can't hear you for the drums.
+win: You're up to the ankle in crumbs.
+-- puzzle gate3 @cells:shrine~.78 | The Last Gate
+say: “*The more I'm paid the less I'm owed; the less I'm owed the more I'm feared that I shall end. I feed upon what I've already eaten. What am I?*”
+answer: interest|debt|a debt
+hint history 13: Oss has been out on Friday for nineteen years.
+hint investigation 13: It's the thing that the engine does.
+wrong: It's added that to the bill. {hurt 3d6 necrotic one con 14}
+win: The gate opens, out of professional courtesy. {xp 220}
+lose: You go over it.
+-- boss king3 @cells:last [nought or nine_out or oss_free] | The King of Nowhere | The Governor of the Tower = chain_devil!, bearded_devil*, hell_hound | deadly
+say: He's at a table with a regiment of bread. The coin's in his crown. “I can't,” says the king. “It's *theirs*. I'm paying them back.” And behind him, unfolding, all chain, the Governor rattles like a purse.
+> Show him the nought [nought] | | He's good at sums; he's had the practice. He goes over it with the butt-end of a loaf. He goes over it again. “I'd *paid*,” he says. “I paid in the first *week*.” The Governor hasn't a leg to stand on. It's all hooks. {inspire all, +king_free, hurt 1d6 slashing one, xp 300}
+> Tell him they've gone home | persuasion 14 | He looks under the table. There's not a soldier there. There's only a small door, in the wainscot, ajar. {+king_free, inspire all, xp 250} // “They'd have *said*,” says the king.
+win: He takes off the crown. There's a mark right round. {+coin4, add coins 1, magic, gold 150, done}
+end: He's opened a baker's. He doesn't do soldiers. He does a sort of plaited thing, in the shape of people holding hands. Four. {+ch3, open mine, xp 240}
+
+== The Brimstone Concern | 9 | mine
+read: The fifth coin's in a mine. It bought a seam that would never give out. Nine villages've been working it ever since: on shift, three hundred years; they've not come up. “*They think that it's still the Tuesday,*” says the notary.
+goal: Call time at the Brimstone Concern.
+dm: Miners with candles; a foreman-devil; strike; canary; whistle.
+-- npc canary @mine:.12 | Captain Sparks | canary | commoner/imp
+look: is an imp, painted yellow
+hi: TWEET. Sorry. I'm undercover. I'm *union*.
+? The shift (whistle, tuesday): It ends when the whistle goes. He's never blown it. It's round his neck. It's the *coin*.
+? The foreman (devil): Old Scald. He's no better off than they are. He's on a percentage.
+-- fight dust4 @mine:.2 | Firedamp | fire = fire_elemental, hell_hound* | hard
+say: It doesn't explode. It's been told to wait.
+win: It goes up the shaft with a whoop, like a child let out.
+-- scene lamps4 @mine:.35 many | The Face
+say: Four hundred lamps. They don't look round. They're singing; it's a song about Wednesday.
+> Join in | performance 13 | They're glad of a bass. You ask what comes after Wednesday; it goes dead quiet. Nobody's sure. {+wednesday, inspire all, xp 100} // You're flat; so's the roof.
+> Show them your watch | persuasion 14 | It goes from hand to hand. “*Three hundred years?*” says a lad. “*I've got a* pudding *on.*” {+told4, xp 120} // They think that it's a very small coal.
+> Swing a pick | athletics 13 | You do an hour. By the end you can feel it: it's a good seam. It'd be so easy. {+seam, xp 80} // Someone takes it from you, kindly.
+-- trial props4 @mine:.5 | The Props | 5 before 3
+say: The whole mountain's on nine props. They're *people*: they volunteered.
+try: athletics 15 Take the weight
+try: survival 14 Cut new timber
+try: persuasion 14 Relieve them by the right
+try: medicine 14 Get their arms down
+try: investigation 14 Which first
+win: The last of them steps out. He's got the mark of the mountain on his shoulders. “*Ta*,” he says. {inspire all, xp 300, +props}
+lose: It drops a foot. {hurt 6d6 bludgeoning all dex 15, +props}
+-- fight deep4 @mine:forge~.65 | The Smelter | earth = earth_elemental, fire = fire_elemental, bearded_devil* | deadly
+say: They're making coins down here. It isn't from ore.
+win: The ladle's run out over the floor. There's faces in it; they're cooling into something like relief.
+-- puzzle tally4 @mine:library~.78 | The Tally-Board
+say: There's a brass tag for each man, and a question over the board, so that they'd know if it was night. “*I'm always coming and I never come; I'm put off by everybody; and when I get here I've changed my name.*”
+answer: tomorrow|wednesday
+hint history 12: The song's about it.
+hint insight 12: They call it *Wednesday*.
+wrong: A tag goes red. It's yours. {hurt 3d6 fire one con 15}
+win: Four hundred tags turn over on their hooks. On the backs there're names. {+tags4, inspire all, xp 250}
+lose: You take them down by hand.
+-- boss scald4 @mine:last [told4 or wednesday or tags4] | The Whistle | Foreman Scald = balor!, fire_elemental | deadly
+say: “*They're not to STOP*,” says Old Scald. He fills the whole of the gallery; he's got a small brass whistle on a string. “*If they stop then I've got to go HOME.*”
+> Ask what's at home | insight 15 | He's got nineteen brothers; he was never the favourite. “*They've all got HORNS*,” he says. You look. He's got a sort of a hat. {inspire all, +scald_sad, xp 250} // “*Get BACK to it*,” he says.
+> Offer him Wednesday [wednesday] | | You tell him what it's like. There's a market. There's half-price herring. He's never heard of anything so beautiful. His claw goes to the whistle by itself. {+whistled, inspire all, hurt 1d6 fire one, xp 300}
+win: You blow it. It goes up the shaft; it goes right round the hills. There's four hundred picks all put down at once. “*Is it Wednesday?*” says somebody. {+coin5, add coins 1, magic, gold 200, done}
+end: They come up. It's raining. They stand in it with their mouths open. Nine villages have grown up into a city, over their heads, and everyone in it's related to them. There's pudding. Five. {+ch4, open farm, xp 280}
+
+== Quarter-Day Farm | 10 | farm
+read: The sixth and seventh are a couple. They pledged for a child; and then, when it came, they pledged again so that it'd never leave them. Quarter-Day Farm's in a fold of the hills where it's always a bit before tea. He's called Tommy. He's nine. He's been nine since before there was a Vesper.
+goal: Bring away the coins from Quarter-Day Farm, and do right by Tommy.
+dm: Tommy is a lonely immortal nine-year-old whose tantrums are weather/devils as toys. The parents are ancient & hollow. Hard choices.
+-- npc tommy @farm:out:.25 | Tommy | nine | commoner/h:sorcerer:human:m
+look: has got a hoop; it's the sun
+hi: Are you it? You're it.
+? Your mother and father (parents): They're in the kitchen. They don't play any more. They *look*.
+? Toys (devils, play): The bank sends one, on my birthday. I've had nine hundred. I've broken most of them. Do you want to see one? It's got *whips*.
+? Growing up (ten, older): What's it like? Can you reach things? I've heard that you get a *moustache*. {+wants_ten, xp 80}
+-- npc mam5 @farm:kitchen~.3 | Mrs. Quarter | mother | commoner/townswoman
+look: is so old that you can see the chair through her
+hi: Don't take him. Don't. He's only little.
+? The coins (pledge): There's mine in the butter and Father's in the clock. We'd do it again. (She looks at the window.) We wouldn't. God forgive us. I'd like to have *seen* him.
+? Let him go (grow): I made that shirt nine hundred times. I've got so as I can't feel the buttons. {+shirt}
+! What would he have been (insight 14): “He'd good hands,” says Mrs. Quarter. “I used to think that he'd be a joiner.” She puts down the shirt. “He'd be *dead* by now,” she says; “he'd have had a wife. He'd've been *sick* of us.” {+mam_ready, xp 180} // “He's only little,” she says.
+-- fight toys5 @farm:out:.4 | Toys | bearded_devil*, hell_hound, imp | hard
+say: They've been wound up; some have a wheel off. They'd give anything to be put away.
+> Put them away | sleight 14 | There's a box. It takes some doing. The last one says “*thank you*,” as you shut the lid. {skip, xp 200} // “*Again!*” shouts Tommy.
+win: You mend the one with the wheel.
+-- trial games5 @farm:out:.6 | What's the Time, Mr. Wolf? | 5 before 3
+say: If you win he's got to do a thing that you say. If he wins you've to stay; there's a field of them, behind the barn, in shirts.
+try: stealth 14 When he's not looking
+try: acrobatics 14 Like a statue
+try: deception 14 Peep
+try: performance 14 Be the wolf
+try: athletics 14 Run!
+try: insight 14 Let him nearly
+win: He's never lost. He sits down on the grass. “*Oh*,” says Tommy. “It's quite *nice*.” {+won5, inspire all, xp 320}
+lose: You stay; for about forty years. They come and get you. {hurt 6d6 psychic all wis 15}
+-- fight barn5 @farm:.35 | Behind the Barn | zombie*, wight, ghast | deadly
+say: All the other children; all the postmen.
+win: You button their shirts.
+-- scene clock5 @farm:study~.6 | The Clock
+say: It's at ten to four. Father's in the case, with his back against the pendulum; he's been holding it. “I'm that *tired*,” says Mr. Quarter, “but it's only another minute.”
+> Take the weight from him | athletics 15 | He steps out. He can't straighten. You've got it now; it's like holding back a hill. “You let go when you like,” says Mr. Quarter. “I never could.” {+hold5, inspire all, xp 200} // It swings. It takes off a bit of the century.  {hurt 4d6 force one}
+> Ask him what's at four | insight 14 | “His birthday,” says Mr. Quarter. {+birthday5, xp 150} // “Tea,” he says.
+> Tell Tommy | | He comes and looks. He'd never known that there was anybody in there. “*Dad?*” he says. “You can stop. I've *counted*.” {+dadstop, inspire all, xp 250}
+-- boss nanny5 @farm:last [won5 or mam_ready or dadstop] | Nanny | Nurse Vetch = mage!, chain_devil, bearded_devil* | deadly
+say: The bank sent a nurse as well. She's all apron and needle. “He's *comfortable*,” says Nurse Vetch. “He's the only *appreciating* asset on this side of the river. If you wake that child—”
+win: The clock strikes four. {+vetch, magic, gold 150, +coin6, +coin7, add coins 2, done}
+end: He's ten. He's twelve; he's tall. There's a moustache; he laughs at it. For about a minute there's a man of thirty in the kitchen with his arms round two old people, and he's got good hands. Then there's a wind. There's just the shirt. Somebody'd mended the button-hole. Seven. {+ch5, open court, inspire all, xp 320}
+
+== The Court of Equity | 11 | court
+read: You've been served. Ninth Street alleges that by freeing the security you've impaired the asset. It's to be heard today, in the Court of Equity, before Lady Justice; she really is blind, and nobody's ever told her what the building's used for. The eighth coin is Exhibit A.
+goal: Win the case of Ninth Street Savings v. The Bearers of an Umbrella.
+dm: A full comic trial in hell; witnesses return. Notary Lowe as counsel. Judge is an honest celestial, deceived.
+-- npc lowe6 @court:start | Mistress Lowe | counsel for the defence | commoner/h:wizard:human:f
+look: has not slept, and has brought an umbrella
+hi: I've never addressed a court where the jury was *on fire*.
+? The case (plead, argue): They'll say that a soul's a chattel. I'm going to say, then show me the receipt: from the *maker*.
+? The judge (lady, blind): She's the real one. They told her it was a probate court. She thinks the smell's the drains.
+? Clause forty (gift): I've read it until I'm cross-eyed. “*Consideration freely given.*” If he ever took anything without paying for it he'd be *in our debt*. He's never so much as accepted a light.
+-- fight jury6 @court:guard~.15 | Jury Selection | bearded_devil*, hell_hound | hard
+say: You may challenge twelve.
+win: You've struck the lot.
+-- trial plead6 @court:hall~.4 | The Hearing | 6 before 3
+say: “*Members of the inferno,*” begins Mr. Quillon.
+try: history 15 The precedent of Eurydice
+try: insight 15 Cross-examine the Bailiff
+try: persuasion 15 Call Gus
+try: performance 15 Call the canary
+try: investigation 15 The nought
+try: religion 15 The receipt from the maker
+try: deception 14 Object
+win: Lady Justice has put down her scales. “*I should like,*” she says, “*for somebody to lend me their eyes.*” {+won6, inspire all, xp 420}
+lose: “*Overruled,*” she says; she's frowning. She sniffs. {hurt 6d6 fire all dex 15}
+-- scene eyes6 @court:library~.55 | In Chambers
+say: She's a tall woman in a blindfold that somebody has ironed for her, every day, for a thousand years. “*They're so* kind,” she says. “*Is it very hot, to you?*”
+> Take off the blindfold | | It's been sewn on. You do it stitch by stitch. She looks. She looks at the magazines; at the jury; at her own clean hands. She's very angry. It's like a door opening on a furnace, only it's *light*. {+she_sees, inspire all, xp 300}
+> Describe it to her | persuasion 15 | You tell her what's in the dock. You don't exaggerate. “*All of them?*” she says. “*I signed for* all *of them?*” {+she_knows, xp 280} // “*It's the drains,*” she says, uncertainly.
+> Leave it on | | She pats your hand. {xp 50}
+-- fight wigs6 @court:.68 | Learned Friends | chain_devil*, mage | deadly
+say: They've asked for an adjournment; it's yours.
+win: Costs to the defence.
+-- puzzle oath6 @court:shrine~.8 | The Witness-Box
+say: You're sworn. It's a devil's oath; it can hear. “*Say the one thing that you have that's worth having, which you can't sell, can't lose by giving, and didn't pay for.*”
+answer: love|kindness|a friend|friendship|friends|my word
+hint insight 14: You once returned an umbrella.
+hint religion 14: She'd give it to you, if you asked. That's rather the point of it.
+wrong: The box heats up. {hurt 5d6 fire one con 15}
+win: The whole of the gallery's *quiet*. Mr. Quillon's dropped his pen. {+sworn6, inspire all, xp 350}
+lose: You take the fifth. There're nine.
+-- boss quillon6 @court:last [won6 or she_sees or she_knows or sworn6] | Contempt | The Prosecutor-General = balor!, bearded_devil* | deadly
+say: “*The court,*” says the Prosecutor-General, getting up, and up, “*finds for the* BANK.” He hasn't waited for the judge. He's set fire to the judge.
+win: The roof's off. There're stars. Lady Justice shakes the ash from her gown; she hands down a small warm coin. “*Discharged,*” she says. “*And I shall want to see the other* files.” {+coin8, add coins 1, magic, gold 250, done}
+end: Eight. Mr. Quillon catches you up on the steps. He's holding his hat. “The ninth's in the vault,” he says. “It's *mine*. I mean that it's me: it's what I was, before. One has to put up something of one's own, to get the job.” It's raining. He looks at it. He's got no umbrella. {+ch6, open vault, xp 380}
+
+== Quarter-Day | 11 | vault
+read: It's midnight less an hour. The vault's open; he has left it open. It's where they keep what they've never been able to spend: there's a birthday; there's somebody's first snow. At the far end, on a pedestal, is a coin so old that it's worn quite smooth. And everything between you and it has been told that it can eat you at twelve.
+goal: Bring in the ninth coin before the quarter-day strikes.
+dm: Clause forty finale: give Quillon something freely—the umbrella. Biscuit.
+-- fight door7 @vault:.1 | Night Depository | hell_hound*, bearded_devil, chain_devil | deadly
+say: It's got a slot. It's got teeth.
+win: You're in. There's a slip: THANK YOU FOR BANKING.
+-- scene shelf7 @vault:storage~.22 many | What They Can't Spend
+say: Jars; boxes; a great many small parcels, tied with string. Each says what it is: *Being Let Off. A Good Night. She Laughed.*
+> Take down one, and open it | | It's a stranger's. It's a hand on the back of your head, in a doorway, in the dark. You've got to stop for a bit. {inspire all, heal all, xp 200}
+> Find Mr. Quillon's | investigation 15 | It's on the bottom shelf: about as big as a biscuit. *Nobody Ever.* It's empty. It's been dusted. {+nobody, xp 250} // There are eleven hundred years of them.
+> Leave the umbrella | | You think about it; and you keep it by you. {+umbrella, xp 80}
+-- trial clocks7 @vault:.35 | The Countdown | 6 before 3
+say: Nine clocks, all fast: he'd have been proud. Eleven fifty-one. Eleven fifty-six.
+try: acrobatics 15 Under the shutters
+try: athletics 15 Hold the grille
+try: sleight 15 The time-lock
+try: investigation 15 Read the mechanism
+try: arcana 15 Stop the third hand
+try: perception 15 Know which's right
+win: It's eleven fifty-nine. It goes on being eleven fifty-nine; you've got a stuffed bear in the works. {xp 450, +bear7}
+lose: They strike. One after the other. It's a *long* way to the pedestal. {hurt 7d6 force all dex 15}
+-- fight guard7 @vault:.5 | The Board | chain_devil*, vrock, bearded_devil | deadly
+say: Nine directors, in leather. “*There's no motion,*” says the Chair, “*before the meeting.*”
+win: Carried.
+-- puzzle lock7 @vault:library~.63 | The Combination
+say: It's a single dial, with one word. Septimus Fallow had got this far; you can see where he's scratched the paint. “*What can't be owed?*”
+answer: a gift|gift|a present|thanks|a kindness|kindness
+hint insight 14: “What's the catch?” he'd have said.
+hint investigation 14: Clause forty.
+wrong: It writes down your name. {hurt 6d6 necrotic one con 16}
+win: Click. There's a note, inside, in his writing: *I never liked anyone enough to practise. S.F.* {xp 450, inspire all}
+lose: You've a mine's worth of pickaxes behind you. {xp 100}
+-- fight last7 @vault:.77 | Repossession | balor, hell_hound* | deadly
+say: “*That's OURS,*” says the bank.
+win: There's nothing between you and it now but the carpet; and him.
+-- boss quillon7 @vault:throne~last | Mr. Quillon | The Ninth Street Interest = lich!, chain_devil*, bearded_devil | deadly
+say: He's on the steps of the pedestal, with his ledger on his knees. He's wet through. “I'm obliged to stop you,” says Mr. Barnaby Quillon. “I want you to know that I've never so much regretted a *clause*.” The clock draws a breath. All the shadows of the vault have stood up behind him; it's the bank itself, and it's got its hand on the back of his neck.
+> Give him the umbrella | | You put it up. You hold it over him. It's not for anything; it's raining, he's wet. “What's the—” says Mr. Quillon. He can't say it. You can see him look for the catch in it, from one end to the other; there isn't one. His hand comes up. It closes on the handle. All over Hell, every ledger turns a page. {+given, skip}
+> Give him a biscuit [biscuit] | persuasion 14 | It's from the same plate. You've carried it for seven weeks; it's mostly fluff. “I'm not allowed,” he whispers. “*Go on,*” you say. He looks behind him. And then, very quickly, like a child, he puts the whole of it in his mouth. {+given, skip} // He puts his hands behind his back. They're shaking.
+> Take the coin | athletics 16 | It's yours. It's as smooth as a tooth. It's so *cold*. There's a cry behind you like something being shut in a drawer. {+coin9, xp 200, hurt 4d6 cold one} // He's quicker than he looks.
+win: Midnight. You've got your hand on it. {+coin9, add coins 1, +quillon_beaten, done}
+end: It strikes. Nine coins are lying in a row upon the counter; and somebody, quite gently, is turning over the sign. {xp 500}
+ending [given]: Consideration | *Received, with thanks*: it's the only receipt that Ninth Street's ever had to write; it broke the bank. There's a muffin shop there. Mr. Quillon's behind the counter, most days; he's a small thin tiefling, about eleven hundred, who can't add up. He gives you the wrong change: it's always too much. If you tell him so he goes pink. “Oh,” he says, “keep it. It's not *for* anything.”
+ending: Paid in Full | Nine coins, nine souls; it was counted twice, and stamped. You're free and clear; so's the cat. Ninth Street's still there. There's a new man. Sometimes, when it's wet, there's a figure standing in the doorway across the road, with its hat in its hand, looking at the window of the cake-shop. You've thought of going over. It's such a very little way.

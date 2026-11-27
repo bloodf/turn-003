@@ -1,0 +1,1 @@
+{ "name": "Realmwright", "short_name": "Realmwright", "start_url": "./", "display": "fullscreen", "background_color": "#14263d", "theme_color": "#14263d", "icons": [{ "src": "./ui/icon.png", "sizes": "512x512", "type": "image/png" }, { "src": "./ui/icon.svg", "sizes": "any", "type": "image/svg+xml" }] }

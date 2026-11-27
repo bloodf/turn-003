@@ -1,0 +1,404 @@
+id: gnollroad
+title: The Gnoll Road
+code: R9
+levels: 1-7
+tags: caravan, open steppe, everyone counts
+tone: heroic
+ink: #3d2b14 #d9b13b
+pitch: Forty wagons, nine hundred miles of grass, and the gnolls have asked for the toll in children.
+about: The salt caravan goes out once a year, and this year the guards have quit. You have been hired on as outriders at a silver a day. Some of the wagons belong to liars. One has a passenger who must not arrive.
+about: The Gnoll Road is a journey. The caravan is your village, and it moves. Who you save in the first week will be pulling beside you in the eighth, and there are forty wagons; you'll get to know them.
+villain: Yeenka Laughs-Last | gnoll | wants to be the last mouth in the world | is afraid of silence
+patron: Caravan-Mistress Obo Tamar | nineteen crossings, one eye, no nonsense
+secret: The gnolls were the road's guardians, paid in salt, until the merchants' league started cutting the salt with chalk to save money. Without real salt the packs sickened, and Yeenka found them something else to eat. The Mistress has known for three years.
+place camp = The Caravan | village size=1 seed=wagons-4 biome=desert time=17 open=yes | Forty wagons in a ring, forty fires; everybody's washing. It's a village that gets up and goes.
+place ford = Crow Ford | wilds size=2 seed=crowford-7 biome=autumn time=12 weather=rain fams=gnoll+beast+bandit pop=.4 | A brown river half a mile wide, and a ferry on the wrong side of it.
+place fort = Fort Quittance | castle size=1 seed=quittance-3 biome=desert style=stone_wall roofs=battlement moat=no time=15 fams=bandit+gnoll pop=.2 folk=yes | The last fort on the road. Somebody has hung a sign on the gate: CLOSED FOR STOCKTAKING.
+place barrows = The Howe Country | wilds size=3 seed=howe-9 biome=autumn theme=crypt time=19 weather=fog fams=undead+wild pop=.45 | Low round hills in rows, as neat as loaves. The oxen won't graze on them.
+place salt = The Salt Mine at Whitethroat | dungeon size=3 seed=whitethroat-5 theme=stone caves=.5 fams=kobold+cave+vermin pop=.45 | White walls that taste. It's where all of it comes from; somebody's put in a second door, at the back, for chalk.
+place town = Nowhere Wells | village size=2 seed=nowhere-6 biome=desert time=11 open=no | Six streets, two wells, one law: nobody asks where you've come from. They all ask where you're going.
+place canyon = The Laughing Gut | dungeon size=2 seed=laughgut-8 theme=stone levels=2 caves=.7 fams=gnoll+cave+wild pop=.5 | A split in the plateau nine miles long. When the wind's right it giggles.
+place den = The Mother Den | dungeon size=3 seed=motherden-2 theme=overgrown levels=2 caves=.6 fams=gnoll+fiend+cave pop=.5 | Bones, stacked by kind, and along the top a row of small bright things: buttons, spoons, a bell off a goat.
+
+== A Silver a Day | 1 | camp
+read: “That's your wagon,” says Obo Tamar. “That's your ox; he's called Regret. You ride at the edges, you look outward, and if you see something laughing you sing out.” She looks you over with the eye she has. “The last lot looked *inward*. They'd got to thinking about what was in the wagons.”
+
+It's the night before the off. There are forty fires. You don't know anyone.
+goal: Meet the caravan, and get it away by morning.
+dm: Introduce: Obo, Pim (orphan), Dr. Vellum (passenger with secret child heir), Marsh twins (salt factors, chalk), Brother Tuck-Away (cook). Track 'souls' for wagons saved.
+-- npc obo @camp:tavern stays | Obo Tamar | caravan-mistress | veteran/h:ranger:human:f
+look: is going round with a lantern, kicking wheels
+hi: Nineteen crossings. I've lost four wagons, and I can tell you whose.
+? The gnolls (road, laugh): There's always gnolls. You leave salt at the cairns, they leave you alone. It's how my mother did it. This last three years they've been taking the salt, and then they come anyway. {+cairns}
+? The wagons (who, people): Forty. Salt, tin, cloth, a family or two. The Marsh brothers've got nine. There's a doctor in the blue one; he's paid double, and he doesn't put out his washing.
+? The guards (last, quit): They didn't quit. I let 'em think so. They were for selling us.
+! Why do the gnolls still come (insight 13): She kicks a wheel that she's already kicked. “You ask me that when we're over the ford,” says Obo, “and I'll either tell you or I won't.” {+obo_secret, xp 30} // “They're *gnolls*,” says Obo.
+-- npc pim @camp:stable stays | Pim | ox-boy, nobody's | commoner/h:rogue:human:m
+look: is nine, and asleep on an ox
+hi: He's not called Regret. That's just what she says. He's called Duke.
+? The caravan (know, people): I know *all* of them. Mrs. Agba gives you seconds. Don't go by the doctor's. The Marshes count everything, they counted *me*.
+? The doctor (blue, secret): There's somebody in there that cries. But it's little. He ties up the door from outside. I'm not allowed.
+? Teach me (sword, fight): I've got a *stick*. {+pim_stick, inspire}
+-- npc marsh @camp:shop | Gideon Marsh | salt factor, elder brother | commoner/merchant
+look: is weighing a bag, and has his thumb on it
+shop: general
+hi: Nine wagons; finest Whitethroat. You may look. Don't lick.
+? The salt (white, price): Best in the league. It's the *whiteness* that people pay for.
+? The cairns (gnolls, toll): One bag per cairn. It comes out of my profit. I've been able to, ah, economise.
+! May we taste it (investigation 12): It's on your finger before he can move. It doesn't taste of much. It squeaks. “It's *fine* salt,” says Gideon Marsh; he's sweating. {+chalk, xp 50} // “That's a silver,” he says, and takes it out of your wages.
+-- scene fires1 @camp:start many | Forty Fires
+say: Everybody's got a pot on. You could sit down at any of them.
+> Mrs. Agba's | | She gives you seconds. She's going to her sister's with eleven children; they aren't all hers. “You pick them up,” says Mrs. Agba. {+agba, add souls 1, xp 20}
+> The tinkers' | performance 11 | You play, or you sing, or you only beat on a pan. By the time the fire's down there's nine of them who'd know you again. {+tinkers, add souls 1, xp 30} // They know you again. They move the pans.
+> The blue wagon's | persuasion 12 | The doctor opens the top half. He's a young man; he's got the look of somebody who's not slept since spring. “You'll forgive me,” he says. “It's *catching*.” Behind him something small is humming. {+doctor_met, add souls 1, xp 30} // The shutter comes down.
+> Sit by yourselves | | After a bit there's an ox leaning on you. {inspire}
+-- fight thieves1 @camp:out:.3 ambush | The Last Lot | bandit*, thug | easy
+say: They've come back, four of the old guard, for the contents of the blue wagon. They were thinking about it all the way down the road.
+win: One has a purse in a strange coin, and a drawing: a child of three with a birthmark like a crown. {+heir_drawing, add souls 1, gold 20}
+-- trial off1 @camp:out:.15 | The Off | 4 before 3
+say: Dawn. It's forty wagons, one gate, and everyone wanting to be third.
+try: animal 11 Get Regret to go
+try: persuasion 12 Settle who's third
+try: athletics 12 Heave the Marshes' axle
+try: survival 11 Read the sky
+try: intimidation 12 Shout
+win: The whole long ring of it uncurls and becomes a road. Somebody starts a song, at the front; it takes nine minutes to reach the back. {+off, xp 40, inspire all}
+lose: It gets away at noon. Regret sits down in the gate. {hurt 1d6 bludgeoning one, +off}
+-- boss laugh1 @camp:out:.55 [off or heir_drawing] | Something Laughing | Scar-Rump = gnoll!, gnoll, bandit* | hard
+say: Six miles out there's a cairn, with last year's salt on it, not touched. There's a gnoll sitting on top. She's thin as a rake. She takes a lick, and spits; and looks at you with real reproach. “*Not it*,” she says. “*Still not it.*” And laughs, for the others.
+> Lick it yourself [chalk] | | You do. You pull the same face. She stops laughing. She puts her head on one side. “*Chalk*,” you say. “*CHALK*,” says the gnoll: it's as if you'd given her the name of a thing that's been hurting her. She goes off into the grass with it, saying it over. {+told_gnoll, skip, xp 60, done}
+win: She was starving. They all were. There's nothing on them but skin and a string of clay beads, one for every cairn. {+beads, done}
+end: Behind you forty wagons have stopped. They're all looking at you. “Well?” says Obo Tamar. You say that it's clear; that they can come on. It's the first time that you notice how many of them're children. {+ch1, gold 20, xp 50}
+
+== Crow Ford | 2 | ford
+read: It's been raining in the hills. The ford's a river, the ferry's on the far bank, and the ferryman's in a tree. “*They've eaten the mules!*” he calls across, quite conversationally. There's forty wagons in the mud behind you; and it's coming on to dark.
+goal: Get forty wagons over Crow Ford.
+dm: Every scene adds 'over'. Dr. Vellum's secret is revealed to helpful heroes. Gnoll pack on the far bank.
+-- npc ferry @ford:out:.1 | Old Nat | ferryman, in a tree | commoner/villager
+look: has his boots round his neck
+hi: Lovely view. I can see six of 'em from here. I can see my *dinner*, and I can see what's having it.
+? The ferry (rope, boat): Rope's sound. It wants someone to wade out and clip it. It was always the mules did that.
+? The gnolls (six, bank): They're not right. They're all ribs. One of 'em was crying. I never saw one cry.
+-- npc vellum @ford:out:.2 | Dr. Vellum | passenger | commoner/h:wizard:human:m
+look: has a child under his coat, with its fingers in its ears
+hi: I haven't any choice, have I? If it goes over, it goes over with her in it.
+? The child (who, she): Her name's Ines. She's three. There's a crown that's hers; there's a man who's sitting in it. She was left with me to *inoculate*. {+ines, add over 1}
+? Crying (hum, quiet): She hums when she's frightened. It's the only thing that they taught her. It's the anthem.
+? Pursuit (man, follow): There's a captain called Reve. He's *polite*. If anyone polite turns up, run.
+-- scene mud2 @ford:start many | Mud
+say: They're in it to the axles. Everybody's telling everybody.
+> Make them tip out what they don't need | persuasion 12 | A piano. A font. Nine bags of the Marshes' whitest, in the rain; it doesn't *dissolve*. They stand there and watch it not. {+chalk, add over 2, xp 50} // “I need *all* of it,” says everyone.
+> Double the teams | animal 12 | Regret in front. It turns out that the others'll follow him anywhere; he's only to be told that it's a bad idea. {add over 2, xp 50} // Regret sits down.
+> Corduroy the bank | survival 12 | You lay brush; then hurdles; then Brother Somebody's door. It holds. {add over 2, xp 50} // It floats off, nicely.
+-- trial rope2 @ford:out:.35 | The Rope | 4 before 3
+say: It's sixty yards, brown, and there's trees going by in it.
+try: athletics 13 Swim
+try: acrobatics 13 Tree to tree
+try: survival 12 Choose your moment
+try: perception 12 Watch upstream
+try: athletics 12 Pay it out
+win: Click. The ferry comes off its mud with a suck like a kiss. {add over 3, xp 80}
+lose: You're got out a mile down, by the hair. {hurt 2d8 bludgeoning one con 12, tired one, add over 1}
+-- fight six2 @ford:out:.55 | The Far Bank | gnoll*, gnoll | medium
+say: They get up when the ferry touches. There's mule on their chins. They don't look as if it'd done them any good.
+> Throw them real salt | survival 12 | There's a block in Mrs. Agba's own kit: grey, Whitethroat, from before. The biggest picks it up. He licks it. He goes down on his elbows in the mud and *howls*: it's not at you. They take it off between them like a baby. {skip, +realsalt, add over 2, xp 90} // It's out of the Marshes' wagon. They're sick of that.
+win: You bury them above the flood-line. You couldn't say why.
+-- scene polite2 @ford:out:.75 | A Polite Man
+say: There's a gentleman on a grey horse at the edge of the water, with his hat off. He has twenty riders. “I'm so sorry to trouble you,” he says. “I wonder if you've seen a child?”
+> “Which one?” | deception 12 | There're eleven of Mrs. Agba's, nine tinkers', four assorted. They all turn round. Every one's as filthy as the next. “*Which* one?” says Mrs. Agba, dangerously. He bows; he's not in a hurry. {+reve_fooled, add over 1, xp 80} // He's looking at the blue wagon.
+> Cut the rope behind you | | It's the only ferry on the road. Nat watches it go by from his tree. He puts on his boots. {+rope_cut, xp 50}
+> Ask whom she belongs to | insight 13 | “To everybody,” says Captain Reve. “That's what's so sad about it.” He means it. You'd much rather that he hadn't. {+reve_sad, xp 60} // “To *us*,” he says.
+-- fight crocs2 @ford:ruin | The Old Toll-House | crocodile, lizardfolk* | medium
+say: It's half under. There's dry wood in it, and planks, and tenants.
+win: Planks. There's enough for a second raft. {add over 2}
+-- boss horn2 @ford:last [over>=4] | Below the Ford | The Drowned Drover = ghast!, zombie*, gnoll | hard
+say: There's a cellar, under the toll-house, where they kept what wouldn't pay. Whatever's left of four wagons is down there. Obo's four. Somebody with a goad is still driving them round and round.
+> Call them by their wagons | insight 13 | She'd told you whose. Yellow tilt; the two sisters; the man with the parrot. They stop. The drover drops his goad. “*Are we over?*” he says. {skip, +four_rest, xp 120, done} // They can't hear for the water.
+win: You find Obo's own mark on a wheel. {+four_rest, done}
+end: They're over: near enough all. Obo comes down to the bank at dawn and looks back at it. “It's chalk,” she says. “I've known for three years. The league'd have broke me. I thought that if I got over quick enough—” She takes off her eye-patch; she rubs it. “I've *said* it now,” says Obo. {+ch2, +obo_told, xp 70}
+
+== Stocktaking | 3 | fort
+read: Fort Quittance was meant to have a garrison and a year's feed. It's got a clerk. “The *soldiers* are in the yard,” says the clerk, “the *stores* have been called in. By the League.” He's a very small man; he's writing it all down as he says it. The soldiers are in the yard in rows, under white cloths.
+goal: Find out what happened at Fort Quittance, and feed the caravan.
+dm: League factor poisoned garrison w/ adulterated salt+arsenic? Actually bandits & gnoll cub. Gnoll cub found in cell: Hka. Befriend.
+-- npc clerk @fort:guard | Corporal-Clerk Izzet | sole survivor, on paper | commoner/h:wizard:lightfoot:m
+look: has eaten nothing but ink for a week
+hi: Sign here. And here. And here for the *first* signature.
+? The soldiers (dead, yard): Forty-one. Cramp. They'd had the pork. I don't take salt, it's my kidneys.
+? The League (stores, factor): Mr. Ambler. He was so *upset*. He said that it must've been a bad batch. He took the barrels away with him, so that no one else should be harmed.
+? The cells (prisoner, noise): There's a small one. I've been pushing biscuits under. It says thank you; it's rather learned it from *me*.
+-- npc hka @fort:prison | Hka | a gnoll, aged five | kobold/gnoll
+look: is sitting bolt upright with a biscuit in each hand, saving the second
+hi: Thank. You. For. Your. Enquiry.
+? Your pack (mother, others): Went. All gone laugh. Big Laugh say: eat road. Mother say: no. Big Laugh eat Mother. (It looks at the biscuit.) I not laugh. I *count*.
+? Come with us (free, wagon): Is allowed? Is there form?
+! You can ride with Pim (animal 11): Pim looks at it, and it looks at Pim. “He's called Duke,” says Pim. “*Duke*,” says Hka; and puts the second biscuit, quite carefully, in the ox. {+hka, add souls 1, inspire all, xp 80} // It would rather stay where the biscuits are.
+-- scene yard3 @fort:start many | The Yard
+say: Forty-one white cloths. They've even been labelled.
+> Look at the hands | medicine 12 | White lines across the nails. It's not cramp. They've been given it for months, a little at a time, in the salt. {+arsenic, xp 60} // They're soldiers' hands.
+> Bury them properly | | It takes the whole of the caravan. Even the Marshes dig. It's about the ninth that you see Gideon Marsh stop, with his spade in the ground, and not start again. {+marsh_shaken, add souls 1, inspire, xp 50}
+> Take their boots | | There's forty-one pairs. There's a lot of bare feet behind you. Nobody says anything, either way. {add souls 1}
+-- fight looters3 @fort:storage | The Night Shift | bandit*, thug | medium
+say: Men in League armbands, with a wagon, taking up the floor.
+win: Under the floor's the real salt: the garrison's own: nine barrels, grey. {+greysalt, gold 30, add souls 1}
+-- trial feed3 @fort:kitchen | Feeding Four Hundred | 4 before 3
+say: There's oats; there are turnips. There's a regimental goose, called Brigadier.
+try: survival 12 Find what else grows
+try: persuasion 11 Spare the Brigadier
+try: athletics 11 Stir
+try: performance 11 Make it an occasion
+try: investigation 12 The officers' cupboard
+win: There's enough. The Brigadier takes the salute. {+fed3, add souls 1, xp 80}
+lose: There's not enough. Everyone gives some to somebody, and it comes round. {add souls 1}
+-- puzzle book3 @fort:library | The Stock-Book
+say: Mr. Ambler's ledger's in League cipher; the key's a saying that every League 'prentice learns. “I'm as honest as I'm watched. I swing and never hang. I've two dishes and I'm never fed. The merchant's thumb's my only friend.”
+answer: scale|scales|a scale|balance|the scales|a pair of scales
+hint investigation 11: There's a thumb-print in the margin.
+hint history 11: Two pans. It's over the League's own door.
+wrong: You've turned it to page one again. “There's a *fine*,” says Izzet.
+win: It's all in there: chalk, nineteen parts; and in the garrisons' barrels one part white arsenic, “as they've begun to ask”. It's signed. The signature's *Ambler for Marsh, Marsh & Co.* {+ledger3, note stockbook, xp 120}
+lose: Izzet reads it to you. He'd not liked to say. {+ledger3, note stockbook}
+-- fight gnolls3 @fort:out:.4 | They Come Anyway | gnoll*, hyena = worg | hard
+say: At dusk they're on the ridge: forty or fifty. And the laughing starts.
+> Leave the grey salt on the road [greysalt] | | You roll it out there, yourselves, two barrels; and stand by them. They come down, one at a time. They've got to push each other to do it. They lick; they lie down. One brings you a dead hare, and can't look at you. {skip, +salted, add souls 2, inspire all, xp 150}
+> Send Hka out to them [hka] | | “*Thank you for your enquiry*,” says Hka, at the top of its voice. There's a pause, on the ridge. {skip, add souls 1, xp 100}
+win: Dawn. There's prints all round the wall; some of them are very small.
+-- boss ambler3 @fort:throne [ledger3 or arsenic] | Mr. Ambler | Mr. Ambler = bandit_captain!, thug*, scout | hard
+say: He's come back for his book. He's a neat man with a clean collar. “It's *only* a margin,” says Mr. Ambler. “You've no idea how thin it is.”
+> Read his margin to the caravan [ledger3] | | You do it from the wall. When you come to the arsenic it's so still that you can hear Gideon Marsh sit down. “I said *chalk*,” says Gideon. “Only *chalk*.” {inspire all, +marsh_breaks, xp 100}
+win: In his collar is a League pass, for every gate between here and the sea. {+pass3, gold 50, magic, done}
+end: You leave the gate open, and the white cloths out, and Izzet in charge. No: he's on the third wagon, with the goose. “I've *closed* the file,” says Izzet. {+ch3, add souls 1, xp 90}
+note stockbook = From the Stock-Book: “To garrison Quittance, salt, as usual; w.a. 1 pt in 20, they having begun to ask. — To gnoll cairns 1–40, chalk, entire. Saving on the year: 9 per cent. — Ambler for Marsh, Marsh & Co.”
+
+== The Howe Country | 4 | barrows
+read: It's the short way. It's short because no one takes it. “You don't light fires on the howes,” says Obo, “and you don't answer.” “Answer *what?*” says Pim. By the second night there's fog; and a voice, out in it, reading a list. It's got Mrs. Agba's name on. It's got all eleven.
+goal: Bring the caravan through the Howe Country without losing anyone.
+dm: The dead ask for riders. People wander off. 'lost4' counter. The Barrow-Lord wants company for his own caravan, buried with wagons.
+-- npc tinker @barrows:out:.15 | Granny Spool | eldest of the tinkers | priest/h:bard:rock_gnome:f
+look: is tying everybody's wrist to everybody else's with wool
+hi: Hold still. It's only a granny.
+? The voice (list, names): He's calling his caravan. He was the first that ever crossed. He got this far. He's never been told that it's over.
+? Not answering (rule): It's not the voice that does it. It's that he's so *lonely*. You want to say, it's all right. Don't say it's all right.
+? The wool (tie, safe): Red for the little ones. It won't hold 'em. But they'll feel it go.
+-- scene call4 @barrows:out:.3 many | The Roll
+say: “Agba,” reads the voice. “*Agba, and eleven.*” There's a tug on the wool.
+> Answer for them: “Absent!” | performance 12 | It's a good parade-ground bark. There's a scratch, as of a pen. “*Absent*,” it says, sadly. {add kept 2, xp 60} // “*Present?*” says the voice, hopefully.
+> Sing, so they can't hear | performance 11 | It's the caravan song. Forty wagons of it. Somebody has got the anthem going in the descant; she's three. {add kept 2, inspire all, xp 60} // You've forgotten the third verse; so has everyone.
+> Go after the one who's gone | survival 12 | The wool leads off into the fog. It's Gideon Marsh; he's walking with his eyes shut. “They've got *scales*,” he says. “They said, come and be weighed.” You bring him back. {add kept 1, +marsh_saved, xp 60} // The wool's been bitten through.
+-- fight dogs4 @barrows:out:.45 | The Barrow Dogs | dire_wolf, skeleton* | medium
+say: They come over the howe like fog with elbows. They don't bark. They *herd*.
+> Be herded | animal 13 | You go along with it, quietly. They put you very neatly in with the rest. One of them has only the one ear; he's a dear old boy. {skip, add kept 1, xp 70} // You've gone the wrong side of him.
+win: They were good at it.
+-- trial night4 @barrows:out:.6 | The Longest Night | 5 before 3
+say: No fire; no moon; and all round, quite near, the creak of wagons that aren't yours.
+try: survival 13 Keep the line
+try: persuasion 12 Keep them talking
+try: perception 13 Count heads
+try: religion 13 Say the names of the living
+try: animal 12 Keep Regret awake
+try: insight 13 Know which wagon's not yours
+win: It's grey. There's forty-one wagons. You count again: forty. {add kept 2, xp 120, inspire all}
+lose: It's grey. There's an empty place at Mrs. Agba's fire. {add lost4 1, hurt 2d8 psychic all wis 13}
+-- scene child4 @barrows:out:.75 | Gone
+say: It's Ines. The blue wagon's door is tied from outside; it's still tied. There's a small hole in the floor. Humming; it's going away, over the howe.
+> Follow the humming | perception 12 | You go up one side and in at a door of two leaning stones. She's sitting on a dead king's knee. “*He's sad*,” says Ines. {+ines_found, xp 60} // You lose it. You go in by the door anyway.  {+ines_found}
+> Send Hka [hka] | | It puts down its nose. It goes like an arrow. It comes back with her by the skirt; “*Enclosed*,” says Hka, “*please find*.” {+ines_safe, add kept 2, inspire all, xp 120}
+-- fight wights4 @barrows:.3 | The First Caravan | wight, skeleton*, zombie | hard
+say: Inside the howe there's a road, and on it forty wagons, with the oxen yoked, and everybody in their place.
+win: You unyoke the oxen. They lie down.
+-- puzzle toll4 @barrows:shrine~.55 | The First Toll
+say: A stone with a dish in it. “The road asked me what I'd pay. I hadn't gold. I gave it what I'd cry, and what I'd sweat, and what the sea keeps. What's the toll?”
+answer: salt
+hint nature 11: Tears, sweat and sea.
+hint history 11: It's the only thing that anybody ever carried on this road.
+wrong: A breath comes up out of the dish that makes your teeth ache. {hurt 2d6 cold one con 13}
+win: You put some in: the grey. All down the road inside the hill forty dead drovers touch their hats. {+firsttoll, xp 120}
+lose: You put in what there is. It'll do; just.
+-- boss lord4 @barrows:last | The First Caravan-Master | Tamar the First = wight!, wight, skeleton* | hard
+say: He's got one eye. He's got Obo's jaw. He has the list on his knee, and he's reading it by feel. “*We're nearly all here*,” says the first of the Tamars. “*We'll start in the morning.*”
+> Tell him that they got there | persuasion 13 | “It's *over*,” you say. “They go every year. Your great-great-granddaughter's done it nineteen times.” He turns the eye on you. “*On my road?*” he says. “*With wheels?*” {skip, +tamar_rest, inspire all, xp 150, done} // “*In the morning*,” he says.
+win: The list blows along the floor. They're all crossed off, except the last, which is his. You do it for him. {+tamar_rest, done}
+end: You come out on the far side of the howes into sun. Obo walks up and down the line, twice, touching each wagon. “*Forty*,” she says. Then she goes behind one, so you can't see. {+ch4, add souls 1, xp 100}
+
+== Whitethroat | 5 | salt
+read: There's just one place to get real salt. It's two days off the road; it's where it was always got. “The packs'll follow us,” says Obo. “They're starving. They'll be on us the day that we stop.” She's looking at the mine. “We need to have something to *give* them.”
+goal: Take the salt-mine at Whitethroat from the League.
+dm: Kobold miners; second door for chalk; a roper; League overseer and mercenaries; Captain Reve turns up again.
+-- npc ixi @salt:.12 | Ixi | a face-worker | kobold/kobold
+look: is so white that she can hardly be seen, apart from the eyes
+hi: Mind the line. If you step over it you're on *piece-work*.
+? The salt (grey, real): Down. They don't want it. They want the white, from out the back. We've got nine galleries of grey that's not been touched in three years. We *lick* it.
+? The League (owners): Ambler's dead? There's another. There's always another. This one's got a sword and he says “please”. {+reve_here}
+? Help (strike, dig): If somebody was to do for the hounds, we could have forty loads at the door by morning. We're very *fast*. It's only that nobody ever asked us for the right thing.
+-- fight hounds5 @salt:.22 | The League's Dogs | worg*, bandit | medium
+say: Iron collars; teeth filed to fit.
+win: You take off the collars. One of them comes along with you, at a distance.  {+dogs_done}
+-- scene chalkdoor5 @salt:.35 | The Second Door
+say: It's a chalk-pit. It's a perfectly ordinary chalk-pit, with a tramway, and forty thousand sacks printed PURE WHITETHROAT.
+> Burn the sacks | survival 12 | They go up like angels. You can see it at forty miles: so can anybody who'd like to know where you are. {+burned5, xp 80} // They smoulder. It's a *smell*.
+> Take one, for a witness | | One sack, sealed. Izzet writes out a receipt. {+witness, xp 60}
+> Print something else on them | sleight 12 | It's a nice big stencil. By morning there's forty thousand that say CHALK. {+stencil, inspire all, xp 100} // You've spelled it with a K.
+-- trial galleries5 @salt:.5 | The Grey Galleries | 5 before 3
+say: Nine galleries, unlit, unsafe, and the finest salt in the world. You've till morning.
+try: athletics 13 Cut
+try: athletics 12 Carry
+try: survival 13 Sound the roof
+try: persuasion 12 Keep the shifts going
+try: perception 12 Hear it move
+try: performance 12 Sing the time
+win: Forty loads. Ixi's crying, and licking it. {+loads, add souls 2, xp 160}
+lose: There's a fall. It's twenty loads, and a bad half-hour. {hurt 3d6 bludgeoning all dex 13, +loads}
+-- fight roper5 @salt:cave~.62 | The Pillar in Gallery Six | roper, kobold* | hard
+say: They work round it. They've always worked round it. They leave it the overseers.
+> Leave it an overseer | deception 13 | He's looking for you. You say, it's just round *there*. {skip, xp 80} // It's not fussy.
+win: In the gullet are nineteen whistles.
+-- scene reve5 @salt:guard~.75 | Captain Reve Says Please
+say: He's in the wages office, alone, with his hat on his knee. “I do wish you'd sit,” he says. “I'm told that you've told nobody. I'm told you've put her in with eleven others and that they've cut her *hair*.” He looks quite tired. “I'd a daughter that age.”
+> Ask what happened to her | insight 13 | “The gentleman who's sitting in the crown,” says Reve, “has her in a very nice room.” So there it is. He turns his hat round. “I have until the sea,” he says. {+reve_daughter, xp 120} // “I'd rather not,” says Captain Reve.
+> Offer him a place by the fire | persuasion 14 [reve_sad] | “I couldn't possibly,” he says. But he comes, that night, to the edge of the light. Mrs. Agba gives him seconds. {+reve_fire, inspire all, xp 150} // “*Please*,” he says. “It'd be so much nicer if you gave her to me.”
+> Take his sword | athletics 14 | He lets you. He's got another. {xp 60} // He's very fast.  {hurt 2d8 slashing one}
+-- boss over5 @salt:last [loads or dogs_done] | The Overseer's Lift | Overseer Crail = gladiator!, veteran, thug* | hard
+say: The only way to the top is the lift. Crail's in it, with a lever, and forty sacks. “You can have the *salt*,” says Overseer Crail. “I'll just drop the *lift*.”
+win: The lift goes up. It's got kobolds on top, kobolds underneath, and a block of grey salt the size of an ox. It's Regret's. {+whitethroat, magic, gold 60, done}
+end: There are packs on every skyline when you come out. Hundreds. Nobody laughs. You roll the first block off the tail-board, and step away from it. And Ixi, next to you, in a voice that you'd not have thought she had, calls *dinner*. {+ch5, +packs_fed, add souls 2, open town, xp 130}
+
+== Nowhere Wells | 5 | town
+read: There's a town. There's beds. It's got two wells and one law; by the second morning half of your people have decided to stay and the other half have been robbed. There's a League office, with a lawyer. There's a warrant. It's for *you*: it says “abduction of a minor, arson, and salt.”
+goal: Get the caravan out of Nowhere Wells, whole.
+dm: Trial scene; the caravan's witnesses. Yeenka's agents—jackal-faced preacher—whip up the hungry who won't be satisfied. Reve's choice.
+-- npc judge6 @town:tavern | Judge Amaranth Poole | publican and law | commoner/innkeeper
+look: is drying glasses, and wearing half of a wig
+hi: Court's at noon. What're you having?
+? The warrant (trial, league): It's in order. It's *disgustingly* in order. But I can hear evidence, and I've a weakness for it.
+? Nobody asks (law, town): Not where you've come from. If somebody was to *tell* me of their own accord that'd be different.
+? The preacher (laugh, street): The thin one? He came in with the dust. He tells jokes. They aren't funny; they can't stop.
+-- npc preacher6 @town:chapel | Brother Merriment | a preacher | cult_fanatic/h:warlock:human:m
+look: smiles with too many of his teeth
+hi: Knock knock.
+? Yeenka (gnolls, who): She who laughs last! You fed her children *salt*. They've gone quiet. She can't *bear* it. She's sent me to find some that'll still see the joke.
+? The joke (laugh, funny): It's this: that everything gets eaten. That's the whole of it. It's all in the *timing*.
+! It isn't funny (persuasion 13): The smile doesn't move. It's only that it isn't attached to anything. “No,” whispers the man behind it. “It never was. She does it *through* me.” {+merriment, xp 120} // “Who's there?” he prompts.
+-- trial court6 @town:out:.2 | Noon | 5 before 3
+say: The bar's been moved back. There's a lawyer with a brass-bound case. On your side there's Izzet; and a goose.
+try: investigation 13 Exhibit A: a sack
+try: history 13 The law of the road
+try: persuasion 13 Call Mrs. Agba
+try: insight 13 Call Gideon Marsh
+try: performance 13 Call the goose
+try: deception 13 “What child?”
+win: “I find,” says Judge Poole, “that I'm *very* thirsty, and that this salt doesn't make me so. Case dismissed. Arrest that sack.” {+acquitted, add souls 2, inspire all, xp 180}
+lose: “Thirty days,” says Judge Poole, not at all happily; “starting *tomorrow*, so if anybody was to leave tonight—” {+thirty}
+-- scene stay6 @town:shop many | Those Who'd Stay
+say: There's a queue at the land office. It's people you know.
+> Let them | | You help them to fill in the form. Some do; Mrs. Agba's second eldest; two tinkers. It hurts more than you had thought. {add souls 1, inspire, xp 60}
+> Ask Gideon Marsh | insight 12 [marsh_shaken or marsh_saved or marsh_breaks] | He's selling all nine wagons. He's buying *spades*. “I thought that I'd dig them a proper one,” says Gideon. “A forty-first. At Quittance. For the one that I'd've liked to be.” Then he signs over the oxen to Mrs. Agba. {+marsh_good, add souls 2, inspire all, xp 120} // “I'm taking stock,” says Gideon.
+> Make a speech | performance 13 | Half of them come. It's not the words. It's that you got up on a box, shaking. {add souls 2, xp 100} // They're very nice about it.
+-- fight mob6 @town:out:.4 at_once | The Laughing Sickness | cultist*, cult_fanatic | hard
+say: It goes down the street like measles. They're holding their sides; they're picking up things with edges.
+> Silence them with the anthem | performance 14 | She's three. She's on Obo's shoulders. She hums; and the caravan takes it up; it's not a thing that you can laugh to. {skip, inspire all, xp 150} // You can't make yourself heard.
+win: They come to, one after another, looking at what's in their hand.
+-- fight league6 @town:out:.6 | The League's Bailiffs | veteran*, spy | hard
+say: Whatever the judge said, they've been paid.
+win: You send the brass-bound case back empty. It was full of indictments; they'll do for the fire.  {add souls 1}
+-- scene reve6 @town:study | Until the Sea
+say: Captain Reve's waiting by the second well. “I've had a letter,” he says. “It's from my little girl. She's been allowed to write it herself.” He holds it out. It's in a beautiful, regular, adult hand.
+> Say that she didn't write it | insight 13 | “No,” says Reve. “I taught her her letters. She does her S's *backwards*.” He folds it up, very small. “So then she's dead,” he says; “and I've been riding all this way.” He gets off the grey horse. He gives you the reins. {+reve_turned, add souls 2, inspire all, xp 200} // “It's so *tidy*,” he says.
+> Let Ines give him something | | She's been told not to. She walks right up, and gives him what she's got. It's a biscuit. She's bitten it. He gets down on his knees in the street. {+reve_turned, add souls 2, inspire all, xp 200}
+> Run | | You get her out by the roof. He watches. He doesn't follow. “*Please*,” he says, to nobody. {xp 80}
+-- boss merry6 @town:out:.8 [acquitted or thirty] | Brother Merriment | The Jackal in the Pulpit = vrock!, cult_fanatic, cultist* | deadly
+say: He's opened his mouth, and gone on opening it; it's come out. It stands up out of the skin of a sad thin man, on the roof of the chapel, and shakes its feathers. “*Who's THERE?*” it screams.
+> Give it silence | | You look at the others. Nobody so much as smiles. All down the street they've shut their mouths. It tells you the joke: it tells it again, louder. There's the most *terrible* pause. {inspire all, +silence, hurt 1d4 thunder one, xp 150}
+win: It falls off the roof. No one laughs. It's the best thing they could've done. {+vrock6, magic, gold 70, done}
+end: Thirty-four wagons roll out, at dawn, and one grey horse. “It's the Gut next,” says Obo. “It's where she lives. There's not another way to the sea. I've always gone by at the gallop with my eyes shut.” {+ch6, open canyon, xp 160}
+
+== The Laughing Gut | 6 | canyon
+read: Nine miles of it, and a wagon wide. All of the packs that you have salted are up on the rim in rows, looking down, quite silent. They won't come in. Hka's explained. “*She is Mother's mother's mother*,” it says. “*It is not possible to be rude.*”
+goal: Bring the caravan through the Laughing Gut.
+dm: Echo hazards, ambush. Children must stay quiet. Yeenka's brood: ghouls, gnolls unsalted.
+-- npc scar @canyon:start [told_gnoll] | Scar-Rump | a gnoll, less thin | gnoll/gnoll
+look: has got a bead necklace on, and a very clean sack
+hi: CHALK. I tell them. All. CHALK.
+? The Gut (way, safe): She lie at bottom, by water. Top road: too small for wagon. Low road: by her *teeth*.
+? Yeenka (last, laugh): She not hungry. She was *never* hungry. It is only that she can't stop.
+? Come with us (help): I walk in front. I be first joke.
+-- trial hush7 @canyon:.15 | Hush | 5 before 3
+say: Anything louder than a breath comes back as a giggle; then it goes round the corner and fetches the rest. There're thirty-four wagons, four hundred people, eleven babies and a goose.
+try: stealth 13 Muffle the wheels
+try: animal 13 A hand on Regret's nose
+try: persuasion 13 Make it a game
+try: sleight 13 A sock, for the Brigadier
+try: religion 13 Walk as in church
+try: perception 13 Find where it doesn't echo
+win: You've never in your life heard so many people being quiet. Somebody has a sneeze for nine whole miles. {+hush, add souls 2, xp 180, inspire all}
+lose: It's the goose. {hurt 3d6 thunder all con 13}
+-- fight rocks7 @canyon:.28 | Falling About | gnoll*, harpy | hard
+say: They drop on you from both sides, helpless with it.
+win: The echo goes on for a while by itself.
+-- scene wheel7 @canyon:.4 | A Wheel
+say: The eleventh wagon loses a wheel where it's narrowest. It's Mrs. Agba's. Behind it there're twenty-three more; and the giggling's coming nearer.
+> Lift it | athletics 14 | Nine of you, and Captain Reve, if he's there; Gideon Marsh gets his shoulder in under the axle. “It's only *weight*,” he says. {add souls 2, inspire all, xp 120} // It comes down on somebody's foot.  {hurt 2d6 bludgeoning one}
+> Unload, and burn it | | The children go in the other wagons. She doesn't look back. There's a high chair on top. {xp 60}
+> Hold the road while they mend | | You go back and stand in it. {+held7, fight hold7}
+-- fight hold7 @canyon:.5 later | The Rearguard | gnoll*, ghoul, ghast | hard
+say: They come round the corner all together, with their hands over their mouths.
+win: “*Clear!*” calls Mrs. Agba. She's got the pin in.
+-- scene echo7 @canyon:cave~.6 | The Whispering Place
+say: There's a bend where everything that was ever said in the Gut is still going round. You can hear caravans. You can hear Obo at nineteen, with both of her eyes, saying *don't look, don't look, just drive*.
+> Let Obo hear it | insight 13 | She listens with her head down. “I left the yellow tilt,” she says. “I could've turned round.” “*Don't look*,” says the girl. “All right, pet,” says Obo to the wall. “I'm looking now.” {+obo_looks, inspire all, xp 150} // She drives by at the gallop.
+> Leave something in it | performance 12 | It's the song. It'll be there for whoever comes next. {inspire, xp 80} // You've left them a cough.
+-- fight brood7 @canyon:.75 | The Brood | gnoll*, troll, ghoul | deadly
+say: These are the ones who wouldn't come up for the salt. They've lost the taste.
+win: It's quiet. It's *horribly* quiet.
+-- boss jaw7 @canyon:last | The Low Road | Grin-at-the-Door = chimera!, gnoll*, ghast | deadly
+say: Something with three heads lies right across the road. All of them are smiling. The middle one's wearing Mother Somebody's bonnet. “*What's the password?*” it says, “*and I'll give you a clue, there isn't one.*”
+> “There isn't one” | | “*Oh*,” says the left head. “*That's right*,” says the right. The middle one's put out. They argue. You've got eleven wagons by before they've settled it. {inspire all, +password7, xp 120}
+win: The bonnet comes off. Somebody in the twentieth wagon'll be glad of it. {+through, magic, gold 80, done}
+end: You can smell the sea. They're through: thirty-four wagons: they're running for it down the last of the hill, with the brakes off, screaming. And you're not with them. You've stopped, at the mouth of a hole. Inside of it, a long way down, someone's still laughing. “If we leave it,” says Obo, “it's there *next* year.” {+ch7, open den, xp 180}
+
+== She Who Laughs Last | 7 | den
+read: Obo comes; and Reve, if he's yours. Hka comes, it says, *for the minutes*. Behind, in the dark, very quietly, are the packs: they've come in after all, on their bellies, each with a lick of salt in its cheek. “*It is possible*,” Hka has ruled, “*to be rude*.”
+goal: Make Yeenka stop laughing.
+dm: She's a fiend-touched ancient gnoll: stats vrock/hezrou? use 'balor'? no lvl7: use 'chimera/hydra'. Silence, salt, pity.
+-- fight bones8 @den:.12 | By Kind | skeleton*, gnoll, ghast | hard
+say: Thigh, rib, skull; it's very orderly. It gets up in the same order.
+win: You put them back. It seemed to matter to somebody.
+-- scene shelf8 @den:.22 many | Small Bright Things
+say: Along the top there's a row of them: a spoon; a button; a bell off a goat. There's nothing that's any use. They've been dusted.
+> Find the yellow tilt's | investigation 12 | It's a doll, with a yellow dress. Obo puts it in her coat. {+doll, inspire, xp 80} // There are so many.
+> Add something | | You put it down at the end of the row. The laughing misses a beat. {+added, xp 80}
+> Ask Hka what they're for | insight 12 | “*Those are the ones that she did not eat*,” says Hka. “*She doesn't know why. It is under* Miscellaneous.” {+misc, xp 100} // “*It is not in my department.*”
+-- trial mirth8 @den:.35 | The Gallery of Mirth | 5 before 3
+say: It gets in by the ears. It starts behind the ribs. You can't for the life of you think what's so *funny*—
+try: insight 14 Think of the yellow tilt
+try: religion 14 Fast from it
+try: performance 14 Hum the anthem
+try: medicine 13 Bite your tongue
+try: intimidation 14 Be *angry*
+try: persuasion 14 Tell each other that it's sad
+win: You come through with blood on your lip. You have all got hold of somebody's hand. {xp 220, inspire all}
+lose: You come through on the floor. {hurt 4d8 psychic all wis 14}
+-- fight court8 @den:.48 | Her Jesters | cult_fanatic, gnoll*, hell_hound | deadly
+say: They've bells on. They've been here for such a long time that they've got hooves.
+win: You take the bells off.
+-- puzzle cup8 @den:shrine~.6 | The Salt-Lick
+say: There's an altar; it was here first: a block of grey, worn down to a saddle by ten thousand tongues. There's writing round it, in gnoll. Hka reads. “*I was here when you were small. You came to me with your mother. I've no milk and I fed you; I've no words and you came when I called. I'm all gone but the taste. Who was I, before she laughed?*”
+answer: home|mother|salt|the lick|a home|the mother
+hint animal 12: A salt-lick's where the whole herd comes, at evening; it's where you learn who everybody is.
+hint insight 13: She was little too, once. Somebody brought her here.
+wrong: It tastes of tears. {hurt 2d6 psychic one}
+win: You put down the block that you've brought: fresh; grey; the size of an ox. From all sides in the dark there's a sound of tongues. There are tails going. {+lick, inspire all, xp 250}
+lose: You put it down anyhow. They come to it by and by. {+lick}
+-- fight guard8 @den:.75 | The Last Mouths | gnoll*, troll, hill_giant | deadly
+say: The biggest that she had. They've been eating each other, to keep their places.
+> Let the packs come by you [packs_fed or salted or lick] | | They go past on both sides, quite silent. It's over very soon. Nobody laughed. {skip, inspire all, xp 200}
+win: You sit down for a minute. So does everyone.
+-- boss yeenka @den:throne~last | Yeenka Laughs-Last | Yeenka = hydra!, gnoll*, hell_hound | deadly
+say: She's as big as a barn; she's all mouths, and every one's a different age. She's lying in a heap of small bright things. She can't stop. The tears are running down. “*Oh*,” says Yeenka, “*oh, don't. Oh, don't. Have you come to tell me that it's* over?”
+> Sit down with her [misc or added] | insight 14 | You go up; you sit down on the spoons. You don't say anything. It's not at all the sort of thing that anybody's ever done. One of her mouths shuts. {+sat8, inspire all, xp 250} // She can't see you for the tears.
+> Give her the salt | | You hold it out on your hand. The smallest mouth, the oldest, at the back, leans over all the rest and puts out its tongue. You see it go through her, head by head. “*Oh*,” she says. “*It's* that.” {+salt8, inspire all, hurt 1d4 acid one, xp 250}
+> Be silent, everyone [silence or hush] | | You. Obo. The packs. It's the biggest silence that there's ever been in that hole. The laugh goes round it like a fly in a jar. She's afraid. It's the only thing she ever was afraid of; and it's just *quiet*. {inspire all, +quiet8, xp 250}
+win: It stops. It's a thing that you'd got so used to, it's like being set down. {+yeenka_done, done}
+end: Hka goes up the heap, quite steady; it picks out a button, and puts it in its cheek. “*Matter closed*,” says Hka. {xp 300}
+ending [salt8 & sat8]: Home | She's an old, old gnoll, it turned out, when the rest of it was gone: about the size of a dog. She lives at Whitethroat. She's got a block of her own. They come in at evening from as far as the sea, and Ixi calls; and it's the queerest thing: when it's dark, and they've all had enough, you can hear them laugh. It's at something *funny*.
+ending [reve_turned]: Until the Sea | They came down to it on the ninety-first day. Ines walked in up to her knees. There's a regent, now: he says please, and does it with a biscuit in his hand. The road's in the charge of the packs; the toll is forty blocks, grey, weighed in public by a clerk with a goose. Obo Tamar's on her thirtieth crossing. She does it with her eye open.
+ending: Thirty-Four Wagons | You were paid off on the quay, a silver a day; Obo counted it twice. Mrs. Agba's is the third house up. There's a place laid. Pim's got the ox. You'd meant to ship out on the morning tide; only there was a boy going by, about nine, with a stick, looking *outward*. You thought you'd just see him home.

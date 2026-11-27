@@ -1,0 +1,40 @@
+// Shared tables. Pure data: safe in workers and tests.
+export const CELL = 1.5, LH = 4, N = 192, HALF = N / 2, WT = 0.36
+export const c2w = (c: number) => (c - HALF + 0.5) * CELL      // cell centre -> world
+export const v2w = (v: number) => (v - HALF) * CELL            // grid vertex -> world
+export const w2c = (w: number) => Math.floor(w / CELL + HALF)  // world -> cell
+export enum E { None, Wall, Door, Arch, Window, Cell, Secret, Merlon, Rail, GateA, GateB, Ruin, Fence, Slit, Grille, Iron }
+export const EDGE_NAMES = ['none', 'wall', 'door', 'arch', 'window', 'cell door', 'secret door', 'battlement', 'railing', 'gate (left)', 'gate (right)', 'ruined wall', 'fence', 'arrow slit', 'bars', 'iron door']
+export const isDoor = (e: number) => e === E.Door || e === E.Cell || e === E.Secret || e === E.GateA || e === E.GateB || e === E.Iron
+export const isPass = (e: number) => e === E.None || e === E.Arch || isDoor(e)
+export const isTall = (e: number) => e === E.Wall || e === E.Window || e === E.Slit || e === E.Door || e === E.Cell || e === E.Secret || e === E.Iron || e === E.Arch || e === E.GateA || e === E.GateB || e === E.Grille
+export const FLAG = { cave: 1, water: 2, lava: 4, hole: 8, solid: 16, bridge: 32, virt: 64 } as const
+export const FLOORS = ['', 'terrain', 'flagstone', 'flag_moss', 'sand_floor', 'infernal_floor', 'cobble', 'marble', 'dwarven', 'rock', 'rock_warm', 'rock_dark', 'rock_ice', 'dirt', 'mud', 'gravel', 'sand', 'snow', 'ice_block', 'planks', 'planks_old', 'grass', 'straw', 'brick', 'ashlar', 'forest', 'moss', 'infernal', 'rune'] as const
+export const FL = Object.fromEntries(FLOORS.map((f, i) => [f || 'none', i])) as Record<string, number>
+export const TERRAIN = 1
+export const WALLS = ['stone_wall', 'ashlar', 'mossy_wall', 'sandstone', 'brick', 'infernal', 'ice_block', 'dwarven', 'timber', 'planks', 'rock', 'wattle'] as const
+export const WS = Object.fromEntries(WALLS.map((f, i) => [f, i])) as Record<string, number>
+export const CEIL = { none: 0, slab: 1, beams: 2, rock: 3, vault: 4 } as const
+export type ThemeId = 'stone' | 'crypt' | 'desert' | 'frost' | 'infernal' | 'overgrown' | 'dwarven'
+export interface Theme { id: ThemeId; name: string; wall: string; walls: string[]; floor: string; floors: string[]; rock: string; ceil: number; stone: string; pillar: string[]; fog: [number, number, number]; amb: [number, number, number]; fogD: number; wood?: string; liquid: 'water' | 'lava'; banner: string; blurb: string }
+export const THEMES: Record<ThemeId, Theme> = {
+  stone: { id: 'stone', name: 'Old Stone', wall: 'stone_wall', walls: ['stone_wall', 'stone_wall', 'ashlar'], floor: 'flagstone', floors: ['flagstone', 'flagstone', 'cobble', 'planks_old', 'marble'], rock: 'rock', ceil: 4, stone: 'ashlar', pillar: ['pillar_round', 'pillar_square', 'pillar_gothic'], fog: [.026, .024, .024], amb: [0.068, 0.071, 0.088], fogD: .014, liquid: 'water', banner: 'banner_red', blurb: 'Torch-lit masonry, oak doors, long halls' },
+  crypt: { id: 'crypt', name: 'Haunted Crypt', wall: 'ashlar', walls: ['ashlar', 'stone_wall'], floor: 'flagstone', floors: ['flagstone', 'marble', 'dirt'], rock: 'rock_dark', ceil: 4, stone: 'stone_wall', pillar: ['pillar_gothic', 'pillar_broken', 'pillar_gothic'], fog: [.020, .026, .028], amb: [0.051, 0.075, 0.082], fogD: .018, liquid: 'water', banner: 'banner_black', blurb: 'Tombs, bones and candle wax' },
+  desert: { id: 'desert', name: 'Sandstone Tomb', wall: 'sandstone', walls: ['sandstone'], floor: 'sand_floor', floors: ['sand_floor', 'sand', 'sand_floor'], rock: 'rock_warm', ceil: 1, stone: 'sandstone', pillar: ['pillar_desert', 'pillar_desert', 'pillar_square'], fog: [.060, .044, .026], amb: [0.119, 0.093, 0.065], fogD: .013, liquid: 'water', banner: 'banner_gold', blurb: 'Buried kings under warm stone' },
+  frost: { id: 'frost', name: 'Frozen Halls', wall: 'ice_block', walls: ['ice_block', 'ashlar', 'ice_block'], floor: 'ice_block', floors: ['ice_block', 'snow', 'flagstone'], rock: 'rock_ice', ceil: 4, stone: 'ice_block', pillar: ['pillar_square', 'pillar_gothic'], fog: [.070, .095, .115], amb: [0.128, 0.178, 0.230], fogD: .014, liquid: 'water', banner: 'banner_blue', blurb: 'Blue ice and breath that hangs in the air' },
+  infernal: { id: 'infernal', name: 'Infernal Pit', wall: 'infernal', walls: ['infernal'], floor: 'infernal_floor', floors: ['infernal_floor', 'infernal_floor', 'rock_dark'], rock: 'rock_dark', ceil: 4, stone: 'infernal', pillar: ['pillar_square', 'pillar_gothic', 'pillar_broken'], fog: [.055, .016, .008], amb: [0.102, 0.044, 0.034], fogD: .016, liquid: 'lava', banner: 'banner_black', blurb: 'Black brick over rivers of fire' },
+  overgrown: { id: 'overgrown', name: 'Overgrown Ruin', wall: 'mossy_wall', walls: ['mossy_wall', 'mossy_wall', 'stone_wall'], floor: 'flag_moss', floors: ['flag_moss', 'flag_moss', 'moss', 'dirt'], rock: 'rock', ceil: 4, stone: 'mossy_wall', pillar: ['pillar_round', 'pillar_broken', 'pillar_square'], fog: [.026, .036, .022], amb: [0.068, 0.095, 0.065], fogD: .016, liquid: 'water', banner: 'banner_green', blurb: 'Roots and moss have taken it back' },
+  dwarven: { id: 'dwarven', name: 'Dwarven Hold', wall: 'dwarven', walls: ['dwarven', 'ashlar', 'dwarven'], floor: 'dwarven', floors: ['dwarven', 'flagstone', 'marble'], rock: 'rock', ceil: 1, stone: 'ashlar', pillar: ['pillar_dwarven', 'pillar_dwarven', 'pillar_square'], fog: [.034, .026, .018], amb: [0.082, 0.075, 0.068], fogD: .011, liquid: 'lava', banner: 'banner_blue', blurb: 'Carved basalt, inlaid gold, deep forges' },
+}
+export type BiomeId = 'temperate' | 'autumn' | 'snow' | 'desert' | 'blight'
+export interface Biome { id: BiomeId; name: string; layers: [string, string, string, string]; trees: [string, number][]; scatter: [string, number][]; sun: [number, number, number]; sky: [number, number, number]; horizon: [number, number, number]; grass: number; grassModel: string }
+// terrain layers: ground, under-trees, path, rock
+export const BIOMES: Record<BiomeId, Biome> = {
+  temperate: { id: 'temperate', name: 'Green Vale', layers: ['grass', 'forest', 'gravel', 'cliff'], trees: [['oak', 4], ['oak_old', 1], ['birch', 2], ['pine', 4], ['pine_tall', 2], ['tree_dead', .3]], scatter: [['bush', 3], ['bush_flower', 2], ['fern', 4], ['boulder', .7], ['rock_small', 1.5], ['stump', .5], ['log_fallen', .5]], sun: [1.0, .93, .80], sky: [.36, .55, .86], horizon: [.74, .82, .90], grass: 1, grassModel: 'grass_tuft' },
+  autumn: { id: 'autumn', name: 'Autumn Wood', layers: ['grass', 'forest', 'dirt', 'cliff'], trees: [['tree_autumn', 6], ['oak_old', 1], ['birch', 1], ['pine', 2], ['tree_dead', 1]], scatter: [['bush', 2], ['fern', 2], ['boulder', .8], ['rock_small', 1.5], ['stump', 1], ['log_fallen', .9], ['mushroom_red', .8]], sun: [1.0, .86, .62], sky: [.42, .54, .74], horizon: [.88, .78, .62], grass: .7, grassModel: 'grass_tuft' },
+  snow: { id: 'snow', name: 'Winter March', layers: ['snow', 'snow', 'gravel', 'rock_ice'], trees: [['pine_snow', 6], ['tree_dead', 2], ['tree_dead_big', .5]], scatter: [['boulder', 1], ['rock_small', 1.5], ['stump', .6], ['log_fallen', .4]], sun: [.95, .95, 1.0], sky: [.50, .62, .80], horizon: [.86, .89, .93], grass: 0, grassModel: 'grass_tuft' },
+  desert: { id: 'desert', name: 'Sun Waste', layers: ['sand', 'sand', 'gravel', 'rock_warm'], trees: [['tree_dead', 1]], scatter: [['boulder', 1], ['rock_small', 2], ['rock_flat', 1], ['bones_pile', .15], ['grass_tuft', .6]], sun: [1.1, .92, .68], sky: [.38, .58, .86], horizon: [.95, .82, .62], grass: .05, grassModel: 'grass_tuft' },
+  blight: { id: 'blight', name: 'Blighted Mire', layers: ['moss', 'mud', 'mud', 'rock_dark'], trees: [['tree_dead', 4], ['tree_dead_big', 2], ['pine', .4]], scatter: [['reeds', 3], ['fern', 2], ['rock_small', 1], ['log_fallen', 1], ['mushroom_giant', .5], ['bones_pile', .3], ['stump', 1]], sun: [.72, .76, .66], sky: [.34, .39, .38], horizon: [.50, .54, .48], grass: .5, grassModel: 'reeds' },
+}
+export const DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1]] as const   // 0 +x, 1 +z, 2 -x, 3 -z
+export const yawOf = (dx: number, dz: number) => Math.atan2(dx, dz) // props face +z at yaw 0

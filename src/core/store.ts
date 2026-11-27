@@ -1,0 +1,13 @@
+/** worlds kept in the browser */
+export interface Saved { id: string; name: string; kind: string; edited: number; thumb: string; size: number; mode?: string; camp?: string; mod?: string; ch?: number; place?: string; level?: number; heroes?: string[]; day?: number; over?: string; played?: number }
+let dbp: Promise<IDBDatabase> | null = null
+function db() { return dbp ??= new Promise((res, rej) => { const r = indexedDB.open('realmwright', 1); r.onupgradeneeded = () => { const d = r.result; d.createObjectStore('worlds'); d.createObjectStore('meta', { keyPath: 'id' }) }; r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error) }) }
+const wrap = <T>(r: IDBRequest<T>) => new Promise<T>((a, b) => { r.onsuccess = () => a(r.result); r.onerror = () => b(r.error) })
+export async function saveWorld(m: Saved, bytes: Uint8Array) { const d = await db(); const t = d.transaction(['worlds', 'meta'], 'readwrite'); t.objectStore('worlds').put(bytes, m.id); t.objectStore('meta').put(m); await new Promise<void>((a, b) => { t.oncomplete = () => a(); t.onerror = () => b(t.error); t.onabort = () => b(t.error) }) }
+export async function listWorlds(): Promise<Saved[]> { const d = await db(); const l = await wrap(d.transaction('meta').objectStore('meta').getAll()); return (l as Saved[]).sort((a, b) => b.edited - a.edited) }
+export async function loadWorldBytes(id: string): Promise<Uint8Array | null> { const d = await db(); return (await wrap(d.transaction('worlds').objectStore('worlds').get(id))) ?? null }
+/** the other maps of a campaign, kept beside the one in play */
+export async function saveMap(id: string, place: string, bytes: Uint8Array) { const d = await db(); const t = d.transaction('worlds', 'readwrite'); t.objectStore('worlds').put(bytes, `${id}@${place}`); await new Promise<void>((a, b) => { t.oncomplete = () => a(); t.onerror = () => b(t.error) }) }
+export const loadMap = (id: string, place: string) => loadWorldBytes(`${id}@${place}`)
+export async function mapsOf(id: string): Promise<string[]> { const d = await db(); const k = await wrap(d.transaction('worlds').objectStore('worlds').getAllKeys()); return (k as string[]).filter(x => typeof x === 'string' && x.startsWith(id + '@')).map(x => x.slice(id.length + 1)) }
+export async function deleteWorld(id: string) { const maps = await mapsOf(id); const d = await db(); const t = d.transaction(['worlds', 'meta'], 'readwrite'); for (const m of maps) t.objectStore('worlds').delete(`${id}@${m}`); t.objectStore('worlds').delete(id); t.objectStore('meta').delete(id); await new Promise<void>(a => { t.oncomplete = () => a() }) }

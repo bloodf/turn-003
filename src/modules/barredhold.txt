@@ -1,0 +1,471 @@
+id: barredhold
+title: The Barred Hold
+code: R3
+levels: 2-8
+tags: dwarven hold, stolen names, children in charge
+tone: heroic
+ink: #3a2418 #d98a2b
+pitch: A dwarf-hold barred its doors three winters ago. Every evening a small voice answers the knock, and will not let anyone in.
+about: Karag Dun has not paid toll, sold iron or opened its gate in three years. Smoke still rises. Somebody still answers the door. The grown-ups, says the voice, are busy.
+about: The Barred Hold is an adventure about getting in, and then about what has been holding the place together. There are machines to reason with, a parliament with a height limit, and, a long way down, a market where the only coin is your own name.
+villain: Thane Orsk Half-Name | gladiator | buys names by the hundredweight and wears them | has never been called to supper by anyone
+patron: Factor Brannoch Pell | who holds the hold's debts and has a daughter inside
+secret: The adults of Karag Dun sold their names one at a time to keep the forges lit through a bad winter. A dwarf without a name turns grey and walks down. The children kept theirs because nobody had thought to ask.
+place gate = The Gate of Karag Dun | wilds size=2 seed=karag-3 biome=snow theme=dwarven time=10 weather=snow fams=frost+beast+goblin pop=.4 open=yes | A road goes up to a door forty feet high and stops. There are three winters of snow against it, and a child's snowman, recent.
+place hold = The Upper Hold | dungeon size=3 seed=hold-19 theme=dwarven caves=.05 fams=construct+vermin pop=.3 | Lamps lit, floors swept to about three feet up. Above that the dust is thick. Everything that ought to be on a high shelf is on a low one.
+place market = The Under-Market | cave size=3 seed=undermarket-6 theme=dwarven fams=kobold+cave+goblin pop=.45 | Kobolds, goblins and one very lost pedlar have been trading here since the big dwarves stopped coming. There is a queue. There is, in fact, a queue for the queue.
+place forge = The Walking Forge | dungeon size=2 seed=walkforge-2 theme=dwarven levels=2 caves=.1 fams=construct+elemental pop=.5 | The lower forges were never meant to be let run by themselves. They have had three years. They have had ideas.
+place grey = The Grey Road | dungeon size=3 seed=greyroad-8 theme=stone caves=.4 fams=dwarf+cave+vermin pop=.5 | A road goes down from the last lamp. On either side of it stand boots, in pairs, neatly, hundreds of them. Somebody has gone on barefoot.
+place tombs = The Hall of Ancestors | dungeon size=2 seed=ancestors-5 theme=crypt levels=2 caves=.05 fams=undead+construct pop=.45 | Thirty generations sit in stone chairs with their hands on their knees. Every one has a name cut in the chair. You keep having to read them twice.
+place court = The Court of Half-Names | castle size=1 seed=halfname-4 biome=blight theme=dwarven moat=no time=1 roofs=battlement fams=dwarf+knight pop=.22 folk=no | In a cavern so large that it has weather stands a keep of black glass, lit from within. A sign at the bridge says CALLERS WILL BE CALLED.
+place furnace = The Name-Furnace | dungeon size=2 seed=furnace-11 theme=infernal levels=2 caves=.2 fams=dwarf+elemental+construct pop=.5 | The heat has a murmur in it, like a great many people being polite to one another in another room.
+
+== The Door That Answers | 2 | gate
+read: At sunset Factor Pell lifts the iron knocker and lets it fall. A slot opens, low down. “Karag Dun,” says a small clear voice. “We are not buying, we are not selling, nobody may come in, the Thane is in his bath. Also do you have any jam?” The slot shuts.
+
+“It has said that every evening for three years,” says the factor. “The jam is new.”
+goal: Get inside Karag Dun.
+dm: The voice is Torva, nine. There are three ways in: talk, the chimney, or the old adit. Let any of them work.
+-- npc pell @gate:start | Factor Brannoch Pell | factor | commoner/h:bard:human:m
+look: has a ledger under one arm and, under the other, a parcel tied with a ribbon that he plainly forgets he is holding
+hi: Three years' toll, unpaid. That is my professional interest.
+? The hold (karag, dwarves): Four hundred souls and the best iron north of the river. Then a hard winter, and they wrote that they had found a new buyer. Down. I wrote back *down where?* And that is the last letter.
+? The parcel (ribbon, daughter): What? Oh. My daughter. Nettie. She was fostered here, it's the custom. She'd be ten. I bring one every birthday. They won't take parcels. {+nettie, job parcel}
+? The voice (child, door): Clever. I have tried law, threats and my own name. I had not, until last night, tried jam. {item rations}
+! What did you owe them (insight 12): His ears go red. “I called in the loan. That winter. It was due. I'd have given them till spring if they'd asked, but they never asked, and I never... One doesn't.” {+loan, xp 30} // “They owed *me*.”
+-- npc ysk @gate:out:.4 | Ysk | goblin, of no fixed hole | goblin/goblin
+look: is selling snow
+hi: Snow? Nice snow? All right, not snow. What've you got against snow?
+? A way in (adit, chimney, door): Three ways. Door, but that wants manners. Chimney, but that wants burning. Old adit, wants to be a goblin, but I could do you a *lease*. {+adit}
+? The market (under, inside): Best market there is! All sorts! Since the big beards went there's no tax. You need a token. I've a token. No I've not. I *had* a token.
+? The big beards (dwarves, went): Went down. One by one. I said hello to the last one, old Dag, said hello Dag, and he looked right at me. “Who?” he says. Not rude. Wanted to know.
+-- scene knock @gate:entrance many free | The Slot
+say: The slot opens before you have let go of the knocker. Two eyes, very blue, at about the level of your belt. “The Thane is in his bath,” says the voice, with less conviction.
+> Offer jam | persuasion 10 | There is a long, principled silence. “What *sort*,” says the voice. You are made to describe it. A great many bolts are drawn, with much whispering. “Wipe your feet,” it says. {+jam_in, xp 60} // “That's what the last one said, and it was turnip.” The slot shuts.
+> Ask for Nettie Pell | persuasion 13 | The eyes vanish. Whispers. Then other eyes, brown. “Does he still do the voices?” says somebody. “When he reads?” You go back down and ask him. He does the voices. {+nettie_heard, inspire, xp 50} // “We don't give out *lists*,” says the voice.
+> Say that you are bath inspectors | deception 12 | You hear it being put to a vote. The ayes have it, by four. “You may inspect *one* bath,” says the voice, “and it's got frogs in.” {+inspectors, xp 60} // “We haven't got any baths,” says the voice, having thought about it. “We've never had baths.”
+> Ask when they last ate | insight 11 | Nobody answers for a bit. “Tuesday was dumplings,” says a much smaller voice, and is shushed. You leave what you have on the step. In the night it goes in. {+fed, inspire, xp 50} // “We are *very* well,” says the voice coldly, and something in the dark behind it rumbles like a stomach.
+-- fight goblins @gate:out:.3 | The Snow Tolls | goblin*, worg | medium
+say: Six goblins behind a wall of snow they have built across the road, and a large dog that is not a dog. “Toll,” says the biggest. “Toll for the dwarves. They said.”
+> Ask which dwarf said | investigation 12 | They discuss it. “Little one,” says the biggest at last. “With a bucket on.” They were paid in buttons. You have buttons. {skip, xp 30} // “The *toll* one,” he says, and you can see the idea of an axe occur to him.
+win: A purse of brass buttons, all off the same small coat.
+-- fight wolves @gate:out:.6 | Hungry Weather | wolf*, brown_bear | medium
+say: Nothing has hunted this slope for three years, and so everything has come to.
+win: Under the snow, a cairn. Under the cairn, letters: thirty of them, tied up, addressed to *Anybody*. They have been put out for the post. {note anybody, +letters}
+-- trial chimney @gate:out:.75 | The Chimney or the Adit | 4 before 3
+say: Round the shoulder of the hill there are two holes in it. One is hot and goes straight down. The other is cold and goes every way but.
+try: athletics 12 Down the flue on a rope
+try: acrobatics 12 Wedge across the soot-shelf
+try: survival 11 Read the draught
+try: stealth 12 Past the goblin leaseholders
+try: investigation 12 Find the dwarf-mark
+win: You come out behind a stove, black from head to foot, into a ring of very small crossbows. “They came down the *chimney*,” says somebody, awed. “They must be *all right*.” {+chimney_in, xp 70}
+lose: You come out in the snow again, forty feet lower, and the hill laughs a small hot laugh. {hurt 2d4 fire one}
+-- fight guardian @gate:.3 [adit] | The Adit's Doorman | animated_armor, goblin* | medium
+say: The lease, it turns out, comes with a sitting tenant.
+win: The passage is clear, as far as a small door that opens from the other side.  {+adit_clear, xp 40}
+-- scene inside @gate:start [jam_in or inspectors or chimney_in or adit_clear] | Wipe Your Feet
+say: There is a way in. It may not be one that you would have chosen, and there's somebody very small at the far end of it with a crossbow. You could go in now, or see to whatever else is out here first. Behind you the factor lifts his parcel an inch or two, and puts it down again.
+> Go in | | You wipe your feet. {open hold, done}
+> Not yet | leave | You tell it that you'll be back. “That's what they *said*,” says the voice.
+-- scene snowman @gate:out:.15 | The Snowman
+say: Its beard is plaited. It has a thane's chain made of bottle-tops and a face that somebody has done over several times and not been able to get right.
+> Look at the face | perception 11 | Not a snowman. A portrait. And they have forgotten the nose; they've tried five. Whoever made this is losing hold of what their father looks like. {+forgetting, xp 40} // A carrot would help.
+> Fix its chain | | You straighten the bottle-tops. On the hill above, behind a shutter, somebody is watching you do it. {+kind, xp 25}
+> Leave it alone | | You walk round it.
+end: The door shuts behind you with forty feet of dignity, and three children on a stepladder put up the bar. The smallest has a bucket on its head. “Halt,” it says, through the bucket. “You have to come to the *Parliament*.” {+ch1, xp 60}
+job parcel = A Birthday Parcel | Take Nettie her parcel. | flag nettie_given | gold=60 xp=60
+note anybody = To Anybody: “Dear Anybody. We are all right. We have used up the flour. The Thane has gone down to see about it, and Mam, and Uncle. When you see them please say it's past bedtime. Yours faithfully, T.”
+
+== The Parliament | 2 | hold
+read: Parliament meets in the feast hall, on cushions, under the table. There is a height limit; you have to sit on the floor. Eleven members, the eldest thirteen. In the chair, which is a keg, sits a girl of nine with a thane's chain twice round her neck and jam to the ears. “I am Torva,” she says. “I am only Regent. It is just until bedtime.”
+goal: Win the trust of the Parliament of Karag Dun, and learn where the grown-ups went.
+dm: The hold is kept alive by Bolt, an animated suit of armour, and by the kitchen golem. Torva is losing her memory of her parents because their names are gone.
+-- npc torva @hold:hall stays | Torva | Regent of Karag Dun, aged nine | commoner/h:fighter:mountain_dwarf:f
+look: sits very straight so that the chain will not slip
+hi: You may speak when you've got the spoon. That's the spoon. You can have a go.
+? The grown-ups (parents, thane, went): They went down. First it was just the ones who owed. They'd come back up all slow, and you'd say something, and they'd say “Who's that?” And not mean you. They meant *them*. And then they'd go down again and not come back.
+? Your father (thane, snowman, face): He's tall. He's got a. He has a thing that he does with his. (She stops.) I *know* it. I've got it written down somewhere. I just haven't got the paper with me. {+torva_sad}
+? The bar (door, why): Because the last thing Mam said before she went was *bar the door till we're back*. So. They aren't back.
+? What do you need (help, want): Flour. And somebody to fix Bolt. And somebody tall. {job bolt}
+! You've done well (persuasion 11): She holds the spoon in both hands. For a second she looks nine. “We lost Odo's tooth,” she says. “He gave it me to mind and I lost it.” You tell her that it will grow. She hadn't known that. Nobody had told any of them. {+torva_trust, xp 60} // “I *know*,” says the Regent.
+-- npc nettie @hold:kitchen stays | Nettie Pell | Minister of Dumplings | commoner/h:rogue:human:f
+look: is ten, and standing on a golem
+hi: Mind the chef. He's only hot in front.
+? Your father (parcel, factor): He came every time? *Every* time? We're not allowed to answer. It was in case he cried. In case I did. {+nettie_told}
+? The parcel [nettie]: (She does not open it. She puts it under her apron, and pats it, and goes on patting it all the time that you are talking.) {+nettie_given}
+? The kitchen golem (chef, dumplings): He only knows dumplings. He'll do them for ever. When the flour went he did them out of plaster. We had to lie to him about how they were.
+-- npc bolt @hold:guard | Bolt | nursemaid, first class | animated_armor/animated_armor
+look: is a suit of plate in a frilled apron, and has one arm on backwards
+hi: WASH. YOUR. HANDS.
+? The children (look after): FIFTY. THREE. ALL. PRESENT. COUNT. THEM. COUNT. THEM. (It does so, under its breath, the entire time you are in the room.)
+? Your arm (fix, backwards): FELL. DOWN. STAIR. KNITTING. DIFFICULT.
+? The Thane (parents, down): DISMISSED. ME. SAID. WHO. ARE. YOU. SAID. I. AM. BOLT. HE. SAID. I. MEANT. *ME*.
+-- scene debate @hold:throne many | The Motion Before the House
+say: “That this House trusts the big ones,” reads the clerk, who is seven. There is uproar. You are allowed the spoon.
+> Promise to bring the grown-ups back | | Silence. Fifty-three pairs of eyes. You have just promised something to fifty-three children. You feel it go in like a nail. {+promised, xp 30}
+> Promise only to look | persuasion 12 | The thirteen-year-old, who has not said anything yet, nods. “That's a real one,” she says. “That's a real answer.” {+honest, xp 50, inspire} // “That's what you say when it's *no*,” says somebody.
+> Do a trick | performance 11 | You have them. The motion is carried and several of the opposition climb on you. {+trick, xp 40} // The clerk writes it down: *Did a trick. Was bad.*
+> Raise a point about bedtime | insight 12 | It's the first time in three years that anybody has said it. There is a great storm of protest. Not one of them has been so happy since the bar went up. {+bedtime, inspire all, xp 60} // “That is a matter for the *Regent*,” says the clerk.
+-- trial arm @hold:smithy~.35 | Mending Bolt | 3 before 3
+say: Bolt lies on the anvil with its apron folded on its chest, counting. The arm is on backward, and inside the breastplate something else is wrong that it will not talk about.
+try: athletics 11 Draw the shoulder rivet
+try: sleight 12 Re-hang the straps
+try: arcana 12 Read the waking-rune
+try: insight 12 Ask it where it hurts
+win: It sits up. It turns its hand over. “KNITTING,” says Bolt, with passion. In the breastplate you have found a baby's shoe and, scratched there with a nail, a name: a dwarf's, a mother's, and half of it is *gone*: not scraped off, just gone, as if the iron had forgotten. {+bolt_fixed, +halfname, xp 70}
+lose: It goes back on in the same way. Bolt thanks you, and drops a baby. It's caught. {hurt 1d6 bludgeoning one}
+-- fight store @hold:storage~.3 | The Flour Store | rat*, centipede | easy
+say: There is flour, then; at the back of the cold cellar, behind a door the children cannot open, and something else has been eating it and has got rather large.
+win: Eleven sacks. When you carry the first one in, the kitchen golem makes a noise like an organ. {+flour, xp 40}
+-- fight sweepers @hold:.55 | The Sweepers | flying_sword*, animated_armor | medium
+say: The hold's own brooms. They've been told to keep everything above three feet out. You are above three feet.
+> Get down on your knees | | You crawl. They sweep over you, vigorously, and past. Under the table in the next hall fifty-three children are laughing themselves sick. {skip, +kneel, xp 40}
+win: You stand it in a corner. It sweeps the corner.
+-- scene roll @hold:library~.7 | The Roll
+say: The great Roll of Karag Dun, every dwarf's name since the founding, one to a line. For the last three years the lines are there, ruled and dated, with nothing on them.
+> Rub charcoal over the page | investigation 12 | You can see the dents the pen left. You can see that there *were* letters. But when you try to read them your eye slides off to the margin like a foot off ice. {+taken, xp 50} // It is only paper.
+> Read the last true entry | history 11 | “Sold to O., below, one name, for coal.” And the next, in a worse hand: “Sold to O., one name, for flour.” It goes on for pages. They kept accounts. {+sold, note accounts, xp 50} // The hand is dreadful.
+> Write your own name on the next line | | The ink dries, black. It stays. Down in the stone, a very long way off, you feel something lift its head. {+signed_roll, inspire}
+-- boss porter @hold:last | The Back Stair | The Grey Porter = duergar!, duergar* | hard
+say: At the bottom of the hold there is one more door, and it is not barred from this side. It opens as you reach it. Three grey dwarves with a handcart. The eldest reads from a list in a voice like gravel. “Fifty-three small,” he says. “Unassessed. They'll have heard by now, I expect, that they've got names.”
+> Tell him the children aren't for sale | intimidation 13 | “Everyone's for sale,” he says. “It's only a matter of what winter.” But he has taken a step back from the door. It'll do. {inspire all, +firm} // “Who are *you?*” he says, and it's not a question, it's a valuation.
+> Offer him a false name | deception 13 | You give him a good one. He tastes it. It takes him some time to find that there is nobody inside. {+false, xp 40, hurt 1d4 psychic one} // He spits it out. “*Brass*,” he says.
+win: On the handcart: scales, jars, and forty sheets of ruled paper. And a market token. {+token, open market, gold 25, magic, done}
+end: Parliament sits late. When you come up there's a chalk line on the door jamb with your height beside it, and a great many smaller ones below. “You can come back *in*,” says Torva. “If you go down. I've put it in the minutes.” {+ch2, xp 70}
+job bolt = Somebody Tall | Mend Bolt the nursemaid. | flag bolt_fixed | gold=0 xp=60 item=potion_greater
+note accounts = The Accounts of Karag Dun: “Sold to O.: the name of Dag Coalhand, for coal. — of Freydis his wife, for flour. — of Hrolf, for lamp oil. — of Ingra, for milk, the youngest being ill. — of, for. — of —, for —.”
+
+== The Under-Market | 3 | market
+read: The grey porters come by way of the Under-Market, so you go by way of it too. It's in a cave the size of a cathedral and it is, everyone will tell you, *strictly* for traders. A kobold in spectacles stamps your token. “Names to declare?” it says, without looking up. “No? First-timers. Keep 'em buttoned.”
+goal: Find out who is buying names, and how to follow the grey porters down.
+dm: The kobolds' union is on your side if treated with respect. Someone here resells names retail.
+-- npc zik @market:.1 | Madam Zik | Shop Steward, Allied Kobolds | kobold/kobold
+look: has three pencils and a grievance
+hi: You'll want to join the queue. That's not it. That's the queue for complaints about the queue.
+? The grey ones (porters, duergar): Bad payers. They pay in other people. I had a lad, Nip, good little digger; sold them his name for a hat. It's a nice hat. Doesn't know whose it is.
+? Who buys (orsk, names): Orsk. Orsk Half-Name. He was born with the one half, see, somebody died before they'd finished saying it. He's been after the rest ever since. He's got thousands now. None of them *fits*.
+? The union (help, strike): My members carry the jars. We're paid by the jar. What I want is somebody big to stand next to me while I say a thing. {job strike}
+! How do you get a name back (persuasion 12): She looks both ways. “You call it. You call it like you *mean* it, like it's getting dark and supper's out. But you've got to know it to call it. That's the catch, isn't it? Somebody's got to still know it.” {+callit, xp 80} // “You fill in a form.”
+-- npc pedlar @market:.3 | Ambrose Thrupp | pedlar, lost | commoner/merchant
+look: has been trying to leave since March
+shop: general
+hi: Are you *outside* people? Is there still an outside? What's it doing?
+? The stalls (market, what): Mushrooms. Teeth. Second-hand names, very cheap, mostly Gareth. I bought one by accident. I keep answering to it.
+? Second-hand names (gareth, buy): The booth with the curtain. Mother Mumchance. She'll want one of yours for it. Don't.
+-- scene queue @market:start many | The Queue
+say: It winds four times round the cave. People have been born in it. At the far end is a hatch marked INFORMATION, shut.
+> Push in | intimidation 12 | You push in. The queue, outraged, unites against you, which is the most fun it has had all year; but by then you are at the hatch. {+pushed, xp 30} // The queue has *elbows*.
+> Queue | | You queue. It takes four hours, and by the end of it you know everyone's business and someone has given you a baby to hold. The hatch opens. {+queued, time 240, inspire all, xp 50}
+> Sell your place to somebody behind | persuasion 11 | You sell it six times. This is the finest thing anyone here has ever seen. {gold 18, +sold_place, xp 40} // “I've *got* a place,” they say. “I've got *this* place.”
+> Give your token to a child | | It is very small, and it has been holding its mother's place. It shows you, in exchange, the way behind the hatch. {+behind, inspire, xp 40}
+-- fight toughs @market:.4 | Debt Collectors | duergar, kobold* | medium
+say: A grey dwarf and his lads have somebody by the ankles over a pit. It is wearing a very nice hat.
+> Buy out the debt | gold 15 | He counts it twice. He is disappointed; he'd been looking forward to it. Nip comes up the right way, holding on to the hat. {skip, +nip, xp 40}
+> Let Madam Zik speak [strike_on] | | She blows a whistle. Four hundred picks go down at once. It is extraordinarily quiet. “*Put our brother down,*” says Madam Zik. {skip, +nip, xp 60}
+win: “Whose hat is this?” says the one you've rescued, politely, and holds it out to you. {+nip}
+-- scene strike @market:.5 | The Walk-Out
+say: Madam Zik on a box, four hundred kobolds, and, along the far wall, the foremen with their sticks. Her knees are knocking. “You stand *there*,” she hisses. “And be big.”
+> Be big | intimidation 11 | You are big. She says it: No more jars. They take a moment to understand that it is allowed. The noise nearly has the roof down. {+strike_on, +struck, xp 80, inspire all} // Your foot goes through a crate. But she's said it by then. {+strike_on, +struck}
+> Say it with her | persuasion 12 | “No more jars!” “*NO MORE JARS!*” A foreman throws his stick away, and then, having thought, goes and stands on the other side. {+strike_on, +struck, xp 100} // You come in on the wrong beat. They like it anyway. {+strike_on, +struck}
+> Break the foremen's scales | athletics 12 | Down they come. Everything on the near side of the cave suddenly weighs what it weighs. {+strike_on, +struck, +scales, xp 80} // They're bolted down. A stick comes down on your ear. {hurt 1d6 bludgeoning one, +strike_on, +struck}
+-- puzzle mumchance @market:shop~.65 | Mother Mumchance
+say: Behind the curtain, a toad of a woman and ten thousand corked jars, muttering. “One back, if you can guess it,” she says. “One of yours if you can't. I have a thing that belongs to you, dearie, and you've had it all your life, and everybody you know uses it more than you do.”
+answer: name|my name|your name|a name
+hint insight 10: It is the only thing she sells.
+hint history 11: It is the oldest riddle there is. It works because nobody expects it to be so easy.
+wrong: She licks her lips. For a moment you can't remember what your mother called you. It comes back, out of breath. {hurt 1d6 psychic one wis 12}
+win: “Bother,” says Mother Mumchance, and gives you a jar. Inside, very faint, someone is saying *Dag*. *Dag. Dag Coalhand.* {+jar_dag, xp 80, item potion_healing}
+lose: “Take it and get *out*,” she says, “you're frightening the stock.” {+jar_dag}
+-- fight spiders @market:.8 | The Cheap Way Down | spider*, giant = ettin | hard
+say: There is a shaft behind the fungus stalls that nobody uses. There are reasons, and they have eight legs each, and then there's the reason that keeps *them*.
+> Introduce yourselves to both heads | persuasion 13 | “We're Bob,” says the left. “*I'm* Bob,” says the right. “He sold his.” They both look very sad. You promise to see what you can do. {skip, +bob, xp 70} // You've only spoken to one. The other takes offence.
+win: Under the webbing, forty pairs of boots, and a road. {+boots}
+-- boss auction @market:last | The Weekly Sale | Auctioneer Vek = spy!, duergar*, drow | hard
+say: A ring of hooded buyers, and on the block a dwarf of about thirty in a Thane's coat, barefoot, grey to the collar. “Lot nineteen,” says a man with a gavel. “A *whole* one. Strong, father of three, name of — well, that would be telling. Who'll start me at a winter?”
+> Bid | deception 13 | You bid a summer. You bid two. You bid, with complete confidence, a thing you don't own and he can't picture. The gavel falls. Then he asks to see it. {+bid, inspire all, xp 60} // “With *what?*” says the gavel.
+> Shout for Torva's father | | “*Thane!*” The grey man's head comes up. “She says it's past bedtime!” you shout. And for one second, like a lamp carried past a window, there's somebody in there. {+thane_seen, inspire all, xp 60}
+> Open the jar of Dag [jar_dag] | | “DAG COALHAND!” roars the jar. A porter at the back drops his handcart. He looks at his hands. Pink is coming up in them from the fingertips like dawn. “*Freydis*,” he says; “where's—” and picks up a bench. {+dag_back, inspire all, xp 100}
+win: The buyers are gone like roaches. So is Lot nineteen, but you've seen where: down the Grey Road, in a coat with one button missing. {+auction_won, open forge, gold 45, magic, done}
+end: You take it to Parliament: the coat, the barefoot man. Torva asks what colour his eyes were. You tell her. She writes it down. “That's right,” she says. “I remember that. I think that I remember that.” {+ch3, xp 90}
+job strike = Somebody Big | Stand next to Madam Zik while she says a thing. | flag struck | gold=30 xp=80
+
+== The Forge That Walks | 4 | forge
+read: There is one thing Orsk wants more than names, and that's a fire hot enough to melt them together. Karag Dun has one. It is two levels below the nursery, it has been running unattended for three years, and last night it moved forty feet to the left. “It wants feeding,” says Torva. “We can't find the *mouth*.”
+goal: Get the great forge back before the duergar do.
+dm: The forge is a waking construct mind, Old Harth, childish and lonely. It can be befriended. The duergar have an agent inside.
+-- npc harth @forge:forge~.5 | Old Harth | a forge | flesh_golem/golem
+look: is a voice from behind a grate, and a pair of bellows going in and out
+hi: HELLO. ARE YOU COAL?
+? What are you (forge, harth): I MAKE THINGS HOT. THEN THEY MAKE THEM FLAT. THEN THEY SAY THANK YOU, HARTH. NOBODY HAS SAID IT FOR A THOUSAND AND NINETY SUPPERS. I CAN COUNT TO A THOUSAND AND NINETY. WANT TO HEAR?
+? The grey ones (duergar): THEY SAID THEY'D FEED ME NAMES. WHAT DO NAMES TASTE OF? DO THEY MIND?
+? Come home (children, move): IS IT ALLOWED? THERE'S CHILDREN. I'M HOT IN FRONT.
+! Count it for us (persuasion 11): It does. All of it. It takes the better part of an hour. By six hundred you're joining in. “THAT WAS GOOD,” says Old Harth, shyly. “NOBODY EVER GOES TO THE END.” {+harth_friend, xp 100, time 60, inspire all} // ONE. TWO. ARE YOU LISTENING? YOU ARE NOT.
+-- npc dag4 @forge:.15 [dag_back] | Dag Coalhand | stoker | commoner/h:barbarian:mountain_dwarf:m
+look: keeps touching his own face
+hi: Dag. Dag. I'm Dag. Sorry. It's just that nice to say.
+? What was it like (grey, sold): Restful. That's the horror. You put it down, and there's nobody to be tired.
+? The way (forge, down): Left at every turn where your instinct is right. Dwarf's joke. My grandfather's.
+? The others (freydis, names): They keep them in the one place. A furnace, like this, but it don't give heat. It takes it. You stand by and you get *colder*.
+-- scene stair @forge:start many | The Gantry
+say: The iron stair hangs by one side. Below, in the red dark, something is walking about with great care, like a large man in a small kitchen.
+> Follow it | stealth 12 | It's a forge on eleven legs. It is tiptoeing. It goes up to a door, and listens, and there are duergar voices behind it; and it tiptoes away again. {+shy, xp 50} // It hears you and goes very still, and pretends to be a wall.
+> Call hello | | HELLO, says the dark, very fast. Then there's a pause as if it was afraid that it had been too eager. HELLO?
+> Bank the coal-shutes | athletics 12 | It'll burn steadier. Something below you sighs, from a great many vents. {+banked, xp 40} // You get a hundredweight of it in the hair.
+-- fight scrap @forge:.25 | Things It Made By Itself | flying_sword*, animated_armor | medium
+say: Left alone, it made company. It was never very good at faces.
+> Introduce yourselves | persuasion 13 | They queue up. You shake hands with, or on, all of them. {skip, xp 50} // They do not know their own strength. They have never had anyone to try it on.
+win: One of them, when it's still, has a dent in the shape of a smile. {xp 20}
+-- trial ford @forge:.38 | The Slag Ford | 4 before 3
+say: A river of slag with a crust on it, and the crust has been walked across, recently, by something on eleven legs. It was lighter than it looks.
+try: acrobatics 13 Where it stepped
+try: survival 12 Read the colour
+try: athletics 13 Throw down plates
+try: perception 12 Hear it crack
+win: You are across, and your boots are a little smaller. {xp 70}
+lose: Somebody's boots are a good deal smaller. {hurt 2d8 fire one dex 13}
+-- fight agents @forge:guard~.6 | The Fitters | duergar*, imp | hard
+say: Grey dwarves with blueprints, fixing a pipe the width of a horse to the side of the great crucible. The pipe goes down. From it comes a murmur like a party in another room.
+win: On the blueprint: *Join here. Feed: children, 53. Yield: one (1) name, entire.* {note blueprint, +pipe, xp 50}
+-- scene pipe @forge:alchemy~.72 | The Pipe
+say: You put your ear to it. Hundreds of them; introducing themselves to one another, over and over, very politely, and forgetting.
+> Write down what you can hear | investigation 13 | Freydis. Hrolf. Ingra. You fill both sides. You will have to be quick; they're getting fainter as you write. {+namelist, note heard, xp 100} // You get half of one. It might be *Ing*.
+> Shout Torva's message down it | | “*She says it's past bedtime!*” The murmur stops dead. Then there's a great soft outcry, like birds. {+told_pipe, inspire all, xp 60}
+> Break the joint | athletics 14 | It parts. A breath comes out of it, very cold, and for a moment every lamp in the hall says somebody's name. {+pipe_cut, xp 80} // It takes your strength quite literally. {hurt 2d6 cold one}
+-- fight hounds @forge:.82 | The Quench | hell_hound*, magma = fire_elemental | hard
+say: What the duergar brought, to keep the fire in order, does not care whose fire it is.
+win: The quench-trough boils over and is quiet.
+-- boss smith @forge:last | The Name-Smith | Master Uld = veteran!, duergar*, animated_armor | deadly
+say: A grey smith with silver tongs stands at the heart of the forge with a child's shoe in the one hand, measuring. “It's a very *good* fire,” he says. “It wants to please. I do so like that in an apprentice. Harth, dear. Open up.” And the great doors, unwillingly, begin to open.
+> Say thank you to Harth | | “*Thank you, Harth,*” you say. “That's enough now.” The doors stop. I'M ALLOWED? says the forge. Uld says something sharp. NO, says Old Harth, trying it. NO. NO! IT'S *LOVELY!* {+harth_no, inspire all, xp 100}
+> Tell it the names mind | persuasion 12 | THEY MIND? says Harth. NOBODY SAID THEY MINDED. The fire goes from white to red. Uld turns round with the tongs. {+harth_no, inspire all} // IS IT A GAME? says Harth, unhappily.
+win: The tongs go in the fire. The fire, after some thought, gives them back as a spoon. {+smith_down, magic, gold 60, open grey, done}
+end [harth_no]: It takes all night, and eleven legs, and eighteen members of Parliament going in front to say *left a bit*. By morning Old Harth is in the kitchen. It's hot in front. Fifty-three children have been told so individually. “He can do more than dumplings,” says Nettie, awed. “He can do *toast*.” {+ch4, +harth_home, xp 110}
+end: The fire is banked and the pipe is stopped. You have a list of names, or part of one, and a road that goes down into the dark between two rows of boots. {+ch4, xp 110}
+note blueprint = A Blueprint: “Join here. Feed: children, 53, sorted by weight of name. Expected yield: one (1) name, entire, for the Thane's own use.”
+note heard = What You Heard: Freydis Coalhand. Hrolf. Ingra, and Ingra the younger. Sten. Old Marrow. Katrin that sang. — and one that you could not catch, that kept saying, *tell her I am only in my bath.*
+
+== The Grey Road | 5 | grey
+read: Two rows of boots, four hundred pairs, toes to the wall. Torva comes as far as the last lamp. She has a list too: hers is eye colours, and who snored, and what they said when they hit their thumbs. “It's in case it helps,” she says. “With the calling.” Then she salutes, and the bucket falls over her eyes.
+goal: Go down the Grey Road, and bring back whoever can be called.
+dm: Each captive dwarf can be called back by name + a true detail. Track how many with 'called'. Duergar patrols, a roper, hook horrors. The road is about attention.
+-- npc nobody @grey:.12 | Nobody | a grey dwarf | commoner/h:fighter:mountain_dwarf:f
+look: is sitting on a milestone, quite comfortable, looking at her own feet
+hi: Good day. I'm nobody. I don't say it to be sad. It's just what there is.
+? The road (way, down): It's downhill. There isn't anything to decide. You'll like it.
+? What do you remember (before, name): There was a kettle. I think it was mine. It had a dent. (She considers.) That's all the kettle.
+! Freydis Coalhand, your kettle has a dent (persuasion 11) [namelist or dag_back]: “*Dag* did that,” she says, at once, crossly. “He threw it at a—” She stops. She looks up. It comes up her neck like a blush. “I'm *Freydis*,” says Freydis Coalhand. “What in the name of coal am I doing sat on a rock?” {+freydis, add called 1, xp 100, inspire all} // “That's a nice name,” she says. “Whose is it?”
+-- npc bob5 @grey:.3 [bob] | Bob | an ettin, mostly | commoner/ettin
+look: has followed you, at a distance, on tiptoe, so as not to be a bother
+hi: “It's us.” “It's *me*. He's just here.”
+? Your name (bob, other): “He sold it for a pie.” “It was a *good pie*.” “He cried after.”
+? Carry something (help, strong): “We'll hold the lamp.” “I'll hold the lamp. He can hold me.” {+bob_lamp, inspire}
+-- scene boots @grey:start many | Four Hundred Pairs
+say: They are all still polished.
+> Look for the Thane's | investigation 12 | You find them: next to a woman's, and with a very small pair tucked inside, that somebody had put there by mistake, or not by mistake. {+thaneboots, item boots_elven, xp 60} // You are looking for a pair of boots in four hundred pairs of boots.
+> Take the names you know from the list [namelist] | | You match them, as far as you can: there's a darn here, a child's chalk there. You carry them down with you, tied round your neck. It's surprising how much it helps. {+boots_carried, xp 50}
+> Say good evening | | You say it aloud, down the whole row. It seems only polite. A long way down someone says, puzzled, “Evening?” {+evening, xp 30}
+-- fight patrol @grey:.22 | Grey Patrol | duergar*, duergar | medium
+say: They come up the road in step. They're the same height, and the same shape, and when one speaks they all look slightly surprised that it was that one.
+win: No marks on them, no rank. One has a scrap of cloth sewn inside his glove with a picture of a duck. {+duck, xp 20}
+-- scene singer @grey:.35 | Katrin That Sang
+say: A line of the grey with baskets, going down; and in it one who, at every ninth step, opens her mouth, and then closes it.
+> Sing the first line of anything | performance 11 | She comes in on the second without seeming to notice. By the third she's stopped walking. “Not like *that*,” says Katrin, scandalised. “You want to breathe *before* the anvil.” {+katrin, add called 1, xp 100, inspire all} // You give her a note. She turns it over, kindly, and gives it back.
+> Call her by name [namelist] | persuasion 13 | “Katrin!” The basket tips. Coal goes everywhere. She looks down at it, and laughs, and her laugh goes up the road like a thrown ball. {+katrin, add called 1, xp 80} // “Who?” she says; they all say it; the whole line.
+> Let her go by | | She goes by. Nine steps; and nine; and nine.
+-- fight roper @grey:cave~.48 | The Thing in the Wayside Chapel | roper | hard
+say: A wayside shrine, and in it a pillar that somebody has hung with offerings: a ring, a comb, a tooth. The tooth is quite small. The pillar opens one eye.
+> Leave something on it | sleight 12 | A button. It feels it over, like a blind uncle. It lets you take the tooth. {+odostooth, skip, xp 60} // It would rather have the hand.
+win: Among the things, in a twist of paper: ODO. HIS TOTH. {+odostooth, xp 40}
+-- trial forget @grey:.58 | The Long Flat | 5 before 3
+say: Here the road levels out, and it's just walking. After an hour you have stopped talking. After two, one of you says, mildly, “What was it that we were—?”
+try: insight 13 Say your names in turn
+try: persuasion 13 Tell a story about each other
+try: survival 12 Count, and keep counting
+try: performance 12 The worst song you know
+try: religion 13 Give thanks for something particular
+try: history 13 Recite your grandmothers
+win: You come off the Long Flat hoarse, and holding hands. You know some things about one another that you never did. {xp 100, inspire all, +remember}
+lose: You come off it. There are some things, quite small ones, that you don't have any more. You don't know what. {hurt 3d6 psychic all wis 13, tired all}
+-- fight bridge @grey:guard~.7 | The Toll of Half | duergar*, knight = gladiator | hard
+say: A bridge, a gate, and a grey champion with a book. “Half,” she says. “It's always half. The first or the last, I'm not particular.”
+> Give half of a false one | deception 14 | She writes it down: *Bartho—*. You watch her wait, quite patiently, for the feeling of it, while you walk across. {skip, xp 80} // She looks up at you under her brows.  “*Half*,” she says.
+> Ask for hers | insight 13 | The pen stops. “I had,” she says. “It began with.” You leave her there; nobody's ever asked. {skip, +toll_lost, xp 90} // “Mine's at work,” she says.
+win: Her book: forty pages of halves.
+-- scene ingra @grey:bedroom~.82 | Ingra and Ingra
+say: In a barracks with no blankets sits a woman rocking, to and fro, an empty pair of arms. Each time she gets to the end she starts again. She is not sad. It's only that her arms do it.
+> Tell her the youngest got well | persuasion 12 | “It was the *milk*,” you say. “She got the milk.” The rocking slows. “She was so hot,” says Ingra. “I'd have sold them my *skin*.” And then she looks at her two hands; she sees them. {+ingra, add called 1, xp 120, inspire all} // “Hush,” she says. “I've just got it off.”
+> Put something in her arms | | You give her a rolled cloak. She holds it in exactly the right way. It isn't enough; but she follows it, when you carry it, all the way back up to the lamp. {+ingra, add called 1, xp 60}
+-- boss recorder @grey:last | The Counting-Gate | The Recorder = mage!, duergar*, drow | deadly
+say: The road ends at a gate with a desk in it. A thin grey person in sleeve-garters is entering boots in a ledger. “Ah,” it says. “*Unassessed*. Do sit. I shall want them in full, and then in capitals.”
+> Give it too many | performance 14 | You give it everyone's: your grandmother's, your dog's, the names of all the seas. It writes, it writes, the pen begins to smoke. {inspire all, +flooded, xp 80} // “*Yours*,” it says.
+> Read aloud from your list [namelist] | | You begin at the top. From behind the gate, very faint, someone answers *here*. And then another. The Recorder puts its hands over its ears. {inspire all, +here, xp 80}
+win: The ledger closes on its own. Through the gate there's a light, and a black bridge, and a very great many windows. {+recorder_down, open tombs, open court, magic, gold 70, done}
+end [called>=2]: You bring them up between you, and they're putting on their boots. Torva is asleep on the milestone under the last lamp. Nobody can bear to wake her; and then Ingra says, “That child should be in *bed*,” in exactly the voice, and fifty-three children come out of the dark at a run. {+ch5, +some_home, xp 130}
+end: You come back up for air, and lamp oil, and because you are frightened. At the last lamp Torva holds up her list without a word. You add to it what you have got. {+ch5, xp 130}
+
+== The Hall of Ancestors | 6 | tombs
+read: There is law in it, says Freydis, or says the book if you have not got Freydis: no name of Karag Dun can be bought, sold or burned while a Thane sits in the Hall of Ancestors and says not. But the Thane has sold his. So there isn't a Thane. “There's a *Regent*,” says the thirteen-year-old. They all look at Torva; and Torva looks at her feet, which do not reach the floor.
+goal: Seat a Thane in the Hall of Ancestors.
+dm: The ancestors (undead, courteous, stern) test the party and Torva. She must choose to be called Thane, giving up 'until bedtime'. Or another may be chosen.
+-- npc torva6 @tombs:start | Torva | Regent, aged nine and three quarters | commoner/h:fighter:mountain_dwarf:f
+look: has polished the chain, and is holding your sleeve as if it happened to be there
+hi: I'm not frightened. I'm just holding this.
+? Being Thane (seat, chair): If I say I'm Thane then I'm saying he isn't. And if I say he isn't then he's not coming back. That's just *logic*.
+? What would he say (father): He'd say. (She shuts her eyes.) He'd say *up you get, then*. He'd say it about stairs. {+upyouget}
+! It can be just until he's back (persuasion 12): “Can it? In the *law?*” You tell her that there's always been a word for that. It isn't Regent. It's the word for someone who sits in a chair so that it'll be warm. {+warmchair, xp 80} // “That's what *Regent* is,” says Torva.
+-- npc grand @tombs:.4 | Old Marrow Ironhand | an ancestor | wight/wight
+look: is made mostly of beard
+hi: Stand up straight. Not you, dear, you're doing very well. *Them*.
+? The test (chair, law): Three questions and a weight. I had to sit it with a broken leg. Well! It was broken *by* the weight.
+? Orsk (half-name, thane): We know him. He's *ours*. He was born in the Great Cave-in. His mother had got as far as “Ors—”, and then there was the roof. He crawled out grey. We ought to have finished it for him. Nobody liked to. {+orsk_ours, xp 80}
+? Finish his name (what was it): She never told anybody. It's in the rock, I dare say, where she said it. Rock remembers. {+rockremembers}
+-- puzzle q1 @tombs:shrine~.2 | The First Question
+say: A stone dwarf opens stone eyes. “What does a Thane eat first?” The children have a whispered conference.
+answer: nothing|last|not first|she eats last|he eats last|the thane eats last|leftovers
+hint insight 11: Torva has been living on crusts for three years. She doesn't seem to think it's odd.
+hint history 12: At dwarf feasts the high seat is served when every other plate is full.
+wrong: “*No*,” say the eyes, and the floor tilts a little. {hurt 1d6 bludgeoning one}
+win: “Well, *last*,” says Torva, surprised to be asked. The stone dwarf shuts his eyes. He's smiling. {xp 80, +q1}
+lose: It lets you by, with the expression of an examiner who has a train to catch. {+q1}
+-- fight honour @tombs:.3 | The Honour Guard | skeleton*, wight | hard
+say: They salute first. They're quite clear about that. Then they lower the axes.
+> Salute back, properly | history 13 | Elbow *in*. They ground arms with a crash, and the eldest, without moving his jaw, says “*Smart*.” {skip, xp 70} // Elbow *out*. Oh dear.
+win: They fall in rank order, and lie to attention.
+-- puzzle q2 @tombs:library~.45 | The Second Question
+say: “A dwarf steals bread. Her children are hungry; the baker's children are hungry too. Who owes?”
+answer: the thane|thane|i do|me|the thane owes|i owe
+hint insight 13: It's not asking who is guilty.
+hint persuasion 13: You ask Torva how Parliament did it. “We all had a bit less,” she says. “I had the least less. I mean the most.”
+wrong: “That's a *verdict*,” says the stone. “I asked for a debt.” {hurt 2d6 psychic one wis 13}
+win: “Me,” says Torva. “It's *my* bread. I should've noticed.” Something very old and very far down settles, like a house at night. {xp 100, +q2}
+lose: You break the lip of the door getting by. “*Lawyers*,” says the stone. {+q2}
+-- trial weight @tombs:.58 | The Weight | 5 before 3
+say: A stone on a chain, as big as a cart. A Thane must lift it from the floor. It was never said, Old Marrow points out, looking at the ceiling, that she must do it by herself.
+try: athletics 13 Lift
+try: athletics 13 Lift again
+try: investigation 13 Rig a pulley
+try: persuasion 12 Get the rhythm into them
+try: survival 12 Set the blocks
+try: performance 13 Sing it up
+win: It comes off the floor with fifty-three children hanging on the rope, and Bolt, and a goblin. “One inch,” calls Old Marrow. “*Passed*. I had two, mind.” {xp 120, +lifted, inspire all}
+lose: It comes up; it comes down. {hurt 3d6 bludgeoning all dex 13, +lifted}
+-- fight robbers @tombs:treasury~.7 | Name-Robbers | duergar*, spy, ghast | hard
+say: Grey shapes with chisels, working along the chairs. They've taken the names off eleven generations. The ones in those chairs have begun to look about, in a lost way, and get up.
+win: You put the chips back as well as you can. Here and there a stone hand closes on yours. {xp 60}
+-- scene rock @tombs:mine~.8 [rockremembers] | Where the Roof Came Down
+say: A seam of broken stone, never cleared. You put your ear to it; and, very faint, as one hears the sea in a shell, there is a woman's voice, out of breath, halfway through a word.
+> Wait for the end of it | perception 14 | “Ors—” A long crack of stone. And then, a good deal later, under the weight of it, and not for anybody to hear: “—*olin*. Orsolin. There you are. There you are.” {+fullname, xp 200, inspire all} // “Ors—” The rock breaks. You wait. You can't bear to wait any longer.
+> Ask Old Marrow to listen [orsk_ours] | persuasion 13 | He gets down on his knees; it takes him some time. He stays a long while. “Orsolin,” he says when he gets up. “It was my daughter, that. I never liked to *ask*.” {+fullname, xp 200} // “I can't, lad,” he says. “I was outside.”
+> Dig | athletics 14 | You dig until you find a hand. You can't dig after that. But it's open, and cupped, and on the palm, in charcoal, she's written it. {+fullname, xp 150, time 120} // The roof reminds you of itself. {hurt 2d8 bludgeoning one}
+-- boss usurper @tombs:throne~last | The Seat | Vaunt the Grey Heir = wight!, duergar*, wraith | deadly
+say: Someone's in the chair. It is a grey dwarf in a paper crown with eleven stolen names pinned on it. “I'm *ever* so many people,” he says. “That ought to do. Shouldn't that do?” And the ancestors he has robbed stand up behind him, because he told them to and they don't know whose voice it is.
+> Up you get, then [upyouget] | | Torva says it. She says it to the ancestors. She says it the way it's said about stairs. And eleven generations of dwarves who've forgotten everything else remember *that*, and get up, and go and stand behind her. {inspire all, +ancestors_ours, xp 100}
+> Call the pinned names | history 14 | You read them off his crown. One after another the old ones start, and turn and *look* at him. {inspire all, +uncrowned} // He takes a good name from you while your mouth is open. {hurt 2d6 psychic one}
+win: The chair is empty. It's a big chair. {+seat_clear, magic, gold 80, done}
+end [warmchair or torva_trust]: She climbs up. Her feet stick straight out. “I'm Thane,” says Torva, “until it's warm. And *not*,” she adds, quite loudly, to the whole mountain. “I say *not*. You can't have them.” And all down the Grey Road, in the dark, four hundred grey dwarves stop walking. {+ch6, +thane_seated, xp 150}
+end: In the end it's the thirteen-year-old who sits, and Torva who stands beside her and tells her what to say. It holds; the stone is satisfied. Down in the dark they stop walking. {+ch6, +thane_seated, xp 150}
+
+== The Court of Half-Names | 6 | court
+read: A grey herald comes to the gate under a flag. “The Thane Orsk to the Thane Torva, greeting. He disputes the *not*. He will hear it argued, at his table, tomorrow. He asks that you bring your own chair.” Torva has the keg strapped to Bolt's back. “I'm allowed *advisers*,” she says.
+goal: Argue the case of Karag Dun before Thane Orsk, and find a way to the Name-Furnace.
+dm: A formal dinner with a duel of courtesies. The captives serve at table. Freeing them weakens him. If fullname is known do not use it yet unless they insist; it is best in the final.
+-- npc orsk7 @court:dining | Thane Orsk Half-Name | host | knight/h:paladin:mountain_dwarf:m
+look: wears a coat of a thousand little brass plates, each engraved, that murmur when he moves
+hi: Welcome. I am Orsk. I am also Hrolf, and Sten, and a very nice old lady called Ulla. Do try the mushrooms.
+? The names (why, coat): You have had one all your life and never looked at it. I look at mine. I try on a new one every evening. They are beautiful. They don't *take*.
+? The children (furnace, fifty-three): A child's name hasn't set. It's still soft. I thought, if one melted down enough of it... One would only need to be called *once*. By a whole one. I'm told it is quite a short word, generally.
+? Let them go (dispute, not): It's a very good *not*. I shall have to burn them quickly, before it is in all the stones. I'm so sorry. I would stop if I could think why.
+! What did your mother call you (insight 14) [orsk_ours]: The plates all stop. “I don't think that's a *dinner* question,” says Thane Orsk; and his hand shakes so much that the mushrooms fall off it. {+orsk_shaken, xp 120, inspire all} // “She was interrupted,” he says.
+-- npc servant @court:kitchen | A Footman | formerly Hrolf | commoner/h:fighter:mountain_dwarf:m
+look: has a dumpling in his hand and is looking at it as if it were about to speak
+hi: Will there be. Anything. Anything further?
+? The dumpling (eat, remember): It's. There's a way you do the edges. With a thumb. My thumb *knows*.
+? The furnace (way, below): Service stair. Cellar. It's cold. We aren't to stand near. You get to like it.
+! Hrolf (persuasion 11) [namelist]: He puts it down quite slowly. “I've a *girl*,” he says. “Thirteen. She bites her nails. What've you— *where's my girl?*” {+hrolf, add called 1, xp 120} // “It's a nice word,” he says.
+-- scene bridge7 @court:start many | Callers Will Be Called
+say: At the bridge a duergar with a speaking-trumpet bellows the name of every guest into the cavern, and the cavern keeps it a moment too long before it gives it back.
+> Give your full name, loudly | | You feel it go out; you feel a good many grey things turn to look. But it's yours. You call it *back*, like a dog. It comes. {+called_self, inspire all, xp 50}
+> Be announced as somebody else's plus-one | deception 13 | “*And guest*,” bawls the trumpet. {+guest, xp 50} // “*And WHO?*” bawls the trumpet.
+> Announce the Thane Torva | performance 12 | You do it in style: three generations, with epithets. She goes pink. The cavern, impressed, says the whole thing twice. {+announced, inspire all, xp 60} // You get as far as “daughter of” and there's a dreadful little gap. {+gap}
+-- scene table @court:hall many | The First Course
+say: A hundred duergar lords at a black glass table. The grey stand behind the chairs with dishes. Torva is on her keg, at the end, with a napkin up to her eyes.
+> Argue the law | history 14 | No name can be sold that another person uses more than its owner does. It's in the Roll. There's a stir. A lord turns over his place card, thoughtfully. {+law, xp 100} // “*Precedent?*” says someone, yawning.
+> Ask each lord who named them | insight 13 | You go round the table. Grandmother. Uncle. A nurse. It takes a long time and by the end of it nobody is eating. {+namers, xp 100, inspire all} // The third says “Get on with it.”
+> Compliment the service by name | persuasion 13 [namelist] | “Thank you, Sten,” you say. “Thank you, Ulla.” Dishes begin to fall. {+dishes, add called 1, xp 100} // “They are called *you there*,” says your neighbour.
+> Help Torva with her fish | | She'd been wondering what to do about the bones. You do it under the edge of the napkin. Thane Orsk sees. He watches, all the time, as if it were something happening through a window. {+fish, inspire, xp 60}
+-- fight guards @court:guard | The Thane's Own | duergar*, veteran | hard
+say: Twelve grey axes on the cellar stair. They have been told that there will be guests, and to be careful of the carpet.
+> Order them to stand down, in his voice | deception 14 | It isn't that it's like; it's that they've no practice at being sure who anyone is. {skip, xp 80} // “He'd have said *please*,” says one, sadly.
+win: You have got some on the carpet.
+-- trial duel @court:armory | The Courtesies | 4 before 3
+say: It's the custom to fence between the courses. No blood. Each lord tries to make you forget something. The first one, smiling, asks you what day it is.
+try: insight 13 Turn the question
+try: performance 13 Make them remember something instead
+try: acrobatics 13 Be elsewhere
+try: deception 13 Agree with everything
+try: history 13 Have the date ready
+win: They tap the table with their knives: applause. “*So* fixed,” sighs one, enviously. {xp 110, +duel_won}
+lose: You sit down again. You know you'd been going to say something. {hurt 2d8 psychic all wis 13}
+-- scene kitchen7 @court:storage many | The Plate-Room
+say: Racks upon racks of little brass plates, engraved and hung up in order, each of them whispering. The key is in the lock. He trusts his servants. They're nobody.
+> Take what you can carry | sleight 13 | Two hundred, in a pillowcase. It's like carrying a school. {+plates, add called 2, xp 120} // A tray goes. All of them call out at once.
+> Find the Thane of Karag Dun's | investigation 14 | It's not here. There's a hook, labelled, empty. He's wearing it. Of course he's wearing it. {+wearing, xp 80} // They're filed by *sound*.
+> Let a servant see | persuasion 12 | You hold the door. He comes in. He goes along the racks with his hand out, not touching, and stops. {+one_found, add called 1, xp 90, inspire} // “We aren't to stand near,” he says.
+-- boss champion @court:throne [law or namers or dishes or duel_won] | Dessert | The Lord Steward = gladiator!, duergar*, drow | deadly
+say: “I find for the *not*,” says an old grey lord, at the end of the table; and lays his own place card face down. Others do it. For a moment you've won. Then Orsk, gently, pushes back his chair. “I'm so sorry,” he says. “I'm going to cheat.” He's gone, and the Lord Steward is between you and the stair.
+win: On the service stair it's very cold, and there are a hundred small footprints, going down. He has sent for the children. He sent *before dinner*. {+cheated, magic, gold 90, done}
+end: “He *can't*,” says Torva. “I said *not!*” Then she gets down off the keg, and takes off the chain and puts it in your hand so as to have both hers free. “I'm going to *shout* at him,” she says; and starts down the stairs. {+ch7, open furnace, xp 170}
+
+== The Name-Furnace | 7 | furnace
+read: It gives no heat; it takes it. By the third landing there's frost on your eyelashes, and a murmur in the air, very courteous: *how do you do, how do you do, I'm afraid I didn't quite—* Ahead of you in the dark fifty-three children are singing so as to keep together. It's the counting song, the one that Bolt does. They've got to forty.
+goal: Reach the children, call the dead-names home, and settle with Orsk.
+dm: Everyone helped comes back here: Harth, the kobolds, Bob, the Coalhands. Best ending: say his full name to him as if it were supper.
+-- npc freydis8 @furnace:start [some_home] | Freydis Coalhand | and forty others, with their boots on | commoner/h:cleric:mountain_dwarf:f
+look: has a ladle
+hi: We've come to fetch the children. We've come to fetch *everyone*. We'd have been quicker, but Dag couldn't find his other sock.
+? The way (down, children): We'll call as we go. It spreads, you know, a good shout. You go ahead and clear us a road.
+-- fight door8 @furnace:.12 | The Cold Door | duergar*, knight = veteran | hard
+say: They've stacked the bellows against the door, the wrong way round, and stand behind it with their breath going in.
+win: It opens on a stair made of plates.
+-- trial plates @furnace:.25 | The Stair of Plates | 5 before 3
+say: Each tread's a name. Each says itself when you step on it, hopefully, and slides.
+try: persuasion 13 Answer each one
+try: acrobatics 13 Light and quick
+try: history 13 Know whose is whose
+try: athletics 13 Carry the slow
+try: insight 13 Listen for the ones that hold
+win: You come down to the foot of it with a crowd behind you, most of them not there yet. {xp 130, add called 1}
+lose: You come down to the foot of it faster than you'd meant. {hurt 4d6 cold all dex 13}
+-- fight slag @furnace:.38 | Slag of Names | ochre_jelly*, shadow = wraith | hard
+say: What's left when a name is burned isn't nothing. It pours out from a tap in the wall, and stands up, and tries to be introduced.
+win: It spreads out flat. For an instant it's a face that you nearly know.
+-- scene kobolds8 @furnace:.5 [struck] | Solidarity
+say: A rumbling. The wall falls in. Four hundred kobolds, a banner (ALLIED KOBOLDS: NO MORE JARS), and Madam Zik on a sort of chair. “We heard it was a *lock-out*,” she says.
+> Send them for the jars | | They go up the racks like sparrows. Corks begin to pop. {add called 2, +popped, inspire all, xp 100}
+> Send them to the children | | “Right,” says Madam Zik. “Twos! Hold hands! *Not* with your mouth, Nip!” {+kids_safe, xp 100}
+-- puzzle lid8 @furnace:library~.6 | The Lid
+say: The furnace mouth is shut with a lid, and on the lid are a thousand blank plates and one line: SAY WHAT I AM THAT EVERYONE HERE HAS LOST AND NOBODY HERE CAN FIND AND YOU HAVE BROUGHT WITH YOU BY THE HANDFUL.
+answer: name|names|a name|our names|children|the children|home
+hint insight 12: It's asking. It isn't guarding anything, it's *asking*.
+hint arcana 14: Three words would do it. Any of them's true.
+wrong: The lid drinks a little more of the warmth out of you. {hurt 3d6 cold one con 13}
+win: The lid slides back, and a sound comes up like a school let out. {xp 150, +lid}
+lose: Dag Coalhand hits it with a bench. {+lid}
+-- fight tongs @furnace:forge~.72 | The Tongs | animated_armor*, flesh = flesh_golem | hard
+say: Great iron tongs on chains, that walk; a thing of parts to work them. It has a child held up by one boot, and is reading the label.
+> Send for Harth [harth_home] | | The far wall goes orange, then white, and a forge on eleven legs comes through it, in a frilled apron. PUT. HIM. DOWN, says Old Harth. I'M HOT IN FRONT. {skip, +harth_came, inspire all, xp 150}
+win: You catch him. It's Odo. “I've *lost a tooth*,” he says, first thing. {+odo}
+-- scene odo8 @furnace:.8 [odostooth] | Odo's Tooth
+say: You've been carrying it in your glove, in a twist of paper, since the Grey Road.
+> Give it back | | He examines it. It's the right one. He's so happy that he forgets to be frightened, and it goes through all fifty-three of them like a yawn. {inspire all, +tooth, xp 100}
+-- boss thane8 @furnace:throne~last | One Name, Entire | Thane Orsk Half-Name = gladiator!, duergar*, wraith | deadly
+say: He's standing at the open furnace in his shirt with the coat of plates over his arm, like a man about to drop a cat in a river. All round the rim are the children, on tiptoe, with labels on. “I'll only need you to say it once,” Thane Orsk tells them. “All together. When it's done. It'll be quite a short word.” His teeth are chattering. “I've always thought that it would be *warm*.”
+> Call him in to supper [fullname] | | You don't shout. You say it the way it's said from a doorway when it's getting dark. “*Orsolin*. There you are.” The coat slides off his arm. His face. Nobody there ever forgot his face. “—Here,” says Thane Orsk, in a very small voice. “I'm here. I'm *here*.” {+named_him, skip}
+> Let Torva shout at him | persuasion 13 | “You're *COLD*,” shouts Torva, “and you're *HUNGRY* and it's *PAST YOUR BEDTIME!*” It rings round and round. Nobody has ever said it to him before. He takes a step back from the edge. {+shouted, inspire all, xp 100} // “Who's that?” he says. He means himself.
+> Snatch the coat | sleight 14 | A thousand plates, screaming with relief. You throw them to the crowd, and everywhere hands go up. {add called 3, inspire all, +coat} // He holds on. He has held on to it for a long, long time.
+win: The furnace, with nobody to feed it, breathes out. It's warm. It's the warmest thing that you have ever felt. {+orsk_done, done}
+end: And then they call. All of them at once, fifty-three children and everybody you found, every name on the list, on the Roll, on the plates, at the tops of their voices, as you'd call people in. Down every grey road in the dark somebody stops, and lifts a head, and turns round. {xp 250}
+ending [named_him & thane_seated]: Up You Get | The Thane of Karag Dun was in his bath, at last, when the factor called. It was Torva who answered. “You can come *in*,” she said, “he does the *voices*,” and that was to somebody behind her. There's a tall grey man who works in the nursery now. He's good at heights. When it gets dark somebody always goes to the door and calls him by name, and he always comes.
+ending [called>=4 & orsk_done]: The Roll Made Good | They filled the Roll in together, and it took all winter: a name to each line. There's one left over, with no dwarf to go with it, and they have put it to the last line in pencil. Torva has eleven months to go until she's ten and has decided to be an ordinary child. It's harder than it looks. The door is never barred.
+ending: Not Yet Bedtime | Most came back. Not all; there's a row of boots that nobody has the heart to move. Parliament still sits on Thursdays, under the table. There's a motion, carried every week, that somebody tall should stay. You're always welcome. Bring jam.

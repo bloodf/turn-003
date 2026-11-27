@@ -1,0 +1,484 @@
+id: bells
+title: Bells Under Wend
+code: R2
+levels: 1-7
+tags: village, the restless dead, a hard kindness
+tone: grim
+ink: #2b2f4e #c9a227
+pitch: The dead of Wend have come back to finish their chores, and nobody in the village wants you to stop them.
+about: Forty years ago they dammed the river and drowned the old village, church and all. Now the bell is ringing down there. The first dead man came home on a Tuesday, mended a fence he had promised to mend, and sat down by the fire. His widow gave him soup. He cannot eat it. She gives it to him every night.
+about: Bells Under Wend is a ghost story about people who are not afraid of the ghosts. The heroes must find who is ringing the bell, what he wants with so many willing hands, and whether it is a mercy to stop him.
+villain: Abbot Corvin | cult_fanatic | wants to ring an hour in which nothing can die | has never once said his daughter's name since the flood
+patron: Hanne Rook | constable of Wend, who buried her brother twice
+secret: Abbot Corvin ordered the sluices shut a day early, by a mistake in the calendar, and his daughter Amity was in the old church practising the bells. The Great Hour is meant to give her back. It will also stop every birth.
+place wend = Wend | village size=2 seed=wend-21 time=17 weather=fog biome=autumn open=yes | Smoke goes straight up from forty chimneys. In the fields, in the last of the light, somebody is ploughing who has no need of light.
+place vault = The Chapel Vault | dungeon size=2 seed=vault-8 theme=crypt caves=.1 fams=undead+vermin pop=.59 | Wend buries its dead in rows, like beans. Most of the rows are empty, and the earth has been put back and patted flat.
+place mill = Harrowmill and the Weir | wilds size=2 seed=mill-40 biome=autumn time=11 weather=fog fams=beast+undead+bandit pop=.64 | The new river runs where it was told to. Beside it the old bed winds off through the birches, quite dry, and something has been walking in it.
+place old = Old Wend | dungeon size=3 seed=oldwend-2 theme=overgrown caves=.3 fams=undead+sewer+plant pop=.54 | They have opened the sluice a hand's breadth and the lake has gone down forty feet. Weed hangs from the lintels like washing. The street is still a street.
+place forge = The Bellfoundry at Kettlecombe | dungeon size=3 seed=kettle-6 theme=dwarven caves=.2 fams=construct+mine+elemental pop=.59 | A hill with a door in it, warm to the hand. Inside, somebody is keeping very good time with a very large hammer.
+place abbey = The Abbey of Saint Amity | castle size=1 seed=amity-9 moat=no roofs=cone time=21 fams=cult+undead pop=.2 | White walls, rose windows, and not one sound. They have a rule about it. You find you are holding your breath.
+place road = The Ossuary Road | dungeon size=2 seed=ossuary-15 theme=crypt levels=2 caves=.15 fams=undead+cult pop=.64 | Under the abbey the bones of six hundred years have been sorted, and stacked, and given tools.
+place tower = The Tower of Hours | tower seed=hours-3 theme=crypt biome=autumn time=23 fams=undead+cult+construct pop=.64 | One tower, five bells, and the largest hung upside down with its mouth to the sky. The grass beneath it has stopped growing and has not started to die.
+
+== The Mended Fence | 1 | wend
+read: Constable Hanne Rook meets you at the parish stone with a lantern and no smile. “You were sent for the haunting,” she says. “I want you to know I was outvoted. Half the village thinks it's a miracle, and the other half has somebody back.”
+
+Across the lane an old man is mending a fence. He does it well. His coat has been buried; you can see the crease where his hands were folded over it.
+goal: Find out why the dead of Wend are coming home, and where they go when the bell rings.
+dm: The dead are gentle. They do the last thing they promised. At the bell they all turn and look toward the lake.
+-- npc hanne @wend:start stays | Hanne Rook | constable | guard/h:fighter:human:f
+look: keeps one hand on her belt-buckle as if it might be called away
+hi: Nine so far. They work, they sit, they don't eat. They don't hurt anybody. I'd know what to do if they hurt somebody.
+? Your brother (who, back, buried): Piet. Wednesday before last. He came in, hung up his hat and oiled the hinge he'd been on about since spring. Then he sat down. He's sitting there now. I go in by the back.
+? The bell (lake, ring, night): Two hours after dark. You feel it more than hear it. They all stop and turn to the lake, like cows before rain. Then they go on. Some nights one or two walk in and don't come out. {+heard_bell}
+? The vault (graves, chapel, digging): Father Lewin has the key and won't lend it. They're *his* rows. Ask him why the earth's been patted flat. The dead don't pat. {open vault, +patted}
+? What do you want (you, think): Me? I want somebody to tell me it's wrong who hasn't got a brother. {job truth}
+-- npc lewin @wend:chapel | Father Lewin | priest | acolyte/cleric
+look: has earth under his nails and hides them in his sleeves
+hi: Peace on you. Softly, please. Mistress Abel's husband is asleep in the third pew. That is, he is lying down.
+? The graves (vault, earth, nails): I tidy them. When they go. It seems rude to leave a hole. I've been a priest thirty years and it is the first time anyone came back. Should I be sorry?
+? The key (vault, door): I'd rather you didn't. It isn't that there's anything to see. It is that there's less and less.
+! What did you see (insight 12): He sits down. “A brother of the abbey. White hood. He goes along the rows at night with a handbell the size of a thimble and rings it over each, and listens, and some of them he marks with chalk.” He gives you the key. “I thought it was a blessing.” {+white_hood, open vault, xp 30} // “Nothing. I keep my eyes shut when I pray.”
+-- npc elsbet @wend:cottage | Elsbet Abel | widow, or was | commoner/townswoman
+look: sets a second bowl at the table before she opens the door
+hi: If you've come to take him you can wipe your feet first.
+? Your husband (him, back, soup): Two years in the ground, and the first thing he did was the gutter. He always said he'd do the gutter. He can't taste it, the soup. I put pepper in. He holds the spoon. You don't know what it is to see him hold the spoon.
+? Does he speak (say, talk): Once. He said “late”. I said no, love, you're in good time.
+? When the bell rings (lake, night): I hold his sleeve. I'm not strong, but he lets me. {+sleeve, xp 15}
+-- npc tam @wend:tavern stays | Old Tam Weir | ferryman | commoner/innkeeper
+look: talks to his pipe rather than to anyone present
+shop: general
+hi: Lake's lower. I've moved the mooring twice this month. You didn't hear that from me, you heard it from the pipe.
+? The lake (water, lower): Someone's had the sluice. A hand's breadth. You can see the church cock now on a clear day, green as a pear.
+? The old village (flood, drowned): We were told the first of the month. They shut the gates on the last. Only a day. Most of us was on the hill already with the furniture. Most of us. {+dayearly}
+? Who was lost (drowned, people): Eleven. And the abbot's girl, that was ringing. Nobody says her name, he don't like it. Amity. There. They went and made her a saint instead. {+amity_name, xp 20}
+-- scene fence @wend:out:.2 many | The Mended Fence
+say: The old man's fence is finished. He goes along it trying each rail. Then he stands in the lane with his arms at his sides, like a tool put down.
+> Speak to him | | He turns his face to you politely. There is nothing in it but attention. He is waiting to be asked for something he promised.
+> Look at him closely | medicine 11 | No breath, no pulse; but no rot either, and he has been in the ground a year. On his forehead, under the hair, a small chalk mark: a bell. {+chalk, xp 25} // He is dead. Beyond that you would have to undo his collar, and you find you don't like to.
+> Follow him when he goes | stealth 11 | He walks to the lake shore, wades in to the knee and stands there with six others, facing out. They are in order of height. Like a choir. {+choir, xp 25} // He goes round a barn. When you come round it after him there is only a gate, gently closing.
+> Ask him what he wants | religion 13 | You use the old form, the one for the dying. His lips move. “Late,” he says. “Late for the hour.” {+hour, xp 30} // He goes on waiting.
+-- scene gravel @vault:start | The Rows
+say: The vault is clean, swept, and wrong. Forty stone shelves to a side. Nearly all are empty, and on each empty shelf somebody has left a folded sheet.
+> Count them | investigation 11 | A hundred and twelve gone; and only nine have come home. So where are the others? {+others, xp 30} // A great many.
+> Read the chalk | perception 12 | The marks are not the same. Bells on the strong ones. On the small ones, and the old, a line through it. Somebody is choosing. {+choosing, xp 25} // Chalk dust. Your sleeve has just taken off half of it.
+> Say a blessing and go on | | The sheets stir, though there is no wind.
+-- fight diggers @vault:.25 | The Ones Who Dig | skeleton, rat* | easy
+say: In a side aisle somebody is digging from the other side of the wall. A shovel comes through, and then the hand holding it, and behind that a light in two round holes.
+win: These were not gentle. These had orders. Each has a thimble bell tied at the throat with red thread. {+redthread, xp 20}
+-- puzzle lid @vault:shrine~.45 | The Founder's Lid
+say: The tomb of Wend's founder has four bell-ropes carved round it, and a verse. “I am called for a birth and I am called for a burning. I tell you the time and I never know it. I have one tongue and I never lied with it.” The carved ropes turn.
+answer: bell|a bell|the bell|church bell
+hint perception 11: The worn place is at the height of a child. A bell-ringer's child, maybe, stretching.
+hint religion 12: The lid asks for the name of the thing that calls. You would say it, surely, not pull it.
+wrong: All four ropes jerk at once. You feel it in your teeth. {hurt 1d6 thunder one con 11}
+win: The lid rolls away from a stair. Down there it smells of lake. {xp 50, +stair}
+lose: It cracks across. You climb down past a founder who looks at you with great reproach.
+-- trial pull @vault:.6 | The Bell Rings | 3 before 3
+say: Then the bell rings, under the lake, two hours after dark, and every empty place in you is shown to you at once. Your feet have turned to face the water. You would like them back.
+try: insight 11 Name what you promised, and put it down
+try: athletics 12 Hold on to each other
+try: performance 12 Sing something ugly
+try: religion 12 Say the ordinary prayer, in order
+win: It passes, the way weather does. You are all still here. One of you is holding somebody's sleeve. {xp 45, +held}
+lose: When you come to yourselves you have walked into a wall, and gone on walking. {hurt 1d8 psychic one, tired one}
+-- fight choir @vault:.75 | The Vault Choir | zombie*, skeleton | medium
+say: Eight of the dead stand in a ring with their mouths open. No sound comes out. The dust on the floor is moving in circles.
+win: With the last one down the dust settles. It had been drawing a map. You copy it: the lake, the mill, a hill with a door, an abbey. {+map, note dust, xp 30}
+-- boss sexton @vault:last | The White Hood | Brother Oswin = cult_fanatic!, skeleton* | hard
+say: A young man in a white hood goes along the last row with a bell no bigger than a thimble, tenderly, like a nurse. He sees you and puts a finger to his lips. “Some of them wake cross,” he whispers.
+> Ask him who sent him | persuasion 13 | “The abbot. Who else has the right? There'll be an hour, you see. One hour that doesn't end. We need hands to build it.” His eyes are quite clear. “You'll be so glad, when you've lost someone.” {+great_hour, xp 40} // “You'd only shout,” he says, and rings.
+> Ask who he lost | insight 13 | He had not expected that. The little bell shakes. “My mam,” he says. “She had a line through her. Too old to be useful.” He puts the bell in your hand and walks off up the stair, and you let him. {+oswin_spared, skip, done} // “Everyone has,” he says, and rings.
+win: His bell is silver, and it rings inside your head rather than out. On the rim: CAST AT KETTLECOMBE. {+silverbell, item holy_symbol, gold 25, done}
+end [sleeve]: You come up at dawn. Elsbet Abel is in her doorway, holding a sleeve with nobody in it. “I held on,” she says. “It came off.” All nine have gone down to the lake. Hanne looks at you and then at her brother's empty chair, and goes in by the front. {+ch1, gold 40, xp 50}
+end: You come up at dawn to a village of open doors. All nine have gone down into the lake in the night. On the fence, on every rail, somebody has tied a red thread. {+ch1, gold 40, xp 50}
+job truth = Somebody Without a Brother | Find out for Hanne whether it is wrong. | flag ch6 | gold=0 xp=150 item=cloak_prot
+note dust = Drawn in Dust: A lake, shaped like a hand. A mill at the wrist. A hill with a door. An abbey with four towers and a fifth standing by itself, much too tall. Lines run from everywhere to the fifth.
+
+== Harrowmill | 2 | mill
+read: The sluice that holds the lake is at Harrowmill, and Harrowmill has not sent flour for three weeks. Old Tam lets you off at the weir. “That wheel's going the wrong way,” he tells his pipe, and pushes off rather quickly.
+goal: Find who opened the sluice, and shut it if you can.
+dm: The miller's wife, Greet, opened it willingly. Her drowned sister has been walking up from the old village to help with the baby.
+-- npc greet @mill:ruin | Greet Mallow | miller's wife | commoner/townswoman
+look: is feeding a baby with one arm and holding a sluice-key the size of a sword in the other
+hi: That's near enough. She's only just gone off.
+? The sluice (key, water, open): I opened it. Nobody made me. It's my lake as much as theirs; it's my sister in it.
+? Your sister (lis, drowned): Lis. She was eleven and I was four, so now she's eleven and I'm forty-four. She comes up the old bed at night and rocks the baby. I got two hours' sleep in a row. Do you have children? Then you don't know what I'd have given.
+? Your husband (miller, flour): Went down to shout at the dead and didn't come back. I think about that a good deal. Mostly I think about the sleep.
+! She never gets warm (persuasion 13): She looks at the cradle, where there are eleven small wet footprints in a row. “No,” she says. “And the baby's cold, mornings. I thought it was the river.” She gives you the key. {+sluicekey, xp 50} // “You'd better go,” she says, “before you wake her.”
+-- npc gaff @mill:out:.4 | Gaff | poacher | scout/h:ranger:human:m
+look: is up a tree, and not ashamed of it
+hi: Get up here or keep walking. Do one or the other.
+? What is down there (wolves, tree): Wolves. But they go round the old riverbed, both sides, and never across. Deer the same. There's a thing walks in it with a lantern and it isn't the lantern that bothers me.
+? White hoods (abbey, monks): Four of them with a handcart. Taking bells out of the old church, little 'uns. Going up to Kettlecombe. They paid me to have seen nothing, and I'd have seen nothing for half. {+kettle, xp 25}
+-- scene wheel @mill:start | The Wrong Way Round
+say: The mill-wheel turns slowly backward. It takes a moment to see why: there is a rank of the dead in the race, waist deep, walking it round.
+> Study them | medicine 12 | All wet, all grey, no chalk on them. These were never buried. These are the eleven. {+eleven, xp 30} // They are strong, and there are several.
+> Call them by name [dayearly] | | Tam told you some. You try them. One turns, an old man, and lifts his hat, and cannot think why. The wheel slows. {+named_them, inspire, xp 30}
+> Jam the wheel | athletics 12 | A fence-post does it. They push for a while, then stop, and all look at you, with no reproach. That is worse. {+jammed, xp 25} // It goes through the fence-post. {hurt 1d6 bludgeoning one}
+-- fight wolves @mill:out:.25 | The Birch Pack | wolf*, dire_wolf | medium
+say: Grey shapes between white trunks, and they are already behind you.
+> Get into the old riverbed | survival 11 | You drop down the bank. They come to the edge and stop, hackles up, and will not cross. They watch you walk away into somewhere they will not go. {skip, +inbed} // You run the wrong way.
+win: Thin, these wolves. Nothing will breed near the lake. {+barren, xp 20}
+-- scene cradle @mill:out:.55 | Lis
+say: A girl of about eleven is coming up the dry river with a lantern, wet through, humming. She stops when she sees you and holds it up to look at your faces, one at a time.
+> Ask where she is going | | “Greet's tired,” she says. “I said I'd mind the baby. I said it, and then the water came.” {+lis_met}
+> Ask who rings the bell | persuasion 12 | “Amity does. She always did. She'd got to the hard bit.” She hums it. “She has to start again each time, because nobody's told her it was good.” {+amity_rings, xp 50} // She hums, and goes round you, and leaves eleven footprints.
+> Tell her the promise is kept | religion 13 | She thinks about it with great seriousness. “Is Greet old?” she says. “Did she do all right?” She gives you the lantern to hold. After a bit you notice that you are the only one holding it. {+lis_rests, inspire all, xp 60, item torch_item} // “Not yet,” she says, as to a small child.
+-- trial gate @mill:out:.75 | The Sluice | 4 before 3
+say: The great gate is up a hand's breadth and the lake is leaning on it. There is a wheel to turn, rusted, and a great deal of water that would rather you did not.
+try: athletics 12 Turn the wheel
+try: athletics 13 Turn it again
+try: survival 12 Clear the weed from the slot
+try: investigation 12 Find the pawl
+try: acrobatics 12 Get out along the beam
+win: It comes down inch by inch, and shuts, and the river goes quiet. Out in the lake, a church cock stands a yard clear of the water. It will have to be enough. {+sluice_shut, xp 60}
+lose: It slips back through your hands and settles higher than before. The lake begins to go out like a breath. {hurt 1d8 bludgeoning one, +sluice_wide}
+-- fight hoods @mill:.25 | The Handcart | cultist*, acolyte | medium
+say: Down in the cellars under the ruin four white hoods are packing small bells in straw. One of them is reading the maker's mark aloud as if it were scripture.
+> Walk up as customers | deception 12 | “From Kettlecombe?” says the eldest. “You're early.” You learn that the great bell is poured but not hung, and that it needs a clapper, and what sort. {+clapper, skip} // “You've no straw,” says the eldest, sadly.
+win: Bill of lading: forty-one bells, small, to Kettlecombe, “to be melted with the rest”. {note lading, gold 22}
+-- scene miller @mill:storage~.5 | The Miller
+say: Joost Mallow is sitting against a flour-bin with a bell in his lap. He has been dead three weeks. He has finished all the grinding he owed. He looks up.
+> Tell him his wife sleeps now | | He nods for some time. He pats the flour-bin, twice, which is what he used to say to the cat. Then he is only a dead man. {+miller_rests, xp 40}
+> Take the bell from him | sleight 12 | His hand closes after it has gone, on nothing. Without it he lies down. {+bell2, xp 30} // His hand closes on yours. He was a strong man, and is no weaker. {hurt 1d8 cold one con 12}
+-- boss lantern @mill:last | What Walks in the Riverbed | The Lantern-Drowner = wight!, zombie* | hard
+say: The eleventh of the eleven is the one who carried the keys. He has them still. He comes along the old bed with no eyes and a light, trying each dry bank as though it were a door, and behind him come all those who followed a light.
+> Show him the sluice-key [sluicekey] | | He stops trying doors. He takes the key in both hands and turns it slowly in the air, as a man locks up for the night, and for a little while he stands there looking like a person who got it right. Then the rest of him remembers. {inspire all, +keyed}
+> Shout the day and the date | intimidation 13 | “It's the first!” you shout. “You're not late! It's the first!” He falters. Those behind him begin to sit down. {+dated, hurt 1d4 cold one} // He has heard that before. It was not the first.
+win: On his ring: church, school, sluice and a little key like a toy for the bell-loft of Old Wend. {+loftkey, open old, gold 30, magic, done}
+end [sluice_shut]: The lake has stopped falling. By moonlight the roofs of Old Wend stand out of it like the backs of cattle. There is a path down to the street, if you do not mind what you walk on. {+ch2, open old, xp 70}
+end: The lake goes on falling. By morning you can see the whole of Old Wend, street and square and church, all hung with weed, with people in it. {+ch2, open old, xp 70}
+note lading = Bill of Lading: “To Founder Ketil Ironthroat at Kettlecombe: bells, small, 41. To be melted with the rest. The tongue to be supplied by us. It must be someone who rang.”
+
+== Old Wend | 3 | old
+read: You go down into the village by its own high street. The shop still has a sign. In one doorway a cat that has been dead for forty years is asleep in the sun. All of it is very quiet, and then, from the church, a child begins to practise a scale.
+goal: Reach the church of Old Wend and learn who rings its bell.
+dm: Amity (ghost) is twelve, lonely, and not evil. The abbot's monks are taking her piece by piece: her bells, then her rope, then her.
+-- npc schoolma @old:library~.15 | Mistress Pym | schoolmistress, drowned | commoner/h:wizard:human:f
+look: has a slate, and counts you as you come in
+hi: You are new. You are also late. Sit anywhere that isn't Amity's.
+? Amity (girl, bell, ringing): Gifted. Quite gifted. She would stay behind to practise. I said one more quarter of an hour and then straight home. I said it. One more quarter of an hour.
+? The monks (white, hoods): They do not put their hands up. They took the little bells, then the ropes. On Thursday they came for the desk. I rapped the tall one's knuckles. I'm afraid he cried.
+? Her father (abbot): Brother Corvin sent word the date was moved. He sent it to the abbey. It did not come to the school. He has such a neat hand for figures. I never knew him carry a one wrong but once.
+! Dismiss the class (persuasion 13): She looks along the empty benches, and you see that to her they aren't. “All of them?” she says. “It's only that their parents haven't come.” You say that you will see them home. The chalk drops. Eleven small shadows go out past you into the sun, at a run. {+class_out, inspire all, xp 80} // “Not until the bell,” says Mistress Pym.
+-- npc drowneddan @old:tavern | Dan Cutter | drowned publican | commoner/h:barbarian:human:m
+look: is polishing a tankard with weed
+hi: We're closed. We're very closed.
+? The way (church, street): Street's blocked at the Cobbles, there's a growth on it. Through my cellar, left at the barrels. Don't mind the barrels. What's in them was people's savings.
+? The growth (cobbles, plant): Come up where the apothecary was. It likes company. It liked the Hendersons.
+? What you promised (late, chore): Last orders. I never called last orders. Would you? I've not the breath. {+lastorders}
+-- scene lastcall @old:kitchen~.25 [lastorders] | Last Orders
+say: Six customers sit in Dan Cutter's, forty years into an evening. Every glass is full, of lake.
+> Call it | performance 11 | “Last orders, ladies and gentlemen! Time, please! Haven't you got homes to go to?” A great sigh goes round the room. They finish their drinks. They go home. {+called, inspire, xp 50} // It comes out as a croak. One of them looks up hopefully, and then down again.
+> Buy a round first | gold 5 | You put the money on the bar. It is a long time since anybody did. Then you call it, and Dan Cutter rings his own small bell, and they go. {+called, inspire all, xp 60}
+-- fight growth @old:.35 | The Apothecary's Garden | violet_fungus*, shrieker | medium
+say: Forty years of physic have soaked into the ground here, and the ground has feelings about it. A stalk turns its head.
+win: In the cabinet behind it three stoppered jars are still good. {item potion_healing*2, item antitoxin}
+-- trial cellar @old:storage~.45 | The Leaning Cellar | 4 before 3
+say: Everything in the cellar hangs from everything else. Forty feet of mud are resting on one beam, and the beam is resting on habit.
+try: athletics 12 Shoulder the beam
+try: acrobatics 12 Go through like a cat
+try: investigation 12 See which prop is false
+try: perception 12 Hear it before it goes
+try: survival 12 Bale the mud
+win: You're through, and it stays up, from surprise. {xp 50}
+lose: It comes down behind you, and a little on you. {hurt 2d6 bludgeoning all dex 12}
+-- fight lizards @old:.6 | The New Tenants | lizardfolk*, crocodile | hard
+say: Not everyone here is dead. Someone has dragged nests of reed into the council chamber and is sitting on them, and has brought her family.
+> Back away from the eggs | animal 12 | Slowly, hands low. She lets you go round by the gallery. The crocodile lets you go round by the gallery slowly. {skip, xp 25} // You back into the crocodile.
+> Trade for passage | persuasion 13 | You have rope, or a blade, or a bright button. She weighs it. “The ones in white took the red string from our door,” she says. “Take something from theirs.” {skip, +tenants} // Your accent is an insult. You will never know how.
+win: The council's strongbox has been a nest for years. {gold 45}
+-- puzzle ring @old:.75 | The Ringing Chamber
+say: Eight rope-holes and a board: “Plain Hunt.” Chalked on the wall, at a child's height, a question to herself. “1 2 3 4 5 — each one swaps with the one beside, then again, then again. If they start in order and end in order, what have they all done?” Under it, over and over, she has rubbed out her answer.
+answer: come home|gone home|come back|returned|come round|came home|gone round
+hint performance 11: Ringers have a word for when every bell gets back to where it started. They shout it, and everyone breathes out.
+hint insight 13: She has rubbed out “come home” eleven times.
+wrong: The ropes hiss through the ceiling like snakes. {hurt 1d6 bludgeoning one dex 12}
+win: The ropes fall slack, all together. Above you somebody laughs, once, out of pure relief. {xp 60, +rounds}
+lose: A grown man's voice overhead says “Leave it, child.” And a chair scrapes.
+-- scene amity @old:.85 | The Bell-Loft
+say: She is twelve, in a wet white frock, standing on a box to reach. The last bell hangs over her. Beyond the louvres you can see where the water stood. “Was that good?” she says. “I lost my place in the middle.”
+> Tell her it was good | | You tell her. You have never meant anything more. She goes pink, which she should not be able to do. “I'd better get home,” she says. Then she looks at the stair. “Only there's someone on it.” {+amity_told, inspire all, xp 80}
+> Ask her what she wants | insight 12 | “To stop,” says Amity. “Papa says in a bit. He says just until he's fixed it. He's been fixing it and fixing it.” {+amity_stop, xp 50} // “To get it right.”
+> Tell her she is dead | religion 13 | “I know,” she says, a little impatiently. “I'm not *stupid*. It's Papa doesn't know.” {+amity_knows, xp 60} // She goes very thin, like breath on a window. The bell above her swings by itself.
+-- boss prior @old:last | The Prior at the Stair | Prior Wulfe = priest!, cultist*, zombie | hard
+say: A tall man in white with a rapped knuckle stands at the foot of the loft stair, with bell-cutters, and behind him a handcart lined with velvet. “We have come for the tongue,” he says. “Please don't wake her. It's so much worse when she's awake.”
+> Ask him to say her name | persuasion 14 | “The child,” he says. “The— The abbot prefers—” He cannot do it. Two of his brothers put down the velvet, and go. {+prior_shaken, inspire all} // “Names are for the living.”
+win: In his sleeve are the abbot's orders, with a sum in the margin, and a one that was not carried. {+prior_down, note calendar, magic, gold 40, open forge, done}
+end [amity_told]: She stays, for now, sitting on her box with her chin on her knees. “I can be very quiet,” she promises, “till you come back.” The great bell, says the paper in the prior's sleeve, is at Kettlecombe. It has been waiting for her. {+ch3, xp 90}
+end: When you come down the box is empty and the rope is swinging. They have got her, or most of her: the part that rings. The prior's paper says Kettlecombe. {+ch3, +amity_taken, xp 90}
+note calendar = A Sum in a Margin: “Shut the gates on the 30th + 1 = the 1st.” And beneath it, in the same neat hand, many years later and pressed so hard that the pen went through: “September has thirty days.”
+
+== The Bellfounders | 4 | forge
+read: Kettlecombe is a hill with a chimney. The founders are dwarves of the old sort, who will tell you to the ounce what a thing weighs and never ask what it is for. They have cast bells for eleven centuries. They have never, they will tell you, had one refuse to cool.
+goal: Stop the great bell of Kettlecombe from being hung.
+dm: Founder Ketil regrets the commission. His apprentices are possessed with the work. The bell can be cracked, silenced, or stolen.
+-- npc ketil @forge:.15 stays | Ketil Ironthroat | master founder | commoner/h:cleric:hill_dwarf:m
+look: has a beard burned off on one side and a tuning fork behind the other ear
+hi: Nine tons four hundredweight and a quarter. Don't touch it. Don't talk near it, either. It's learning.
+? The bell (great, hour, weight): Tin, copper, forty-one little church bells, and a pound of something he brought in a box. I asked what. “Regret,” he says. I thought it was a joke. I don't get jokes. I weighed it. It weighed a pound.
+? The abbot (corvin, customer): Pays in advance. Cries at the pour. They do cry, customers. But he cried at the *invoice*.
+? How to break it (crack, stop, flaw): You want me to tell you how to crack my own bell? Nine tons? *My* bell? {+asked_crack}
+! It is a bad bell (persuasion 13) [asked_crack]: The fork comes down from behind his ear. He strikes it and sets it on your breastbone. You both listen. “Flat,” says Ketil, at last, in the voice of a man at a graveside. “It's flat, damn me. I let him hurry me. There's a cold shut in the shoulder. One good blow, on the strike, cold.” {+flaw, xp 80} // “There are no bad bells. There are bad *ears*.”
+-- npc dagny @forge:dining~.3 | Dagny | journeyman, on strike | commoner/h:fighter:hill_dwarf:f
+look: has chained herself to the bellows on purpose
+hi: I'm an obstruction. Kindly obstruct with me.
+? The strike (chained, why): The apprentices won't stop. They've not slept since the pour. They file, they polish, they hum. Bjarni's filed through his own thumb and he's *humming*.
+? The core (below, what): It wants a tongue. A clapper, you'd say. There's a hook in the head of it the size of a child. I measured. You tell me why you'd measure a hook and get a child.
+? The furnace (heat, hot): Lowest hall. There's fire down there that walks. It was always ours. It isn't ours this month.
+-- scene hum @forge:start many | The Hum
+say: It comes up through the boots: one note, slightly flat, held for ever.
+> Find the pitch | performance 12 | You hum a hair above it. For a moment the two notes beat against each other like wings, and the floor is only a floor. You have found something. {+pitch, xp 40} // You hum along. You go on humming for rather longer than you meant. {cond frightened}
+> Feel for where it comes from | perception 12 | Down and left. And also, faintly, from inside everybody's fillings. {+where, xp 20} // Everywhere.
+> Stop your ears with wax | survival 11 | It helps with the ears. {+wax, xp 20} // It is very good wax. It is a pity about the hum.
+-- fight apprentices @forge:forge~.3 | The Apprentices | duergar*, animated_armor | medium
+say: Twelve young dwarves in a row, filing. They do not look up. They are smiling. When you step over the line chalked on the floor, they look up.
+> Sing their note a hair sharp [pitch] | performance 12 | One by one the files stop. Bjarni looks at his thumb. “*Ow*,” he says, astonished, and sits down, and the rest with him. {skip, xp 60, +apprentices_saved} // You get the hair wrong.
+win: You have knocked down boys. The filings on the floor crawl back toward the great bell like ants. {+apprentices_hurt}
+-- trial pour @forge:.45 | The Casting Floor | 4 before 3
+say: The floor is a grid of moulds with the runners still liquid. Someone has opened the tap.
+try: acrobatics 13 Across the moulds
+try: athletics 13 Swing the ladle shut
+try: investigation 12 Find the bung
+try: survival 12 Sand the runners
+try: perception 12 Call where the crust will hold
+win: You cross a river of bronze with your eyebrows on. The dwarves score it, out of ten, on slates. {xp 60}
+lose: The crust does not hold. {hurt 2d6 fire all dex 12}
+-- fight fire @forge:.6 | Fire That Walks | hell_hound, magma = fire_elemental | hard
+say: In the lowest hall something with the shape of a dog has been chained to the bellows-crank, and something with no shape at all is walking up and down in the furnace like a man with a grievance.
+> Unchain it | animal 14 | It takes your sleeve off at the elbow, and then it understands. It goes up the flue in one long bound, and the heat goes with it. {skip, xp 60} // It takes your sleeve off at the elbow.
+> Name the old wage | history 13 | Coal on the sabbath and a song at midwinter; it is carved on the lintel, for anyone who can read. The walking fire stops walking. “They *forgot*,” it says. {skip, +fire_friend, xp 60} // It does not want to be read to.
+win: The furnace draws quietly for the first time in a month.
+-- puzzle mark @forge:library~.7 | The Pattern Store
+say: Every bell ever cast here has a plaster twin, and every twin a maker's verse. The drawer you want is locked with letters. “I was poured but I do not run. I was struck but I bear no grudge. Say my weight: a heart has it, and a fool, and a foundling. What am I made of?”
+answer: metal|mettle|bronze|brass
+hint history 11: A dwarf pun. It works better aloud. A heart has it. Has it got—
+hint investigation 11: The last person in here left greasy prints on M, E, T, A and L.
+wrong: The drawer shuts on your fingers with eleven centuries of disapproval. {hurt 1d4 bludgeoning one}
+win: The plaster twin of the great bell. You run your hands over it, and there, in the shoulder, no wider than a hair: the cold shut. {+flaw, xp 60}
+lose: You break the drawer. Somewhere a dwarf says “Oh, *really*.” {+flaw}
+-- scene bell @forge:hall~.85 many | Nine Tons, Four Hundredweight and a Quarter
+say: It hangs in chains above the pit, mouth upward, with the heat still coming off it. Inside, where the clapper should be, is a hook. The note gets into your bones and offers to hold them up for you.
+> Strike it on the flaw [flaw] | athletics 14 | One blow, on the shoulder. The note breaks in two, and the two halves look for each other and cannot find the way. It will ring. It will not ring true. {+cracked, xp 100, inspire all} // The hammer bounces. So, some time afterwards, do you. {hurt 2d6 thunder one}
+> Silence it with wax and hide [wax] | sleight 13 | You pack the lip. The note goes dull and sulky. It may hold for a few days. {+muffled, xp 50} // It melts.
+> Put something of your own on the hook | | You hang it there: a ring, a lock, a letter. The bell leans toward you, interested. You feel a good deal lighter and you cannot remember the name of your first dog. {+gave, inspire, hurt 1d6 psychic one}
+> Take what is on the scales | investigation 12 | The assay tray: a pound of something grey, in a box with an abbey seal. It weighs what Ketil said. In the box it is a child's shoe. {+shoe, xp 50} // Filings.
+-- boss abbotsman @forge:last | The Hanging | Sub-Prior Ansgar = cult_fanatic!, animated_armor, cultist* | hard
+say: They have come with oxen to take it away, white hoods and hired steel, and a thin man walking backward in front of the beasts with his arms out like a mother's. “Mind,” he is saying. “Mind her. Mind her.”
+win: The oxen stand. The thin man lies in the road with his cheek on the warm bronze. He is smiling. “You can't stop a thing,” he says, “that's only *sorry*.” {+ansgar_down, magic, gold 60, open abbey, done}
+end [cracked]: They will come back with more oxen, and they will hang it, and it'll be flat. Ketil Ironthroat will not take his fee. He has never said that sentence before and has to try it twice. “The abbey's a day west,” he says. “Give him his shoe.” {+ch4, xp 110}
+end: You win the road but not the bell; while you fought, a second team took it over the hill. The ruts go west, very deep, to the abbey. {+ch4, xp 110}
+
+== A Rule of Silence | 5 | abbey
+read: At Saint Amity's they do not speak, so that they may hear her. You come in with the pilgrims. There are a great many: people with a spare bowl in their bags, people holding sleeves. A brother at the gate gives each a thimble bell and a smile of real sweetness. On the gate it says, and it is the only thing in the place that says anything: NOT LONG NOW.
+goal: Find the abbot of Saint Amity's, and what he has done with the dead.
+dm: Social infiltration. The monks are grieving people, not monsters. The abbot's study holds the calendar. Sister Ide would help.
+-- npc ide @abbey:kitchen | Sister Ide | cellarer | acolyte/h:cleric:human:f
+look: writes on a slate, and rubs out with her whole forearm
+hi: (She writes.) NEW. HUNGRY? THE RULE IS ONLY FOR MOUTHS. HANDS MAY SAY WHAT THEY LIKE.
+? The abbot (corvin, where): (She writes.) UP. SOUTH RANGE, TOP STAIR. HE DOES NOT EAT. I SEND IT UP AND HE SENDS IT DOWN WITH THANKS.
+? The dead (gone, below): (She writes, more slowly.) UNDER US. WORKING. SIX HUNDRED. I BAKE FOR FORTY. I HEAR SIX HUNDRED.
+? Do you believe it (hour, hope): (She starts to write, and stops, and puts down the chalk.) “I had twins,” says Sister Ide, aloud, in a voice like a gate. “I'd have believed anything.” {+ide_spoke, xp 60}
+! Help us (persuasion 13) [ide_spoke]: “South stair. The third step sings; tread on the wall side. He keeps it in the psalter.” She picks up the chalk and writes, for form's sake: GO WITH GOD. THEN COME BACK AND TELL ME. {+ide_help, xp 60} // (She writes.) EAT FIRST.
+-- npc joris @abbey:chapel | Joris Abel | pilgrim | commoner/villager
+look: is wearing a coat with one sleeve
+hi: Sorry. Sorry, I forgot. Whisper. You're from Wend? So'm I. Did she send you, my mother?
+? Your father (sleeve, abel): I saw him Sunday. Through the grating. He was carrying stone. I called and he looked up. He'd got his good boots on.
+? The grating (below, see): In the lay choir, behind the font. You can hear the hammers if you lie down flat.
+? Go home (leave, wend): And tell her what?
+-- scene gatehouse @abbey:guard | Not Long Now
+say: A brother with a basket. Each pilgrim whispers one name into a thimble bell and drops it in. The basket hums. It is your turn.
+> Whisper a true name | | You say it. It is a relief, and then it is a hole. The brother nods and lets you pass, and you feel the place where the name was all day, like a drawn tooth. {+gave_name, +pilgrim, hurt 1d4 psychic one}
+> Whisper a false one | deception 13 | The bell gives a little dead click, but he has his eyes shut. {+pilgrim, xp 40} // The bell clicks. He opens his eyes. “Try again,” he mouths, kindly. You do not get in by the gate. {+watched}
+> Say nothing and bless him | religion 12 | It has been a long while since anybody did. He forgets the basket. {+pilgrim, inspire, xp 40} // He holds the basket a little higher.
+-- scene refectory @abbey:dining many | The Silent Table
+say: Two hundred people eating soup without a sound. Many have two bowls.
+> Learn the hand-speech | insight 12 | Bread, salt, thank you; *tomorrow*; *below*; and one sign, two fingers drawn shut like a gate, which everybody makes when they look at the south stair. {+handspeech, xp 40} // You have asked someone to marry you. They decline.
+> Drop your spoon | | Two hundred faces. In the second before they look away you see who is frightened: it is the brothers, not the pilgrims. {+frightened, xp 30}
+> Leave your bowl for the one beside you | | He looks at it. He begins, without any noise, to cry. You have broken some other rule, a better one. {inspire, xp 30}
+-- fight novices @abbey:armory | The Wardens of Quiet | acolyte*, guard | medium
+say: Felt boots, padded clubs. They have been trained to do this without waking anybody.
+> Sign to them [handspeech] | | Two fingers, drawn shut. They hesitate; then they make it back. They step out of the way, and one of them points: *up*. {skip, xp 50}
+win: You lay them in a row and put their hoods straight.
+-- puzzle psalter @abbey:library | The Abbot's Psalter
+say: The book is chained shut with a clasp of six letter-wheels. A slip of paper lies beside it in a neat hand: “What I have called a saint so that I need not call her.”
+answer: amity
+hint investigation 11: Five wheels are stiff. All of the wear is on the A. As if someone had begun, and stopped, many times.
+hint insight 12: He built an abbey so that other people would say it for him.
+wrong: The clasp bites. You do not think it was made to. {hurt 1d6 piercing one}
+win: Between the psalms for Friday: the plan of the tower, the tally of the dead, and a drawing in a child's hand of a man with a very long beard. TO PAPA. {+plan5, xp 80, note plan}
+lose: The chain gives before the clasp does. You have it, and so does everyone who heard. {+plan5, +alarm}
+-- scene grating @abbey:storage | Behind the Font
+say: Flat on the stones, with your cheek to the iron, you can see down: a street of bones, lamps, and the dead of the whole valley in two files, one carrying stone in and one carrying earth out.
+> Count the files | investigation 12 | Six hundred and four. And one place at the end, kept empty, with a small pair of boots in it. {+boots, xp 40} // They do not stop so that you can count.
+> Call to one of them | persuasion 14 | A tall woman lifts her face. She makes the sign: two fingers, shut. Then, slowly, she opens them. {+they_know, xp 60} // Your voice goes down, and is put with the other stone.
+> Find the hinge | sleight 12 | The grating lifts. You could go that way. {+hatch5, open road, xp 40} // It is set in lead.
+-- fight chapter @abbey:hall | The Chapter Meets | cult_fanatic, cultist* | hard
+say: Twelve monks at a table, deciding something with their hands. They all stand up together. One of them, quite deliberately, breaks the Rule. “*Thieves*,” he says.
+win: The minutes of the meeting are all in gestures, but somebody has drawn the last: a bell, mouth upward, and a date. It is three days off. {+date}
+-- boss corvin1 @abbey:study [plan5] | The South Stair | Brother Almoner = veteran!, cult_fanatic, cultist* | hard
+say: At the top of the stair is a door, and by the door, in a chair, the abbot's almoner, who was a soldier. “He said you might come,” he says. “He said to say he's sorry. He says it to everybody. I'd not have it go to your heads.”
+> Hand him the shoe [shoe] | | He holds it in his palm a while. “She'd got big feet, for her age,” he says. “Always in puddles.” He stands aside, with his back to you. {skip, +shoe_given, done}
+> Tell him it was the calendar | persuasion 14 | “I know it was,” he says. “I carried the message.” He takes his hand off his sword; then puts it back. “He'd not stop, see. If I did.” {inspire all, +almoner} // “It's always something.”
+win: The room is empty, and the window open. On the desk a plate of food, untouched, with a note: WITH THANKS. Below in the court the bell goes by on its wagon. A man in white walks in front with his head bare. {+corvin_seen, magic, gold 50, done}
+end [ide_help]: “He's gone down,” says Sister Ide, out loud, to the whole kitchen. Two hundred heads come up. “He has gone down by the bones to the tower and he means to do it Friday, and I for one should like to be *asked*.” It is the longest speech in that house in forty years. {+ch5, +abbey_woke, open road, xp 120}
+end: He has gone down by the Ossuary Road, where the six hundred are. The brothers let you through the crypt door. Not one of them will look at what is on the other side. {+ch5, open road, xp 120}
+note plan = The Plan of the Fifth Tower: “At the hour of her death the great bell is rung mouth upward with a ringer's soul for clapper, by six hundred pairs of hands at six hundred ropes. While it sounds nothing may end. It is to be rung so that it does not stop.” In the margin: “nothing may begin, either? — look into.” He has not looked into it.
+
+== The Ossuary Road | 6 | road
+read: The road under the abbey was begun with bones because there were bones. It goes on for a mile. On either side of it the dead of Wend, and of everywhere else, carry stone with their eyes open, and step aside for you with the manners they had in life.
+goal: Get through the Ossuary Road, and learn what the dead want.
+dm: The dead are of two minds. A vote among them can turn the final battle. The Overseers are necromancers.
+-- npc piet @road:.15 | Piet Rook | the constable's brother, dead | commoner/h:fighter:human:m
+look: has an oil-can in his belt and a very patient face
+hi: Late. You. From. Wend?
+? Hanne (sister): Hinge. Did it. Stay. Squeak?
+? What do you want (rest, promise): All. Same. Done. Done the. Done the thing. Then. (He thinks for a long time.) Nobody. Said. Good night.
+? The overseers (red thread, masters): Red. String. Cut. It's not. It's not *us*. That does the. (He makes a hitting movement and looks at his hand with dislike.) {+cutthread, xp 50}
+! Would the others follow you (persuasion 13): He looks down the line of six hundred. “Ask,” says Piet. “Nobody. Asked.” {+piet_ask, xp 60} // “Work,” says Piet, apologetically.
+-- npc pym2 @road:library~.55 [class_out] | Mistress Pym | schoolmistress, retired | commoner/h:wizard:human:f
+look: is resting on a heap of skulls with her feet up
+hi: I came to see how you were getting on. Marks out of ten? Seven. You rush.
+? The vote (dead, ask): They will need it put simply, and they will need to put their hands up. Otherwise it is always the same six.
+-- scene line @road:start many | Two Files
+say: One file comes in, one goes out. There is room between them for the living to walk, single file, not touching.
+> Walk with them | | You take a place in the line. Somebody hands you a stone. It is a help, actually, carrying something. By the end of the gallery you know their step. {+step, inspire, xp 30}
+> Cut a red thread [cutthread] | sleight 12 | The skeleton stops. Its jaw works. It puts its stone down, sits on it and will not be moved. Others have seen. {+cut1, xp 50} // The thread is tougher than it looks, and somebody is holding the other end. {fight overseer1}
+> Ask them their names | persuasion 12 | You start at the front. They have to think. But down the line, behind you, you can hear it go: a whisper, six hundred long, of people trying theirs on. {+names, inspire all, xp 60} // One or two. The rest have put theirs down somewhere.
+-- fight overseer1 @road:.3 | The Overseer of Stone | acolyte, skeleton*, skeleton_archer | medium
+say: He has a staff with a hundred red threads running off it into the dark, like a maypole. He twitches one, and a hand comes up holding a pick.
+win: The threads go slack. Along the gallery, for a hundred yards, stones are gently put down. {+thread_a}
+-- trial bones @road:.42 | The Fall | 4 before 3
+say: Six centuries of femurs, ten feet deep, and the stack has begun to slide.
+try: athletics 13 Hold the retaining wall
+try: acrobatics 13 Run along the top
+try: investigation 13 Pull the one that matters
+try: persuasion 12 Ask the dead to help
+win: Hands come out of the heap on every side and pass you along it, overhead, as a crowd passes a child. {xp 70, inspire all}
+lose: It is like being run over by a very dry river. {hurt 3d6 bludgeoning all dex 13}
+-- scene meeting @road:hall~.55 many [names or cut1 or piet_ask] | The Meeting
+say: In the widest part of the road they have stopped. Two hundred, three. They are all looking at you. It seems that you have called a meeting.
+> Ask who wants to rest | persuasion 13 | Hands. You count as far as four hundred and stop because you cannot see. {+vote_rest, inspire all, xp 100} // A silence. Then somebody puts up the wrong hand, and they all get confused.
+> Ask who wants to go home | insight 12 | Fewer; but those are very sure. One holds up a sleeve. You promise to carry messages. You write on everything you've got. {+messages, xp 60} // They all look at the ceiling, where home is.
+> Tell them the truth about the Hour | religion 13 | No more dying; no more being born. An old woman in the front, a midwife by her apron, puts up her hand, and then takes it down and closes it. The whole road closes its hand. {+midwife, xp 80} // It is not the sort of thing that goes into one sentence.
+-- fight overseer2 @road:.68 | The Overseer of Earth | cult_fanatic, ghoul*, skeleton | hard
+say: The second holds her threads between her teeth. She is knitting.
+win: She has knitted eleven feet of something. It is a small stocking that nobody taught her to turn the heel of. {+thread_b}
+-- fight roadwight @road:.8 | The Gang-Master | wight, zombie*, ogre_zombie | hard
+say: There was always one who liked it. He has kept his whip, and his hat.
+> Turn the gang on him [vote_rest] | | You just step aside. They come past you quite slowly, with their picks. {skip, xp 60}
+win: Someone puts his hat on a skeleton. It seems to improve the general mood.
+-- boss last6 @road:last | The Third Overseer | Master Threnody = mage!, skeleton*, wraith | deadly
+say: The last of them sits in a chair of ribs where all the threads meet, playing them like a harp with his eyes closed. “You will have come about the ethics,” he says. “I do so love the ethics.”
+> Give the dead the word [vote_rest & piet_ask] | | “Good night,” you say. You say it as loudly as you can. Behind you Piet Rook says it; and then they all do, one to another, up and down a mile of road. Threads part like rain. {inspire all, +goodnight, xp 80}
+> Cut across the harp | acrobatics 14 | You go through it with a blade in each direction. He opens his eyes. He had not expected music to be rude. {inspire all} // It closes on you like a net. {cond restrained}
+win: When the last thread goes the whole road sits down. {+threads_cut, magic, gold 80, done}
+end [goodnight]: Some of them simply lie down. Most come up with you, out into the wet grass, to see the stars. At the end of the valley there is a fifth tower; and in the whole of the abbey, and the whole of Wend, the lamps are being lit. Somebody has told them. {+ch6, xp 140, open tower}
+end: They are free, and do not know it, and stand about in the dark like guests after a party. At the end of the valley there is a fifth tower. You have until tomorrow night. {+ch6, xp 140, open tower}
+
+== The Long Night | 6 | wend
+read: You come back to Wend to tell them. They are all in the square. There are some of the dead there too, on the benches, being leaned on. Hanne Rook looks at you over their heads. “Well?” she says. “Is it wrong?”
+goal: Tell Wend the truth, and hold the village through the last night.
+dm: The abbot sends for the living now: he is short of hands. Wave fights plus a town meeting. The vote decides who comes to the tower.
+-- npc elsbet2 @wend:cottage | Elsbet Abel | widow | commoner/townswoman
+look: has one bowl on the table, and is looking at it
+hi: Joris wrote. He says his father's got his good boots on. I buried him in his good boots. So they hold up.
+? Let him go (rest, good night): I never said it. He was took in the afternoon. You don't say good night in the afternoon. {+elsbet_ready}
+? The message [messages]: From him? He can't *write*. (She reads it. She reads it for a long while.) Well. He's spelt gutter wrong. {+elsbet_msg, inspire, xp 60}
+-- npc lewin2 @wend:chapel | Father Lewin | priest | acolyte/cleric
+look: has washed his hands
+hi: I have been asked to ring for a birth. The Mallow girl's niece. It won't come. It is three days past and it is quite well, and it will not come. She says it's as if it's waiting to be told. {+birth, xp 40}
+? The hour (great, friday): Then that is what it is. I had thought only of the one end of it.
+? Ring something (bell, chapel): *I* could ring. I've the one cracked bell. I could ring for the child. He would not like that, would he? {+lewin_ring, xp 50}
+-- scene moot @wend:tavern many | The Moot
+say: All of Wend in the tavern, with the windows open for those who cannot get in, alive and otherwise. It is very quiet. They want to be told.
+> Tell them about Amity | persuasion 13 | A child practising in a church, and a man who added up wrong. When you have done Old Tam takes out his pipe. “I voted for it,” he says. “The dam. We all did.” {+told_amity, xp 80} // It gets away from you. You hear yourself say *closure*.
+> Tell them about the birth [birth] | | Nobody speaks. One by one the women of Wend turn and look at the Mallows' window, where there is a light. {+told_birth, inspire all, xp 80}
+> Let the dead speak | religion 13 | Piet Rook stands up, with help. “Good,” he says. “Soup.” It is hard to follow. But everyone sees what it costs him. {+piet_spoke, xp 60} // They look at their hands. They are shy, the dead.
+> Say that it is wrong | | You say it straight out, to Hanne, since she asked. She nods. She unbuckles her belt and puts it on the table, and then buckles it on again. “Right,” she says. {+said_wrong, jobdone truth, xp 40}
+win: They do not cheer. They begin to carry things. {+moot}
+-- fight wolves7 @wend:out:.3 at_once [moot] | Press-Gang | cult_fanatic, thug*, cultist | medium
+say: White hoods, with ropes, and hired men. “Hands,” the first calls pleasantly. “We only want hands. You'll hardly notice.”
+win: You have bought an hour. The bell under the lake begins, and does not stop. {+gang, scene goodnights}
+-- scene goodnights @wend:out:.12 later many | Good Nights
+say: All over Wend they are doing it: on doorsteps, on benches, with a hand on a sleeve. It takes some longer than others.
+> Stand by Hanne | | Piet is in his chair. She oils the hinge, though it does not need it. “Night, then,” she says. He says something. You are not near enough to hear, and would not tell if you were. {+hanne_night, inspire all, xp 60}
+> Help Elsbet [elsbet_ready or elsbet_msg] | | “Go on, you old fool,” says Elsbet Abel. “It's dark. Good night.” She washes the second bowl. She dries it. She puts it at the back of the shelf. {+elsbet_night, inspire all, xp 60}
+> Go to the Mallows' | medicine 13 | There's nothing to do but wait, and somebody to wait with. It matters. {+waited, xp 60} // You are put out of the room by four women at once.
+> Bar the doors | athletics 12 | Carts, pews and the tavern door. {+barred, xp 40} // They will hold until something leans on them.
+win: The lamps go down. Something is coming up out of the lake. {fight wave7}
+-- fight wave7 @wend:out:.45 later at_once | Those Who Did Not Choose | zombie*, wight, ghoul | hard
+say: Not all of them wanted to be asked. They come up the street from the water with the red thread new at their throats, and behind them the bell drives them like a drover.
+win: The last of them falls on the chapel steps. It had been trying to get in to its pew. {+wave7won}
+-- scene ring7 @wend:chapel later [lewin_ring] | One Cracked Bell
+say: Father Lewin is on the rope.
+> Pull with him | | You ring, badly, for a birth. {+rang}
+-- trial bellfight @wend:out:.2 [wave7won] | Against the Bell | 5 before 3
+say: Midnight. The bell in the lake and the bell in the tower ring together, and every living thing in Wend stops where it is, mid-step. You can still move, if you work at it. It is like wading. Somewhere a woman has stopped in the middle of a cry.
+try: performance 13 Sing against it
+try: athletics 13 Get to the chapel rope
+try: religion 13 Bless the hour in its right name
+try: insight 12 Keep hold of why
+try: persuasion 13 Call them, each by name
+try: medicine 13 Get to the Mallows' window
+win: One cracked bell, rung for a birth. It is out of tune, and out of time, and goes on being so. And over the top of it, furious, new, comes a yell. Every head in Wend turns. {+born, inspire all, xp 120}
+lose: It passes at last. Everyone takes the step they were in the middle of. At the Mallows' window nobody has drawn the curtain. {hurt 2d6 psychic all wis 13, +notborn}
+-- boss prior7 @wend:out:.6 [born or notborn] at_once | The Abbot's Hand | The Drowned Prior = ghost!, ghast, zombie* | deadly
+say: He sends the last one that he has: his prior, wet through, with the knuckle still sore. “He is so nearly done,” the thing whispers. “He is so *tired*. Can't you let him?”
+> Rap his knuckles | intimidation 12 | You find you have exactly Mistress Pym's tone of voice. He snatches back his hand. {inspire all, +rapped} // It goes through.
+win: He goes out like a wet match. All along the valley the ropes are being taken up. {+prior7, magic, gold 60, done}
+end [born]: Hanne Rook brings the lantern, and Tam the ferry, and the Mallows' midwife a bundle that is roaring. “She's coming too,” says the midwife. “He ought to *see* her.” Nobody can think of an argument. {+ch7, +baby, xp 160}
+end: You go up the valley in the dark, you and those who can walk. Nobody says much. Behind you the village has left every door open. {+ch7, xp 160}
+
+== The Great Hour | 7 | tower
+read: The Tower of Hours, and the night of the thirtieth. September has thirty days. Six hundred ropes come down from the bell in a great tent, and under them, in the grass that neither grows nor dies, Abbot Corvin is showing a dead man how to hold one. He is very gentle about it.
+goal: Stop the Great Hour, and end it for Abbot Corvin one way or another.
+dm: Below the tower is the undercroft where the bell's counterweight and Amity are held. Corvin can be killed or told. Her name, said by him, ends it.
+-- npc ide2 @tower:start [abbey_woke] | Sister Ide | cellarer, now abbess by acclamation | priest/h:cleric:human:f
+look: has brought two hundred pilgrims, and sandwiches
+hi: We'll hold the ropes. I don't mean pull. I mean *hold*. You go under. That's where he's got the works.
+? The works (under, below): Stone, wheels and water. And something in a cage at the bottom that he talks to. It doesn't answer. I think it's cross.
+-- trial ropes @tower:out:.15 | Six Hundred Ropes | 4 before 3
+say: To reach the door you must cross under the ropes, and every rope has a dead hand on it, waiting for the word.
+try: persuasion 13 Good night, one at a time
+try: stealth 13 Between them
+try: religion 13 The rite for the tired
+try: sleight 13 Cut the red thread as you go
+win: They let go behind you as you pass, each with a small noise like a book being shut. {xp 100, +ropes_loose}
+lose: Somewhere above, the bell takes that for the word, and begins to move. {hurt 2d8 thunder all con 13}
+-- fight wheels @tower:.2 | The Works | animated_armor*, flying_sword, clay = flesh_golem | hard
+say: The works have been built by people who did not need to rest, and see no reason why you should.
+win: One great wheel stops with its teeth full of brass.
+-- puzzle calendar @tower:library~.35 | The Perpetual Calendar
+say: A door with twelve dials, each with a number of days, and a thirteenth that reads “Who pays for what I forgot?” Someone must set September right. The dials are all stiff but one. It wants a word.
+answer: i do|i|me|myself|corvin|the one who forgot|i pay
+hint investigation 12: It is set to thirty-one. It has been set to thirty-one every night and put back every morning.
+hint insight 13: He has scratched an answer under the dial and then scratched it out. It begins “I”.
+wrong: All of the months go round at once. You are a year older, or feel it. {hurt 2d6 necrotic one con 13}
+win: Thirty. The door opens like a diary. {+september, xp 120}
+lose: You force it to thirty. Something behind it screams like a pulley. {+september}
+-- fight mourners @tower:.45 | The Mourners | cult_fanatic*, cultist | hard
+say: His first brothers, the ones who were there on the hill that day, and watched the water come. They are old. They stand in the way with their arms linked.
+> Tell them she says it wasn't their fault [amity_told or amity_knows] | persuasion 13 | The oldest unlinks his arms. “She'd say that,” he says. “She'd say that whatever.” But he has sat down. They all have. {skip, xp 100} // “You never knew her,” says the oldest. “We did.”
+win: You lay them side by side, arms linked.
+-- scene cage @tower:prison~.6 many | The Clapper
+say: In a cage of bell-rope, over a shaft, sits a girl of twelve in a wet frock with her arms folded. “I have *said* I won't,” says Amity. Then she sees who it is. “Oh, good.”
+> Open the cage | sleight 13 | She climbs out, and stands on your foot by accident. It is very cold. “He isn't bad,” she says. “He just can't *stop*.” {+amity_free, xp 120} // The knots are his own, and they are very good. The whole shaft begins to turn.
+> Give her the shoe [shoe or shoe_given] | | “I looked *everywhere*,” says Amity, and puts it on. It fits. There is a wet footprint on the stone after that, and then another, going up. {+amity_free, inspire all, xp 120}
+> Ask what would stop him | insight 13 | “If he'd *say* it,” she says. “My name. He's called it everything else. He's called it a whole abbey.” {+sayname, xp 80} // “Papa?” she says. “Nothing ever has.”
+> Ask her to ring it true [cracked] | | “That bell?” She listens, head on one side. “It's *flat*,” she says, with scorn. “It won't ring anything for ever. It won't ring dinner.” {+flatbell, inspire all, xp 80}
+-- fight counter @tower:.75 | The Counterweight | ghast, wight*, specter | deadly
+say: It took eleven to balance the bell, and he used the eleven. They hang in a net over the shaft, and as you step on the beam they all look down.
+> Say their names [named_them or class_out or called] | | You have met them, most of them. You say good night to each. The net comes up empty, and overhead nine tons of bronze lurches like a drunk. {skip, xp 120, inspire all}
+win: The net comes up empty. Nine tons of bronze lurches overhead.
+-- boss corvin @tower:tower4 free [amity_free or september] | The Bell Loft | Abbot Corvin = mage!, cult_fanatic, wight, cultist* | deadly
+say: He has got the great rope round his own wrist. He is a small man with a very long beard. There is a calendar on the wall behind him with a hole worn through it at the thirtieth. “Please,” says Abbot Corvin. “I've nearly got it. Just until I've put it right.”
+> Make him say her name [sayname] | persuasion 14 | You ask him what she was called. You ask him again. You do not raise your voice. He opens his mouth and his whole face comes apart. “Am—” he says. “Am—” And from the stair, rather crossly: “*Papa.*” “Amity,” says Abbot Corvin; and lets go of the rope. {+named, skip} // “The child,” he says. “The saint. The— Oh, don't. Oh, please *don't*.”
+> Show him the baby [baby] | | The midwife just walks up and puts it in his arms. He has to let go of the rope to take it. It hits him in the eye. He looks down at the first new thing he has seen in forty years, and starts, quite quietly, to say that he is sorry, and this time it is to somebody. {+named, skip}
+> Tell him September has thirty days | intimidation 13 | He flinches as if you had struck him. “I know,” he screams. “I *know* it has!” The rope bites. He is half the man he was, and the more dangerous. {inspire all, +flinched} // “I carried it,” he whispers. “I carried the one.”
+win: The rope runs up through the ceiling by itself, and is gone. {+corvin_done, done}
+end: The bell swings once, mouth up, with nobody on it. It makes a sound like somebody shutting a very large book. Then all over the valley, one after another, ordinary clocks begin to strike. {xp 200}
+ending [named & born]: A Quarter of an Hour | They walked down to the lake together, the abbot and a girl with one wet shoe. She was explaining something to him about Plain Hunt. At the edge he looked back. Lewin rings for a quarter of an hour on the thirtieth, very badly, and then everybody goes straight home. The Mallow child is called Amity. She is never quiet.
+ending [named]: Good Night | He said it over and over, her name, until it was only a name, and then he lay down. They buried him at Wend, in a row. On the stone it says what he did: both things. The lake is full again. On still nights you may hear somebody getting to the hard bit, and getting it right, and stopping.
+ending: Thirty Days | He never said it. They found the calendar in his sleeve. The bell was too heavy to move and stands there yet, mouth upward, full of rain, and birds drink from it. Hanne Rook oils her hinge every spring. “Was it wrong?” she asked you, the morning you left; and then she said, “No, don't. I expect I'll know when I'm old.”

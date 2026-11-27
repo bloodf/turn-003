@@ -1,0 +1,35 @@
+// Things drawn on the ground: where you may walk, what a spell will catch, traps you have found, zones that linger.
+import { Mesh } from '@babylonjs/core/Meshes/mesh'
+import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData'
+import { ShaderMaterial } from '@babylonjs/core/Materials/shaderMaterial'
+import { ShaderStore } from '@babylonjs/core/Engines/shaderStore'
+import { Vector4 } from '@babylonjs/core/Maths/math.vector'
+import { Constants } from '@babylonjs/core/Engines/constants'
+import type { Scene } from '@babylonjs/core/scene'
+ShaderStore.ShadersStore.rmarkVertexShader = `
+precision highp float; attribute vec3 position; attribute vec2 uv; attribute vec4 color; uniform mat4 viewProjection; varying vec2 vU; varying vec4 vC; void main(){ vU=uv; vC=color; gl_Position=viewProjection*vec4(position,1.); gl_Position.z-=.0006*gl_Position.w; }`
+ShaderStore.ShadersStore.rmarkFragmentShader = `
+precision highp float; varying vec2 vU; varying vec4 vC; uniform float t; void main(){ float k=vU.x; float e; if(vU.y<1.5){ vec2 q=fract(vU); e=1.; } float edge=smoothstep(.82,1.,k); float a=vC.a*(.34+.66*edge); a*=.9+.1*sin(t*3.+k*6.); gl_FragColor=vec4(vC.rgb,a); }`
+export interface P3 { x: number; y: number; z: number }
+class Layer {
+  mesh: Mesh; pos: number[] = []; uv: number[] = []; col: number[] = []; idx: number[] = []
+  constructor(name: string, scene: Scene, mat: ShaderMaterial) { this.mesh = new Mesh(name, scene); this.mesh.material = mat; this.mesh.isPickable = false; this.mesh.alphaIndex = 8; this.mesh.alwaysSelectAsActiveMesh = true; this.mesh.setEnabled(false) }
+  begin() { this.pos = []; this.uv = []; this.col = []; this.idx = [] }
+  tri(a: P3, b: P3, c: P3, k: [number, number, number], C: number[]) { if (!(a.y + b.y + c.y < 1e6)) return; const n = this.pos.length / 3; for (const [p, q] of [[a, k[0]], [b, k[1]], [c, k[2]]] as const) { this.pos.push(p.x, p.y, p.z); this.uv.push(q, 0); this.col.push(C[0], C[1], C[2], C[3]) } this.idx.push(n, n + 1, n + 2) }
+  end() { if (!this.idx.length) { this.mesh.setEnabled(false); return } const v = new VertexData(); v.positions = this.pos; v.uvs = this.uv; v.colors = this.col; v.indices = this.idx; v.applyToMesh(this.mesh, true); this.mesh.setEnabled(true) }
+}
+export class Marks {
+  private mat: ShaderMaterial; walk: Layer; aim: Layer; fixed: Layer; private t = 0; ground: (x: number, y: number, z: number) => number = (_x, y) => y
+  constructor(scene: Scene) { this.mat = new ShaderMaterial('rmark', scene, 'rmark', { attributes: ['position', 'uv', 'color'], uniforms: ['viewProjection', 't'], needAlphaBlending: true }); this.mat.backFaceCulling = false; this.mat.disableDepthWrite = true; this.mat.alphaMode = Constants.ALPHA_COMBINE; this.walk = new Layer('mwalk', scene, this.mat); this.aim = new Layer('maim', scene, this.mat); this.fixed = new Layer('mfix', scene, this.mat); void Vector4 }
+  frame(dt: number) { this.t += dt; this.mat.setFloat('t', this.t) }
+  private g(x: number, y: number, z: number): P3 { return { x, y: this.ground(x, y, z) + .06, z } }
+  /** cells a creature can reach: inner fill, bright rim where reach ends */
+  cells(list: { x: number; y: number; z: number; k: string; l: number }[] | null, col = [.35, .62, 1, .38]) { const L = this.walk; L.begin(); if (list) { const set = new Set(list.map(c => c.k)); const H = .75; for (const c of list) { const [cx, cz] = c.k.split(',').slice(1).map(Number); const has = (a: number, b: number) => set.has(`${c.l},${cx + a},${cz + b}`); const P = (a: number, b: number) => this.g(c.x + a * H, c.y, c.z + b * H); const mid = this.g(c.x, c.y, c.z); const e = [has(0, -1), has(1, 0), has(0, 1), has(-1, 0)]; const corner = [[-1, -1], [1, -1], [1, 1], [-1, 1]]; for (let i = 0; i < 4; i++) { const A = corner[i], B = corner[(i + 1) % 4]; const k = e[i] ? .2 : 1; L.tri(mid, P(A[0], A[1]), P(B[0], B[1]), [.2, k, k], col) } } } L.end() }
+  private disc(L: Layer, p: P3, r: number, C: number[], n = 40) { const rings = Math.max(1, Math.min(6, Math.ceil(r / 2))); for (let q = 0; q < rings; q++) for (let i = 0; i < n; i++) { const a = i / n * 6.2832, b = (i + 1) / n * 6.2832, r0 = r * q / rings, r1 = r * (q + 1) / rings; const A = this.g(p.x + Math.cos(a) * r0, p.y, p.z + Math.sin(a) * r0), B = this.g(p.x + Math.cos(b) * r0, p.y, p.z + Math.sin(b) * r0), D = this.g(p.x + Math.cos(a) * r1, p.y, p.z + Math.sin(a) * r1), E = this.g(p.x + Math.cos(b) * r1, p.y, p.z + Math.sin(b) * r1); const k0 = q / rings, k1 = (q + 1) / rings; L.tri(A, D, E, [k0, k1, k1], C); if (q) L.tri(A, E, B, [k0, k1, k0], C) } }
+  private ring(L: Layer, p: P3, r: number, w: number, C: number[], n = 64) { for (let i = 0; i < n; i++) { const a = i / n * 6.2832, b = (i + 1) / n * 6.2832; const A = this.g(p.x + Math.cos(a) * (r - w), p.y, p.z + Math.sin(a) * (r - w)), B = this.g(p.x + Math.cos(b) * (r - w), p.y, p.z + Math.sin(b) * (r - w)), D = this.g(p.x + Math.cos(a) * r, p.y, p.z + Math.sin(a) * r), E = this.g(p.x + Math.cos(b) * r, p.y, p.z + Math.sin(b) * r); L.tri(A, D, E, [1, 1, 1], C); L.tri(A, E, B, [1, 1, 1], C) } }
+  private wedge(L: Layer, from: P3, to: P3, len: number, half: (f: number) => number, C: number[]) { const dx = to.x - from.x, dz = to.z - from.z, q = Math.hypot(dx, dz) || 1, ux = dx / q, uz = dz / q; const n = 14; for (let i = 0; i < n; i++) { const f0 = len * i / n, f1 = len * (i + 1) / n, h0 = half(f0), h1 = half(f1); const P = (f: number, s: number) => this.g(from.x + ux * f - uz * s, from.y, from.z + uz * f + ux * s); const k0 = i === 0 ? .2 : .2, k1 = i === n - 1 ? 1 : .2; const a = P(f0, -h0), b = P(f0, h0), c = P(f1, h1), d = P(f1, -h1), m0 = P(f0, 0), m1 = P(f1, 0); L.tri(a, d, m1, [1, 1, k1], C); L.tri(a, m1, m0, [1, k1, k0], C); L.tri(m0, m1, c, [k0, k1, 1], C); L.tri(m0, c, b, [k0, 1, 1], C) } }
+  /** the shape a spell or attack will cover */
+  shape(o: null | { area?: string; r?: number; from: P3; at: P3; range?: number; ok: boolean; line?: boolean }) { const L = this.aim; L.begin(); if (o) { const C = o.ok ? [.95, .55, .2, .5] : [.7, .2, .2, .32]; if (o.range) this.ring(L, o.from, o.range, .06, [.85, .75, .45, .5]); if (o.area === 'sphere' || o.area === 'cube') this.disc(L, o.at, o.r ?? 3, C); else if (o.area === 'cone') this.wedge(L, o.from, o.at, o.r ?? 4, f => .15 + f * .55, C); else if (o.area === 'line') this.wedge(L, o.from, o.at, o.r ?? 9, () => .75, C) } L.end() }
+  /** zones and found traps */
+  lasting(zones: { x: number; y: number; z: number; r: number; look: string }[], traps: { x: number; y: number; z: number }[]) { const L = this.fixed; L.begin(); const K: Record<string, number[]> = { fire: [1, .4, .1, .42], ice: [.5, .8, 1, .4], dark: [.35, .1, .5, .5], holy: [1, .9, .5, .32], poison: [.4, .75, .2, .42], arcane: [.5, .4, 1, .38], mind: [.8, .4, .9, .38], spark: [.6, .7, 1, .4], acid: [.6, .9, .2, .4] }; for (const z of zones) { this.disc(L, z, z.r, K[z.look] ?? K.arcane); this.ring(L, z, z.r, .07, [...(K[z.look] ?? K.arcane).slice(0, 3), .9]) } for (const t of traps) { this.disc(L, t, .62, [1, .25, .12, .4], 18); this.ring(L, t, .68, .07, [1, .35, .15, .9], 18) } L.end() }
+}
