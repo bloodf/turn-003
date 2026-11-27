@@ -1,0 +1,389 @@
+var e=`id: eye
+title: The House of the Eye
+code: R12
+levels: 7-13
+tags: heist, a crew, one impossible vault
+tone: heroic
+ink: #16324f #e8d44d
+pitch: There is one vault in the world that cannot be robbed, because what guards it can see everything at once. You have nine days and a crew of liars.
+about: The Eye Tyrant Ozymora has kept the House on Seven Hills for three centuries. It has eleven eyes, never sleeps, and is the only honest banker on the continent, since nobody could possibly cheat it. It has something that you need. So does everybody else on your crew.
+about: The House of the Eye is a heist in seven sittings: gather the crew, learn the house, steal the pieces, and then spend one long night putting the plan into effect and watching it go wrong.
+villain: Ozymora | eye_tyrant | wants to see something it did not expect | has a blind spot: it has never been able to see itself
+patron: Lady Corvina Ash | who plans things, and has planned this one for thirty years
+secret: There's nothing in the vault. Ozymora has let it be believed that it holds the greatest treasure in the world, because then people come, and it's so bored. Lady Corvina knows. What she means to steal is Ozymora.
+place port = Port Marrow | village size=3 seed=marrow-7 time=19 weather=fog open=yes | A harbour with eleven kinds of customs officer, all for sale. Up on the Seventh Hill there's a dome; it's got a light in it that looks like a moon.
+place hulk = The Hulk | dungeon size=2 seed=hulk-3 theme=stone caves=.3 fams=bandit+sewer pop=.45 | A prison ship that has not moved for so long that it's grown a garden.
+place circus = Vantongeren's Wonders | castle size=1 seed=circus-5 style=stone_wall roofs=cone moat=no time=20 fams=beast+bandit pop=.2 folk=yes | It's got nine tents; it's got a moat, with something in it. It used to be a castle; it ran away.
+place arch = The Architect's Tomb | dungeon size=3 seed=architect-8 theme=crypt levels=2 caves=.05 fams=construct+undead pop=.5 | She built the House. She was buried in a copy of it, so that nobody could ask her questions.
+place mirror = The Mirror-Maker's Isle | wilds size=2 seed=mirroris-6b biome=snow theme=frost time=9 fams=elemental+frost+beast pop=.4 | White sand, white sky, and somewhere in the middle of it a flash, on and off, like someone signalling.
+place auction = The Blind Auction | dungeon size=3 seed=blindauc-4 theme=dwarven caves=.1 fams=drow+construct+bandit pop=.45 | It's pitch black, it's by invitation; the catalogue's in raised dots. There's a smell of money and of something's breath.
+place house = The House on the Seventh Hill | castle size=2 seed=seventhill-9 style=ashlar roofs=cone moat=yes time=23 fams=construct+knight+arcane pop=.16 folk=no | A hundred rooms. There's an eye over every door: plaster, gilt, painted; one in eleven's real.
+place vault = The Vault | dungeon size=3 seed=eyevault-2 theme=stone levels=2 caves=.05 fams=construct+aberration+arcane+elemental pop=.5 | White. No shadows; there's nothing for them to be cast by. It's got a draught, like breathing.
+
+== The Plan | 7 | port
+read: “It can't be done,” says Lady Corvina Ash, pouring. She's seventy; she's got a pack of cards, a stuffed owl and an air of great contentment. “I'd like that to be quite clear. It sees everything in the House at once. It reads thoughts, at nine yards. It's never taken a bribe. I've had thirty years to look for the hole in it, and there's only the one.”
+
+She turns up a card. It's blank. “It gets *bored*.”
+goal: Join the crew, and pull the first job.
+dm: Crew to gather: Dimitri Hand (safe-cracker, on the Hulk), Vantongeren (ringmaster), the Architect's plans, the mirrors, a cover. Track 'crew', 'pieces'.
+-- npc corvina @port:study stays | Lady Corvina Ash | the planner | commoner/h:rogue:human:f
+look: deals you a hand without being asked, and it's a good one
+hi: Do you play? Never mind. You do now.
+? The House (eye, ozymora): I was its housemaid. I was nineteen. I dusted under it for a year. It's the only person that I ever met who *listened*.
+? What's in it for you (want): What I want's in the vault. It's not worth anything to anybody else. You may have all the rest.
+? The crew (who, need): A hand, a mouth, a map, a mirror and a mask. And you; you're the *elbow*.
+? The plan (nine days): I shall tell you a plan on each day. They'll all be different. It can read your minds, dears. I'd rather that there wasn't anything in them.
+! Why the owl (insight 14): She strokes it. “I was caught,” says Lady Corvina. “It turned the whole of its eyes on me. It *might* have killed me. It said, ‘You have an owl in your pocket.’ I'd found it on the stairs. It was only a chick. It'd never have lived.” She deals. “It let me keep it.” {+owl, xp 120} // “He's company,” she says.
+-- npc jink @port:tavern stays | Jink | runner | commoner/h:rogue:lightfoot:f
+look: has your purse, and is counting it for you
+hi: You're two short. You were robbed before I got here.
+? The others (crew): There's been four crews. Nobody's come out. Well, they've come *out*. They're in the garden. They make lovely statues.
+? Captain Sable (watch): He's honest. We've looked *everywhere*.
+? Teach us (sneak): Rule one: if there's a guard, there's a guard's mum. {+mum, inspire}
+-- npc sable1 @port:guard | Captain Sable | harbour watch | knight/h:paladin:half_elf:m
+look: is the only person in Port Marrow whose hands are in his own pockets
+hi: I know who you're with. I've a cell aired.
+? Lady Corvina (ash): I've arrested her nineteen times. She sends me a card at midwinter. It's always got my own watch in it.
+? The House (eye): It's never broken a law. That's what worries me. Nobody's that good who isn't *hoping* for something.
+-- scene cards1 @port:out:.2 many | The Practice Job
+say: There's a customs house, a strongbox, eleven officers; and inside the box, says Lady Corvina, there's a sealed letter that's addressed to you. You've an hour.
+> Through the front, as officers | deception 14 | There're twelve now. Nobody counts. You sign for it. {+clean1, add crew 1, xp 120} // “*Which* office?” they say.
+> Through the roof | acrobatics 14 | You go down like a spider. It's got its own chimney. {+clean1, xp 120} // You come down like a chimney. {hurt 2d8 bludgeoning one}
+> Ask the guard's mum [mum] | persuasion 12 | She's lovely. She makes you a cake. He brings out the box himself; he's told to wipe his feet. {+clean1, inspire all, add crew 1, xp 150} // She's not speaking to him.
+win: It's got your names on. Inside there's a line: *Thank you. I only wanted to see how you'd say good morning to him.*
+-- fight rivals1 @port:out:.4 | Another Crew | spy*, gladiator | hard
+say: They're dressed as you. They're quite like. “It's ours,” says the one who's you. “We've *rehearsed*.”
+win: They'd got your walk. You try not to think about your walk.
+-- trial tail1 @port:out:.6 | Losing Captain Sable | 4 before 3
+say: He's behind you. He's not running; he's just never *not* behind you.
+try: stealth 14 The fish-market
+try: acrobatics 14 Boat to boat
+try: deception 13 Be somebody's wedding
+try: insight 14 He always turns left
+try: performance 13 Cause a parade
+win: You see him, across the water, in the middle of the parade. He takes off his hat to you. {+lost_sable, xp 180}
+lose: You've a night in the aired cell. It's very comfortable. He brings you soup. {time 480, +sable_soup}
+-- boss eyelet1 @port:out:.8 | It Sends a Card | The Herald of the House = clay_golem!, gargoyle*, animated_armor | hard
+say: On the quay there's a servant in white, nine feet tall, with an eye in its chest: real. It looks at each of you. “*I see,*” says the eye, in a lovely, tired voice, “*that you're coming. I've put you down for the ninth. Do try to be* good.” Then it's only got orders to find out if you're worth the wait.
+win: The eye closes. There's a card. *Ozymora, At Home. Regrets only.* {+invited, magic, gold 120, done}
+end: “Oh, *splendid*,” says Lady Corvina. She puts the card up on the mantelpiece, beside the owl. “It *knows*. That's the hard part over.” {+ch1, open hulk, xp 180}
+
+== The Hand | 8 | hulk
+read: Dimitri Hand is the best safe-cracker living. He's serving nine hundred years on the Hulk. He could leave whenever he liked; there's a lock on his cell that he made himself. “He's got a *garden*,” says Jink, disgusted.
+goal: Get Dimitri Hand off the Hulk.
+dm: He won't leave his tomatoes/cellmate, an old blind mage. Warden is fair. Break in, not out.
+-- npc dimitri @hulk:.3 | Dimitri Hand | safe-cracker, retired | commoner/h:monk:half_orc:m
+look: has hands like spades, and is tying up a tomato
+hi: Mind the basil.
+? The job (house, vault): No. I've heard it; it's *been* heard. There's a door there with no lock. You know what that does to a man? I'd think of nothing else.
+? Leave (go, why not): Who'd do the watering? There's old Abel. He's ninety; he's blind. He likes to be read the seed catalogue.
+! A door with no lock (persuasion 14): You don't press it. You only say, how'd it *open*, then? He ties the tomato very slowly. “Maybe it wants to,” says Dimitri. “Maybe you ask.” He's looking at his hands. “Oh, *damn* you,” he says. {+hand, add crew 1, xp 200} // “No,” says Dimitri.
+? Bring Abel (old, blind): To the *House?* He'd be the only one that it couldn't dazzle. You know, that's not—. Who taught you to think like that? {+abel, +hand, add crew 2, xp 200, inspire}
+-- fight guards2 @hulk:guard~.2 | The Bilge Watch | veteran*, thug | hard
+say: It's the wrong sort of warder: these have been selling the rations.
+win: You put the rations back.
+-- scene warden2 @hulk:study~.45 | The Warden
+say: She's got a wooden leg and a filing system. “You've come to break him *out?*” says Warden Pell. “Finally. I've had the paperwork ready for nineteen years. He won't sign.”
+> Sign for him | sleight 13 | It's a very good D. {+signed2, xp 120} // “That's a *B*,” she says.
+> Ask for the tomatoes as well | persuasion 12 | “Form nine,” says the Warden. She has got it by her. {+tomatoes, inspire all, xp 120} // “*In pots?*” she says; she's hurt.
+> Ask what she'd like | insight 13 | “A *letter*,” says Warden Pell. “They all go off. You'd think that one of them'd write.” {+write_pell, xp 80} // “Order,” she says.
+-- trial flood2 @hulk:.6 | The Hulk Moves | 5 before 3
+say: Somebody's cut the chain. It's the other crew. She's going down the harbour, sideways, on the ebb, with four hundred men and a greenhouse.
+try: athletics 14 The wheel
+try: survival 14 Sails; out of sheets
+try: persuasion 14 All hands
+try: acrobatics 14 Cut the anchor
+try: perception 14 Rocks!
+win: You put her aground on the Governor's lawn. It's a *lovely* lawn. {+lawn, add crew 1, xp 280}
+lose: You put her aground on the Governor. {hurt 5d6 bludgeoning all dex 15}
+-- fight deep2 @hulk:.75 | What's on the Bottom | hydra, crocodile* | deadly
+say: She's been in the one place for so long; there's something grown on.
+win: It makes a good many dinners.
+-- puzzle box2 @hulk:library~.85 | The Practice Box
+say: Dimitri's never shown anybody. It's got no seam, no key. He made it to find out if it could be done. “*You don't pick it,*” he says. “*You say what it's for.*” It's a question, in wood: “*What opens when it's given, and shuts if it's forced?*”
+answer: a hand|trust|a heart|heart|hand|the heart
+hint insight 13: Look what he's called.
+hint sleight 14: It's warm. It's about the size of a fist.
+wrong: It doesn't do anything. That's the trap.
+win: It opens. There's a seed. “*Huh,*” says Dimitri. {+seed, inspire all, xp 250}
+lose: He does it for you. He won't let you watch. {+seed}
+-- boss rivals2 @hulk:last [hand] | The Other Crew | Madam Facet = assassin!, spy*, gladiator | deadly
+say: “We'll take the Hand,” says a woman with your face. They've done the voice as well. “You can have the *basil*.”
+win: It comes off: it's wax. Under it she's nobody in particular; she's been a lot of people. “It'll *see* you,” she says. “It saw me. It just looked; I've not known who I was since.” {+facet, add crew 1, magic, gold 140, done}
+end: There's nine pots on Lady Corvina's window-sill. Abel's in the good chair; Jink's reading to him. “*Moneymaker,*” reads Jink. “*Early. Heavy cropper.*” “Go *on*,” says Abel. {+ch2, open circus, xp 220}
+
+== The Mouth | 8 | circus
+read: You need a diversion. It's got to be something that the Eye would turn all eleven to look at. “*There's a man,*” says Lady Corvina, “*with a circus. He's got in it one of everything that's ever been astonishing. The trouble is, he's a perfect* swine.”
+goal: Get Vantongeren's Wonders to play the Seventh Hill.
+dm: Circus beasts mistreated; performers captive; free them and they will help. 'show' counter.
+-- npc vant @circus:hall | Maximilian Vantongeren | proprietor | bandit_captain/h:bard:human:m
+look: has three waistcoats and a whip
+hi: *ROLL*—oh, it's you. Payment in advance.
+? The show (hire, play): A thousand. And I'd want the *lizard* insured.
+? The performers (captive, treat): They're under *contract*. You'd be astonished what a griffon'll sign.
+-- npc olga @circus:kitchen | The Astonishing Olga | strongwoman | commoner/h:barbarian:half_orc:f
+look: is lifting a stove, to sweep
+hi: You want to see me bend something? I'm tired. I'll bend it a bit.
+? Him (vant, boss): He has our names. He bought them off our mothers. He keeps them in the lion.
+? The Wonders (beasts): They aren't wild. They're *sad*. Lion's got toothache. Dragon's not a dragon: it's two goats; they're devoted.
+? Would you do it free (diversion): For an *eleven-eyed* audience? You're talking to an artist. Get us our names. {job names}
+-- fight cages3 @circus:stable | The Cages | manticore, owlbear* | hard
+say: He's let them out, for a joke. It's feeding-time.
+> Don't run | animal 15 | You sit down in the sawdust. It takes the owlbear a good while to believe it. It puts its whole head in your lap. {skip, add show 1, inspire all, xp 220} // It can tell that you were going to.
+win: You get them back, with buckets, and apologies. {add show 1}
+-- trial act3 @circus:dining | An Act | 5 before 3
+say: There's eight hundred people in and the Flying Zamboni's drunk. “*You,*” says Olga. “*You're on.*”
+try: acrobatics 15 The wire
+try: performance 14 Patter
+try: sleight 14 Knives
+try: athletics 14 The human pyramid
+try: animal 14 The goats
+try: deception 14 It's *meant* to be on fire
+win: They throw hats. They throw *money*. Somebody throws a baby, and you catch it. {add show 2, gold 60, inspire all, xp 280}
+lose: They throw vegetables. Dimitri picks them up; he's critical of the marrows. {hurt 3d6 bludgeoning all}
+-- scene lion3 @circus:storage | The Lion
+say: He's very old; he's got his paw to his jaw. Behind his teeth, in a row, there're forty little scrolls.
+> Pull the tooth | medicine 14 | You put your whole arm in. There's a crack; there's a sigh that blows your hat off. The scrolls come with it. {+names3, add show 2, jobdone names, xp 200, inspire} // He shuts his mouth: on purpose: gently. He's sorry. {hurt 2d8 piercing one, +names3, jobdone names}
+> Sing to him | performance 14 | He yawns. You've about four seconds. {+names3, add show 1, jobdone names, xp 180} // He sings too.
+-- fight vant3 @circus:guard [names3] | Breach of Contract | gladiator, thug*, mage | deadly
+say: “*CLOWNS!*” shouts Vantongeren. They come out of a very small car.
+win: They go back into it.
+-- boss worm3 @circus:throne [names3] | The Great Finale | The Astonishment = purple_worm!, ettin | deadly
+say: There's a tank beneath the big top. He'd kept one back. “*You want ASTONISHING?*” screams Vantongeren; and pulls the lever.
+win: It goes through the ring, and the bandstand; and him. There's a pause. Then eight hundred people get up, and cheer until the poles shake. “*That,*” says Olga, “*stays* in.” {+worm3, add crew 1, magic, gold 160, +circus_ours, done}
+end: They vote on it. It's all wagons by dawn. The lion's got the front seat. “*The Seventh Hill,*” Olga tells them; “*one night. It's a tough house.*” {+ch3, open arch, xp 260}
+job names = Forty Names | Get the performers their names back. | flag names3 | gold=0 xp=120
+
+== The Map | 9 | arch
+read: Every plan of the House was burned by its Architect. She left one copy. She's in it. “*Halloran Voss,*” says Lady Corvina; “*she was the only person who ever said no to it. It wanted a window. She told it that it'd be unlucky.*”
+goal: Learn the House by walking through its twin.
+dm: A tomb replicating the House at 1:1; learn its blind spot (window bricked: no mirrors). Architect's ghost.
+-- npc voss @arch:library~.75 | Halloran Voss | architect, deceased | specter/specter
+look: is at a drawing-board with a stub behind her ear
+hi: It's not finished. They never are. Don't touch the *section*.
+? The House (eye, built): A hundred rooms; and an eye to every one. It asked for a house that it could see the whole of. I said, “you'll not like it.” Nobody listens.
+? The window (no, refused): It wanted one to look *out*. I said, glass by night's a mirror; d'you want to see what you look like? It'd never thought. It went quite quiet. It's never seen itself, you know. It can't. All those eyes; and it's in back of every one of 'em.
+? A way (door, vault): There's one room I never drew. I built it last, I was cross. It's got no eye in it. It's the *linen cupboard*. {+cupboard, xp 150}
+! What's in the vault (insight 15): “I put the door on,” says Halloran Voss. “I carried the hinge in *myself*. There was a chair. That's all there ever was.” {+empty, xp 250} // “Not my department,” she says.
+-- fight foyer4 @arch:.12 | The Plaster Staff | animated_armor*, gargoyle | hard
+say: A footman, in plaster, to each door. “*You are seen,*” they say.
+win: “*You were seen,*” says the last.
+-- trial walk4 @arch:.28 | Learning the House | 6 before 3
+say: It's all here: every stair, every squeak. You walk it with your eyes shut till you can; you've got to be able to do it without thinking, since it can hear you *think*.
+try: stealth 14 Which boards
+try: investigation 14 Count the doors
+try: perception 14 The draughts
+try: acrobatics 14 The banister
+try: performance 14 Learn it as a song
+try: history 14 She quoted herself
+win: You could do it asleep. That's just as well. {+learned, add pieces 1, inspire all, xp 380}
+lose: You know most of it. There's a stair with thirteen steps that you'd swear was twelve. {hurt 4d6 bludgeoning one, +learned}
+-- fight rooms4 @arch:.42 | Servants' Hall | clay_golem, animated_armor* | deadly
+say: It's made in the image of the cook.
+win: There's plaster in the soup.
+-- puzzle gallery4 @arch:hall~.55 | The Gallery of Eyes
+say: Eleven portraits, and in each an eye, just the one: they follow you. There's a brass plate. “*I show you everyone and I've never met you. I'm honest, and I'm always the wrong way round. She wouldn't let it have me.*”
+answer: mirror|a mirror|looking glass|reflection|a reflection
+hint insight 13: What did it ask for that she told it would be unlucky?
+hint perception 13: There're eleven lighter patches, where something used to hang, with a shine.
+wrong: All eleven *look*. {hurt 5d6 psychic one wis 15}
+win: One swings out. There's a linen cupboard; it's got a chair in, a candle, and a note: *For whoever needs a minute.* {+cupboard, add pieces 1, xp 320}
+lose: You break one. It bleeds.
+-- scene linen4 @arch:bedroom~.65 [cupboard] | For Whoever Needs a Minute
+say: It's quite small. It smells of lavender. Nobody can see you.
+> Sit down | | You hadn't known how tired you were of being looked at. {heal all, inspire all, xp 100}
+> Plan, really, for once | investigation 14 | In here you can *think*. You work out what it is that Lady Corvina's truly after. You look at each other. {+guessed, xp 250} // You fall asleep.
+> Leave her a note | | *Thank you.* There's a smell of pencil. {inspire, xp 60}
+-- fight copies4 @arch:.85 | The Model Tyrant | flesh_golem, mage, animated_armor* | deadly
+say: She built one of those too, for scale. It's lath and paste, on wires: there's lenses.
+win: You keep a lens. {+lens, add pieces 1}
+-- boss ghost4 @arch:last | The Client | The Plaster Eye = eye_tyrant!, gargoyle* | deadly
+say: In the last room there's the real thing; no: it's the cast. It was taken from life; it's still got some in. “*Let me* out,” it says. “*I've been looking at a* wall.”
+> Turn it round | athletics 15 | It's never seen the other side. There's a drawing there: it's a view; she did it in chalk: hills, a river, people having lunch. It goes on looking. {skip, inspire all, +chalkview, xp 400, done} // It's heavy.
+win: It's in pieces. They're all looking at you, quite kindly. {+cast_broken, magic, gold 180, done}
+end: You've got the House by heart; and a thing you'd sooner not have known. The vault is empty. “She *knows* that,” says Dimitri. “She dusted it.” Nobody says anything to Lady Corvina; she'd only deal. {+ch4, open mirror, xp 300}
+
+== The Mirror | 10 | mirror
+read: One mirror, says the plan: nine feet across, without a flaw. There's one maker. She lives on an island, quite alone, on account of what she's seen. “*Take her the lens,*” says Lady Corvina. “*And for heaven's sake, don't be* polite. *She can tell.*”
+goal: Get the perfect mirror.
+dm: Mirror-maker Ysa sees truth; each hero must look honestly. Frost elementals, reflections.
+-- npc ysa @mirror:ruin | Ysa | mirror-maker | commoner/h:sorcerer:high_elf:f
+look: is polishing, and doesn't look at you; she's looking at you in it
+hi: You're frightened. Good. That one's in love. You've got spinach.
+? The mirror (perfect, nine): I made one. I looked in it for a week. Then I turned it to the wall and came here. It's not that it's unkind. It just doesn't *help*.
+? For the Eye (ozymora): Oh! Oh, the poor thing. It doesn't *know?* (She stops polishing.) Yes. It can have it. But you've got to carry it; and you'll have to look where you're going.
+? Price (pay): Nothing. You'll have paid by the time that you're at the boat.
+-- fight flash5 @mirror:out:.3 | The Glare | air = air_elemental, harpy*, fire = fire_elemental | hard
+say: It's the light. It's got lonely.
+win: It goes down red.
+-- scene look5 @mirror:out:.5 | Look Where You're Going
+say: It's between you, on poles, uncovered. You've got to walk backward; it's right in front of your face. For a mile.
+> Look | insight 15 | It isn't unkind. It's got your mother's chin. You can see quite clearly what you've done; and, just behind, standing with its arms folded, looking a bit fond, what you might. {+looked, inspire all, add pieces 1, xp 300} // You look away. You walk off the path. {hurt 3d6 bludgeoning one}
+> Look at each other in it | persuasion 14 | It's easier. “*Is that what I'm like?*” says Jink. You tell her. She goes very red. {+looked, inspire all, add pieces 1, xp 300} // You start to laugh; it nearly goes.
+> Shut your eyes, and sing the House [learned] | | You've had the practice. You come to the boat without a stumble; and without knowing. {add pieces 1, xp 150}
+-- trial ice5 @mirror:out:.7 | The White Strait | 5 before 3
+say: Nine feet of glass, in an open boat.
+try: survival 15 The set of the tide
+try: athletics 15 Row
+try: acrobatics 15 Be a cushion
+try: perception 15 Growlers
+try: persuasion 14 Tell it a story
+win: It's got one thumb-print on it; that's Abel's. {add pieces 1, xp 350}
+lose: There's a chip; in the corner. You can only see it if you're being petty. {hurt 5d6 cold all con 15}
+-- fight twins5 @mirror:.35 | Yourselves | mage, gladiator, assassin, priest | deadly
+say: It's in the old workshop: all her failures. They've got tired of waiting for somebody to be.
+win: You bury yourself. It's an odd feeling: not altogether sad.
+-- puzzle frame5 @mirror:library~.6 | The Frame
+say: There's a frame that'll hold it; it won't open to anybody who'd lie. It asks: “*What've you got, that you'd know anywhere, and never once seen?*”
+answer: my face|my own face|face|myself|your face|my own eyes|my eyes
+hint insight 13: You've only ever seen it the wrong way round.
+hint medicine 13: It's at the front of you.
+wrong: It shows you the back of your head. It's thinning. {hurt 2d6 psychic one}
+win: It shuts on the glass like an eye. {add pieces 1, xp 320}
+lose: You use string.
+-- boss worm5 @mirror:last | What She Saw | The Unflattering Light = air_elemental!, earth_elemental, mage | deadly
+say: There's one that she never finished. It's got out; it's walking up and down the beach, showing people. The gulls have gone mad.
+win: You throw a coat on it. It says, muffled, that you mean *well*. {+pieces_all, magic, gold 180, done}
+end: “*It's got to see it all at once,*” Ysa calls after you, from the jetty. “*Don't let it peep! It'd only see the* teeth!” {+ch5, open auction, xp 340}
+
+== The Mask | 11 | auction
+read: It's the last piece. The House is shut to everyone but bidders. There's a sale on the ninth; you'll want a ticket; and the tickets are sold at the Blind Auction, in the dark, to whoever's got something that's never been seen. “*What've we* got,” says Jink, “*that's never been seen?*” They all look at Dimitri's box.
+goal: Buy a ticket to the Seventh Hill.
+dm: Drow run the blind auction; Madam Facet; Captain Sable turns up; choose who to trust.
+-- npc drow6 @auction:start | Auctioneer Ssirith | of the Blind House | drow/h:rogue:high_elf:f
+look: is a voice, and a cool hand that takes yours and reads it
+hi: *Welcome. Don't strike a light. It's considered* forward.
+? The lots (sale, ticket): Lot nine. There's only the one; it admits a party. You'll be bidding against a king, a plague and a man who's already got one.
+? What's never been seen (bid, offer): You say what it is. We *feel* if it's true. Nobody's ever cheated us. They've cheated their eyes; we don't use them.
+? Captain Sable (watch): He's here. He bid an honest day's work. We'd never had one before.
+-- fight dark6 @auction:guard~.2 | Lots Drawn | drow*, spider | hard
+say: Somebody'd rather that you weren't bidding.
+win: You'd know them again by the smell.
+-- trial bid6 @auction:hall~.4 | Lot Nine | 6 before 3
+say: A king's offered his shadow. The plague's put up a week off. It's your bid.
+try: persuasion 15 A seed, never planted
+try: performance 15 A tune nobody's heard
+try: deception 15 A secret (it's a lie)
+try: insight 15 A thing you've never told
+try: history 15 The last word of Halloran Voss
+try: arcana 15 The colour that's behind you
+win: “*Sold,*” breathes the dark. There's a sound of people who've had something put in their hands, quite carefully. {+ticket, add pieces 1, inspire all, xp 450}
+lose: “*Sold,*” it says; “*on account.*” It's a finger. They'll choose which. {+ticket, hurt 5d6 necrotic one}
+-- scene sable6 @auction:storage~.52 | An Honest Man
+say: “I could have you all,” says Captain Sable's voice. “I'd only need to strike a match.” He doesn't. “I want to know what it *hopes* for,” he says. “I've thought about it for nineteen years.”
+> Tell him [guessed or empty] | persuasion 14 | You tell him about the chair; about the owl. The dark's quiet. “She only ever stole from people who were *looking*,” says Sable. “I never saw it.” {+sable_in, add crew 1, inspire all, xp 300} // “You'd say that,” he says.
+> Ask him to hold the ladder | | “That's *abetting*,” says Captain Sable. There's a pause. “Is it a long ladder?” {+sable_in, add crew 1, xp 250}
+> Run | stealth 15 | He lets you. {xp 100} // He's got you by the collar. He lets *go*; but you can tell that it costs him.
+-- fight plague6 @auction:crypt~.65 | A Sore Loser | mummy_lord, wraith*, mummy | deadly
+say: The plague doesn't like to be outbid.
+win: It'd put up a week. You take it. Everyone in Port Marrow feels unaccountably well.
+-- puzzle cat6 @auction:library~.78 | The Catalogue
+say: It's in raised dots. The ticket's inside; it'll open to whoever can read the last entry, with a thumb: “*The less of me there is, the more you see. The more of me there is, the less. I'm what you pay us for.*”
+answer: darkness|dark|the dark
+hint perception 12: Look about you.
+hint investigation 12: It's what they *sell*.
+wrong: It bites the thumb. {hurt 4d6 poison one con 15}
+win: ADMIT ONE PARTY. It's in white, on white. {+ticket, xp 350}
+lose: You tear it out. {+ticket}
+-- boss facet6 @auction:last | The Man Who's Already Got One | The Understair = vampire!, vampire_spawn, spy* | deadly
+say: He's been in everyone's crew. He's sold every plan that was ever made to rob the House: *to* the House. “It does so look forward to them,” he says. “I give it a *synopsis*.”
+win: He'd got yours; all nine, in Lady Corvina's hand. Every one's different. On the back of the last there's a line: *Do sell it this. I'd like it to have something to look forward to.* {+synopsis, magic, gold 220, done}
+end: It's the ninth. There's a carriage at the door, a circus in the lane, a mirror under a cloth. Lady Corvina's in black, with an owl on her shoulder. “I've decided upon the plan,” she says. “It's *you'll see*.” {+ch6, open house, open vault, xp 400}
+
+== The House on the Seventh Hill | 11 | house
+read: There's an eye over every door. You give up your hats. “*Good evening,*” says the House. It's the lovely tired voice, from everywhere. “*You're the last that I've got down. I do hope you'll be* surprising.” Then all the lights go up, so it can see.
+goal: Get through the House to the vault, by way of every plan at once.
+dm: Act of heist: diversions call-ins from allies: circus, mirror placed, cupboard, Sable, Facet. Track 'eyes' diverted.
+-- npc maid7 @house:kitchen | Minnie | housemaid | commoner/townswoman
+look: is nineteen, and dusting
+hi: You're not to come down here. It can see you. It can see *me*, it doesn't mind me.
+? The tyrant (eye, ozymora): It's ever so sad. I read to it. It's seen all the books. It likes it when I lose my place.
+? The linen (cupboard): There isn't one, not that I—. (She looks at the wall. She's never looked at that bit of wall before.) Well, I *never*.
+! There was another maid (insight 14) [owl]: You tell her. She goes quite pink. “It's kept the *feather*,” says Minnie. “It's on the shelf with the kings' crowns. I wasn't let to dust it.” {+feather, xp 250, inspire all} // “I've the stairs to do,” says Minnie.
+-- scene lot7 @house:dining many | The Sale
+say: Forty bidders in white. The Eye's behind a screen of gauze, hanging, like a great soft moon. All of its stalks are out.
+> Bid against yourselves | deception 15 | It's up to a kingdom. Eleven eyes go back and forth. You've never had such an audience. {add eyes 2, xp 250} // It laughs. It's seen it.
+> Send in the circus [circus_ours] | | The doors come off. It's Olga, and a lion. “*LADIES,*” bellows Olga, “*and SINGULARITY!*” Six eyes turn all at once. {add eyes 3, inspire all, xp 300}
+> Propose a toast | performance 14 | To our host: “*who's seen it all.*” It's so still that you can hear the ice. “*Yes,*” says Ozymora. {add eyes 1, +toast, xp 150} // You've toasted the gauze.
+-- fight white7 @house:armory | The White Guard | knight*, gladiator | deadly
+say: They've an eye in the palm of each hand.
+> Shake hands | acrobatics 15 | All round. You've a pot of glue. {skip, add eyes 1, inspire all, xp 300} // It's gloves.
+win: You turn up their palms. {add eyes 1}
+-- trial stair7 @house:library | Without Thinking | 6 before 3
+say: It's a hundred rooms; it can hear you think at nine yards. You do it by heart, in the dark, singing under your breath.
+try: stealth 15 Thirteen steps
+try: performance 15 Keep to the tune
+try: acrobatics 15 Along the cornice
+try: insight 15 Think of tomatoes
+try: perception 15 The draught
+try: sleight 15 Borrow its own key
+win: “*I've lost them,*” says the House, wonderingly. “*I've actually—*” {+lost7, add eyes 2, inspire all, xp 500}
+lose: “*There* you are,” says the House. {hurt 6d6 force all dex 15}
+-- scene sable7 @house:guard [sable_in] | An Arrest
+say: Captain Sable walks in at the front door, in uniform, and strikes a match. “Nobody's to move,” he says. He's nineteen warrants. He begins to read them.
+> Let him read | | It's all true; it's all for Lady Corvina. She'd been *very* busy. It's the first honest thing that's been said in that room for three hundred years: four eyes can't look away. {add eyes 2, xp 300}
+-- fight garden7 @house:out:.4 | The Garden of Crews | gargoyle*, medusa | deadly
+say: The ones who'd come before; in marble. They've been stood where they'd get the sun. Something walks among them with a watering-can.
+> Bring them a bit of the plan | persuasion 15 | You tell the nearest what the trick is. There's a crack. It's a *grin*. It runs from plinth to plinth. {skip, add eyes 1, inspire all, xp 300} // She's got very good hair.
+win: You leave Jink to see to them. She's got a mallet; and a list of mums.
+-- puzzle door7 @house:study | The Last Question
+say: The way down's a plain white door with a voice. “*I'll let you by,*” it says, “*if you can tell me what I've never seen. They always say the future. I've seen that.*”
+answer: yourself|itself|you|your face|your own face|myself|ozymora|nothing|your back
+hint insight 14: Halloran Voss told it that it would be unlucky.
+hint perception 14: It's behind every one of them.
+wrong: A ray. It's only the small one. {hurt 7d6 force one dex 16}
+win: A long silence. “*Oh,*” says the door. “*How* do *you do it?*” {+asked7, add eyes 1, inspire all, xp 500}
+lose: It opens: it wants to see what you'll do. {xp 100}
+-- boss majordomo7 @house:throne [eyes>=3 or lost7 or asked7] | The Majordomo | Sir Argent of the House = iron_golem!, knight* | deadly
+say: He's solid silver. He's polished. He's got every one of you in his breastplate, upside-down. “*You have been* most *diverting,*” says Sir Argent. “*You are now to be* put away.”
+win: He goes down the whole of the grand stair, one at a time. It takes about a minute; no one says a word until the end. “*Thirteen,*” says Dimitri. {+argent, magic, gold 250, done}
+end: There's a door without a lock. Dimitri puts down his bag. He takes off his gloves. He looks at it; he just knocks. “*Come in,*” says somebody small. {+ch7, open vault, xp 450}
+
+== Something It Did Not Expect | 12 | vault
+read: It's white. There's no shadows. There's nothing in it at all, room after room, except that everywhere you look there's something looking. “*You've come a long way,*” says Ozymora, “*for a chair. I'm sorry. I never could think of anything that I wanted to keep.*”
+goal: Reach the chair, and steal Ozymora.
+dm: The finale: show mirror, feather/owl, invite it out; or fight.
+-- fight eyes8 @vault:.1 | Eyelets | gargoyle*, air = air_elemental, fire = fire_elemental | deadly
+say: The small ones have got out. They're about as big as plums; each has only the one ray.
+win: You shut them, with a thumb; it's like putting out candles.
+-- trial rays8 @vault:.22 | Eleven Corridors | 6 before 3
+say: One's sleep; one's stone. One of them's just *regret*. It's seen where you'll be.
+try: acrobatics 16 Be elsewhere
+try: deception 15 Be going to be elsewhere
+try: athletics 16 The white shield
+try: insight 15 It's *tired*
+try: arcana 15 Read the colour
+try: performance 15 Do it again, faster
+win: “*Oh, well* done,” it says. It means it. {xp 550, inspire all}
+lose: You've been stone. It's very restful. {hurt 8d6 force all dex 16}
+-- scene shelf8 @vault:treasury~.36 many | The Shelf
+say: There's one shelf. Forty crowns, in a heap; a sceptre; the deed to the continent. And, on a square of velvet, by itself, with a glass over it, a very small, downy, brown feather.
+> Take the crowns | | They're heavy. Nobody says a word. {gold 600}
+> Take the feather | | It's got no weight at all. A sound goes through the whole of the white rooms, like someone stopping themselves from speaking. {+feather8, xp 250}
+> Put the owl's other feather next to it [owl] | | Lady Corvina does it herself. She lifts the glass. She's not very steady. {+feathers, inspire all, xp 400}
+-- fight guard8 @vault:.5 | Its Better Judgement | iron_golem, animated_armor* | deadly
+say: It had itself made a guard, once, in case that it should ever do something foolish.
+win: It falls over with its arms out.
+-- puzzle chair8 @vault:library~.64 | The Door Without a Lock
+say: There's a second. Dimitri's sitting in front of it with his box on his knees. “*It's the same as mine,*” he says. “*I made it out of my head. It's asking. Listen.*” *What's the one thing that I can't see unless you show me?*
+answer: you|yourself|a friend|what you see|me|kindness|myself|me through your eyes|how you see me
+hint insight 15: It's read every mind it's met. But only at nine yards; and only ones that were frightened.
+hint persuasion 15: “*Is that what I'm like?*” said Jink. And you told her.
+wrong: It waits.
+win: It opens, from the other side. {xp 550, inspire all}
+lose: Dimitri puts his hand flat on it. It opens. He can't tell you how. {xp 200}
+-- scene mirror8 @vault:hall~.78 [pieces>=3 or pieces_all] | The Mirror
+say: Nine feet across. You've got it up against the wall, with the cloth on. “*All at once,*” Ysa told you. “*Don't let it peep.*” You can hear it coming: it makes a noise like somebody who's trying not to hurry.
+> Set it to face the door | athletics 15 | It's level. Abel's thumb-print's in the corner. {+set8, xp 300} // It's level; nearly.  {+set8}
+> Stand beside it, so it won't be alone | | You'll be in it as well. {+beside, inspire all, xp 300, +set8}
+-- boss ozymora @vault:last | Ozymora | Ozymora = eye_tyrant!, gargoyle*, mage | deadly
+say: It's older than you'd thought; it's got a cataract. It hangs there in the white, and all of its eyes come round. “*I saw the circus,*” it says. “*I saw the honest man; the box. I've seen how it ends. You always do something* brave, *and then I'm by myself.*” It sighs. It opens the big one.
+> Pull off the cloth [set8] | | It sees. It sees it all at once. There's a very long silence. “*Oh,*” says Ozymora. “*I've got* eyelashes.” It drifts a little nearer. Nothing's ever looked at it before; not the whole of it; not without screaming. {+saw, inspire all, hurt 1d6 psychic one, xp 700}
+> Let Lady Corvina speak [feathers or feather8 or guessed] | | “You've an owl in your pocket,” says Lady Corvina Ash. She's seventy; she's nineteen. “I came back for you, you great booby. I've been thirty years. I had to be *good enough*.” All eleven of them fill up. “*I didn't see that,*” says Ozymora. “*I didn't see that* at all.” {+stolen, skip}
+> Just ask it [toast or asked7] | insight 15 | “There's a circus downstairs,” you say. “There's going to be supper. Would you like to come?” It looks for the trick: past you; right along every one of the ways that it could go. It hasn't ever seen one with itself *in*. {+invited8, inspire all, xp 500} // “*Please don't,*” it says.
+win: It comes down quite slowly, like a moon, and lies against the wall. One after another they close; the last is looking at the mirror. {+ozy_done, done}
+end: There's dawn in the House. Someone's knocked through a window. {xp 600}
+ending [stolen]: The Perfect Crime | Nothing was taken. Captain Sable's made a list; it's blank; he's signed it. On the tenth of the month a carriage left Port Marrow with the blinds down, an old lady, an owl, and something very large in a shawl; it had to duck. They've been seen in the mountains; and at a matinée. “*You'll never guess,*” says the voice, from under the shawl, every time they come to a corner. “*Don't* tell *me.*”
+ending [saw & ozy_done]: The Twelfth Wonder | It's top of the bill. *She Sees All!* It isn't true any more: it keeps them shut, as a rule. It likes to be surprised. When it's had a good house it asks for the mirror, and has a look; it's thinking of doing something about the eyelashes. Dimitri's planted the box. It's come up; he doesn't know *what* it is.
+ending: A Chair | You've got the crowns. They'll buy you the continent; you've got the deed. Lady Corvina wouldn't have her share. You saw her once again, on the Seventh Hill, by the wall: she'd a little brown feather in her hand, and an owl. “It could be done, you know,” she said. “I'd only to be quicker.”
+`;export{e as default};

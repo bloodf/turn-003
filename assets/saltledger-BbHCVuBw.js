@@ -1,0 +1,459 @@
+var e=`id: saltledger
+title: The Salt Ledger
+code: R1
+levels: 1-7
+tags: coast, smugglers, debts of the dead
+tone: mystery
+ink: #123f4f #e2643c
+pitch: A customs house burns, and by morning half the town owes money to a man who drowned eighty years ago.
+about: Harrow Quay lives on salt. Every barrel is weighed, taxed and written down, and the book it is written in has just gone up in smoke along with the house that held it. Three tide-clerks are missing. Nobody saw anything. Everybody is suddenly very interested in buying you a drink.
+about: The Salt Ledger is an introduction for new heroes: a town to learn, a coast to explore, and a question that gets heavier each time you answer it. Who is owed, and for what?
+villain: Osric Vane, the Salt King | wight | wants every name in the ledger paid or drowned | cannot cross a debt that has been forgiven aloud
+patron: Odo Marsh | reeve of Harrow Quay, who keeps the Gannet inn
+secret: Eighty years ago the leading families of Harrow Quay owed Osric Vane more than the town was worth, so they rowed him out on a spring tide and came back without him. Odo Marsh's grandfather held the lantern.
+place town = Harrow Quay | village size=2 seed=harrow-9 time=8 weather=fog open=yes | Harrow Quay, all tarred boards and wet rope. Gulls walk the roofs like landlords. The smell of burning has not left yet.
+place under = The Customs Undercroft | dungeon size=2 seed=under-31 theme=stone caves=.2 fams=bandit+vermin pop=.5 | Brick arches, ankle deep. The customs men built down as far as the tide would let them, and the smugglers carried on from there.
+place caves = The Drowned Stair | cave size=3 seed=drowned-7 fams=sewer+cave+vermin pop=.55 | Steps cut by no one you know go down into the cliff. The walls are wet to the height of a man's chest, and that is the line to watch.
+place tallow = Tallow House | castle size=1 seed=tallow-4 moat=yes roofs=cone time=19 fams=knight+bandit pop=.18 folk=yes | A moated house on the only hill for miles, every window lit. The Widow Tallow lends at a rate the gulls would blush at.
+place pans = The Brinefields | wilds size=2 seed=brine-12 biome=blight time=14 fams=bandit+undead+wild pop=.5 | White pans to the horizon, and figures raking them. None of the figures looks up.
+place cove = Corpse-Candle Cove | dungeon size=2 seed=cove-5 theme=stone levels=2 caves=.6 fams=bandit+sewer+cave pop=.5 | A ship lies careened on black sand, and behind it a crack in the cliff breathes smoke and singing.
+place court = The Drowned Court | dungeon size=2 seed=court-77 theme=crypt levels=2 caves=.15 fams=undead pop=.55 | Below the tide line the stone is dressed and squared. Somebody paid for this. The water has been waiting outside the doors a long time.
+place keep = Under the Spring Tide | dungeon size=2 seed=tide-3 theme=crypt levels=2 caves=.3 fams=undead+sewer pop=.55 | The sea has drawn back further than anyone living has seen. Where it was, there is a road, and at the end of the road a door.
+
+== Ashes on the Quay | 1 | town
+read: The bell at Harrow Quay rang for fire at four in the morning and for shame at six, when people could see what had burned. The customs house is a black tooth in the row. The reeve, Odo Marsh, has sent for you because you were at the Gannet all night and a roomful of people can swear to it, which makes you the only six hands in town he trusts.
+
+Three tide-clerks slept in that house. No bodies have been found. He would like you to find them before somebody else finds where they are.
+goal: Learn what happened at the customs house, and find the three tide-clerks.
+dm: The fire was set by smugglers paid by the Widow Tallow. One clerk, Pell, is alive in the undercroft. The ledger was cut in three before the fire.
+-- npc odo @town:tavern stays | Odo Marsh | reeve and innkeeper | commoner/innkeeper
+look: wipes the same clean cup over and over and watches the door
+hi: Sit, sit. No, not there, that window has ears. You will want something hot, and then you will want to see the house before the tide gets at it.
+? The fire (burned, house, customs): It started inside. I was a cooper before I was a reeve; I know which side a barrel burns from. The back door was wedged, and the lamp oil was ours, from the store. Whoever did it had a key or had a friend. {+heard_fire}
+? The clerks (missing, pell, sorrel, dace): Pell, Sorrel and Dace. Pell is a boy. Sorrel has a tongue. Dace has a wife at the chapel door who has not sat down since four. If there were ashes in there the size of a man I would know, because I looked.
+? The ledger (book, debts, salt): Every barrel since my grandfather's day. Who owes, who paid, who was let off. Without it half this town is rich and the other half is ruined, and nobody can agree which half they are in. {+heard_ledger}
+? Your fee (pay, reward, coin): Fifty gold from the salt-box, and you eat here while it lasts. If you bring the ledger as well I will find fifty more, God knows where. {job clerks}
+! What are you afraid of (insight 13): He puts the cup down. “My grandfather kept the first of those books. He used to burn a candle for the man in the front of it. I never asked. I should have asked.” {+odo_candle, xp 20} // “Afraid? Of the price of lamp oil.” He smiles with the wrong half of his face.
+bye: Mind the third step. The smoke got at it.
+-- npc dace @town:chapel | Marren Dace | clerk's wife | commoner/townswoman
+look: has wrapped a bell-rope round one fist so that she cannot sit
+hi: They will not let me ring for him. You ring for the dead, they say, and he is not dead until there is something to bury.
+? Your husband (dace, clerk): He came home on Thursday and washed his hands four times. He said there was a page at the front of the old book that was not about salt. He said it was about us.
+? That night (saw, thursday, heard): A cart. In fog, with sacking on the wheels. Who wraps a cart's wheels? Somebody who thinks of other people's sleep, or somebody who does not want it interrupted. It went down toward the undercroft gate, under the quay. {+cart, xp 15}
+? A keepsake (ring, token): Take this, it is his seal. If you find him he will know I sent you. If you find the other thing, put it in his hand. {item signet, +dace_ring}
+-- npc brid @town:smithy | Brid Hallow | smith | commoner/merchant
+look: is missing the ends of two fingers and points with what is left
+shop: smith
+hi: You are the ones with the alibi. Congratulations. I have one too, and mine is a witness: that forge was white hot till five.
+? The lock (key, door): I made it. Three keys: customs, reeve, and the Widow Tallow up the hill, who paid for the door. She pays for a great many doors. {+tallow_key, xp 15}
+? Smugglers (bandits, run): In Harrow Quay? You will hurt our feelings. It is not smuggling if your uncle does it. But these last months there are strangers in it, and strangers do not know which houses to leave alone.
+-- scene ash @town:shop many | The Burned House
+say: Nothing above head height is left. The counting-room floor has held; the stair has not. Under the ash the scales still hang level, which seems like an insult.
+> Sift the ashes by the desk | investigation 11 | The iron ledger-box is here, open, and empty: not burned empty, emptied. The hinge has been cut with shears, and so has what was inside. Three clean strips of binding thread lie in it. Somebody divided the book. {+three_parts, xp 30} // Ash, nails, a melted inkwell. Your sleeves will never be clean again.
+> Look at the back door | perception 12 | The wedge is still in it, driven from outside, and it is not driftwood: it is turned walnut, off good furniture. {+walnut, xp 20} // It is a burned door, and it has the look of one.
+> Lift the fallen stair | athletics 11 | Under it, where the stair protected the boards, wet bootprints lead not out but down, to a hatch with its ring pulled. {+hatch, open under, xp 20} // It shifts, and you find the hatch beneath it the hard way, with one leg. {hurt 1d4 bludgeoning one, +hatch, open under}
+> Call down into the dark | | Your voice goes down and around a corner and does not come back. Then, faintly, someone says “Hush.” {+hush, open under}
+win: There is a hatch, and it has been used since the fire. The undercroft is the way on. {open under}
+-- scene crowd @town:start | The Quay
+say: Half of Harrow Quay stands about pretending to have errands. As you come up the talk stops, and then starts again a little too quickly.
+> Buy the loudest one a drink | gold 2 | “Strangers,” he says into it. “Down the undercroft gate, under the third bollard. They pay in old money. Square money.” He shows you: a salt-penny with a drowned man's face. {+salt_penny, open under}
+> Stand where you can hear and say nothing | stealth 12 | Two women, low: “—owed him since before my mother—” “—he's dead, Nan.” “So's the other one, and he came for his.” {+owed_dead, xp 20} // They see you listening, and give you the weather.
+> Ask plainly who saw anything | persuasion 13 | A net-boy steps up, because nobody ever asks him. “Cart went under the quay. Two men walking and one being walked.” {+cart, open under, xp 20} // You get a great many shrugs, all from the same pattern.
+-- scene gate @under:start | The Undercroft Gate
+say: The grate has been lifted off its pins and set neatly to one side. Somebody means to put it back.
+> Go in quietly | stealth 11 | You hear them before they hear anything: dice, a cough, a boy crying with his mouth shut. {+quiet_in, xp 20} // A pebble, a splash, and the dice stop. They know there is someone. {+loud_in}
+> Set the grate back behind you | athletics 12 | It drops on its pins. Whoever is inside will not be leaving this way in a hurry. {+shut_in, xp 15} // It slips, and the clang goes down every passage at once. {+loud_in}
+> Just go | | You go. The water is cold and not very clean.
+-- fight dice @under:.2 | The Dice Players | bandit* | easy
+say: Five crates, a lantern, and men with wet boots gambling for a clerk's good coat. They have your height and weight worked out before they stand up.
+> Offer to buy the coat | deception 12 | “Ten,” says the one with the dice, and then, being greedy, “and what's your business?” By the time he wonders, you know where the boy is: past the brine tanks, second arch. {gold -10, +know_arch, skip} // “He's got reeve written all over him.” Knives.
+> Tell them the reeve has the gate | intimidation 13 | They look at each other. It is only salt money. They go out past you with their hands open, and one of them says, not unkindly, “Second arch. Mind the tanks.” {+know_arch, skip} // The one with the dice laughs. “Then he'll hear this.”
+win: The coat has P. in the collar. Pell's. And a note in it, wrapped round a square coin. {note tocaptain, gold 14}
+-- trial tanks @under:storage~.45 | The Brine Tanks | 3 before 3
+say: The passage crosses the old tanks on planks, and the planks have been pulled up from the other side. Below, brine heavy enough to float a horse, and something in it that is not a horse.
+try: athletics 11 Throw a rope and haul a plank back
+try: acrobatics 12 Walk the rim
+try: survival 11 Read where the wall is sound
+try: investigation 12 Find how the planks are meant to go
+win: One after another you are across, dry to the knee and proud of it. {xp 30}
+lose: Somebody goes in. What is in there lets go in the end, but it takes its time. {hurt 1d8 piercing one}
+-- fight rats @under:.55 | What the Brine Keeps | rat*, snake | easy
+say: The lantern light slides over barrels and then over things that are not barrels, and all of them turn to look.
+win: There is a clerk here after all. Sorrel, by the tongue: nobody has stopped it, even now. She was put in a barrel head first. Her hand is closed on a torn half-sheet. {note halfsheet, +sorrel_dead, xp 25}
+-- scene pell @under:prison~.75 | The Boy in the Arch
+say: A boy of sixteen is chained to a ring meant for boats. He has inked the wall as high as he can reach: columns, sums, names. He does not stop when you come in. He is adding.
+> Show him the seal [dace_ring] | | He looks at it and at last puts the pen down. “Master Dace cut the book,” he says. “He cut it so nobody could have all of it. He gave me the middle and told me to swallow it if I had to. I didn't have to. I know it.” {+pell_trust, xp 40}
+> Break the chain | athletics 12 | It parts. He flinches, then looks at his free hand as if it were somebody else's. “They took Master Dace to the stair,” he says. “The Drowned Stair. For the tide.” {open caves, xp 25} // It takes twenty minutes and all the quiet you had. “They took Master Dace to the stair,” he says. “You should hurry. It's springs on Friday.” {open caves, time 30}
+> Ask what he is adding | insight 11 | “What we owe,” he says. “All of us. It's all one debt, sir, if you go back far enough. It's all to the one man.” He has underlined the name: Osric Vane. {+name_vane, xp 30} // “Sums,” says the boy, and goes on.
+win: Pell can walk, if somebody holds his elbow. He will not leave until he has copied the wall. {+pell_free, open caves}
+-- boss hook @under:last | The Wharf Captain's Counting-Room | Captain Hook Harl = thug!, bandit* | hard
+say: Behind a sailcloth curtain a big man with a boathook is feeding papers to a stove, one at a time, reading each before it goes. “Late,” he says, not turning. “And here I'd nearly caught up on my reading.”
+> Ask who is paying him | persuasion 14 | He considers it. “Lady on the hill pays. But it isn't her money. She cried when she gave it me. You ever see a moneylender cry?” He sighs and picks up the hook. “Still. I've been paid.” {+tallow_paid, xp 30} // “Someone with nicer boots.”
+> Rush the stove | sleight 12 | You come away with a fistful of singed paper and a burned thumb. It is the first third of the ledger, or most of it. {+ledger1, item potion_healing} // The stove goes over. What was in it is gone, and now the curtain is alight. {hurt 1d6 fire all dex 11}
+win: On the hook, on a chain, a walnut-handled key: Tallow's. In the stove, what is left of a front page with one name on it in an old hand: Osric Vane, creditor. {+harl_down, +ledger1, note frontpage, gold 40, magic, done}
+end [pell_free]: Pell sits in the Gannet in a blanket, adding. Odo Marsh reads the front page twice and folds it very small. “He's been dead eighty years,” he says. “My grandfather told me he saw him go under.” He does not say where his grandfather was standing. {gold 50, xp 50, +ch1}
+end: You bring Odo the page and two clerks fewer than he hoped for. He pays you all the same, in square coins, and then seems to see them for the first time, and takes them back, and finds you round ones. {gold 50, +ch1}
+job clerks = The Missing Clerks | Find what became of Pell, Sorrel and Dace. | flag pell_free | gold=50 xp=60
+note tocaptain = Note in a Coat: “Harl. Burn what is left of the front. The boy can wait for the tide with the other one. The lady says no fires near her house. — V.”
+note halfsheet = Half a Page: “…to O. Vane, in salt, forty barrels, unpaid. To the same, in rope. To the same, in timber for the quay on which this is written. To the same. To the same. To the same…”
+note frontpage = The Front of the Book: “I, Osric Vane, having built this quay and every house upon it, do hold the town of Harrow in debt to me, principal and interest, until it be paid or forgiven. Witnessed:” and below it, five marks, one of them a lantern.
+
+== The Drowned Stair | 2 | caves
+read: Spring tide on Friday. That gives you a day, and it gives Master Dace rather less. The stair goes into the cliff a mile east, where the road gives up. Odo lends you his second-best lantern and does not offer to come. “When the water sings,” he says, “be above it.”
+goal: Reach Master Dace before the tide does.
+dm: The Stair is used by smugglers but it was cut for Vane's tomb. Lizardfolk fishers live here and are not villains.
+-- npc ssk @caves:.15 | Ssekt | fisher of the low caves | lizardfolk/lizardfolk
+look: is mending a net with a needle made from a rib
+hi: Stop there. You are standing on drying squid. So. Dry ones, in my kitchen, twice in one tide.
+? The other dry ones (men, smugglers, dace): They carry an old one in a chair, up to the shelf where the bell is. They do not eat him. They do not let him go. My children think it is a custom.
+? The tide (water, sing, friday): When the low bell rings, you have as long as it takes to gut ten fish. When the middle bell rings, three fish. There is no third bell. Nobody needs one.
+? The stair (steps, who cut): Older than us. Dead men's work. Straight. The sea does not make straight. Below the last step there is a door my mother said not to knock on, and I never met anyone more curious than my mother.
+? Help us (guide, way): You took nothing from the racks. Good. The west passage smells worse and is shorter. And here: for cuts. {item herbs, +ssekt, xp 25}
+! What do you want for the old road (persuasion 12): Sssk. The men on the shelf shot my brother's son for a joke. Bring me the crossbow. I will break it in front of the children. Then I will show you the old road. {job crossbow} // Nothing you have. Nothing you would part with.
+-- scene bell @caves:start | The Low Bell
+say: A bronze bell the size of a bucket hangs at the foot of the steps, green to the lip. There is weed on the clapper. It is still swinging, slightly.
+> Study the tide-marks | survival 11 | High water will come to here, and here, and you will want to be past there. You chalk it. The chalk will save somebody a bad minute. {+tidewise, xp 25} // Wet. Everything is wet. You will work it out as you go.
+> Muffle the clapper | sleight 12 | You bind it in a stocking. If someone below is listening for the bell, they will go on thinking they have time. {+muffled, xp 25} // It rings, once, of course. Below you, somebody stops laughing.
+> Go down | | You go down.
+-- fight shelf1 @caves:.3 | The Squid Racks | lizardfolk, crocodile | medium
+say: What you took for a drying log opens one eye.
+> Throw it the squid | animal 12 | It takes the squid, and then takes a long look at you, and decides you are work. It slides off into the pool. {skip} // It had squid yesterday.
+win: In its gullet, when you think to look: a tide-clerk's cap and a purse. {gold 18, xp 15}
+-- puzzle steps @caves:shrine~.45 | The Counting Stair
+say: The steps end at a slab carved with a ledger, and in the ledger a verse. “I rise and I owe nothing. I fall and I take nothing. Twice a day I am paid and twice a day I am robbed. Say who I am, and pass.”
+answer: tide|the tide|the sea|sea|water
+hint investigation 11: The slab is worn in two lines, one high, one low. Somebody has polished them every day for a very long time.
+hint history 12: Harrow folk swear “by the one who calls twice”. It is not a god they mean.
+wrong: Somewhere overhead a valve opens, and what comes out of it is very cold. {hurt 1d4 cold all con 11}
+win: The slab rolls back with the sound of a wet finger on a glass. Behind it the air is dry, and has been dry for eighty years. {xp 50, +counting}
+lose: The slab splits along an old flaw and half of it falls inward. It is a way through. It is not a welcome. {hurt 1d6 bludgeoning one}
+-- trial race @caves:.6 | The Middle Bell | 4 before 3
+say: It rings. Not loudly. Water comes up through the floor as if the floor had only been drawn there.
+try: athletics 12 Carry the slowest
+try: acrobatics 12 Leap the flooding cracks
+try: perception 12 Find the high line
+try: survival 11 Read the current
+try: athletics 13 Hold the grating while they pass
+win: You reach the shelf with wet knees and dry matches, which is the right way round. {xp 45}
+lose: You reach the shelf on your hands, and leave a good deal of skin and some of your supper behind. {hurt 2d4 bludgeoning all con 12, tired one}
+-- fight guards @caves:.7 | Men on the Shelf | scout, bandit* | medium
+say: Four men have made a camp above the tide mark, and are using a stuffed seal as a target. The one with the good crossbow turns round smiling.
+> Ask to be cut in | deception 13 | They do not like it, but they like the smell of money. You get close enough to see where Dace is, and whose voice gives the orders: nobody's. It comes up through the floor. {+voice, +xbow_near} // “Funny. She said nobody else was coming.”
+win: The crossbow is a pretty thing, walnut stock, T on the butt-plate. {+crossbow, item light_crossbow_1, gold 22}
+-- scene dace @caves:prison~.85 | Master Dace
+say: An old man sits roped in a chair facing a black door, as if waiting for a clerk to call his number. “Don't,” he says at once. “Don't speak. It listens for names.”
+> Cut him loose without a word | sleight 11 | He nods. He points: his boot. In the sole, folded, the last third of the book. He has been standing on it all week. {+ledger3, xp 50} // The knife slips, and he says your companion's name out of sheer surprise. Behind the door something writes it down. {+named, +ledger3}
+> Ask him who it is | religion 13 | He mouths it. Vane. You know enough to understand: not a ghost. Ghosts want to be remembered. This one remembers. {+name_vane, +ledger3, xp 40} // “Who is it?” you say, and there is a pause behind the door, like a man choosing a clean page. {+named, +ledger3}
+> Give him the seal [dace_ring] | | He weeps without any noise at all, which is a skill. Then he takes your hand and puts his boot in it. {+ledger3, +dace_grateful, xp 50}
+win: You have Dace, or he has you; it is hard to say who is holding up whom. {+dace_free}
+-- boss eel @caves:last | The Thing at the Door | The Door-Warden = ghast!, ghoul* | hard
+say: The black door does not open. What stands up in front of it had been part of the wall. It wears a doorman's coat, eighty years out of fashion, and holds out a hand for your coats.
+> Give it a square coin [salt_penny] | | It bites the coin. It steps aside and bows, and lets you go. It will remember your faces, but it has been paid. {+paid_warden, skip, done}
+> Give it a false name | deception 14 | It tries the name over, tastes nothing in it, and hesitates. In that moment you are past its reach and swinging. {+false_name, hurt 1d4 necrotic one} // It knows a lie. It was a doorman.
+win: It folds up like a wet coat. The door behind it says, in a reasonable voice, “I shall make a note of that.” {+warden_down, xp 60, magic, done}
+end [dace_free & ledger3]: Marren Dace does not run. She walks, and takes his face in her hands and looks to see that all of him is there, and then rings the chapel bell as hard as she can for the living. Two thirds of the ledger lie on Odo's bar. The last, says Dace, is where he thought nobody would look: with the woman who paid to burn it. {gold 60, xp 60, +ch2}
+end: You come up into daylight without the tide at your heels, for which you are grateful, and with rather less than you went for. {gold 30, +ch2}
+job crossbow = A Toy for Ssekt | Bring Ssekt the crossbow that shot his nephew. | flag crossbow | gold=0 xp=60 item=potion_greater
+
+== The Widow Tallow | 3 | tallow
+read: She has sent you an invitation, on good paper, by a footman. “Mrs. Tallow is At Home on Saturday. Dancing. She understands you have something of hers and would like to discuss the rate.” Odo turns the card over and over. “Nobody,” he says, “is ever At Home to us.”
+goal: Get the middle of the ledger out of Tallow House.
+dm: The Widow is being squeezed by Vane too: her late husband was the fourth mark. She can become an ally, be robbed, or be beaten.
+-- npc widow @tallow:hall | Perpetua Tallow | moneylender | priest/h:sorcerer:human:f
+look: is small, exact, and dressed in a shade of black that costs more than colours
+hi: You are the ones who broke my captain. Do have some of the eel. I find it easier to be robbed by people I have fed.
+? The fire (burn, customs): I paid for it. I will pay for the clerks too, to their families, in full, this week, and it will not help me sleep. Put that in your report.
+? Why (reason, vane): My husband signed a page he should not have. He was six; they held his hand. Now I get a bill. Every month, in the post, wet. I thought if there were no book there could be no debt. That is how a child thinks.
+? The page (ledger, middle, deal): In this house, yes. I will play you for it, or sell it, or you may try to steal it. I would rather you did the first. I am so bored. {+offer}
+! Let us help you (persuasion 14): She sets down her glass. “Nobody has said that in this house since he died. They say ‘let me’.” She gives you the key to the treasury with the air of someone taking off a shoe. {+widow_ally, xp 60} // “That is what the last creditor said.”
+-- npc maud @tallow:kitchen | Maud | cook | commoner/townswoman
+look: is icing a cake the shape of a boat with real fury
+hi: Guests don't come in here. Guests who do can beat those eggs.
+? The house (guards, where): Strongroom's under the study. Two dogs, four men, and Mister Corrin who doesn't sleep. Don't touch the harp in the long room. Just don't.
+? The post (letters, wet): Comes Thursdays. Nobody brings it. I find it on the step in a puddle and it's salt water, and we're four miles from the sea.
+? Poison (cake): In my cake? I should hope not. I am icing it with my grandmother's curse and that's all it needs.
+-- scene dance @tallow:dining many | The Long Room
+say: Forty people who matter are dancing as if someone were counting. A harp plays by itself. Nobody looks at it.
+> Dance | performance 12 | You are good at this, or the floor is. A harbour lord talks to be rid of silence: three families have had wet letters, and all three are selling up. {+families, xp 30} // You tread on a magistrate. He apologises to you, out of habit.
+> Touch the harp | arcana 13 | It is not enchanted. It is haunted: someone inside it is very tired. You hum the end of the phrase it is stuck on and it stops, and so, for a moment, does everyone's smile. {+harp, inspire, xp 40} // A string parts and lays your hand open, and plays the rest of the bar on the bone. {hurt 1d6 slashing one}
+> Slip away upstairs | stealth 13 | Nobody sees you go but a footman, who is bribed for the sum of never seeing anything. {+upstairs, gold -3, xp 25} // “The cloakroom,” says a large man kindly, “is this way.” He walks you there. He stays. {+watched}
+> Play the Widow at cards [offer] | insight 14 | You lose four hands finding out how she lies and win the fifth. She pushes the key across without looking at it. “Well,” she says. “I did say any way you liked.” {+card_won, +have_key, xp 60} // She cleans you out, and is kind about it. {gold -25}
+-- fight dogs @tallow:storage | The Dogs | wolf*, guard | medium
+say: Two long grey shapes lift their heads off their paws. The man between them lifts his, too.
+> Feed them the cake | animal 11 | It turns out dogs do not mind a grandmother's curse. The man looks at the dogs, and at you, and takes a slice himself. {skip, xp 20} // They prefer you.
+win: The dogs wear good collars. The man wore a better key. {+have_key}
+-- puzzle vaultdoor @tallow:study | The Study Safe
+say: A panel of twelve brass drawers, each with a letter, and a card in the Widow's hand: “What I lend that I cannot give. What I keep by breaking it. What he gave me, and what I am being charged for.”
+answer: word|my word|his word|a word|promise
+hint insight 12: She touched her wedding ring when she spoke of the page. Not the stone. The inscription.
+hint investigation 12: Four drawers are worn: W, O, R, D.
+wrong: A drawer snaps. It has a needle in it, and the needle has something on it. {hurt 1d6 poison one con 12}
+win: The panel sighs open. Behind it: a page wrapped in oilcloth, damp at one corner, as if something had been leaning on it from the other side. {+ledger2, xp 60, +page_taken}
+lose: You break it open, and every bell in the house has an opinion. {+ledger2, +alarm}
+-- fight corrin @tallow:treasury | Mister Corrin Does Not Sleep | veteran, guard* | hard
+say: A grey man sits in a straight chair with a sword across his knees. “I have nothing against you,” he says. “I want that understood before.”
+> Show him the Widow's leave [widow_ally] | | He reads your face, then the key. “Thank God,” he says, and puts the sword down as if it had been hot, and is asleep before the scabbard stops swinging. {skip, xp 40}
+> Say you will tell her he fought | persuasion 14 | He thinks about it. “Left arm,” he says, and holds it out to be cut, a little. {skip, +corrin_friend} // “She would know,” he says sadly.
+win: Behind him the strongroom, and in it very little. The Widow Tallow is nearly poor. {gold 60, +poor_widow}
+-- boss postman @tallow:throne [page_taken or alarm or ledger2] | Thursday's Post | The Drowned Postman = wight!, zombie* | hard
+say: The front doors blow open. It is not Thursday. A man in oilskins stands streaming on the marble with a satchel over his shoulder, and behind him in the dark there are more, patient as a queue. “Tallow,” he reads. “Final demand.”
+> Stand between him and the Widow | intimidation 13 | He looks at you, and at his list. You are not on it. This troubles him; he has never had to step round anyone. {+stood, inspire} // He steps round you. It is like being stepped round by the sea.
+> Sign for it yourself | religion 14 | You take the letter out of his hand and write your own name in the box. He checks it. He is obliged to accept it. He grows thin. {+signed, hurt 1d6 necrotic one} // The ink runs off the page before your name is on it.
+win: His satchel is full of letters, one for every door in Harrow Quay. The last is addressed to Odo Marsh. {+letters, item potion_greater, magic, done}
+end [widow_ally]: Perpetua Tallow burns her own letter in her own grate and asks what she can do. It comes out rusty; she has not said it in years. “The pans,” she says. “My husband's salt pans. I signed people into them. There are a hundred and twelve. I can tell you all their names. I am the only one who can.” {+ch3, gold 100, xp 80, open pans}
+end: You leave Tallow House with the middle of the book and a satchel of wet letters. Behind you the windows go out one at a time. All three parts name the same place: the Brinefields, where a debt that cannot be paid in salt is paid in work. {+ch3, gold 60, xp 60, open pans}
+
+== The Brinefields | 4 | pans
+read: With all three parts laid edge to edge the ledger reads straight through, and the last hundred pages are not barrels. They are people: name, sum, term. Every term runs out the day the bearer does. They are at the Brinefields, raking salt for a dead man, and someone living is holding the whip.
+goal: Break the Brinefields, and find who runs them.
+dm: Overseer Grice takes orders by letter. Sister Ulm hides runaways in the ruin. A hill giant, Tum, turns the great pump and is himself a debtor.
+-- npc ulm @pans:ruin | Sister Ulm | runaway keeper | acolyte/h:cleric:human:f
+look: has salt sores to the elbow and the calm of someone past being frightened
+hi: Heads down. He counts us at noon. If you are here to buy, he is at the pump house. If you are here for the other thing, come in out of the light.
+? The people (debtors, raking, free): A hundred and twelve, and three who do not need to eat. The three are the ones to worry about. They used to be overseers.
+? The overseer (grice, boss): Grice. He was a debtor, the best of us. They let him hold the whip one day for a cup of water. He still thinks he is working it off.
+? The pump (giant, tum): Tum turns it. He signed with a cross because a man told him it was a drawing of a bird. If the pump stops, the sea takes the pans in an hour. If it stops with people on them— You see.
+? A plan (help, how): Noon count, everyone is at the post. Clear the flank by the shaft and I can walk sixty to the road. The rest need Grice looking the other way. {job walkout, +plan}
+-- npc nan @pans:out:.35 | Old Nan Ferrow | raker | commoner/townswoman
+look: rakes one square yard over and over so as not to be seen standing
+hi: Don't look at me. Look at the salt. Buyers look at the salt.
+? How long (term, debt): Nineteen years, for a boat that sank. It was a good boat. I wouldn't say no to seeing another.
+? The shaft (below, three): Old brine mine. The ones that die go down it. They don't all go quiet.
+-- scene road @pans:start | The Tally Post
+say: A post at the roadside, cut with a hundred and twelve notches. A man with a slate looks you up and down. “Buying, selling or signing?”
+> Buying | deception 12 | “Noon,” he says. “See what they can lift.” He gives you a buyer's ribbon, and after that nobody sees you at all. {+ribbon, xp 30} // “Buyers come in carriages.” He goes to find someone.  {+grice_warned}
+> Sign | | You write a name. The ink crawls. You feel it settle on the back of your neck like a wet hand. But you are in, and nobody watches a debtor. {+signed_self, +ribbon, hurt 1d4 necrotic one}
+> Hang him on his own post | intimidation 13 | He tells you where Grice sleeps, how many, and that the three in the shaft come up at dusk. {+grice_sleeps, xp 30} // He has a whistle. He is quick with it. {+grice_warned}
+-- fight riders @pans:out:.55 | Whip Riders | thug*, scout | medium
+say: Three on horseback, riding the banks, letting the lash trail in the brine to keep it supple.
+win: You cut the lashes up small and leave them where they will be seen. {+riders, gold 30}
+-- trial walkout @pans:out:.75 later | The Walk-Out | 5 before 3
+say: Noon. The bell. Sister Ulm straightens her back for the first time in years and starts to walk, and sixty people, after one dreadful moment, walk after her.
+try: stealth 12 Keep the line behind the bank
+try: persuasion 12 Steady them
+try: athletics 12 Carry those who cannot
+try: deception 13 Answer for the guards in a guard's voice
+try: animal 12 Quiet the horses
+try: medicine 11 Get the fallen moving
+win: Sixty-one reach the road. They go along it slowly, looking at their hands. {+walked, xp 80, inspire all}
+lose: Forty make the road before the whistles start. The rest run back to what they know. {+half_walked, xp 30}
+-- scene plan @pans:out:.2 many [plan] | The Noon Count
+say: The pans from the bank: the post, the pump, the shaft, and the flat white nowhere between.
+> Give Ulm the sign | | You raise a hand. She sees. {scene walkout, +go}
+> Salt the guards' water | sleight 13 | By noon they will be seeing double, and feeling worse. {+sick, xp 30} // You are seen at the butt. You say you were thirsty. It is nearly believed. {+grice_warned}
+> Talk to the giant | persuasion 13 | Tum stops the wheel a whole turn to think. “Not a bird?” he says. You show him a bird. He looks at it for some time. “Tum will stop,” he says, “when you wave.” {+tum, xp 50} // “Tum works,” says Tum. “Tum nearly done.” He has been nearly done for thirty years.
+-- fight shaft @pans:.3 | The Three Who Do Not Eat | wight, ghoul* | hard
+say: They come up the ladder in order of seniority, each in the rags of an overseer's coat, each with a rake.
+win: On the eldest, a rolled list: every overseer the pans have had. Grice's name is already on it, undated. {note overseers, +three_down}
+-- scene mine @pans:mine~.55 | The Galleries
+say: The old brine mine: white walls, white floor, white hands laid neatly along the ledges. Somebody has crossed every pair.
+> Say the words over them | religion 12 | There are a great many. It takes an hour. Something that had been leaning on the air stops. {+blessed_shaft, time 60, inspire, xp 40} // You get as far as the ninth, and the lamp goes out, and you find you have lost your place. {time 30}
+> Take their tags | investigation 11 | Copper tags, name and sum. Somebody in Harrow Quay will want each one of these more than money. {+tags, xp 40} // Half are green past reading.
+> Go on | | You go on, not looking down.
+-- boss grice @pans:last | The Pump House | Overseer Grice = bandit_captain!, thug*, zombie | hard
+say: Grice sits with his back to the great wheel and a cup of water in front of him, full, that he has not drunk. “You'll be here to tell me I'm free,” he says. “He said someone would. He said it would be a trick.”
+> Show him the list with his name [three_down] | | He reads it. He reads the others. “I've never got one over on him, have I,” he says, and drinks the water, and puts the whip in the furnace. {+grice_turned, skip}
+> Offer him your hand | persuasion 15 | He looks at it for so long you think he is asleep. Then his people come in, and he stands up with the wrong side. {+grice_turned} // “That's how it starts,” says Grice.
+win: The wheel stops. Far off the sea notices. {+pans_broken}
+win: The great wheel slows. On the wall behind it is a chart of the coast, and on the chart, in red, a ship's berth: Corpse-Candle Cove. The salt goes out by there. So does everything else. {+pans_broken, gold 80, magic, open cove, done}
+end [walked]: They come into Harrow Quay at dusk, sixty-one of them, and doors open that had been shut for years. Nan Ferrow stands on the quay looking at boats. Nobody asks for anything. Odo lights every lamp in the Gannet. {+ch4, gold 120, xp 100, +people}
+end: The sea takes the pans that night, and most of the books, and not, in the end, the people. They come in by twos and threes for a week. {+ch4, gold 80, xp 80, +people}
+job walkout = The Walk-Out | Get Sister Ulm's people off the pans. | flag walked | gold=0 xp=120 item=ring_prot
+note overseers = The Overseers: Eleven names, eleven dates, all in the same hand. The twelfth line: “Grice, J. — at convenience.”
+
+== Corpse-Candle Cove | 5 | cove
+read: The ship is the Patient Anne, and she has been careened in that cove for a fortnight, which is a long time to scrape a hull. Her captain is Isolde Carrow, who is wanted in six ports and married in four. She carries Vane's salt, and his post, and lately his guests. Nobody has asked her why.
+goal: Learn where the Patient Anne takes Vane's cargo, by charm, coin or cutlass.
+dm: Carrow thinks she is smuggling. When she learns the passengers are going to be drowned she can be turned.
+-- npc carrow @cove:.2 | Isolde Carrow | captain of the Patient Anne | commoner/h:rogue:half_elf:f
+look: is cleaning her nails with a boarding-knife and her other boot is on your chart
+hi: You broke my best customer's wheel. Do you know what salt is worth this week? Of course you don't. You give things away.
+? The cargo (salt, ship): Salt out, square money in. Where it comes from I don't ask, and I ask everything. I asked my third husband's mother her age.
+? The passengers (guests, people): Families. Paid passage. Cousins from up the coast, going down to the Court for a settling-up. All very quiet. Seasick, I thought.
+? The Court (where, destination): There's a stair under the water at the Widow's Teeth. Slack tide only. I drop them at the top with a lantern. Somebody always comes up to meet them. Wet sort of a fellow.
+! They never come back (persuasion 13): She stops with the knife. You can see her counting trips. “Eleven,” she says. “I took eleven.” She shuts the knife. “Right,” she says, quite softly. “What do you need?” {+carrow_ally, open court, xp 80} // “Neither do my husbands.”
+-- npc jot @cove:dining~.35 | Jot | ship's boy | commoner/h:rogue:lightfoot:m
+look: is wearing three hats, one on top of the other, in case of capture
+hi: Are you stealing us? You should get the mate first. He's horrible.
+? The mate (horrible, grull): Grull. He's not a person all the way through. He doesn't get wet. I threw a bucket and everything.
+? Passengers (brig, hold): There's some in the brig now. A mum and two. I give them my biscuit. Grull says don't get attached.
+? The candle (corpse, light): It's so the dead ones can find the ship. Didn't you know? That's the whole cove.
+-- scene sand @cove:start many | Black Sand
+say: Tar, kelp and frying onions. Nobody challenges you; they are waiting to see which of them you have come to kill.
+> Join the onions | persuasion 12 | Pirates feed anyone who can hold a pan. By the second helping you know the watches, the password and whose knife is for sale. {+password, xp 30} // Someone says “customs” and the pan becomes a weapon. You back off with eyebrows singed. {hurt 1d4 fire one}
+> Count heads from the dunes | stealth 13 | Twenty-two, and one who does not leave footprints. {+footprints, xp 30} // A lookout drops a coconut of a stone on your count. {hurt 1d6 bludgeoning one}
+> Pay the toll | gold 20 | They are so surprised that they let you in.  {+password}
+-- fight watch @cove:guard~.25 | The Watch Below | bandit*, scout | medium
+say: A narrow place, a swinging lamp, and men who have been told there will be trouble and are pleased.
+> Give the password [password] | | “Patience,” you say. “And plenty of it,” says the watch, disappointed. {skip}
+win: One of them has a passenger list in his boot. Eleven crossings. {note passengers, gold 25}
+-- scene brig @cove:prison~.45 | The Brig
+say: A woman and two children, dry, fed on biscuit, and very politely not asking what will happen next. Her letter is in her lap: final demand, payable in person.
+> Read the letter | investigation 12 | It is her great-grandfather's debt, doubled each generation. You find the place where the sum was added wrong in the first year. It has been wrong ever since. {+sum_wrong, xp 50} // Numbers; more numbers; a smear of salt.
+> Break the lock | athletics 13 | They go past you without a sound and up the beach. The smaller one comes back to give you half a biscuit. {+family_free, inspire, xp 40} // The lock holds, and the noise carries. {+grull_warned}
+> Tell her you will be back | | “That's what the captain said,” she says. {+promised}
+-- fight grull @cove:.6 | The Mate Who Does Not Get Wet | Grull = wraith!, shadow* | hard
+say: Grull comes along the passage without troubling the puddles. He takes off his hat. There is nothing to hang it on.
+win: He goes out like a lamp in a bottle. His logbook is dry and cold and ends with a sounding: “Widow's Teeth, slack water, nine fathom, a door.” {+grull_down, open court, xp 60}
+-- trial launch @cove:cave~.7 | Floating the Anne | 5 before 3
+say: The Anne must be off the sand before the tide turns or she will miss the Teeth for a fortnight. Her crew have stopped working to see how you do it.
+try: athletics 13 Heave on the capstan
+try: persuasion 12 Shame the crew into it
+try: survival 12 Read the sand and the wind
+try: performance 12 Call the time
+try: acrobatics 12 Go aloft and free the tops
+win: She comes upright with a groan like an old aunt, and then, suddenly, she is a ship. {+ship, xp 80}
+lose: She floats on the last of it, sideways, with a plank stove in. She will get you there. She will not let you forget it. {+ship, hurt 1d8 bludgeoning one}
+-- boss mutiny @cove:throne~last | The Captain's Table | Quartermaster Sloe = gladiator!, bandit*, thug | hard
+say: The cave's great chamber is laid for a feast, and at the head, in the captain's chair, sits her quartermaster with a square coin on each eyelid for a joke. “Vote's been took,” he says. “We like the wages.”
+> Call the vote again [carrow_ally] | persuasion 13 | Isolde walks in behind you wearing every weapon she owns. “Hands up,” she says, “who has met where the passengers go.” Half the table looks at its plate. The other half draws. {+vote, xp 40} // They vote with bottles.
+> Offer to buy the ship | gold 120 | Sloe weighs the purse, sees the faces round the table, and knows he has lost them. “Damn you,” he says, and goes, and most of the trouble goes with him. {skip}
+win: The square coins on the table have all turned face down. {+cove_won}
+win: In the captain's chest: a chart of the Teeth, a diving lantern that burns under water, and eleven children's mittens nobody had the heart to throw away. {+cove_won, magic, gold 90, open court, done}
+end [carrow_ally]: Isolde Carrow sews the eleven mittens to her coat, inside, where nobody will see them, and takes the wheel. “Slack water's at four,” she says. “I'd like to be early, for once.” {+ch5, xp 120}
+end: You have a ship, a chart and a crew that is frightened of you, which will do. The Teeth are four hours off. {+ch5, xp 100}
+note passengers = Passenger List: Eleven crossings. Against each, in the mate's hand, a number of heads and the word “delivered”.
+
+== The Drowned Court | 6 | court
+read: At slack water the sea over the Widow's Teeth goes flat and clear as a lens, and down there is a flight of steps with a lantern on it. The lantern goes up and down. Somebody is waving you in. The diving lamp makes a tent of air about you as wide as a table. Try not to trip.
+goal: Find out what Osric Vane is, and what would end the debt.
+dm: The Court is a parody of law: bailiffs, ushers, a jury. The charter and the five marks are here. Forgiveness spoken aloud by an heir breaks him.
+-- npc usher @court:start | The Usher | usher of the Court | skeleton/skeleton
+look: has a wig of bladderwrack and bows from where his waist used to be
+hi: Names? No? Very wise. Spectators to the left, debtors straight on. Kindly do not feed the jury.
+? The case (court, trial): Vane versus Harrow. Adjourned eighty years for want of a defendant. They *will* keep dying before they can be brought in.
+? Vane (king, plaintiff): Plaintiff, counsel, judge and, since Thursday, landlord. A most persistent gentleman. I was his clerk. I am told I drowned of it.
+? How to end it (debt, win, law): Off the record? A debt ends three ways: paid, proved false, or forgiven by the one it was taken from. He has only ever prepared for the first two. {+three_ways, xp 50}
+! Enter a plea for us (persuasion 14): The wig tilts. “For the defendant. Oh, my. I shall have to find the *form*.” He is, you realise, delighted. {+plea, xp 60} // “Without standing? Tut.”
+-- scene oath @court:hall~.15 | The Oath
+say: A book on a stand, and a bailiff with a hook where his hand was. “Swear,” he says, “to tell what you owe, the whole of what you owe, and nothing else.”
+> Swear | | It is surprisingly hard. You find yourself listing things nobody lent you money for. When you are done you feel lighter, and a little looked at. {+sworn, inspire, hurt 1d4 psychic one}
+> Refuse | intimidation 14 | He has had eighty years of people who signed. He does not know what to do with you. {+refused, xp 30} // “Contempt,” he says happily, and calls for more bailiffs. {fight bailiffs}
+> Swear on something false | deception 13 | He writes it all down. Somewhere a sum goes wrong. {+falsesworn, xp 30} // The book shuts on your fingers. {hurt 1d6 piercing one}
+-- fight bailiffs @court:guard~.25 | Bailiffs | skeleton*, wight | medium
+say: They come in step, in pairs, with chains already measured.
+win: On their belts, writs, and every writ is for the same five families. {note fivemarks}
+-- puzzle jury @court:library~.4 | The Jury Room
+say: Twelve drowned citizens sit round a table, tired to the bone. The foreman lifts his head. “We cannot agree. Tell us this and we will go home. A man is owed a thing that, once given, he no longer has any claim on, and that costs the giver nothing, and that he has never once asked for. What is he owed?”
+answer: apology|an apology|sorry|forgiveness|pardon
+hint insight 12: They are not puzzled. They are longing for somebody else to say it.
+hint religion 13: There are rites for the drowned. They all begin with the living saying one word.
+wrong: “No,” says the foreman, and the cold comes up another inch. {hurt 1d6 cold all con 12}
+win: “Yes,” says the foreman. They rise, straighten each other's collars, and go out through the wall in order. One leaves a silver mitten on the table. {+jury_gone, inspire all, xp 100, magic}
+lose: They settle back, patiently, to wait for someone cleverer. {+jury_stays}
+-- scene charter @court:treasury~.6 | The Strong-Box
+say: The charter of Harrow, with five marks at the foot: a lantern, a key, an anchor, a loaf, a pair of shears.
+> Read it slowly | investigation 13 | Vane built the quay, yes. And he charged the builders for their own stones. The first line of the debt is a lie; everything else is the interest on it. {+lie, xp 80} // It is long, and wet, and the hand is dreadful.
+> Match the marks | history 12 | Key: Tallow. Anchor: Carrow. Loaf: the baker Ferrow. Shears: Dace. Lantern: Marsh. Every one of them sent you here. {+marks, xp 60} // A loaf, a lantern, shears. Trades, perhaps.
+> Take it | | You roll it up. All over the Court, pens stop. {+charter, +alarmed}
+win: You have seen what he has. It is thinner than he would like. {+charter}
+-- fight drowned @court:crypt~.75 | The Unclaimed | ghoul*, ghast | hard
+say: The eleven crossings ended here. They have been sorted by height. They open their eyes by height.
+win: You close as many as you can. {+unclaimed, xp 40}
+-- boss advocate @court:last | The King's Bench | The King's Advocate = ghost!, shadow*, specter | hard
+say: The bench is empty. A shape in a gown stands beneath it with its back to you, addressing nobody. “—and we say, my lord, that grief is an asset like any other, and compounds.” It turns. “Ah. Exhibits.”
+> Object [plea] | persuasion 13 | “On what grounds?” it says, honestly startled. The Usher coughs. “Standing,” he says. “They have standing, sir. I found the form.” The Advocate flickers like a bad candle. {+objected, hurt 1d4 psychic one, inspire all} // “Overruled,” it says, in your own voice.
+> Read the lie aloud [lie] | | You read the first line and what it leaves out. Something in the wall cracks from end to end. {+lie_read, inspire all, xp 50}
+win: The gown collapses. On the bench, wet, a single sheet: “Judgment reserved until the spring tide. The plaintiff will attend in person. At Harrow Quay.” {+advocate_down, note summons, magic, done}
+end: You come up out of the sea into rain. Isolde is swearing at something. Along the horizon toward Harrow, where there should be a line of grey water, there is a line of grey men. They are walking in. They have until dark to get there and so have you. {+ch6, xp 140, hour 19}
+note fivemarks = A Writ: “Against the heirs of Marsh, Tallow, Carrow, Ferrow and Dace, jointly, for the sum of everything.”
+note summons = Judgment Reserved: “The court will sit at Harrow Quay on the night of the spring tide. All parties will be brought.”
+
+== Spring Tide | 6 | town
+read: Harrow Quay by lantern light, and the tide is already over the third step. Out past the bar they stand in rows, up to the chest, quite still, like people at a church door. Behind you the whole town is in the street with whatever it could find. They are all looking at you. Odo Marsh is not looking at anyone.
+goal: Hold Harrow Quay until the tide turns, and get the truth out of Odo Marsh.
+dm: Three waves and one confession. Who helps depends on who the heroes freed, spared or won.
+-- npc odo2 @town:tavern | Odo Marsh | reeve, and heir of the lantern | commoner/innkeeper
+look: has put out all but one candle and set it in the window facing the sea
+hi: I wondered when you would read far enough. Sit. It's all on the house. It's all on *my* house, it turns out.
+? The lantern (mark, grandfather): My grandfather held it. So the others could see to row back. He told me when I was nine, the way you'd tell a boy where the money's hid. And I have weighed honest salt every day since and thought that would do.
+? Say it to him (forgive, sorry, apology): To *him*? He'd have us all under. No. I'm reeve. My place is at the door.
+! You are the only one who can (persuasion 15): A long time. The candle burns down a finger. “He'd be about thirty,” Odo says. “When they did it. I'm twice that. I've had twice that.” He takes the candle out of the window and holds it. “All right. Show me where.” {+odo_will, xp 120} // “Then God help us,” he says, “because I can't.”
+! You owe it to the clerk who drowned (intimidation 14) [sorrel_dead]: He flinches as if you had hit him. “Sorrel taught me long division,” he says. “Yes. All right. Yes.” {+odo_will, xp 100} // “Don't,” he says. “I count her every night as it is.”
+-- npc pell2 @town:chapel [pell_free] | Pell | clerk, lately promoted | commoner/h:bard:human:m
+look: has ink to the elbows and the whole ledger in his head
+hi: I've added it. All of it, sir. It comes out wrong from page one.
+? The sum (wrong, lie): If you take away the stones he charged them for, we don't owe him anything. He owes *us*. About nine thousand barrels. Do you want it in writing? {+proof, xp 60}
+-- scene people @town:smithy many | Who Will Stand
+say: Brid Hallow is handing out boathooks. “Say something,” she mutters. “They'll do it if somebody says something.”
+> Say something | persuasion 13 | You say it plainly: that it will be an hour, that you will be in front, that nobody need be brave past the third step. They nod. It is enough. {+rallied, inspire all, xp 50} // It comes out as a speech. They clap, a little.
+> Call the freed rakers [people] | | Sister Ulm steps out with sixty behind her, salt-scarred and steady. “We have met him,” she says. “He is only a man who is owed.” {+rakers, xp 40}
+> Light the Patient Anne's guns [carrow_ally] | | Isolde has warped her ship across the harbour mouth. “Mind your heads,” she calls. {+guns, xp 40}
+> Set barrels of oil along the steps | survival 12 | Half Harrow's winter lighting goes into it. The rest of winter can look after itself. {+oil, xp 30} // Wet wicks. Some of it may catch.
+-- fight wave1 @town:start at_once later | The First Wave | zombie*, skeleton | medium
+say: The bell stops by itself. They come up the steps.
+win: They go back, or down, or out. The tide has another foot in it. {+wave1, scene lull}
+-- fight wave2 @town:out:.3 at_once later | The Second Wave | wight, ghoul*, zombie | hard
+say: These ones had wages. They keep their line, and something walks behind them keeping the count.
+win: There is a pause, and in the pause a voice over the water says a name. It is Odo's. {+wave2}
+-- scene steps @town:out:.12 many | The Third Step
+say: The water is at the third step. There is nobody left between you and it.
+> Hold here | | You lift your hand, and behind you the town of Harrow lifts whatever it is holding. {fight wave1}
+> Send the children to the hill | persuasion 11 | They go in a line, holding a rope, Jot or someone like him at the front in too many hats. {+children, xp 40} // Some go. Some hide under things, and watch.
+-- scene lull @town:out:.2 later | Slack
+say: The dead have drawn back to the bar to be counted. There are perhaps ten minutes.
+> Bind wounds | medicine 12 | You go down the line with what there is. {heal 12, xp 30} // You do what you can. {heal 5}
+> Fire the oil [oil] | | It goes up along the whole quay like a held breath let out. Past it they stand and steam. {+burned, xp 40}
+> Let them come | | They come. {fight wave2}
+win: They are coming again. {fight wave2}
+-- boss bailiff @town:out:.45 later at_once | The Bailiff of the Tide | The Tide-Bailiff = water_elemental!, wight, zombie* | deadly
+say: The harbour stands up. It has a chain of office and a face made of everybody it has taken, and it bends to look into the Gannet's window.
+win: The harbour falls down again, all at once, over everything. Where it stood the sea is running out and out, further than it ever goes, and there is a road. {+bailiff_down, magic, done}
+-- scene call @town:out:.4 [wave2] | The Name
+say: “Marsh,” says the sea again, reasonably. “Odo. Heir to the lantern. Come down and be counted, and I will let the others keep their feet dry.”
+> Answer for him | intimidation 14 | “No,” you say. It is a small word. The sea has not heard it in some time. It stands up to see who spoke. {+answered, fight bailiff} // It does not hear you. It stands up to look for him. {fight bailiff}
+> Let Odo answer [odo_will] | | He walks to the third step with his candle. “I'm here,” he says. “I'll come. But I'll come on my feet, and I'll say my piece when I get there.” The sea thinks about it, and cannot decide whether it has won. It sends something to fetch him. {+odo_answered, inspire all, fight bailiff}
+> Say nothing | | The patience goes out of the water. {fight bailiff}
+end [odo_will]: The road shines. Odo Marsh comes down the steps in his good coat with a candle in a jar. “My grandfather rowed it,” he says. “I'd as soon walk.” {+ch7, xp 160, open keep}
+end: The road shines. Nobody from Harrow will set foot on it, and you do not blame them. Odo stands at his window with his hand flat against the glass. {+ch7, xp 140, open keep}
+
+== The King Under the Tide | 7 | keep
+read: The road is flat and straight and made of tombstones laid face down. It will be dry until dawn. At the end of it a door stands open with a light inside, as a door does when someone is expected.
+goal: Settle the account with Osric Vane.
+dm: Three endings: kill him (he returns in eighty years), prove the sum (he breaks), or be forgiven (he rests). Odo matters most.
+-- npc vane0 @keep:start | A Clerk of the Door | doorkeeper | skeleton/skeleton
+look: stamps your wrists with something cold before you can object
+hi: Parties to the left. Heirs this way. You will find he is very fair. That is the horrible part.
+? Vane (king, what does he want): To be *right*. He was, a little. It kept him.
+? The way (road, rooms): Past the weigh-room, the counting-house and the bed where he does not sleep. Do not sit in any chair.
+-- trial weigh @keep:.15 | The Weigh-Room | 4 before 3
+say: A pair of scales as big as a barn. One pan is full of salt. The other waits, and the floor tilts you toward it. It wants to know what you weigh against what you have taken.
+try: athletics 13 Hold the beam
+try: insight 13 Name what you owe before it does
+try: persuasion 13 Argue the tare
+try: acrobatics 13 Cross on the chains
+try: religion 13 Give up a claim of your own
+win: The beam levels. Something in the dark writes “nil” and underlines it. {xp 100, +weighed}
+lose: You are found heavy. It takes the difference out of you. {hurt 3d6 necrotic all con 13}
+-- fight counters @keep:.3 | The Counting-House | wight*, skeleton | hard
+say: Rows of high desks, and at each one a dead clerk who has lost his place and knows whose fault it is.
+win: On the last desk a warm inkwell, and the current volume. Your names are in it, in pencil. {+pencil}
+-- scene pencil @keep:library~.4 many | The Current Volume
+say: The book of debts, open. It goes on writing itself while you watch.
+> Rub your names out | sleight 14 | It is a good rubber, and he is busy. {+rubbed, inspire all, xp 60} // The page closes on your wrist. {hurt 2d6 necrotic one}
+> Enter Pell's proof [proof] | | You copy the nine thousand barrels in at the head of the page, in ink. The book shudders like a horse. {+entered, xp 100}
+> Enter the jury's word [jury_gone] | | You write: twelve for the defence. The lamps come up a little. {+verdict, xp 80}
+> Burn it | | It burns very slowly, and every page screams in a different voice, and it is all exactly as it was. He keeps copies.
+-- fight bed @keep:bedroom~.55 | The Bed He Does Not Sleep In | wraith, specter* | hard
+say: A bed with the sheet turned down for eighty years. There is a dent in the pillow, and it is looking at you.
+win: Under the pillow, a child's drawing of a quay with too many boats. “For Papa.” He had someone, then. {+drawing, xp 40}
+-- scene ferry @keep:.7 | The Rowing Boat
+say: In an alcove, on trestles, the boat they took him out in. Five seats. A sixth place on the bottom boards, worn.
+> Lie down in it | | You lie where he lay. It is not very long. Over you five people are not meeting each other's eye, and one is holding a lantern and crying so hard it shakes. You get up. You understand more than you wanted to. {+boat, inspire all, xp 100}
+> Break it up | athletics 13 | It is only a boat. Behind the wall someone makes a sound like a man woken. {+boat_broken, xp 40} // It is very well made.
+> Leave it | | You leave it where it is.
+-- fight guard @keep:.82 | The Five Rowers | Rower = ghast!, ghoul*, wight | deadly
+say: They are still here, the five, with their oars. They stand between you and his door, and they are not guarding it against you.
+> Tell them it is over [boat] | persuasion 15 | “Is it?” says the one with the lantern. “Is it really?” They put up their oars, all together, and let you by. {skip, xp 80} // “It isn't,” says the lantern. “It never is.”
+win: Five oars on the floor. Past them, the door. {+rowers}
+-- boss vane @keep:throne~last | The Account | Osric Vane the Salt King = vampire_spawn!, wight*, shadow | deadly
+say: He is about thirty, and dripping, and has a pleasant, tired, reasonable face. He does not get up. “Sit,” he says, “don't sit, as you like. I want you to know I take no pleasure in it. I only want what is written.”
+> Let Odo speak [odo_will] | | Odo puts his candle on the desk. “We were wrong,” he says. “You were hard and we were wrong. I can't pay it. I'm sorry. I am so sorry, Osric. And what you did to us, the stones and the pans and all of it: I forgive that. There's nobody else left to. It's done.” For a moment nothing whatever happens. Then Osric Vane puts his face in his hands. The sea begins, gently, to come back in. {+forgiven, skip}
+> Show him the true sum [entered] | | He reads the head of the page. He reads it again. You watch a man who was only ever one thing find that he was not that. “Nine thousand,” he whispers. Then the reasonable face comes off. {+proved, hurt 1d6 psychic all, inspire all}
+> Give him the drawing [drawing] | persuasion 14 | He holds it by the edges so as not to wet it. When he stands up to kill you he puts it carefully in a drawer first, and he is not the fighter he was. {+softened, inspire all} // He does not look at it. He knows what it is.
+win: The light goes out of the lamps and into the water. {+vane_done, done}
+end: You run. There is no dignity in it. Behind you the road goes under a stone at a time, without hurry, like somebody putting things away. {xp 200}
+ending [forgiven]: Paid in Full | There is a stone on the quay now, with six names, and one of them is his. Pell is reeve. The book is kept in pencil. Every spring tide Odo Marsh walks down to the third step with a candle in a jar and says good evening, and it is the quietest night of the year. The Gannet will never take your money. You try, sometimes, for the pleasure of hearing them refuse.
+ending [proved & vane_done]: The Sum Corrected | They find nine thousand barrels of salt in the strongroom of the Drowned Court, dry as the day they were filled. Harrow Quay is, suddenly and bewilderingly, rich. Pell has bought a bell for every clerk. On some nights, when the water is very still, there is a sound off the bar like a man going over his figures again, and again, and again.
+ending: Adjourned | Osric Vane is dead, which he has been before. The town dances for three days. On the fourth Pell comes to you with his pen behind his ear. “It's only that I've been adding,” he says. “Eighty years, sir, and compounding. Somebody ought to tell whoever's next.” He has written it all out. He gives you the copy.
+`;export{e as default};
