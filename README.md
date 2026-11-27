@@ -3,6 +3,15 @@
 A role-playing game for one to six players, with or without a Dungeon Master. Fifteen written campaigns, your own sheets, your own dice, worlds in 3D. Vue 3 + Babylon.js.
 No backend. The site is static files, and players connect straight to the host's browser.
 
+## Deployment
+
+The source and deployment are maintained in [bloodf/turn-003](https://github.com/bloodf/turn-003).
+Play at [turn-003.vercel.app](https://turn-003.vercel.app).
+The former [turn-003-site.vercel.app](https://turn-003-site.vercel.app) address serves the same project.
+
+`turn-003-site` was a compiled export of this game, not a separate application.
+Its original Git history is merged here; build the site from this repository with `npm run build`.
+
 ## Run it
 ```
 npm install
